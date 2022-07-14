@@ -35,6 +35,19 @@
       }
     },
     {
+      "files": ["*.tsx", "*.jsx"],
+      "extends": ["iroot/react"],
+      "rules": {
+        "react/self-closing-comp": [
+          "error",
+          {
+            "component": true,
+            "html": true
+          }
+        ]
+      }
+    },
+    {
       "files": ["*.test.ts", "*.test.tsx"],
       "rules": {
         "@typescript-eslint/ban-ts-comment": "off"

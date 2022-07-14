@@ -23,7 +23,7 @@ const Anthor = styled(
   }
 )
 
-function asButton() {
+export function asButton() {
   return (
     <Anthor
       as="button"
@@ -61,7 +61,7 @@ const ToLink2 = styled(ToLink, {})
 
 expectType<typeof ToLink, typeof ToLink2>(ToLink2)
 
-function renderToLink() {
+export function renderToLink() {
   return (
     <ToLink
       href=""

@@ -44,6 +44,8 @@
     "esbuild-register": "^3.3.3",
     "eslint": "^8.18.0",
     "eslint-config-iroot": "^1.4.4",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "8.0.1",
     "jest": "^28.1.3",
     "jest-easy": "^1.0.3",
