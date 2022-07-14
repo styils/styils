@@ -64,5 +64,9 @@
         "esbuild"
       ]
     }
+  },
+  "engines": {
+    "node": ">=12",
+    "pnpm": ">=7"
   }
 }
