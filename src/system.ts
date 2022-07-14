@@ -5,7 +5,8 @@ import { type AnyObject } from './types'
 import { parseRules } from './parse'
 import { StyleSheet } from './sheet'
 
-let globalCache: AnyObject = {}
+const globalCache = new Set<string>([])
+const cacheKey = '__styls_cache__'
 
 export function createSystem<Theme extends AnyObject = {}>(
   options: SystemOptions<Theme> = {}
@@ -16,6 +17,13 @@ export function createSystem<Theme extends AnyObject = {}>(
     sheetOptions = {}
   } = options
   const { key, container, speedy, nonce } = sheetOptions
+
+  if (globalThis.document && !globalCache.size) {
+    const meta = document.getElementById(cacheKey) as HTMLMetaElement
+    meta?.content.split(',').forEach((name) => {
+      globalCache.add(name)
+    })
+  }
 
   const sheet = new StyleSheet({
     key: key ?? 'css',
@@ -85,14 +93,8 @@ export function createSystem<Theme extends AnyObject = {}>(
         namespaceJoiner = `${inputNamespace}-`
       }
 
-      // this solves the problem of repeatedly adding the same value in hot update
-      // which is not affected in sound field mode
-      if (process.env.NODE_ENV !== 'production') {
-        if (!globalCache[targetClassName]) {
-          globalCache[targetClassName] = parseRules(style, `.${targetClassName}`)
-          sheet.insertStyle(globalCache[targetClassName])
-        }
-      } else {
+      if (!globalCache.has(targetClassName)) {
+        globalCache.add(targetClassName)
         sheet.insertStyle(parseRules(style, `.${targetClassName}`))
       }
 
@@ -112,14 +114,8 @@ export function createSystem<Theme extends AnyObject = {}>(
             const value = variantsValue[key]
             const variantsClassName = `.${targetClassName}.${namespaceJoiner}${variantsKey}-${key}`
 
-            // this solves the problem of repeatedly adding the same value in hot update
-            // which is not affected in sound field mode
-            if (process.env.NODE_ENV !== 'production') {
-              if (!globalCache[variantsClassName]) {
-                globalCache[variantsClassName] = parseRules(value, variantsClassName)
-                sheet.insertStyle(globalCache[variantsClassName])
-              }
-            } else {
+            if (!globalCache.has(variantsClassName)) {
+              globalCache.add(variantsClassName)
               sheet.insertStyle(parseRules(value, variantsClassName))
             }
           }
@@ -188,12 +184,15 @@ export function createSystem<Theme extends AnyObject = {}>(
   }
 
   function getCssValue() {
-    return sheet.ssrData
+    return `
+      <meta id=${cacheKey} name="styls-cache" content="${[...globalCache].join(',')}">
+      <style data-styls="${sheet.key}">${sheet.ssrData}</style>
+    `
   }
 
   function flush() {
     sheet.flush()
-    globalCache = {}
+    globalCache.clear()
   }
 
   return { styled, SystemProvider, useSystem, getCssValue, flush }

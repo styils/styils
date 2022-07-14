@@ -83,6 +83,7 @@ importers:
 
   docs:
     specifiers:
+      '@stitches/react': link:/Users/zoy/stitches/packages/react
       '@types/compression': ^1.7.2
       '@types/express': ^4.17.13
       '@types/react': ^18.0.8
@@ -97,6 +98,7 @@ importers:
       vite: ^2.9.14
       vite-plugin-ssr: ^0.4.5
     dependencies:
+      '@stitches/react': link:../../stitches/packages/react
       '@types/compression': 1.7.2
       '@types/express': 4.17.13
       '@types/react': 18.0.15
