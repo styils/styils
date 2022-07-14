@@ -13,6 +13,6 @@ jobs:
     steps:
       - checkout
       - run: sudo npm i -g pnpm
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile
       - run: pnpm run test:coverage --runInBand --detectOpenHandles
       - run: bash <(curl -s https://codecov.io/bash)

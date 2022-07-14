@@ -45,7 +45,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Setup install
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - run: pnpm run test
         env:
