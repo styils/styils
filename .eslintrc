@@ -1,0 +1,44 @@
+{
+  "root": true,
+  "extends": ["iroot/typescript"],
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "no-debugger": "error",
+    "guard-for-in": "off",
+    "max-classes-per-file": "off",
+    "no-continue": "off",
+    "no-restricted-syntax": "off",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          // un-ban a type that's banned by default
+          "{}": false
+        },
+        "extendDefaults": true
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_", "destructuredArrayIgnorePattern": "^_" }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.spec.ts", "*.spec.tsx"],
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    },
+    {
+      "files": ["*.test.ts", "*.test.tsx"],
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": "off"
+      }
+    }
+  ]
+}

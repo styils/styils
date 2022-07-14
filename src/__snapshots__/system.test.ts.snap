@@ -1,0 +1,485 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`system createSystem 1`] = `
+<div>
+  <div
+    data-testid="use-system"
+  >
+    <button
+      class="css-3433634237"
+    />
+    light
+  </div>
+</div>
+`;
+
+exports[`system createSystem 2`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div
+        data-testid="use-system"
+      >
+        <button
+          class="css-3433634237"
+        />
+        light
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system createSystem 3`] = `
+<div>
+  <div
+    data-testid="use-system"
+  >
+    <button
+      class="css-3183262666"
+    />
+    dark
+  </div>
+</div>
+`;
+
+exports[`system createSystem 4`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3183262666{color:blue;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div
+        data-testid="use-system"
+      >
+        <button
+          class="css-3183262666"
+        />
+        dark
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system styled 1`] = `
+<div>
+  <button
+    class="css-3397010960"
+  />
+</div>
+`;
+
+exports[`system styled 2`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3397010960{background-color:gainsboro;border-radius:9999px;font-weight:500;padding:0.75em 1em;border:0px;transition:all 200ms ease;}.css-3397010960:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0, 0, 0, .3);}
+    </style>
+  </head>
+  <body>
+    <div>
+      <button
+        class="css-3397010960"
+      />
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system styled className 1`] = `
+<div>
+  <button
+    class="foo css-2129283522"
+  />
+</div>
+`;
+
+exports[`system styled className 2`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-2129283522{background-color:gainsboro;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <button
+        class="foo css-2129283522"
+      />
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system styled namespace 1`] = `
+<div>
+  <button
+    class="button-css-3465392085"
+  />
+</div>
+`;
+
+exports[`system styled production 1`] = `
+<div>
+  <button
+    class="css-3465392085"
+  />
+</div>
+`;
+
+exports[`system theme does not render repeatedly 1`] = `
+<div>
+  <div
+    data-testid="use-system"
+  >
+    <button
+      class="css-3433634237"
+    />
+    light
+  </div>
+</div>
+`;
+
+exports[`system theme does not render repeatedly 2`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div
+        data-testid="use-system"
+      >
+        <button
+          class="css-3433634237"
+        />
+        light
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system theme does not render repeatedly 3`] = `
+<div>
+  <div
+    data-testid="use-system"
+  >
+    <button
+      class="css-3183262666"
+    />
+    dark
+  </div>
+</div>
+`;
+
+exports[`system theme does not render repeatedly 4`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3183262666{color:blue;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div
+        data-testid="use-system"
+      >
+        <button
+          class="css-3183262666"
+        />
+        dark
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system theme does not render repeatedly 5`] = `
+<div>
+  <div
+    data-testid="use-system"
+  >
+    <button
+      class="css-3433634237"
+    />
+    light
+  </div>
+</div>
+`;
+
+exports[`system theme does not render repeatedly 6`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3183262666{color:blue;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div
+        data-testid="use-system"
+      >
+        <button
+          class="css-3433634237"
+        />
+        light
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system variants 1`] = `
+<div>
+  <div
+    data-testid="styled-variants"
+  >
+    <button
+      class="css-3433634237 size-small"
+    >
+      small
+    </button>
+  </div>
+</div>
+`;
+
+exports[`system variants 2`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237.size-max{font-size:99px;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237.size-small{font-size:14px;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div
+        data-testid="styled-variants"
+      >
+        <button
+          class="css-3433634237 size-small"
+        >
+          small
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system variants 3`] = `
+<div>
+  <div
+    data-testid="styled-variants"
+  >
+    <button
+      class="css-3433634237 size-max"
+    >
+      max
+    </button>
+  </div>
+</div>
+`;
+
+exports[`system variants 4`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237.size-max{font-size:99px;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237.size-small{font-size:14px;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div
+        data-testid="styled-variants"
+      >
+        <button
+          class="css-3433634237 size-max"
+        >
+          max
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system variants theme 1`] = `
+<div>
+  <div
+    data-testid="use-system"
+  >
+    <button
+      class="css-3433634237 color-light"
+    />
+    light
+  </div>
+</div>
+`;
+
+exports[`system variants theme 2`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237.color-light{color:red;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237.color-dark{color:red;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div
+        data-testid="use-system"
+      >
+        <button
+          class="css-3433634237 color-light"
+        />
+        light
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system variants theme 3`] = `
+<div>
+  <div
+    data-testid="use-system"
+  >
+    <button
+      class="css-3433634237 color-dark"
+    />
+    dark
+  </div>
+</div>
+`;
+
+exports[`system variants theme 4`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237.color-light{color:red;}
+    </style>
+    <style
+      data-styls="css"
+    >
+      
+      .css-3433634237.color-dark{color:red;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div
+        data-testid="use-system"
+      >
+        <button
+          class="css-3433634237 color-dark"
+        />
+        dark
+      </div>
+    </div>
+  </body>
+</html>
+`;

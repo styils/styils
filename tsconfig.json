@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "suppressImplicitAnyIndexErrors": false,
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "es2022"],
+    "skipLibCheck": false,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "es2022",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "baseUrl": ".",
+    "jsx": "react",
+    "paths": {
+      "nativeCssTypes": ["types/nativeCssTypes.d.ts"]
+    }
+  },
+  "include": ["src", "types.d.ts"]
+}

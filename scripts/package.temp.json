@@ -1,0 +1,43 @@
+{
+  "name": "root",
+  "version": "0.0.1",
+  "description": "A 3KB css-in-js solution",
+  "sideEffects": false,
+  "keywords": [
+    "css-in-js",
+    "styls",
+    "styled",
+    "emotion",
+    "styled-components",
+    "javascript",
+    "react",
+    "preact",
+    "vue"
+  ],
+  "author": "zoy-l <zoy-l@outlook.com>",
+  "license": "MIT",
+  "types": "index.d.ts",
+  "main": "index.js",
+  "module": "index.esm.js",
+  "jsdelivr": "index.global.js",
+  "unpkg": "index.global.js",
+  "exports": {
+    ".": {
+      "require": "./index.js",
+      "import": {
+        "node": "./index.mjs",
+        "default": "./index.esm.js"
+      },
+      "types": "./index.d.ts"
+    },
+    "./global": "./index.global.js"
+  },
+  "files": [],
+  "homepage": "https://github.com/l-zoy/internal-css-in-js",
+  "bugs": "https://github.com/l-zoy/internal-css-in-js/issues",
+  "typesVersions": {
+    ">= 4.1": {
+      "*": ["index.d.ts"]
+    }
+  }
+}

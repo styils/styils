@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`css createStyls 1`] = `
+<html>
+  <head />
+  <body>
+    <style
+      data-styls="abc"
+      nonce="123456"
+    >
+      
+      .css-2883881200{width:auto;}
+    </style>
+  </body>
+</html>
+`;
+
+exports[`css createStyls speedy 1`] = `
+<html>
+  <head>
+    <style
+      data-styls="css"
+    >
+      
+    </style>
+  </head>
+  <body>
+    <style
+      data-styls="abc"
+      nonce="123456"
+    >
+      
+      .css-2883881200{width:auto;}
+    </style>
+  </body>
+</html>
+`;
