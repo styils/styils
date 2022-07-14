@@ -1,1 +1,1 @@
-# internal-css-in-js
+# styls
