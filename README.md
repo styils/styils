@@ -3,8 +3,7 @@
 <img src="./docs/src/favicon.svg" alt="styls" style="width:120px">
 <br/>
 <br/>
-<br/>
-<img src="./styls.svg" alt="styls" style="width:90px;">
+<img src="./styls.svg" alt="styls" style="width:100px;">
 </p>
 
 <p align="center">
