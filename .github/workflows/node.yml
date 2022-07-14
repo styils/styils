@@ -47,9 +47,45 @@ jobs:
       - name: Setup install
         run: pnpm install --frozen-lockfile
 
-      - run: pnpm run test
+        run: pnpm run test
         env:
           CI: true
+
+  coverage:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.6.0]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: latest
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Setup install
+        run: pnpm install --frozen-lockfile
+        run: pnpm run test:coverage
 
       - name: Setup Python
         uses: actions/setup-python@master
@@ -62,7 +98,6 @@ jobs:
           pytest --cov=./ --cov-report=xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
-        if: matrix.os == 'ubuntu-latest'
         with:
           directory: ./coverage/
           files: ./clover.xml
