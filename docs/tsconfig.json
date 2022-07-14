@@ -17,9 +17,7 @@
     "jsx": "react-jsx",
     "paths": {
       "styls-react": ["../src/indexReact"],
-      "system": ["./src/common/system"]
+      "system": ["./common/system"]
     }
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  }
 }
