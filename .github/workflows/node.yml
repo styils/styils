@@ -65,6 +65,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         with:
           directory: ./coverage/
+          files: ./clover.xml
           flags: styls
           name: codecov-styls
           path_to_write_report: ./coverage/codecov_report.txt
