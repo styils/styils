@@ -1,7 +1,10 @@
 <p align="center">
-<img src="./docs/src/favicon.svg" alt="styls" style="width:100px;margin:10px 10px 30px 10px">
 <br/>
-<img src="./styls.svg" alt="styls" style="width:80px;margin:10px">
+<img src="./docs/src/favicon.svg" alt="styls" style="width:120px">
+<br/>
+<br/>
+<br/>
+<img src="./styls.svg" alt="styls" style="width:80px;">
 </p>
 
 <p align="center">
