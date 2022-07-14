@@ -1,5 +1,4 @@
 <p align="center">
-<br/>
 <img src="./docs/src/favicon.svg" alt="styls" style="width:120px">
 <br/>
 <br/>
