@@ -8,7 +8,7 @@ const config: UserConfig = {
   resolve: {
     alias: {
       'styls-react': path.join(__dirname, '..', 'src', 'indexReact'),
-      system: path.join(__dirname, 'src', 'common', 'system')
+      system: path.join(__dirname, 'common', 'system')
     }
   }
 }

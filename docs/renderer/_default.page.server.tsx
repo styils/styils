@@ -4,6 +4,8 @@ import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr'
 import logoUrl from './logo.svg'
 import type { PageContext } from './types'
 import type { PageContextBuiltIn } from 'vite-plugin-ssr'
+import { SystemProvider } from '../common/system'
+import { getCssText } from '../test'
 
 export { render }
 // See https://vite-plugin-ssr.com/data-fetching
@@ -12,15 +14,21 @@ export const passToClient = ['pageProps', 'urlPathname']
 async function render(pageContext: PageContextBuiltIn & PageContext) {
   const { Page, pageProps } = pageContext
   const pageHtml = ReactDOMServer.renderToString(
-    <PageShell pageContext={pageContext}>
-      <Page {...pageProps} />
-    </PageShell>
+    <SystemProvider>
+      <PageShell pageContext={pageContext}>
+        <Page {...pageProps} />
+      </PageShell>
+    </SystemProvider>
   )
 
   // See https://vite-plugin-ssr.com/head
   const { documentProps } = pageContext
   const title = (documentProps && documentProps.title) || 'Vite SSR app'
   const desc = (documentProps && documentProps.description) || 'App using Vite + vite-plugin-ssr'
+  // const css = getCssValue()
+  const css2 = getCssText()
+
+  // <style id="styls">${dangerouslySkipEscape(css)}</style>
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
@@ -30,6 +38,8 @@ async function render(pageContext: PageContextBuiltIn & PageContext) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${desc}" />
         <title>${title}</title>
+
+        <style id="styls">${dangerouslySkipEscape(css2)}</style>
       </head>
       <body>
         <div id="page-view">${dangerouslySkipEscape(pageHtml)}</div>

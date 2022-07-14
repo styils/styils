@@ -1,3 +1,3 @@
 import { createSystem } from 'styls-react'
 
-export const { styled, SystemProvider, useSystem } = createSystem({})
+export const { styled, SystemProvider, useSystem, getCssValue } = createSystem({})

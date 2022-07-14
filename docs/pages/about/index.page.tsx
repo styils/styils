@@ -1,15 +1,22 @@
-import React from 'react'
-import './code.css'
+// import { styled } from 'system'
+import { styled } from '../../test'
 
-export { Page }
+const Code = styled('code', {
+  fontFamily: 'monospace',
+  backgroundColor: '#eaeaea',
+  padding: '3px 5px',
+  borderRadius: 4
+})
 
 function Page() {
   return (
     <>
       <h1>About</h1>
       <p>
-        Demo using <code>vite-plugin-ssr</code>.
+        Demo using <Code>vite-plugin-ssr</Code>.
       </p>
     </>
   )
 }
+
+export { Page }

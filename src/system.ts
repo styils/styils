@@ -5,6 +5,8 @@ import { type AnyObject } from './types'
 import { parseRules } from './parse'
 import { StyleSheet } from './sheet'
 
+let globalCache: AnyObject = {}
+
 export function createSystem<Theme extends AnyObject = {}>(
   options: SystemOptions<Theme> = {}
 ): System<Theme> {
@@ -14,7 +16,6 @@ export function createSystem<Theme extends AnyObject = {}>(
     sheetOptions = {}
   } = options
   const { key, container, speedy, nonce } = sheetOptions
-  let globalCache: AnyObject = {}
 
   const sheet = new StyleSheet({
     key: key ?? 'css',
