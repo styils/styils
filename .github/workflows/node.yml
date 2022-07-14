@@ -47,7 +47,7 @@ jobs:
       - name: Setup install
         run: pnpm install --frozen-lockfile
 
-        run: pnpm run test
+      - run: pnpm run test
         env:
           CI: true
 
@@ -85,7 +85,7 @@ jobs:
 
       - name: Setup install
         run: pnpm install --frozen-lockfile
-        run: pnpm run test:coverage
+      - run: pnpm run test:coverage
 
       - name: Setup Python
         uses: actions/setup-python@master
