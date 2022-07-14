@@ -1,5 +1,7 @@
 #
 version: 2.1
+orbs:
+  codecov: codecov/codecov@3.1.1
 jobs:
   build:
     docker:
@@ -15,4 +17,4 @@ jobs:
       - run: sudo npm i -g pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run test:coverage --runInBand --detectOpenHandles
-      - run: bash <(curl -s https://codecov.io/bash)
+      - codecov/upload
