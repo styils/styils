@@ -24,15 +24,32 @@ function publish(args: string[]) {
     command += ' --tag beta'
   }
 
-  const targetPath = path.join(__dirname, '..', 'dist', type)
+  const targetPath: string[] = []
+
+  switch (type) {
+    case 'react':
+    case 'css':
+    case 'base':
+      targetPath.push(path.join(__dirname, '..', 'dist', type))
+      break
+    case 'all':
+      // eslint-disable-next-line @typescript-eslint/no-extra-semi
+      ;['react', 'css', 'base'].forEach((id) => {
+        targetPath.push(path.join(__dirname, '..', 'dist', id))
+      })
+      break
+    default:
+      console.log(`wrong tag ${type}, support{react, css, base, ass}`)
+      process.exit(1)
+  }
 
   fs.writeFileSync(path.join(__dirname, 'package.temp.json'), JSON.stringify(packageTemp))
   shell.exec('pnpm run build')
 
   try {
-    // eslint-disable-next-line import/no-dynamic-require, global-require
-    require(path.join(targetPath, 'package.json'))
-    shell.exec(`cd ${targetPath}&&${command}`)
+    targetPath.forEach((p) => {
+      shell.exec(`cd ${p}&&${command}`)
+    })
   } catch (err) {
     console.log(err?.message)
   }
