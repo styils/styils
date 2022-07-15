@@ -4,23 +4,18 @@ import shell from 'shelljs'
 
 import packageTemp from './package.temp.json'
 
-const args = process.argv.slice(2)
+const args = process.argv.slice(2)[0].slice(1)
 
-function publish(args: string[]) {
-  // eslint-disable-next-line prefer-const
-  let [version, type] = args
+function publish(args: string) {
   let command = 'npm publish'
-  version = version.slice(1)
-  packageTemp.version = version
+  const [version, tag, type] = args.split('-')
+  packageTemp.version = `${version}-${tag}`
 
-  const isAlpha = /alpha/.test(version)
-  const isBeta = /beta/.test(version)
-
-  if (isAlpha) {
+  if (tag === 'alpha') {
     command += ' --tag alpha'
   }
 
-  if (isBeta) {
+  if (tag === 'beta') {
     command += ' --tag beta'
   }
 
