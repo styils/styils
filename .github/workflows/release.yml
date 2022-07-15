@@ -45,6 +45,7 @@ jobs:
 
       - name: Setup install
         run: pnpm install --frozen-lockfile
-      - run: pnpm run release ${{ steps.get_version.outputs.VERSION }}
+      - name: Run release
+        run: pnpm run release ${{ steps.get_version.outputs.VERSION }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMTOKEN }}
