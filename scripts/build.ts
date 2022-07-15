@@ -198,6 +198,12 @@ async function run() {
       path.join(cwd, 'dist', name, 'package.json'),
       prettier.format(JSON.stringify(json), { parser: 'json' })
     )
+    fs.writeFileSync(
+      path.join(cwd, 'dist', name, '.npmrc'),
+      `registry=https://registry.npmjs.org/
+//registry.npmjs.org/:always-auth=true
+//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}`
+    )
   })
 
   distFiles.forEach((item) => {
