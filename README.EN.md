@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-A 3KB css-in-js solution with near zero runtime. Support Themes, SSR
+3KB css-in-js solution with near zero runtime. Support Themes, SSR
 </p>
 
 > Currently, it is experimental!
