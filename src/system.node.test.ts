@@ -24,7 +24,7 @@ describe('css node', () => {
       height: 100
     })
 
-    expect(getCssValue()).toEqual('.css-1473887168{width:100px;}.css-2950234073{height:100px;}')
+    expect(getCssValue()).toMatchSnapshot()
 
     flush()
   })
@@ -42,9 +42,7 @@ describe('css node', () => {
       height: 100
     })
 
-    expect(defaultGetCssValue()).toEqual(
-      '.css-1473887168{width:100px;}.css-2950234073{height:100px;}'
-    )
+    expect(defaultGetCssValue()).toMatchSnapshot()
 
     defaultFlush()
   })

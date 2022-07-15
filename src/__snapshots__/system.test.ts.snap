@@ -82,6 +82,84 @@ exports[`system createSystem 4`] = `
 </html>
 `;
 
+exports[`system hydrate 1`] = `
+"
+      <meta id=\\"__styls_cache__\\" name=\\"styls-cache\\" content=\\"css-2242710476\\">
+      <style data-styls=\\"css\\"></style>
+    "
+`;
+
+exports[`system hydrate 2`] = `
+<html>
+  <head>
+    <meta
+      content="css-2242710476"
+      id="__styls_cache__"
+      name="styls-cache"
+    />
+  </head>
+  <body>
+    <div>
+      <button
+        class="css-2242710476"
+      />
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system hydrate namespace 1`] = `
+"
+      <meta id=\\"__styls_cache__\\" name=\\"styls-cache\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
+      <style data-styls=\\"css\\"></style>
+    "
+`;
+
+exports[`system hydrate namespace 2`] = `
+<html>
+  <head>
+    <meta
+      content="ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small"
+      id="__styls_cache__"
+      name="styls-cache"
+    />
+  </head>
+  <body>
+    <div>
+      <button
+        class="ssr-css-2242710476 ssr-size-small"
+      />
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system hydrate variants 1`] = `
+"
+      <meta id=\\"__styls_cache__\\" name=\\"styls-cache\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
+      <style data-styls=\\"css\\"></style>
+    "
+`;
+
+exports[`system hydrate variants 2`] = `
+<html>
+  <head>
+    <meta
+      content="css-2242710476|css-2242710476.size-max|css-2242710476.size-small"
+      id="__styls_cache__"
+      name="styls-cache"
+    />
+  </head>
+  <body>
+    <div>
+      <button
+        class="css-2242710476"
+      />
+    </div>
+  </body>
+</html>
+`;
+
 exports[`system styled 1`] = `
 <div>
   <button

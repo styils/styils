@@ -328,4 +328,102 @@ describe('system', () => {
 
     flush()
   })
+
+  it('hydrate', () => {
+    const meta = document.createElement('meta')
+    meta.name = 'styls-cache'
+    meta.id = '__styls_cache__'
+    meta.content = `css-2242710476`
+    globalThis.document.head.appendChild(meta)
+
+    jest.spyOn(document, 'getElementById').mockImplementationOnce(() => {
+      return meta
+    })
+
+    const { styled: hydrateStyled, getCssValue } = createSystem()
+    const Button = hydrateStyled('button', {
+      backgroundColor: 'gainsboro',
+      borderRadius: '9999px'
+    })
+
+    render(React.createElement(Button))
+
+    expect(getCssValue()).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+    globalThis.document.head.removeChild(meta)
+  })
+
+  it('hydrate variants', () => {
+    const meta = document.createElement('meta')
+    meta.name = 'styls-cache'
+    meta.id = '__styls_cache__'
+    meta.content = `css-2242710476|css-2242710476.size-max|css-2242710476.size-small`
+    globalThis.document.head.appendChild(meta)
+
+    jest.spyOn(document, 'getElementById').mockImplementationOnce(() => {
+      return meta
+    })
+
+    const { styled: hydrateStyled, getCssValue } = createSystem()
+    const Button = hydrateStyled(
+      'button',
+      {
+        backgroundColor: 'gainsboro',
+        borderRadius: '9999px'
+      },
+      {
+        size: {
+          small: {
+            fontSize: 14
+          },
+          max: {
+            fontSize: 12
+          }
+        }
+      }
+    )
+
+    render(React.createElement(Button))
+
+    expect(getCssValue()).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+    globalThis.document.head.removeChild(meta)
+  })
+
+  it('hydrate namespace', () => {
+    const meta = document.createElement('meta')
+    meta.name = 'styls-cache'
+    meta.id = '__styls_cache__'
+    meta.content = `ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small`
+    globalThis.document.head.appendChild(meta)
+
+    jest.spyOn(document, 'getElementById').mockImplementationOnce(() => {
+      return meta
+    })
+
+    const { styled: hydrateStyled, getCssValue } = createSystem()
+    const Button = hydrateStyled(
+      { tag: 'button', namespace: 'ssr' },
+      {
+        backgroundColor: 'gainsboro',
+        borderRadius: '9999px'
+      },
+      {
+        size: {
+          small: {
+            fontSize: 14
+          },
+          max: {
+            fontSize: 12
+          }
+        }
+      }
+    )
+
+    render(React.createElement(Button, { variants: { size: 'small' } }))
+
+    expect(getCssValue()).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+    globalThis.document.head.removeChild(meta)
+  })
 })

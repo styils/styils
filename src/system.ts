@@ -7,6 +7,7 @@ import { StyleSheet } from './sheet'
 
 const globalCache = new Set<string>([])
 const cacheKey = '__styls_cache__'
+const splitSymbol = '|'
 
 export function createSystem<Theme extends AnyObject = {}>(
   options: SystemOptions<Theme> = {}
@@ -20,7 +21,8 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   if (globalThis.document && !globalCache.size) {
     const meta = document.getElementById(cacheKey) as HTMLMetaElement
-    meta?.content.split(',').forEach((name) => {
+
+    meta?.content.split(splitSymbol).forEach((name) => {
       globalCache.add(name)
     })
   }
@@ -112,11 +114,11 @@ export function createSystem<Theme extends AnyObject = {}>(
           while (variantsChildIndex--) {
             const key = variantsChildKeys[variantsChildIndex]
             const value = variantsValue[key]
-            const variantsClassName = `.${targetClassName}.${namespaceJoiner}${variantsKey}-${key}`
+            const variantsClassName = `${targetClassName}.${namespaceJoiner}${variantsKey}-${key}`
 
             if (!globalCache.has(variantsClassName)) {
               globalCache.add(variantsClassName)
-              sheet.insertStyle(parseRules(value, variantsClassName))
+              sheet.insertStyle(parseRules(value, `.${variantsClassName}`))
             }
           }
         }
@@ -185,7 +187,7 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   function getCssValue() {
     return `
-      <meta id=${cacheKey} name="styls-cache" content="${[...globalCache].join(',')}">
+      <meta id="${cacheKey}" name="styls-cache" content="${[...globalCache].join(splitSymbol)}">
       <style data-styls="${sheet.key}">${sheet.ssrData}</style>
     `
   }

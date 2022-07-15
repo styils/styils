@@ -17,6 +17,8 @@
 A 3KB css-in-js solution with near zero runtime. Support Themes, SSR
 </p>
 
+> Currently, it is experimental!
+
 ### Styls React
 
 React wrapper including the `styled` API.

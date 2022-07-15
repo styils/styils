@@ -17,6 +17,8 @@
  一个 3KB 的 css-in-js 解决方案，运行时接近于零。支持主题、SSR
 </p>
 
+> 目前，它是处于实验阶段的!
+
 ### Styls React
 
 React 包装器，包括 `styled` API。
