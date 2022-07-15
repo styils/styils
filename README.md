@@ -39,4 +39,4 @@ npm install @styls/css
 
 根据 MIT 许可证获得许可, 版权 © 2022-present zoy-l.
 
-有关详细信息，请参阅 [LICENSE](./LICENSE.md)。
+有关详细信息，请参阅 [LICENSE](./LICENSE)。
