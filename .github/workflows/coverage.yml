@@ -9,7 +9,6 @@ on:
       - './scripts/**'
       - '*.md'
       - '*.json'
-      - '*.yml'
 
 jobs:
   coverage:
