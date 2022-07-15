@@ -39,4 +39,4 @@ npm install @styls/css
 
 Licensed under the MIT License, Copyright © 2022-present zoy-l.
 
-See [LICENSE](./LICENSE.md) for more information.
+See [LICENSE](./LICENSE) for more information.
