@@ -8,6 +8,8 @@ on:
       - './types/**'
       - './scripts/**'
       - '*.md'
+      - '*.json'
+      - '*.yml'
 
 jobs:
   build:
