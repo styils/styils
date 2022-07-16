@@ -1,7 +1,7 @@
 [English](./README.EN.md)
 
 <p align="center">
-<img src="./docs/renderer/logo.svg" alt="styls" style="width:120px">
+<img src="./logo.svg" alt="styls" style="width:120px">
 <br/>
 <br/>
 <img src="./styls.svg" alt="styls" style="width:100px;">
@@ -19,7 +19,7 @@
 
 > 目前，它是处于实验阶段的!
 
-### Styls React
+## Styls React
 
 React 包装器，包括 `styled` API。
 
@@ -27,7 +27,7 @@ React 包装器，包括 `styled` API。
 npm install @styls/react
 ```
 
-### Styls Css
+## Styls Css
 
 与框架无关的实现，包括 `css` API。
 

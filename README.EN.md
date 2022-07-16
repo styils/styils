@@ -1,7 +1,7 @@
 [简体中文](./README.md)
 
 <p align="center">
-<img src="./docs/renderer/logo.svg" alt="styls" style="width:120px">
+<img src="./logo.svg" alt="styls" style="width:120px">
 <br/>
 <br/>
 <img src="./styls.svg" alt="styls" style="width:100px;">
