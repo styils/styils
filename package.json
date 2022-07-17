@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "node -r esbuild-register scripts/build.ts",
-    "test": "jest-easy",
+    "test": "jest-easy -u",
     "test:coverage": "jest-easy --coverage",
     "update:deps": "pnpm update --latest --interactive",
     "format": "prettier \"**/*.{js,ts,tsx,md}\" --write",
@@ -15,7 +15,7 @@
   },
   "keywords": [
     "css-in-js",
-    "styls",
+    "styil",
     "styled",
     "emotion",
     "styled-components",

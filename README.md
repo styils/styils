@@ -1,15 +1,15 @@
 [English](./README.EN.md)
 
 <p align="center">
-<img src="./logo.svg" alt="styls" style="width:120px">
+<img src="./logo.svg" alt="styil" style="width:120px">
 <br/>
 <br/>
-<img src="./styls.svg" alt="styls" style="width:100px;">
+<img src="./styil.svg" alt="styil" style="width:100px;">
 </p>
 
 <p align="center">
-  <img src="https://codecov.io/gh/l-zoy/styls/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
-  <img src="https://img.badgesize.io/https://unpkg.com/@styls/base@latest/index.prod.esm.js?compression=gzip&style=square&label=gzip%20size&color=#4fc08d" alt="gzip" />
+  <img src="https://codecov.io/gh/l-zoy/styil/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
+  <img src="https://img.badgesize.io/https://unpkg.com/@styil/base@latest/index.prod.esm.js?compression=gzip&style=square&label=gzip%20size&color=#4fc08d" alt="gzip" />
 
 </p>
 
@@ -19,20 +19,20 @@
 
 > 目前，它是处于实验阶段的!
 
-## Styls React
+## Styil React
 
 React 包装器，包括 `styled` API。
 
 ```sh
-npm install @styls/react
+npm install @styil/react
 ```
 
-## Styls Css
+## Styil Css
 
 与框架无关的实现，包括 `css` API。
 
 ```sh
-npm install @styls/css
+npm install @styil/css
 ```
 
 ## License

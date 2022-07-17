@@ -1,4 +1,4 @@
-# Contributing to Styls
+# Contributing to Styil
 
 Welcome and thanks for your interest! Before submitting a pull request, please take a moment to review these guidelines.
 
@@ -19,10 +19,10 @@ Follow the steps below to develop
 
    ```bash
    # clone the repository
-   git@github.com:**path**/styls.git
+   git@github.com:**path**/styil.git
 
    # Navigate to the newly cloned directory
-   cd styls
+   cd styil
 
    # Install the tools necessary for testing
    pnpm install
@@ -67,8 +67,8 @@ Follow the steps below to develop
 
 That’s it! Now [open a pull request] with a clear title and description.
 
-[already been reported]: https://github.com/l-zoy/styls/issues
-[fork this project]: https://github.com/l-zoy/styls/fork
+[already been reported]: https://github.com/l-zoy/styil/issues
+[fork this project]: https://github.com/l-zoy/styil/fork
 [live example]: https://codesandbox.io/
 [open a pull request]: https://help.github.com/articles/using-pull-requests/
 [reduced test case]: https://css-tricks.com/reduced-test-cases/

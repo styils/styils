@@ -5,7 +5,7 @@ exports[`css createStyls 1`] = `
   <head />
   <body>
     <style
-      data-styls="abc"
+      data-styil="abc"
       nonce="123456"
     >
       
@@ -19,14 +19,14 @@ exports[`css createStyls speedy 1`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
     </style>
   </head>
   <body>
     <style
-      data-styls="abc"
+      data-styil="abc"
       nonce="123456"
     >
       

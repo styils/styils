@@ -1,5 +1,5 @@
 import { Routes, HashRouter, Route } from 'react-router-dom'
-import { styled } from '@styls/react'
+import { styled } from '@styil/react'
 import Home from './Home'
 import Docs from './Docs'
 
@@ -40,8 +40,8 @@ export default function StylsRouter() {
         </HashRouter>
       </Main>
       <Footer>
-        <span>根据 MIT 许可证发布。</span>
-        <span>Copyright © 2022-present contributors of styls</span>
+        <span>根据 MIT 许可证发布</span>
+        <span>Copyright © 2022-present contributors of styil</span>
       </Footer>
     </Root>
   )

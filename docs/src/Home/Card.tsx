@@ -1,4 +1,4 @@
-import { styled } from '@styls/react'
+import { styled } from '@styil/react'
 import React from 'react'
 
 export const CardBox = styled('div', () => ({

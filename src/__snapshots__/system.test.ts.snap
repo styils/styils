@@ -17,7 +17,7 @@ exports[`system createSystem 2`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237{color:red;}
@@ -55,13 +55,13 @@ exports[`system createSystem 4`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3183262666{color:blue;}
@@ -84,8 +84,8 @@ exports[`system createSystem 4`] = `
 
 exports[`system hydrate 1`] = `
 "
-      <meta id=\\"__styls_cache__\\" name=\\"styls-cache\\" content=\\"css-2242710476\\">
-      <style data-styls=\\"css\\"></style>
+      <meta id=\\"__styls_cache__\\" name=\\"styil-cache\\" content=\\"css-2242710476\\">
+      <style data-styil=\\"css\\"></style>
     "
 `;
 
@@ -95,7 +95,7 @@ exports[`system hydrate 2`] = `
     <meta
       content="css-2242710476"
       id="__styls_cache__"
-      name="styls-cache"
+      name="styil-cache"
     />
   </head>
   <body>
@@ -110,8 +110,8 @@ exports[`system hydrate 2`] = `
 
 exports[`system hydrate namespace 1`] = `
 "
-      <meta id=\\"__styls_cache__\\" name=\\"styls-cache\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
-      <style data-styls=\\"css\\"></style>
+      <meta id=\\"__styls_cache__\\" name=\\"styil-cache\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
+      <style data-styil=\\"css\\"></style>
     "
 `;
 
@@ -121,7 +121,7 @@ exports[`system hydrate namespace 2`] = `
     <meta
       content="ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small"
       id="__styls_cache__"
-      name="styls-cache"
+      name="styil-cache"
     />
   </head>
   <body>
@@ -136,8 +136,8 @@ exports[`system hydrate namespace 2`] = `
 
 exports[`system hydrate variants 1`] = `
 "
-      <meta id=\\"__styls_cache__\\" name=\\"styls-cache\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
-      <style data-styls=\\"css\\"></style>
+      <meta id=\\"__styls_cache__\\" name=\\"styil-cache\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
+      <style data-styil=\\"css\\"></style>
     "
 `;
 
@@ -147,7 +147,7 @@ exports[`system hydrate variants 2`] = `
     <meta
       content="css-2242710476|css-2242710476.size-max|css-2242710476.size-small"
       id="__styls_cache__"
-      name="styls-cache"
+      name="styil-cache"
     />
   </head>
   <body>
@@ -172,7 +172,7 @@ exports[`system styled 2`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3397010960{background-color:gainsboro;border-radius:9999px;font-weight:500;padding:0.75em 1em;border:0px;transition:all 200ms ease;}.css-3397010960:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0, 0, 0, .3);}
@@ -200,7 +200,7 @@ exports[`system styled className 2`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-2129283522{background-color:gainsboro;}
@@ -249,7 +249,7 @@ exports[`system theme does not render repeatedly 2`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237{color:red;}
@@ -287,13 +287,13 @@ exports[`system theme does not render repeatedly 4`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3183262666{color:blue;}
@@ -331,13 +331,13 @@ exports[`system theme does not render repeatedly 6`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3183262666{color:blue;}
@@ -376,19 +376,19 @@ exports[`system variants 2`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237.size-max{font-size:99px;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237.size-small{font-size:14px;}
@@ -428,19 +428,19 @@ exports[`system variants 4`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237.size-max{font-size:99px;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237.size-small{font-size:14px;}
@@ -479,19 +479,19 @@ exports[`system variants theme 2`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237.color-light{color:red;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237.color-dark{color:red;}
@@ -529,19 +529,19 @@ exports[`system variants theme 4`] = `
 <html>
   <head>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237.color-light{color:red;}
     </style>
     <style
-      data-styls="css"
+      data-styil="css"
     >
       
       .css-3433634237.color-dark{color:red;}

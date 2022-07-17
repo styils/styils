@@ -16,13 +16,13 @@ exports[`StyleSheet should accept insertionPoint option 1`] = `
     
     
     <style
-      data-styls=""
+      data-styil=""
     >
       
       html { color: hotpink; }
     </style>
     <style
-      data-styls=""
+      data-styil=""
     >
       
       * { box-sizing: border-box; }
@@ -39,13 +39,13 @@ exports[`StyleSheet should accept prepend option 1`] = `
       id="other"
     />
     <style
-      data-styls=""
+      data-styil=""
     >
       
       html { color: hotpink; }
     </style>
     <style
-      data-styls=""
+      data-styil=""
     >
       
       * { box-sizing: border-box; }
@@ -105,13 +105,13 @@ exports[`StyleSheet should flush hydrated styles 1`] = `
 <html>
   <head>
     <style
-      data-styls=""
+      data-styil=""
     >
       
       html { color: hotpink; }
     </style>
     <style
-      data-styls=""
+      data-styil=""
     >
       
       * { box-sizing: border-box; }
@@ -146,7 +146,7 @@ exports[`StyleSheet should insert a rule into the DOM when not in speedy 1`] = `
 <html>
   <head>
     <style
-      data-styls=""
+      data-styil=""
     >
       
       html { color: hotpink; }
@@ -160,7 +160,7 @@ exports[`StyleSheet should insert a rule with insertRule when in speedy 1`] = `
 <html>
   <head>
     <style
-      data-styls=""
+      data-styil=""
     >
       
     </style>
@@ -198,7 +198,7 @@ exports[`StyleSheet should remove its style elements from the document when flus
 <html>
   <head>
     <style
-      data-styls=""
+      data-styil=""
     >
       
       html { color: hotpink; }
@@ -215,11 +215,11 @@ exports[`StyleSheet should remove its style elements from the document when flus
 </html>
 `;
 
-exports[`StyleSheet should set the data-styls attribute to the key option 1`] = `
+exports[`StyleSheet should set the data-styil attribute to the key option 1`] = `
 <html>
   <head>
     <style
-      data-styls="some-key"
+      data-styil="some-key"
     >
       
       html { color: hotpink; }
@@ -235,7 +235,7 @@ exports[`StyleSheet should use the container option instead of document.head to 
   <body>
     <div>
       <style
-        data-styls=""
+        data-styil=""
       >
         
         html { color: hotpink; }
@@ -252,13 +252,13 @@ exports[`StyleSheet should work if insertionPoint is last element 1`] = `
       id="last"
     />
     <style
-      data-styls=""
+      data-styil=""
     >
       
       html { color: hotpink; }
     </style>
     <style
-      data-styls=""
+      data-styil=""
     >
       
       * { box-sizing: border-box; }
@@ -280,7 +280,7 @@ exports[`StyleSheet should work with a ShadowRoot container 1`] = `
 exports[`StyleSheet should work with a ShadowRoot container 2`] = `
 HTMLCollection [
   <style
-    data-styls=""
+    data-styil=""
   >
     
     html { color: hotpink; }

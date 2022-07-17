@@ -2,14 +2,14 @@
 
 exports[`css node createStyls node 1`] = `
 "
-      <meta id=\\"__styls_cache__\\" name=\\"styls-cache\\" content=\\"css-1473887168|css-2950234073\\">
-      <style data-styls=\\"css\\">.css-1473887168{width:100px;}.css-2950234073{height:100px;}</style>
+      <meta id=\\"__styls_cache__\\" name=\\"styil-cache\\" content=\\"css-1473887168|css-2950234073\\">
+      <style data-styil=\\"css\\">.css-1473887168{width:100px;}.css-2950234073{height:100px;}</style>
     "
 `;
 
 exports[`css node node default getCssValue  1`] = `
 "
-      <meta id=\\"__styls_cache__\\" name=\\"styls-cache\\" content=\\"css-1473887168|css-2950234073\\">
-      <style data-styls=\\"css\\">.css-1473887168{width:100px;}.css-2950234073{height:100px;}</style>
+      <meta id=\\"__styls_cache__\\" name=\\"styil-cache\\" content=\\"css-1473887168|css-2950234073\\">
+      <style data-styil=\\"css\\">.css-1473887168{width:100px;}.css-2950234073{height:100px;}</style>
     "
 `;

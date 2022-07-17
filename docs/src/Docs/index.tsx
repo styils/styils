@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
-import { styled } from '@styls/react'
+import { styled } from '@styil/react'
 import logoUrl from '../../logo.svg'
-import stylsUrl from '../../styls.svg'
+import stylsUrl from '../../styil.svg'
 
 const DocsRoot = styled('section', () => ({
   // margin: '0 auto'
@@ -39,7 +39,7 @@ const Header = styled('section', () => ({
   alignItems: 'center'
 }))
 
-const Styls = styled('div', () => ({
+const Styil = styled('div', () => ({
   display: 'flex',
   alignItems: 'center',
   '& img:first-child': {
@@ -56,10 +56,10 @@ export default function Docs() {
   return (
     <DocsRoot>
       <Header>
-        <Styls>
+        <Styil>
           <img src={logoUrl} alt="logo" />
-          <img src={stylsUrl} alt="styls" />
-        </Styls>
+          <img src={stylsUrl} alt="styil" />
+        </Styil>
       </Header>
       <Aside>
         <a href="#1">概述</a>

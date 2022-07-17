@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@styls/react': path.join(__dirname, '..', 'src', 'indexReact.ts')
+      '@styil/react': path.join(__dirname, '..', 'src', 'indexReact.ts')
     }
   }
 })

@@ -187,8 +187,8 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   function getCssValue() {
     return `
-      <meta id="${cacheKey}" name="styls-cache" content="${[...globalCache].join(splitSymbol)}">
-      <style data-styls="${sheet.key}">${sheet.ssrData}</style>
+      <meta id="${cacheKey}" name="styil-cache" content="${[...globalCache].join(splitSymbol)}">
+      <style data-styil="${sheet.key}">${sheet.ssrData}</style>
     `
   }
 

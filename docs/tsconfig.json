@@ -4,7 +4,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@styls/react": ["../src/indexReact.ts"],
+      "@styil/react": ["../src/indexReact.ts"],
       "nativeCssTypes": ["../types/nativeCssTypes.d.ts"]
     }
   },

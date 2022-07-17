@@ -331,7 +331,7 @@ describe('system', () => {
 
   it('hydrate', () => {
     const meta = document.createElement('meta')
-    meta.name = 'styls-cache'
+    meta.name = 'styil-cache'
     meta.id = '__styls_cache__'
     meta.content = `css-2242710476`
     globalThis.document.head.appendChild(meta)
@@ -355,7 +355,7 @@ describe('system', () => {
 
   it('hydrate variants', () => {
     const meta = document.createElement('meta')
-    meta.name = 'styls-cache'
+    meta.name = 'styil-cache'
     meta.id = '__styls_cache__'
     meta.content = `css-2242710476|css-2242710476.size-max|css-2242710476.size-small`
     globalThis.document.head.appendChild(meta)
@@ -392,7 +392,7 @@ describe('system', () => {
 
   it('hydrate namespace', () => {
     const meta = document.createElement('meta')
-    meta.name = 'styls-cache'
+    meta.name = 'styil-cache'
     meta.id = '__styls_cache__'
     meta.content = `ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small`
     globalThis.document.head.appendChild(meta)

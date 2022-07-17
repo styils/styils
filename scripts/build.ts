@@ -191,7 +191,7 @@ async function run() {
     // eslint-disable-next-line global-require
     const json = require('./package.temp.json')
 
-    json.name = `@styls/${name}`
+    json.name = `@styil/${name}`
     json.files = files
 
     fs.writeFileSync(
@@ -228,7 +228,7 @@ async function run() {
       }
     })
 
-    console.log(box({ name: `@styls/${name}`, types }))
+    console.log(box({ name: `@styil/${name}`, types }))
   })
 }
 

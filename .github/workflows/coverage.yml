@@ -51,6 +51,6 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           directory: ./coverage/
-          flags: styls
-          name: codecov-styls
+          flags: styil
+          name: codecov-styil
           verbose: true

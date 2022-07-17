@@ -1,6 +1,6 @@
 import logo from '../../logo.svg'
-import styls from '../../styls.svg'
-import { styled } from '@styls/react'
+import styil from '../../styil.svg'
+import { styled } from '@styil/react'
 import { FcElectricity, FcWorkflow, FcServices, FcRuler } from 'react-icons/fc'
 import { FaReact, FaVuejs } from 'react-icons/fa'
 import { AiOutlineHtml5 } from 'react-icons/ai'
@@ -119,7 +119,7 @@ const LogoWapper = styled('section', () => ({
   }
 }))
 
-const Styls = styled('img', {
+const Styil = styled('img', {
   height: 56,
   float: 'left',
   marginRight: 8
@@ -190,7 +190,7 @@ export default function Home() {
       <PrimaryWapper>
         <SloganWapper>
           <Slogan>
-            <Styls src={styls} /> 有接近于零的运行时、SSR、主题和完全类型化的API, 它的大小只有3kb。
+            <Styil src={styil} /> 有接近于零的运行时、SSR、主题和完全类型化的API, 它的大小只有3kb。
           </Slogan>
 
           <ButtonGroup>

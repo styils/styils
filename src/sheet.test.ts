@@ -39,12 +39,12 @@ describe('StyleSheet', () => {
     expect(document.documentElement).toMatchSnapshot()
   })
 
-  it('should set the data-styls attribute to the key option', () => {
+  it('should set the data-styil attribute to the key option', () => {
     const key = 'some-key'
     const sheet = new StyleSheet({ ...defaultOptions, key })
     sheet.insert(rule)
     expect(document.documentElement).toMatchSnapshot()
-    expect(document.querySelector('[data-styls]')?.getAttribute('data-styls')).toBe(key)
+    expect(document.querySelector('[data-styil]')?.getAttribute('data-styil')).toBe(key)
     sheet.flush()
   })
 
@@ -77,7 +77,7 @@ describe('StyleSheet', () => {
     const nonce = 'some-nonce'
     const sheet = new StyleSheet({ ...defaultOptions, nonce })
     sheet.insert(rule)
-    expect(sheet.tags[0]).toBe(document.querySelector('[data-styls]'))
+    expect(sheet.tags[0]).toBe(document.querySelector('[data-styil]'))
     expect(sheet.tags).toHaveLength(1)
     expect(sheet.tags[0].getAttribute('nonce')).toBe(nonce)
     sheet.flush()
