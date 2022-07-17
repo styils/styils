@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="https://codecov.io/gh/l-zoy/styil/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
+  <img src="https://codecov.io/gh/zoy-l/styil/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
   <img src="https://img.badgesize.io/https://unpkg.com/@styil/base@latest/index.prod.esm.js?compression=gzip&style=square&label=gzip%20size&color=#4fc08d" alt="gzip" />
 
 </p>
@@ -37,6 +37,6 @@ npm install @styil/css
 
 ## License
 
-Licensed under the MIT License, Copyright © 2022-present Zoy
+Licensed under the MIT License, Copyright © 2022-present zoy-l
 
 See [LICENSE](./LICENSE) for more information.

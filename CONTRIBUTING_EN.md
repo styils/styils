@@ -67,8 +67,8 @@ Follow the steps below to develop
 
 That’s it! Now [open a pull request] with a clear title and description.
 
-[already been reported]: https://github.com/l-zoy/styil/issues
-[fork this project]: https://github.com/l-zoy/styil/fork
+[already been reported]: https://github.com/zoy-l/styil/issues
+[fork this project]: https://github.com/zoy-l/styil/fork
 [live example]: https://codesandbox.io/
 [open a pull request]: https://help.github.com/articles/using-pull-requests/
 [reduced test case]: https://css-tricks.com/reduced-test-cases/
