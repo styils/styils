@@ -37,6 +37,6 @@ npm install @styil/css
 
 ## License
 
-Licensed under the MIT License, Copyright © 2022-present contributors of styil
+Licensed under the MIT License, Copyright © 2022-present zoy-l
 
 See [LICENSE](./LICENSE) for more information.
