@@ -45,6 +45,8 @@ jobs:
 
       - name: Setup install
         run: pnpm install --frozen-lockfile
+      - name: Setup Test
+        run: pnpm run test
       - name: Run release
         run: pnpm run release ${{ steps.get_version.outputs.VERSION }}
         env:
