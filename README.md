@@ -37,6 +37,6 @@ npm install @styil/css
 
 ## License
 
-根据 MIT 许可证获得许可, 版权 © 2022-present styil 的贡献者
+根据 MIT 许可证获得许可, 版权 © 2022-present zoy-l
 
 有关详细信息，请参阅 [LICENSE](./LICENSE)。
