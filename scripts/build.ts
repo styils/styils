@@ -204,6 +204,13 @@ async function run() {
 //registry.npmjs.org/:always-auth=true
 //registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}`
     )
+
+    const README = fs.readFileSync(path.join(cwd, 'README.md'))
+    const READMEEN = fs.readFileSync(path.join(cwd, 'README.EN.md'))
+
+    fs.writeFileSync(path.join(cwd, 'dist', name, 'README.md'), README)
+
+    fs.writeFileSync(path.join(cwd, 'dist', name, 'README.EN.md'), READMEEN)
   })
 
   distFiles.forEach((item) => {

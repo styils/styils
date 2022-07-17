@@ -30,7 +30,11 @@
     "./global": "./index.global.js"
   },
   "files": [],
-  "homepage": "https://github.com/l-zoy/internal-css-in-js",
-  "bugs": "https://github.com/l-zoy/internal-css-in-js/issues",
+  "homepage": "https://github.com/l-zoy/styil",
+  "bugs": "https://github.com/l-zoy/styil/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/l-zoy/styil"
+  },
   "typesVersions": { ">= 4.1": { "*": ["index.d.ts"] } }
 }
