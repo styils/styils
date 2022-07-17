@@ -41,7 +41,7 @@ export default function StylsRouter() {
       </Main>
       <Footer>
         <span>根据 MIT 许可证发布。</span>
-        <span>Copyright © 2022-present Zoy</span>
+        <span>Copyright © 2022-present contributors of styls</span>
       </Footer>
     </Root>
   )
