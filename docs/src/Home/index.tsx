@@ -1,5 +1,5 @@
-import logo from '../../logo.svg'
-import styil from '../../styil.svg'
+import logo from '../../../logo.svg'
+import styil from '../../../styil.svg'
 import { styled } from '@styil/react'
 import { FcElectricity, FcWorkflow, FcServices, FcRuler } from 'react-icons/fc'
 import { FaReact, FaVuejs } from 'react-icons/fa'

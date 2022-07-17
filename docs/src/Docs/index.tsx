@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import { styled } from '@styil/react'
-import logoUrl from '../../logo.svg'
-import stylsUrl from '../../styil.svg'
+import logo from '../../../logo.svg'
+import styil from '../../../styil.svg'
 
 const DocsRoot = styled('section', () => ({
   // margin: '0 auto'
@@ -57,8 +57,8 @@ export default function Docs() {
     <DocsRoot>
       <Header>
         <Styil>
-          <img src={logoUrl} alt="logo" />
-          <img src={stylsUrl} alt="styil" />
+          <img src={logo} alt="logo" />
+          <img src={styil} alt="styil" />
         </Styil>
       </Header>
       <Aside>

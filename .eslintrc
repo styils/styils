@@ -38,6 +38,7 @@
       "files": ["*.tsx", "*.jsx"],
       "extends": ["iroot/react"],
       "rules": {
+        "import/no-relative-packages": "off",
         "react/self-closing-comp": [
           "error",
           {
