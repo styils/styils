@@ -9,7 +9,7 @@ npm run build:doc
 cd docs/docs/dist
 
 git init
-git checkout -b main
+git checkout -b gh-pages
 git add -A
 git commit -m 'docs'
 
