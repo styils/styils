@@ -4,20 +4,13 @@ import { styled } from '@styil/react'
 import { FcElectricity, FcWorkflow, FcServices, FcRuler } from 'react-icons/fc'
 import { FaReact, FaVuejs } from 'react-icons/fa'
 import { AiOutlineHtml5 } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
 import Switch, { SwitchWapper } from './Switch'
 import Card, { CardBox } from './Card'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
+import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx'
+import { baseCode, StyilCode, themeCode, variantsCode } from './code'
 
-const Root = styled('div', () => ({
-  ':global': {
-    body: {
-      margin: 0
-    }
-  },
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '0 auto'
-}))
+SyntaxHighlighter.registerLanguage('jsx', jsx)
 
 const Logo = styled('img', {
   zIndex: 1,
@@ -184,9 +177,14 @@ const ButtonGroup = styled('section', () => ({
   }
 }))
 
+const Title = styled('h1', () => ({
+  textAlign: 'center',
+  padding: 64
+}))
+
 export default function Home() {
   return (
-    <Root>
+    <>
       <PrimaryWapper>
         <SloganWapper>
           <Slogan>
@@ -194,9 +192,7 @@ export default function Home() {
           </Slogan>
 
           <ButtonGroup>
-            <Button as={Link} to="/docs">
-              快速开始
-            </Button>
+            <Button>快速开始</Button>
             <Button>在Github上查看</Button>
           </ButtonGroup>
         </SloganWapper>
@@ -233,6 +229,35 @@ export default function Home() {
           提供完整的功能的同时, 只有3kb的大小开销。
         </Card>
       </Introduce>
-    </Root>
+
+      <Title>快速开始</Title>
+
+      <StyilCode code={baseCode}>
+        <h2>基础使用</h2>
+        <p>styil 在用法上和其它上的 css-in-js 框架, 几乎没有区别</p>
+        <p>支持特殊嵌套选择器 `&` 及 css 原生选择器</p>
+
+        <span>
+          性能和包大小是至关重要。在设计 styil 时，性能和包大小是非常重要的。 styil
+          在运行时避免了不必要的道具传递，性能开销几乎没有 @styil/react 压缩后的大小约为 3kb。
+        </span>
+      </StyilCode>
+
+      <StyilCode code={variantsCode} align="right">
+        <h2>动态渲染</h2>
+        <p>styil 创建的组件都带有一个 `variants` 属性,</p>
+        <p>支持特殊嵌套选择器 `&` 及 css 原生选择器</p>
+
+        <span>
+          styil 将动态插值代替 props 道具传递，因此您可以设计可组合的组件 API。
+          基于变体组合定义样式。 可以有条件地或响应地应用变体。
+        </span>
+      </StyilCode>
+
+      <StyilCode code={themeCode}>
+        <h2>使用主题</h2>
+        <p>styil 提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。</p>
+      </StyilCode>
+    </>
   )
 }
