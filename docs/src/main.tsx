@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { glob } from '@styil/react'
-import App from './router'
-import './md.css'
+import App from './App'
+import './codeTheme.css'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
 

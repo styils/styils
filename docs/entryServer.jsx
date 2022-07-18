@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import App from './src/router'
+import App from './src/App'
 import { getCssValue } from '@styil/react'
 
 export function render() {

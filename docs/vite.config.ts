@@ -10,5 +10,8 @@ export default defineConfig({
     alias: {
       '@styil/react': path.join(__dirname, '..', 'src', 'indexReact.ts')
     }
+  },
+  build: {
+    minify: 'esbuild'
   }
 })
