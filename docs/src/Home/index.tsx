@@ -1,16 +1,19 @@
-import logo from '../../../logo.svg'
-import styil from '../../../styil.svg'
+import LogoSvg from '../../../logo.svg'
+import StyilSvg from '../../../styil.svg'
 import { styled } from '@styil/react'
-import { FcElectricity, FcWorkflow, FcServices, FcRuler } from 'react-icons/fc'
-import { FaReact, FaVuejs } from 'react-icons/fa'
-import { AiOutlineHtml5 } from 'react-icons/ai'
+import quickSvg from '../svg/quick.svg'
+import sizeSvg from '../svg/size.svg'
+import themeSvg from '../svg/theme.svg'
+import tyoeSvg from '../svg/tyoe.svg'
+
+import reactSvg from '../svg/react.svg'
+import vueSvg from '../svg/vue.svg'
+import htmlSvg from '../svg/html.svg'
 import Switch, { SwitchWapper } from './Switch'
 import Card, { CardBox } from './Card'
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
-import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx'
-import { baseCode, StyilCode, themeCode, variantsCode } from './code'
 
-SyntaxHighlighter.registerLanguage('jsx', jsx)
+import React from 'react'
+import { baseCode, errorCode, StyilCode, themeCode, variantsCode, ssrCode } from './code'
 
 const Logo = styled('img', {
   zIndex: 1,
@@ -31,7 +34,7 @@ const SupportLabel = styled('section', () => ({
   padding: '10px 15px',
   backdropFilter: 'saturate(180%) blur(84px)',
 
-  '& svg': {
+  '& img': {
     height: '2rem',
     width: '2rem'
   },
@@ -166,6 +169,7 @@ const ButtonGroup = styled('section', () => ({
   paddingTop: 62,
   [`& ${Button}`]: {
     marginRight: 16,
+    backgroundColor: '#e6e8eb8d',
 
     '&:first-child': {
       backgroundColor: '#fb304f',
@@ -188,75 +192,102 @@ export default function Home() {
       <PrimaryWapper>
         <SloganWapper>
           <Slogan>
-            <Styil src={styil} /> 有接近于零的运行时、SSR、主题和完全类型化的API, 它的大小只有3kb。
+            <Styil src={StyilSvg} /> 有接近于零的运行时、SSR、主题和完全类型化的API,
+            它的大小只有3kb。
           </Slogan>
 
           <ButtonGroup>
-            <Button>快速开始</Button>
-            <Button>在Github上查看</Button>
+            <Button as="a" href="#quick">
+              快速开始
+            </Button>
+            <Button as="a" href="https://github.com/zoy-l/styil" target="_blank">
+              在Github上查看
+            </Button>
           </ButtonGroup>
         </SloganWapper>
 
         <LogoWapper>
-          <Logo src={logo} />
+          <Logo src={LogoSvg} />
           <Switch />
           <SupportLabel datatype="html">
-            <AiOutlineHtml5 fill="rgb(207,101,54)" />
+            <img src={htmlSvg} alt="html" />
             <span>Html</span>
           </SupportLabel>
           <SupportLabel datatype="react">
-            <FaReact fill="rgb(130,218,246)" />
+            <img src={reactSvg} alt="react" />
             <span>React</span>
           </SupportLabel>
           <SupportLabel datatype="vue">
-            <FaVuejs />
+            <img src={vueSvg} alt="vue" />
             <span>Vue (开发中)</span>
           </SupportLabel>
         </LogoWapper>
       </PrimaryWapper>
 
       <Introduce>
-        <Card icon={<FcElectricity />} name="快速的">
+        <Card icon={<img src={quickSvg} alt="quick" />} name="快速的">
           在运行时避免不必要的样式道具，避免重复计算渲染。
         </Card>
-        <Card icon={<FcWorkflow />} name="完全类型化">
+        <Card icon={<img src={tyoeSvg} alt="type" />} name="完全类型化">
           灵活的 API 和完整 TypeScript 类型。
         </Card>
-        <Card icon={<FcServices />} name="主题化">
+        <Card icon={<img src={themeSvg} alt="theme" />} name="主题化">
           提供一种自定义主题的简单方法，您可以更改颜色、字体、断点和您需要的一切。
         </Card>
-        <Card icon={<FcRuler />} name="够小的">
+        <Card icon={<img src={sizeSvg} alt="size" />} name="够小的">
           提供完整的功能的同时, 只有3kb的大小开销。
         </Card>
       </Introduce>
 
-      <Title>快速开始</Title>
+      <Title id="quick">快速开始</Title>
 
       <StyilCode code={baseCode}>
-        <h2>基础使用</h2>
-        <p>styil 在用法上和其它上的 css-in-js 框架, 几乎没有区别</p>
-        <p>支持特殊嵌套选择器 `&` 及 css 原生选择器</p>
-
-        <span>
-          性能和包大小是至关重要。在设计 styil 时，性能和包大小是非常重要的。 styil
-          在运行时避免了不必要的道具传递，性能开销几乎没有 @styil/react 压缩后的大小约为 3kb。
-        </span>
+        <h2 id="base">基础使用</h2>
+        <p>
+          在用法上和其它上的 <strong>CSS In JS</strong> 框架几乎没有区别
+        </p>
+        <p>
+          支持特殊嵌套选择器<strong>`&`</strong>及<strong>CSS</strong>所有原生选择器,
+          还提供了一个多态<strong>`as`</strong>属性，用于定义组件渲染的标签
+        </p>
+        <p>
+          此外，如果使用<strong>Typescript</strong>, 添加<strong>`as`</strong>
+          道具时，道具定义会更新
+        </p>
       </StyilCode>
 
-      <StyilCode code={variantsCode} align="right">
-        <h2>动态渲染</h2>
-        <p>styil 创建的组件都带有一个 `variants` 属性,</p>
-        <p>支持特殊嵌套选择器 `&` 及 css 原生选择器</p>
+      <StyilCode code={variantsCode} variants={{ padding: 'false' }}>
+        <h2 id="variants">动态渲染</h2>
+        <p>
+          创建的样式组件都带有一个<strong>`variants`</strong>
+          属性
+        </p>
+        <p>可以定义单个动态规则、多个动态规则，甚至是复合动态规则</p>
+      </StyilCode>
 
-        <span>
-          styil 将动态插值代替 props 道具传递，因此您可以设计可组合的组件 API。
-          基于变体组合定义样式。 可以有条件地或响应地应用变体。
-        </span>
+      <StyilCode code={errorCode} disabledType>
+        <p>
+          动态插值代替 props 道具传递，因为通过props传值会带来较大的性能开销,
+          此外我们可能写出下面这段代码。
+        </p>
       </StyilCode>
 
       <StyilCode code={themeCode}>
-        <h2>使用主题</h2>
-        <p>styil 提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。</p>
+        <h2 id="theme">使用主题</h2>
+        <p>
+          <strong>Styil</strong> 提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。
+        </p>
+      </StyilCode>
+
+      <StyilCode code={ssrCode}>
+        <h2 id="ssr">服务端渲染</h2>
+        <p>
+          <strong>Styil</strong> 提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。
+        </p>
+        <p>
+          如果使用主题<strong>getCssValue</strong>
+          应该从<strong>createSystem</strong>导出
+        </p>
       </StyilCode>
     </>
   )

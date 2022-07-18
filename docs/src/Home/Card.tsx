@@ -27,7 +27,7 @@ const CardHeader = styled('section', () => ({
     justifyContent: 'center',
     backgroundColor: '#FFF0FB',
 
-    '& svg': {
+    '& img': {
       height: '60%',
       width: '60%'
     }

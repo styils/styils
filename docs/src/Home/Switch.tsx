@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { styled } from '@styil/react'
 
 export const SwitchWapper = styled('label', () => ({

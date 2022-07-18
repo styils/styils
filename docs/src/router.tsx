@@ -1,4 +1,5 @@
 import { styled } from '@styil/react'
+import React from 'react'
 import Home from './Home'
 
 const Root = styled('div', () => ({
@@ -19,7 +20,7 @@ const Footer = styled('footer', () => ({
   }
 }))
 
-export default function StylsRouter() {
+export default function App() {
   return (
     <Root>
       <Home />
