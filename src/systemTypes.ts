@@ -79,7 +79,7 @@ export interface Styled<Theme> {
     IntrinsicElement<Component>,
     IntrinsicProps<Component> & {
       variants?: {
-        [key in keyof Variants]: keyof Variants[key]
+        [key in keyof Variants]?: Widen<keyof Variants[key]>
       }
     }
   >
@@ -108,3 +108,11 @@ export interface System<Theme> {
   getCssValue: () => string
   flush: () => void
 }
+
+export type Widen<T> = T extends number
+  ? `${T}` | T
+  : T extends 'true' | 'false'
+  ? boolean | T
+  : T extends `${number}`
+  ? number | T
+  : T

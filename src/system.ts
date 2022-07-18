@@ -159,7 +159,9 @@ export function createSystem<Theme extends AnyObject = {}>(
           const key = variantsPropsKeys[variantsPropsIndex]
           const value = variantsProps[key]
 
-          variantsClassName += ` ${targetInfo.namespaceJoiner}${key}-${value}`
+          if (value !== undefined && value !== null) {
+            variantsClassName += ` ${targetInfo.namespaceJoiner}${key}-${value}`
+          }
         }
       }
 

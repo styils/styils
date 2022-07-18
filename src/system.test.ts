@@ -210,6 +210,46 @@ describe('system', () => {
     expect(document.documentElement).toMatchSnapshot()
   })
 
+  it('variants single', async () => {
+    const Button = styled(
+      'button',
+      {
+        color: 'red'
+      },
+      {
+        size: {
+          small: {
+            fontSize: 14
+          }
+        }
+      }
+    )
+
+    function Wapper() {
+      const [state, setState] = React.useState<'small' | undefined>('small')
+
+      return React.createElement(
+        'div',
+        { 'data-testid': 'styled-variants' },
+        React.createElement(
+          Button,
+          { variants: { size: state }, onClick: () => setState(undefined) },
+          state
+        )
+      )
+    }
+
+    const { container } = render(React.createElement(Wapper))
+
+    expect(container).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+
+    fireEvent.click(getByText(container, 'small'))
+
+    expect(container).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+  })
+
   it('variants theme', async () => {
     const {
       styled: themeStyled,

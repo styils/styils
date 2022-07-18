@@ -28,8 +28,8 @@ export function asButton() {
     <Anthor
       as="button"
       variants={{ size: 'small' }}
-      ref={(ref) => {
-        expectType<HTMLButtonElement | null, typeof ref>(ref)
+      ref={(ref: HTMLButtonElement) => {
+        expectType<HTMLButtonElement, typeof ref>(ref)
       }}
     />
   )
@@ -71,4 +71,36 @@ export function renderToLink() {
       }}
     />
   )
+}
+
+const ButtonDark = styled(
+  'button',
+  {},
+  {
+    disabled: {
+      true: {
+        fontSize: 14
+      }
+    }
+  }
+)
+
+export function renderButtonDark() {
+  return <ButtonDark variants={{ disabled: true }} />
+}
+
+const ButtonCount = styled(
+  'button',
+  {},
+  {
+    disabled: {
+      1: {
+        fontSize: 14
+      }
+    }
+  }
+)
+
+export function renderButtonCount() {
+  return <ButtonCount variants={{ disabled: 1 }} />
 }
