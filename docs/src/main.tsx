@@ -12,6 +12,12 @@ glob({
   html: {
     'scroll-behavior': 'smooth'
   },
+  a: {
+    textDecoration: 'none'
+  },
+  body: {
+    fontSize: 16
+  },
   '*': {
     margin: 0,
     padding: 0

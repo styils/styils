@@ -6,7 +6,11 @@ const Root = styled('div', () => ({
   maxWidth: 1280,
   margin: '0 auto',
   minHeight: '100vh',
-  padding: '0 64px'
+  padding: '0 64px',
+  transition: 'padding .3s',
+  '@media screen and (max-width: 900px)': {
+    padding: '0 28px'
+  }
 }))
 
 const Footer = styled('footer', () => ({

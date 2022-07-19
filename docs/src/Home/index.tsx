@@ -2,10 +2,11 @@ import LogoSvg from '../../../logo.svg'
 import StyilSvg from '../../../styil.svg'
 import { styled } from '@styil/react'
 import quickSvg from '../svg/quick.svg'
+import copySvg from '../svg/copy.svg'
 import sizeSvg from '../svg/size.svg'
 import themeSvg from '../svg/theme.svg'
+import okSvg from '../svg/ok.svg'
 import tyoeSvg from '../svg/tyoe.svg'
-
 import reactSvg from '../svg/react.svg'
 import vueSvg from '../svg/vue.svg'
 import htmlSvg from '../svg/html.svg'
@@ -13,7 +14,17 @@ import Switch, { SwitchWapper } from './Switch'
 import Card, { CardBox } from './Card'
 
 import React from 'react'
-import { baseCode, errorCode, StyilCode, themeCode, variantsCode, ssrCode } from './code'
+import {
+  baseCode,
+  errorCode,
+  StyilCode,
+  themeCode,
+  variantsCode,
+  ssrCode,
+  keyframesCode,
+  globalCode,
+  mediaCode
+} from './code'
 
 const Logo = styled('img', {
   zIndex: 1,
@@ -50,6 +61,9 @@ const LogoWapper = styled('section', () => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  '@media screen and (max-width: 800px)': {
+    display: 'none'
+  },
 
   '&:after': {
     position: 'absolute',
@@ -121,18 +135,40 @@ const Styil = styled('img', {
   marginRight: 8
 })
 
+const SloganWapper = styled('section', () => ({
+  width: '50%'
+}))
+
 const PrimaryWapper = styled('section', () => ({
   display: 'flex',
   justifyContent: 'space-between',
-  padding: '100px 0 126px 0'
+  padding: '84px 0 96px 0',
+  '@media screen and (max-width: 1000px)': {
+    flexWrap: 'wrap',
+    padding: '64px 0',
+
+    [`& ${SloganWapper}`]: {
+      width: '100%'
+    },
+    [`& ${LogoWapper}`]: {
+      display: 'none'
+    }
+  }
+}))
+
+const CodeContent = styled('section', () => ({
+  position: 'relative'
 }))
 
 const Slogan = styled('section', () => ({
-  fontSize: '2.5rem'
-}))
+  fontSize: 42,
+  '@media screen and (max-width: 1000px)': {
+    fontSize: 36,
 
-const SloganWapper = styled('section', () => ({
-  width: '50%'
+    '& img': {
+      height: 40
+    }
+  }
 }))
 
 const Introduce = styled('section', () => ({
@@ -142,7 +178,13 @@ const Introduce = styled('section', () => ({
 
   [`& ${CardBox}`]: {
     margin: 12,
-    width: 'calc(100% / 4 - 72px)'
+    width: 'calc(100% / 4 - 72px)',
+    '@media screen and (max-width: 1000px)': {
+      width: 'calc(100% / 2 - 72px)'
+    },
+    '@media screen and (max-width: 600px)': {
+      width: 'calc(100% - 72px)'
+    }
   }
 }))
 
@@ -159,6 +201,7 @@ const Button = styled('button', () => ({
   lineHeight: '40px',
   fontSize: '14px',
   cursor: 'pointer',
+
   '&:hover': {
     color: '#213547',
     backgroundColor: '#e5e5e5'
@@ -181,12 +224,94 @@ const ButtonGroup = styled('section', () => ({
   }
 }))
 
+const InstallBox = styled('div', () => ({
+  width: 'fit-content',
+  padding: '0 20px',
+  lineHeight: '40px',
+  marginTop: 20,
+  color: '#687076',
+  backdropFilter: 'saturate(180%) blur(10px)',
+  background: 'rgba(255, 255, 255, 0.3)',
+  borderRadius: 12,
+  display: 'flex',
+  alignItems: 'center',
+  boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.07), 0 2px 4px -1px rgb(104 112 118 / 0.04)',
+  strong: {
+    paddingRight: 10
+  },
+  '& img': {
+    cursor: 'pointer',
+    display: 'block',
+    height: 18,
+    paddingLeft: 10
+  }
+}))
+
+const Author = styled('section', () => ({
+  position: 'absolute',
+  height: '100%',
+
+  '@media screen and (max-width: 1080px)': {
+    display: 'none'
+  },
+
+  '& a': {
+    fontSize: '14px',
+    borderRadius: '12px',
+    margin: '14px 0',
+    display: 'block',
+    lineHeight: '40px',
+    padding: '0 20px',
+    textAlign: 'center',
+    color: '#687076',
+    backgroundColor: '#e6e8eb8d',
+    transition: 'all .3s',
+    fontWeight: 500,
+
+    '&:hover': {
+      color: '#333',
+      backgroundColor: '#e6e8eb'
+    }
+  },
+
+  '& div': {
+    top: 86,
+    position: 'sticky'
+  }
+}))
+
 const Title = styled('h1', () => ({
   textAlign: 'center',
   padding: 64
 }))
 
 export default function Home() {
+  const installRef = React.useRef<HTMLPreElement>(null)
+  const [copyCssIcon, setCopyCssIcon] = React.useState(copySvg)
+  const [copyReactIcon, setCopyReactIcon] = React.useState(copySvg)
+
+  const copyCss = React.useCallback(() => {
+    navigator.clipboard.writeText(installRef.current.innerText).then(() => {
+      setCopyCssIcon(okSvg)
+
+      const timer = setTimeout(() => {
+        setCopyCssIcon(copySvg)
+        clearTimeout(timer)
+      }, 1000)
+    })
+  }, [])
+
+  const copyReact = React.useCallback(() => {
+    navigator.clipboard.writeText(installRef.current.innerText).then(() => {
+      setCopyReactIcon(okSvg)
+
+      const timer = setTimeout(() => {
+        setCopyReactIcon(copySvg)
+        clearTimeout(timer)
+      }, 1000)
+    })
+  }, [])
+
   return (
     <>
       <PrimaryWapper>
@@ -203,6 +328,16 @@ export default function Home() {
             <Button as="a" href="https://github.com/zoy-l/styil" target="_blank">
               在Github上查看
             </Button>
+            <InstallBox>
+              <strong>$</strong>
+              <pre ref={installRef}>npm install @styil/react</pre>
+              <img src={copyReactIcon} alt="copy" onClick={() => copyReact()} aria-hidden="true" />
+            </InstallBox>
+            <InstallBox>
+              <strong>$</strong>
+              <pre ref={installRef}>npm install @styil/css</pre>
+              <img src={copyCssIcon} alt="copy" onClick={() => copyCss()} aria-hidden="true" />
+            </InstallBox>
           </ButtonGroup>
         </SloganWapper>
 
@@ -238,57 +373,93 @@ export default function Home() {
           提供完整的功能的同时, 只有3kb的大小开销。
         </Card>
       </Introduce>
-
       <Title id="quick">快速开始</Title>
+      <CodeContent>
+        <Author>
+          <div>
+            <a href="#base">基础使用</a>
+            <a href="#variants">动态渲染</a>
+            <a href="#theme">使用主题</a>
+            <a href="#ssr">服务端渲染</a>
+            <a href="#keyframes">动画 Keyframes</a>
+            <a href="#global">全局 Global</a>
+            <a href="#media">查询 Media</a>
+          </div>
+        </Author>
 
-      <StyilCode code={baseCode}>
-        <h2 id="base">基础使用</h2>
-        <p>
-          在用法上和其它上的 <strong>CSS In JS</strong> 框架几乎没有区别
-        </p>
-        <p>
-          支持特殊嵌套选择器<strong>`&`</strong>及<strong>CSS</strong>所有原生选择器,
-          还提供了一个多态<strong>`as`</strong>属性，用于定义组件渲染的标签
-        </p>
-        <p>
-          此外，如果使用<strong>Typescript</strong>, 添加<strong>`as`</strong>
-          道具时，道具定义会更新
-        </p>
-      </StyilCode>
+        <StyilCode code={baseCode}>
+          <h2 id="base">基础使用</h2>
+          <p>
+            在用法上和其它上的 <strong>CSS In JS</strong> 框架几乎没有区别
+          </p>
+          <p>
+            支持特殊嵌套选择器<strong>`&`</strong>及<strong>CSS</strong>所有原生选择器,
+            还提供了一个多态<strong>`as`</strong>属性，用于定义组件渲染的标签
+          </p>
+          <p>
+            此外，如果使用<strong>Typescript</strong>, 添加<strong>`as`</strong>
+            道具时，道具定义会更新
+          </p>
+        </StyilCode>
 
-      <StyilCode code={variantsCode} variants={{ padding: 'false' }}>
-        <h2 id="variants">动态渲染</h2>
-        <p>
-          创建的样式组件都带有一个<strong>`variants`</strong>
-          属性
-        </p>
-        <p>可以定义单个动态规则、多个动态规则，甚至是复合动态规则</p>
-      </StyilCode>
+        <StyilCode code={variantsCode} variants={{ padding: 'false' }}>
+          <h2 id="variants">动态渲染</h2>
+          <p>
+            创建的样式组件都带有一个<strong>`variants`</strong>
+            属性
+          </p>
+          <p>可以定义单个动态规则、多个动态规则，甚至是复合动态规则</p>
+        </StyilCode>
 
-      <StyilCode code={errorCode} disabledType>
-        <p>
-          动态插值代替 props 道具传递，因为通过props传值会带来较大的性能开销,
-          此外我们可能写出下面这段代码。
-        </p>
-      </StyilCode>
+        <StyilCode code={errorCode} disabledType>
+          <p>
+            动态插值代替 props 道具传递，因为通过props传值会带来较大的性能开销,
+            此外我们可能写出下面这段代码。
+          </p>
+        </StyilCode>
 
-      <StyilCode code={themeCode}>
-        <h2 id="theme">使用主题</h2>
-        <p>
-          <strong>Styil</strong> 提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。
-        </p>
-      </StyilCode>
+        <StyilCode code={themeCode}>
+          <h2 id="theme">使用主题</h2>
+          <p>
+            <strong>Styil</strong>
+            提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。
+          </p>
+        </StyilCode>
 
-      <StyilCode code={ssrCode}>
-        <h2 id="ssr">服务端渲染</h2>
-        <p>
-          <strong>Styil</strong> 提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。
-        </p>
-        <p>
-          如果使用主题<strong>getCssValue</strong>
-          应该从<strong>createSystem</strong>导出
-        </p>
-      </StyilCode>
+        <StyilCode code={ssrCode}>
+          <h2 id="ssr">服务端渲染</h2>
+          <p>
+            <strong>Styil</strong>
+            提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。
+          </p>
+          <p>
+            如果使用主题<strong>getCssValue</strong>
+            应该从<strong>createSystem</strong>导出
+          </p>
+        </StyilCode>
+
+        <StyilCode code={keyframesCode}>
+          <h2 id="keyframes">动画 Keyframes</h2>
+          <p>
+            <strong>Styil</strong> 提供两种方式定义, 任你喜欢。
+          </p>
+        </StyilCode>
+
+        <StyilCode code={globalCode}>
+          <h2 id="global">全局 Global</h2>
+          <p>
+            <strong>Styil</strong> 提供两种方式定义, 任你喜欢。
+          </p>
+        </StyilCode>
+
+        <StyilCode code={mediaCode} variants={{ padding: 'false' }}>
+          <h2 id="media">查询 Media</h2>
+          <p>
+            就像在常规<strong>CSS</strong>中使用媒体查询一样，可以将<strong>@media</strong>
+            直接放在<strong>CSS</strong>块中。
+          </p>
+        </StyilCode>
+      </CodeContent>
     </>
   )
 }

@@ -124,14 +124,77 @@ export default class Document extends NextDocument {
 }
 `
 
+export const keyframesCode = `const Foo = styled('div',{
+  '@keyframes superAnimation': {
+    '11.1%': {
+      opacity: '0.9999'
+    },
+    '111%': {
+      opacity: '1'
+    }
+  }
+})
+// or
+import {keyframes} from '@styil/react'
+
+const out = keyframes({
+  from: {
+    transform: 'rotate(0deg)'
+  },
+  to: {
+    transform: 'rotate(360deg)'
+  }
+})
+
+const Foo = styled('div',{
+  animation: \`13s ease 1.5s infinite none running \${out}\`
+})
+,
+`
+
+export const globalCode = `import { glob } from '@styil/react'
+
+glob({
+  body: {
+    backgroundColor: 'red'
+  }
+})
+// or
+const Foo = styled('div',{
+  ':global':{
+    body: {
+      backgroundColor: 'red'
+    }
+  }
+})
+,
+`
+
+export const mediaCode = `const Root = styled('div', () => ({
+  maxWidth: 1280,
+  margin: '0 auto',
+  minHeight: '100vh',
+  padding: '0 64px',
+  transition: 'padding .3s',
+  '@media screen and (max-width: 900px)': {
+    padding: '0 28px'
+  }
+}))
+`
+
 const CodeRoot = styled(
   'div',
   () => ({
+    maxWidth: 1280,
     width: '50vw',
     margin: '0 auto',
     display: 'flex',
     flexDirection: 'column',
-    paddingBottom: 64
+    paddingBottom: 64,
+    transition: 'width .3s',
+    '@media screen and (max-width: 1080px)': {
+      width: '100%'
+    }
   }),
   {
     padding: {
