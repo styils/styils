@@ -17,7 +17,7 @@
  3KB 的 css-in-js 解决方案，运行时接近于零。支持主题、SSR
 </p>
 
-[中文文档]('https://zoy-l.github.io/styil')
+[中文文档](https://zoy-l.github.io/styil)
 
 > 目前，它是处于实验阶段的!
 
