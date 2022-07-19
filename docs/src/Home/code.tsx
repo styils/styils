@@ -186,7 +186,7 @@ const CodeRoot = styled(
   'div',
   () => ({
     maxWidth: 1280,
-    width: '50vw',
+    width: '55%',
     margin: '0 auto',
     display: 'flex',
     flexDirection: 'column',
