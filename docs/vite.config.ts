@@ -8,8 +8,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      'styil-react': path.join(__dirname, '..', 'src', 'indexReact.ts'),
-      '@styil/react': path.join(__dirname, 'src', 'theme.ts')
+      '@styil/react': path.join(__dirname, '..', 'src', 'indexReact.ts')
     }
   },
   build: {

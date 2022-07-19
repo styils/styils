@@ -13,7 +13,8 @@
     "format": "prettier \"**/*.{js,ts,tsx,md}\" --write",
     "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
     "release": "node -r esbuild-register scripts/release.ts",
-    "typescript": "tsc -p tsconfig.json"
+    "typescript": "tsc -p tsconfig.json",
+    "push:docs": "sh deploy.sh"
   },
   "keywords": [
     "css-in-js",
