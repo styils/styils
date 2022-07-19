@@ -9,6 +9,7 @@ export const SwitchWapper = styled('label', () => ({
   backdropFilter: 'saturate(180%) blur(14px)',
 
   '& input': {
+    cursor: 'pointer',
     position: 'absolute',
     top: 0,
     left: 0,

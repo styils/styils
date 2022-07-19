@@ -28,8 +28,18 @@ import {
 
 const Logo = styled('img', {
   zIndex: 1,
-  width: 180,
-  filter: 'drop-shadow(0px 8px 6px rgba(26,58,70,0.8))'
+  width: 200,
+  transition: 'all .3s',
+  filter: 'drop-shadow(0px 8px 6px rgba(26,58,70,0.8))',
+  '@media screen and (max-width: 1200px)': {
+    width: 160
+  }
+})
+
+const Styil = styled('img', {
+  height: 56,
+  float: 'left',
+  marginRight: 8
 })
 
 const SupportLabel = styled('section', () => ({
@@ -37,17 +47,16 @@ const SupportLabel = styled('section', () => ({
   position: 'absolute',
   display: 'flex',
   alignItems: 'center',
-  marginRight: '2rem',
+  marginRight: 32,
   color: '#707b8a',
-  fontSize: '1.175rem',
   backgroundColor: '#e6e8eb8d',
   borderRadius: 12,
   padding: '10px 15px',
   backdropFilter: 'saturate(180%) blur(84px)',
 
   '& img': {
-    height: '2rem',
-    width: '2rem'
+    height: 30,
+    width: 30
   },
 
   '& span': {
@@ -58,9 +67,13 @@ const SupportLabel = styled('section', () => ({
 const LogoWapper = styled('section', () => ({
   position: 'relative',
   width: '46%',
+  height: 399,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  '@media screen and (max-width: 1200px)': {
+    width: '50%'
+  },
   '@media screen and (max-width: 800px)': {
     display: 'none'
   },
@@ -78,6 +91,10 @@ const LogoWapper = styled('section', () => ({
     opacity: 0.6
   },
 
+  '& > *': {
+    userSelect: 'none'
+  },
+
   [`& ${Logo}`]: {
     animation: '10s ease 0s infinite none running complex'
   },
@@ -91,22 +108,27 @@ const LogoWapper = styled('section', () => ({
   },
 
   [`& ${SupportLabel}[datatype="react"]`]: {
-    animation: '13s ease 0.5s infinite none running complex',
+    animation: '13s ease 1.5s infinite none running complex',
     boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.17), 0 2px 4px -1px rgb(104 112 118 / 0.14);',
-    left: 60,
-    bottom: 40
+    top: 40,
+    left: 120
   },
 
   [`& ${SupportLabel}[datatype="html"]`]: {
-    animation: '13s ease 1.5s infinite none running complex',
+    animation: '13s ease 0.5s infinite none running complex',
     boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.17), 0 2px 4px -1px rgb(104 112 118 / 0.14);',
-    top: -20,
-    left: 100
+    left: 60,
+    bottom: 70,
+    fontSize: 24,
+    '& img': {
+      width: 40,
+      height: 40
+    }
   },
 
   [`& ${SupportLabel}[datatype="vue"]`]: {
     boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.17), 0 2px 4px -1px rgb(104 112 118 / 0.14);',
-    bottom: -40,
+    bottom: 0,
     right: 40
   },
 
@@ -129,12 +151,6 @@ const LogoWapper = styled('section', () => ({
   }
 }))
 
-const Styil = styled('img', {
-  height: 56,
-  float: 'left',
-  marginRight: 8
-})
-
 const SloganWapper = styled('section', () => ({
   width: '50%'
 }))
@@ -142,7 +158,7 @@ const SloganWapper = styled('section', () => ({
 const PrimaryWapper = styled('section', () => ({
   display: 'flex',
   justifyContent: 'space-between',
-  padding: '84px 0 96px 0',
+  padding: '64px 0 96px 0',
   '@media screen and (max-width: 1000px)': {
     flexWrap: 'wrap',
     padding: '64px 0',
@@ -258,7 +274,7 @@ const Author = styled('section', () => ({
   '& a': {
     fontSize: '14px',
     borderRadius: '12px',
-    margin: '14px 0',
+    marginBottom: 14,
     display: 'block',
     lineHeight: '40px',
     padding: '0 20px',
@@ -282,7 +298,7 @@ const Author = styled('section', () => ({
 
 const Title = styled('h1', () => ({
   textAlign: 'center',
-  padding: 64
+  padding: 48
 }))
 
 export default function Home() {
