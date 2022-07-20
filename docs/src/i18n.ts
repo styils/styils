@@ -15,7 +15,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'En',
+  lng: localStorage.getItem('styil-doc-key') ?? 'En',
   debug: false,
   interpolation: {
     escapeValue: false
