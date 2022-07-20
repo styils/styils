@@ -8,7 +8,7 @@ const args = process.argv.slice(2)[0].slice(1)
 
 function publish(args: string) {
   let command = 'npm publish'
-  const [version, tag, type] = args.split('-')
+  const [version, tag, type = 'all'] = args.split('-')
   packageTemp.version = `${version}-${tag}`
 
   if (tag === 'alpha') {
@@ -34,7 +34,7 @@ function publish(args: string) {
       })
       break
     default:
-      console.log(`wrong tag ${type}, support{react, css, base, ass}`)
+      console.log(`wrong tag ${type}, support{react, css, base}`)
       process.exit(1)
   }
 
