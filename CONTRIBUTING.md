@@ -1,74 +1,73 @@
-# 为 Styil 做贡献
+# Contributing to Styil
 
-欢迎并感谢您的关注！在提交拉取请求之前，请花点时间查看这些指南。
+Welcome and thanks for your interest! Before submitting a pull request, please take a moment to review these guidelines.
 
-## 报告问题
+## Reporting Issues
 
-发现问题了吗？想要新功能？
+Found a problem? Want a new feature?
 
-- 查看您的问题或想法是否[已被报告]。
-- 提供 [简化的测试用例] 或 [代码示例]。
+- See if your issue or idea has [already been reported].
+- Provide a [reduced test case] or a [live example].
 
-## 提交拉取请求
+## Submitting Pull Requests
 
-在进行本地开发之前，请确保您的开发环境中安装了 `Node.js >= 14` 和 `pnpm`。
+Before doing local development, make sure you have Node.js >= 14 and pnpm installed in your development environment.
 
-按照以下步骤进行开发
+Follow the steps below to develop
 
-1. 开始：[fork 这个项目]，到你的仓库然后克隆它.
+1. To begin: [fork this project], clone your fork.
 
    ```bash
-   # 克隆存储库
+   # clone the repository
    git@github.com:**path**/styil.git
 
-   # 导航到新克隆的目录
+   # Navigate to the newly cloned directory
    cd styil
 
-   # 安装测试所需的工具
+   # Install the tools necessary for testing
    pnpm install
 
-   # 进入开发模式，浏览器访问localhost
+   # Enter the development mode, the browser accesses localhost
    pnpm dev
    ```
 
-2. 为您的功能或修复创建一个分支：
+2. Create a branch for your feature or fix:
 
    ```bash
-   # 移动到您的功能的新分支
+   # Move into a new branch for your feature
    git checkout -b feature/thing
    ```
 
    ```bash
-   # 移动到新分支进行修复
+   # Move into a new branch for your fix
    git checkout -b fix/something
    ```
 
-3. 如果您的代码通过了所有测试，则推送你的功能分支：
+3. If your code passes all the tests, then push your feature branch:
 
    ```bash
-   # 测试当前代码
+   # Test current code
    pnpm run test # or npm test
 
-   # 构建当前代码
-   pnpm run build
+   # Build current code
+   pnpm run build # or npm run build
    ```
 
-> 注意：确保您的 Node 版本为 14 或更高版本才能运行脚本
+   > Note: ensure your version of Node is 14 or higher to run scripts
 
-```bash
-# 为新功能推送分支
-git push origin feature/thing
-```
+   ```bash
+   # Push the branch for your new feature
+   git push origin feature/thing
+   ```
 
-```bash
-# 或者，推送分支以进行更新
-git push origin update/something
-```
+   ```bash
+   # Or, push the branch for your update
+   git push origin update/something
+   ```
 
-现在 [打开一个拉取请求] 带有清晰的标题和描述。
+That’s it! Now [open a pull request] with a clear title and description.
 
-[已被报告]: https://github.com/zoy-l/styil/issues
-[fork这个项目]: https://github.com/zoy-l/styil/fork
-[代码示例]: https://codesandbox.io/
-[打开一个拉取请求]: https://help.github.com/articles/using-pull-requests/
-[简化的测试用例]: https://css-tricks.com/reduced-test-cases/
+[already been reported]: https://github.com/zoy-l/styil/issues
+[fork this project]: https://github.com/zoy-l/styil/fork
+[live example]: https://codesandbox.io/
+[open a pull request]: https://help.github.com/articles/using-pull-requests/

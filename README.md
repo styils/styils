@@ -1,4 +1,4 @@
-[English](./README.EN.md)
+[简体中文](./README.ZH.md)
 
 <p align="center">
 <img src="./logo.svg" alt="styil" style="width:120px">
@@ -14,24 +14,24 @@
 </p>
 
 <p align="center">
- 3KB 的 css-in-js 解决方案，运行时接近于零。支持主题、SSR
+3KB css-in-js solution with near zero runtime. Support Themes, SSR
 </p>
 
-[中文文档](https://zoy-l.github.io/styil)
+[Documentation](https://zoy-l.github.io/styil)
 
-> 目前，它是处于实验阶段的!
+> Currently, it is experimental!
 
-## Styil React
+### Styil React
 
-React 包装器，包括 `styled` API。
+React wrapper including the `styled` API.
 
 ```sh
 npm install @styil/react
 ```
 
-## Styil Css
+### Styil Css
 
-与框架无关的实现，包括 `css` API。
+Framework-agnostic implementation, including the `css` API.
 
 ```sh
 npm install @styil/css
@@ -39,6 +39,6 @@ npm install @styil/css
 
 ## License
 
-根据 MIT 许可证获得许可, 版权 © 2022-present zoy-l
+Licensed under the MIT License, Copyright © 2022-present zoy-l
 
-有关详细信息，请参阅 [LICENSE](./LICENSE)。
+See [LICENSE](./LICENSE) for more information.
