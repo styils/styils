@@ -64,14 +64,14 @@ async function build(name: string, globalsName: string, prod = false) {
 
   if (prod) {
     typeFile.push({ name, files: bundle.watchFiles })
-  }
 
-  await bundle.write({
-    globals,
-    file: path.join(cwd, 'dist', name, `index${prod ? '.prod' : ''}.global.js`),
-    format: 'iife',
-    name: globalsName
-  })
+    await bundle.write({
+      globals,
+      file: path.join(cwd, 'dist', name, `index.prod.global.js`),
+      format: 'iife',
+      name: globalsName
+    })
+  }
 
   await bundle.write({
     file: path.join(cwd, 'dist', name, `index${prod ? '.prod' : ''}.esm.js`),
@@ -103,12 +103,12 @@ async function run() {
 
   spinner.start()
   await Promise.all([
-    build('react', 'stylsReact'),
-    build('css', 'stylsCss'),
-    build('base', 'stylsBase'),
-    build('react', 'stylsReact', true),
-    build('css', 'stylsCss', true),
-    build('base', 'stylsBase', true)
+    build('react', 'styilReact'),
+    build('css', 'styilCss'),
+    build('base', 'styilBase'),
+    build('react', 'styilReact', true),
+    build('css', 'styilCss', true),
+    build('base', 'styilBase', true)
   ])
 
   spinner.succeed('Enter javascript successfully')

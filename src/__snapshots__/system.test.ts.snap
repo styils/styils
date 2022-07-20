@@ -160,7 +160,7 @@ exports[`system global with theme 4`] = `
 
 exports[`system hydrate 1`] = `
 "
-      <meta id=\\"__styls_cache__\\" name=\\"styil-cache\\" content=\\"css-2242710476\\">
+      <meta id=\\"__styil_cache__\\" name=\\"styil-cache\\" content=\\"css-2242710476\\">
       <style data-styil=\\"css\\"></style>
     "
 `;
@@ -170,7 +170,7 @@ exports[`system hydrate 2`] = `
   <head>
     <meta
       content="css-2242710476"
-      id="__styls_cache__"
+      id="__styil_cache__"
       name="styil-cache"
     />
   </head>
@@ -186,7 +186,7 @@ exports[`system hydrate 2`] = `
 
 exports[`system hydrate namespace 1`] = `
 "
-      <meta id=\\"__styls_cache__\\" name=\\"styil-cache\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
+      <meta id=\\"__styil_cache__\\" name=\\"styil-cache\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
       <style data-styil=\\"css\\"></style>
     "
 `;
@@ -196,7 +196,7 @@ exports[`system hydrate namespace 2`] = `
   <head>
     <meta
       content="ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small"
-      id="__styls_cache__"
+      id="__styil_cache__"
       name="styil-cache"
     />
   </head>
@@ -212,7 +212,7 @@ exports[`system hydrate namespace 2`] = `
 
 exports[`system hydrate variants 1`] = `
 "
-      <meta id=\\"__styls_cache__\\" name=\\"styil-cache\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
+      <meta id=\\"__styil_cache__\\" name=\\"styil-cache\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
       <style data-styil=\\"css\\"></style>
     "
 `;
@@ -222,7 +222,7 @@ exports[`system hydrate variants 2`] = `
   <head>
     <meta
       content="css-2242710476|css-2242710476.size-max|css-2242710476.size-small"
-      id="__styls_cache__"
+      id="__styil_cache__"
       name="styil-cache"
     />
   </head>

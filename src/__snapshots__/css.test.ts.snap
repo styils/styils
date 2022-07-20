@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`css createStyls 1`] = `
+exports[`css createStyil 1`] = `
 <html>
   <head />
   <body>
@@ -15,7 +15,7 @@ exports[`css createStyls 1`] = `
 </html>
 `;
 
-exports[`css createStyls speedy 1`] = `
+exports[`css createStyil speedy 1`] = `
 <html>
   <head>
     <style

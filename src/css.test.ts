@@ -1,4 +1,4 @@
-import { css, glob, keyframes, createStyls, flush } from './css'
+import { css, glob, keyframes, createStyil, flush } from './css'
 
 describe('css', () => {
   afterEach(() => {
@@ -43,8 +43,8 @@ describe('css', () => {
     expect(out).toEqual('css-854127283')
   })
 
-  it('createStyls', () => {
-    const { css } = createStyls({
+  it('createStyil', () => {
+    const { css } = createStyil({
       key: 'abc',
       container: document.body,
       nonce: '123456'
@@ -58,8 +58,8 @@ describe('css', () => {
     expect(out).toEqual('css-2883881200')
   })
 
-  it('createStyls speedy', () => {
-    const { css } = createStyls({
+  it('createStyil speedy', () => {
+    const { css } = createStyil({
       speedy: true
     })
     const out = css({

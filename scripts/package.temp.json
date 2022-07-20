@@ -19,15 +19,15 @@
   "types": "index.d.ts",
   "main": "index.js",
   "module": "index.esm.js",
-  "jsdelivr": "index.global.js",
-  "unpkg": "index.global.js",
+  "jsdelivr": "index.prod.global.js",
+  "unpkg": "index.prod.global.js",
   "exports": {
     ".": {
       "require": "./index.js",
       "import": { "node": "./index.mjs", "default": "./index.esm.js" },
       "types": "./index.d.ts"
     },
-    "./global": "./index.global.js"
+    "./global": "./index.prod.global.js"
   },
   "files": [],
   "homepage": "https://github.com/zoy-l/styil",

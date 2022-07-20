@@ -3,7 +3,7 @@ import { StyleSheet } from './sheet'
 import { parseRules } from './parse'
 import { createSelector } from './createSelector'
 
-export function createStyls(options: Partial<StyleSheetOptions> = {}) {
+export function createStyil(options: Partial<StyleSheetOptions> = {}) {
   const { key, container, speedy, nonce } = options
 
   const globalCache = new Set<string>([])
@@ -57,4 +57,4 @@ export function createStyls(options: Partial<StyleSheetOptions> = {}) {
   return { css, glob, keyframes, getCssValue, flush }
 }
 
-export const { css, glob, keyframes, getCssValue, flush } = createStyls()
+export const { css, glob, keyframes, getCssValue, flush } = createStyil()

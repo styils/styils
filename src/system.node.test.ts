@@ -9,7 +9,7 @@ import {
 } from './system'
 
 describe('css node', () => {
-  it('createStyls node', () => {
+  it('createStyil node', () => {
     const { getCssValue, styled, flush } = createSystem()
 
     styled('div', {

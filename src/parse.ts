@@ -12,7 +12,7 @@ const contentValues: Record<string, 'normal' | 'none' | 'initial' | 'inherit' | 
 }
 
 function ruleToNative(key: string, value: string) {
-  if (unitProps[key] && typeof value === 'number') {
+  if (unitProps.has(key) && typeof value === 'number') {
     value = `${value}px`
   }
 

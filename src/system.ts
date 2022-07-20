@@ -6,7 +6,7 @@ import { parseRules } from './parse'
 import { StyleSheet } from './sheet'
 
 const globalCache = new Set<string>([])
-const cacheKey = '__styls_cache__'
+const cacheKey = '__styil_cache__'
 const splitSymbol = '|'
 
 export function createSystem<Theme extends AnyObject = {}>(
