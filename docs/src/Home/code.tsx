@@ -159,6 +159,12 @@ const Glob = global((theme) => ({
     backgroundColor: theme.color
   }
 }))
+
+render(
+  <SystemProvider>
+    <Glob />
+  </SystemProvider>
+)
 // or
 const Foo = styled('div',{
   // 在styled内使用
@@ -166,13 +172,6 @@ const Foo = styled('div',{
     body: { backgroundColor: 'red' }
   }
 }
-
-render(
-  <SystemProvider>
-    <Glob />
-  </SystemProvider>
-)
-,
 `
 
 export const mediaCode = `const Root = styled('div', () => ({
