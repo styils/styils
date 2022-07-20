@@ -38,8 +38,13 @@ const Logo = styled('img', {
 
 const Styil = styled('img', {
   height: 56,
+  width: 210,
   float: 'left',
-  marginRight: 8
+  marginRight: 8,
+  '@media screen and (max-width: 1000px)': {
+    height: 40,
+    width: 150
+  }
 })
 
 const SupportLabel = styled('section', () => ({
@@ -259,6 +264,7 @@ const InstallBox = styled('div', () => ({
     cursor: 'pointer',
     display: 'block',
     height: 18,
+    width: 18,
     paddingLeft: 10
   }
 }))
@@ -333,7 +339,7 @@ export default function Home() {
       <PrimaryWapper>
         <SloganWapper>
           <Slogan>
-            <Styil src={StyilSvg} /> 有接近于零的运行时、SSR、主题和完全类型化的API,
+            <Styil alt="styil" src={StyilSvg} /> 有接近于零的运行时、SSR、主题和完全类型化的API,
             它的大小只有3kb。
           </Slogan>
 
@@ -358,7 +364,7 @@ export default function Home() {
         </SloganWapper>
 
         <LogoWapper>
-          <Logo src={LogoSvg} />
+          <Logo alt="styil-logo" src={LogoSvg} />
           <Switch />
           <SupportLabel datatype="html">
             <img src={htmlSvg} alt="html" />

@@ -65,13 +65,6 @@ function foo() {
   return <Side move={move} />
 }`
 
-export const bashCode = `npm install @styil/react
-# or
-yarn add @styil/react
-# or
-pnpm add @styil/react
-`
-
 export const baseCode = `import { styled } from '@styil/react';
 
 // 我们可以添加 namespce 在开发类库的时候这可能很有用
@@ -135,7 +128,7 @@ export const keyframesCode = `const Foo = styled('div',{
   }
 })
 // or
-import {keyframes} from '@styil/react'
+import { keyframes } from '@styil/react'
 
 const out = keyframes({
   from: {
@@ -152,21 +145,33 @@ const Foo = styled('div',{
 ,
 `
 
-export const globalCode = `import { glob } from '@styil/react'
+export const globalCode = `import { global, SystemProvider } from '@styil/react'
 
-glob({
+global({
   body: {
     backgroundColor: 'red'
   }
 })
 // or
-const Foo = styled('div',{
-  ':global':{
-    body: {
-      backgroundColor: 'red'
-    }
+// 要使用主题功能, 必须被 \`SystemProvider\` 包裹
+const Glob = global((theme) => ({
+  body: {
+    backgroundColor: theme.color
   }
-})
+}))
+// or
+const Foo = styled('div',{
+  // 在styled内使用
+  ':global':{
+    body: { backgroundColor: 'red' }
+  }
+}
+
+render(
+  <SystemProvider>
+    <Glob />
+  </SystemProvider>
+)
 ,
 `
 
@@ -249,7 +254,8 @@ const CodeHeader = styled('div', () => ({
       padding: '4px 8px',
       borderRadius: 6,
       margin: '0 10px',
-      fontSize: 24,
+      width: 18,
+      height: 18,
       backgroundColor: 'rgba(0,0,0,0.1)'
     }
   }
