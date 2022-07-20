@@ -51,4 +51,4 @@ jobs:
       - name: build docs
         run: pnpm run build:doc
       - name: push docs
-        run: sh deploy.sh
+        run: pnpm run push:docs
