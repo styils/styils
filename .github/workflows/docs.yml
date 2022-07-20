@@ -7,7 +7,7 @@ on:
       - 'deploy.sh'
 
 jobs:
-  release:
+  docs:
     name: Docs
     runs-on: ubuntu-latest
     strategy:
@@ -50,5 +50,18 @@ jobs:
         run: pnpm run test
       - name: build docs
         run: pnpm run build:doc
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
       - name: push docs
-        run: pnpm run push:docs
+        run: |
+          cd docs/dist
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "zoy-l@outlook.com"
+          git init
+          git checkout -B gh-pages
+          git add -A
+          git commit -m 'docs: update docs'
+          git push -f git@github.com:zoy-l/styil.git gh-pages
