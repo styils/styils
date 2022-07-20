@@ -1,0 +1,53 @@
+{
+  "license": "根据 MIT 许可证发布",
+  "copyright": "版权所有 © 2022-至今 Zoy-l",
+  "variantsCode": "variants 为 styled 的第三个参数",
+  "themeCode": "任何",
+  "errorCode": "每次 setMove 将创建多个几乎完全相同的CSS规则，这种情况我们应该使用 style",
+  "baseCode": {
+    "1": "我们可以添加 namespce 在开发类库的时候这可能很有用",
+    "2": ":global 内的样式将生成全局样式",
+    "3": "默认单位是 px"
+  },
+  "globalCode": {
+    "1": "要使用主题功能，必须被 `SystemProvider` 包裹",
+    "2": "在styled内使用"
+  },
+  "slogan": "有接近于零的运行时、SSR、主题和完全类型化的API，它的大小只有3kb。",
+  "quick": "快速开始",
+  "github": "在Github上查看",
+  "plan": "计划中",
+  "fast": "快速的",
+  "fastDesc": "在运行时避免不必要的样式道具，避免重复计算渲染。",
+  "typescript": "完全类型化",
+  "typescriptDesc": "灵活的 API 和完整 TypeScript 类型。",
+  "theme": "主题化",
+  "themeDesc": "提供一种自定义主题的简单方法，您可以更改颜色、字体、断点和您需要的一切。",
+  "small": "超小的包大小",
+  "smallDesc": "提供完整的功能的同时，只有3kb的大小开销。",
+  "withBase": "基础使用",
+  "withVariants": "动态渲染",
+  "withTheme": "使用主题",
+  "withSSR": "服务端渲染",
+  "withKeyframes": "动画 Keyframes",
+  "withGlobal": "全局 Global",
+  "withMedia": "查询 Media",
+  "withBaseDesc": {
+    "1": "在用法上和其它上的 <strong>CSS In JS</strong> 框架几乎没有区别",
+    "2": "支持特殊嵌套选择器<strong>`&`</strong>及<strong>CSS</strong>所有原生选择器,还提供了一个多态<strong>`as`</strong>属性，用于定义组件渲染的标签",
+    "3": "此外，如果使用<strong>Typescript</strong>，添加<strong>`as`</strong>道具时，道具定义会更新"
+  },
+  "withVariantsDesc": {
+    "1": "创建的样式组件都带有一个<strong>`variants`</strong>属性",
+    "2": "可以定义单个动态规则、多个动态规则，甚至是复合动态规则",
+    "3": "动态插值代替 props 道具传递，因为通过props传值会带来较大的性能开销，此外我们可能写出下面这段代码。"
+  },
+  "withThemeDesc": "<strong>Styil</strong>提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。",
+  "withSSRDesc": {
+    "1": "<strong>Styil</strong>提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。",
+    "2": "如果使用主题<strong>getCssValue</strong>应该从<strong>createSystem</strong>导出"
+  },
+  "withKeyframesDesc": "<strong>Styil</strong>提供两种方式定义, 任你喜欢。",
+  "withGlobalDesc": "<strong>Styil</strong>提供两种方式定义, 任你喜欢。",
+  "withMediaDesc": "就像在常规<strong>CSS</strong>中使用媒体查询一样，可以将<strong>@media</strong>直接放在<strong>CSS</strong>块中。"
+}

@@ -4,187 +4,7 @@ import reactSvg from '../svg/react.svg'
 import vueSvg from '../svg/vue.svg'
 import htmlSvg from '../svg/html.svg'
 import React from 'react'
-
-export const variantsCode = `import { styled } from '@styil/react'
-
-const Button = styled(
-  'button',
-  {
-    fontSize: 14
-  },
-  // variants 为 styled 的第三个参数
-  {
-    size: {
-      small: {
-        fontSize: 12
-      },
-      large: {
-        fontSize: 16
-      }
-    }
-  }
-)
-
-render(<Button variants={{ size: 'small' }}>Button</Button>)
-`
-
-export const themeCode = `import { createSystem } from '@styil/react'
-
-const { styled, SystemProvider, useSystem } = createSystem({
-  theme(mode) {
-    return {
-      color: mode === 'light' ? '#333' : '#fff',
-      ...other // 任何
-    }
-  }
-})
-
-const Button = styled('div', (theme) => {
-  return {
-    color: theme.color
-  }
-})
-
-render(() => {
-  const { mode, setMode, theme } = useSystem()
-
-  return (
-    <SystemProvider>
-      <Button onClick={() => setMode('dark')}>hello styil {mode}</Button>
-    </SystemProvider>
-  )
-})`
-
-export const errorCode = `const Side = styled('div', () => ({
-  transform: translateX(\`\${props.move}px\`);
-}))
-
-function foo() {
-  // 每次 setMove 将创建多个几乎完全相同的CSS规则, 这种情况我们应该使用 style
-  const [move, setMove] = useState(0)
-  return <Side move={move} />
-}`
-
-export const baseCode = `import { styled } from '@styil/react';
-
-// 我们可以添加 namespce 在开发类库的时候这可能很有用
-const Image = styled({tag:'img',namespce:'label'},{ ... })
-
-const Button = styled('button', {
-  // :global 内的样式将生成全局样式
-  ':global':{
-    body:{
-      ...
-    },
-  }
-  fontSize: '13px',
-  padding: '10px 15px',
-  '&:hover': {
-    fontSize: 18, // 默认单位是 px
-  },
-  '& .foo':{
-    ...
-  },
-  [\`& \${Image}\`]:{
-    ...
-  }
-});
-
-render(<Button as="a" href="google.com"><Image/></Button>)
-`
-
-export const ssrCode = `import React from 'react'
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
-import { getCssValue } from '@styil/react'
-// import { getCssValue } from 'to-path'
-
-export default class Document extends NextDocument {
-  render() {
-    return (
-      <Html lang="en">
-        <Head>
-          <style
-            dangerouslySetInnerHTML={{ __html: getCssValue() }}
-          />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-}
-`
-
-export const keyframesCode = `const Foo = styled('div',{
-  '@keyframes superAnimation': {
-    '11.1%': {
-      opacity: '0.9999'
-    },
-    '111%': {
-      opacity: '1'
-    }
-  }
-})
-// or
-import { keyframes } from '@styil/react'
-
-const out = keyframes({
-  from: {
-    transform: 'rotate(0deg)'
-  },
-  to: {
-    transform: 'rotate(360deg)'
-  }
-})
-
-const Foo = styled('div',{
-  animation: \`13s ease 1.5s infinite none running \${out}\`
-})
-,
-`
-
-export const globalCode = `import { global, SystemProvider } from '@styil/react'
-
-global({
-  body: {
-    backgroundColor: 'red'
-  }
-})
-// or
-// 要使用主题功能, 必须被 \`SystemProvider\` 包裹
-const Glob = global((theme) => ({
-  body: {
-    backgroundColor: theme.color
-  }
-}))
-
-render(
-  <SystemProvider>
-    <Glob />
-  </SystemProvider>
-)
-// or
-const Foo = styled('div',{
-  // 在styled内使用
-  ':global':{
-    body: { backgroundColor: 'red' }
-  }
-}
-`
-
-export const mediaCode = `const Root = styled('div', () => ({
-  maxWidth: 1280,
-  margin: '0 auto',
-  minHeight: '100vh',
-  padding: '0 64px',
-  transition: 'padding .3s',
-  '@media screen and (max-width: 900px)': {
-    padding: '0 28px'
-  }
-}))
-`
+import { useTranslation } from 'react-i18next'
 
 const CodeRoot = styled(
   'div',
@@ -290,27 +110,222 @@ export const StyilCode = ({
   code: string
   disabledType?: boolean
   variants?: { padding: 'false' }
-}) => (
-  <CodeRoot variants={variants}>
-    <CodeWeapper>{children}</CodeWeapper>
-    <Code>
-      <CodeHeader>
-        <section>
-          <div />
-          <div />
-          <div />
-        </section>
-        {!disabledType && (
-          <section>
-            <img src={htmlSvg} alt="html" />
-            <img src={reactSvg} alt="react" />
-            <img src={vueSvg} alt="vue" />
-          </section>
-        )}
-      </CodeHeader>
-      <SyntaxHighlighter language={language} useInlineStyles={false}>
-        {code}
-      </SyntaxHighlighter>
-    </Code>
-  </CodeRoot>
+}) => {
+  const { t } = useTranslation()
+  const variantsCode = `import { styled } from '@styil/react'
+
+const Button = styled(
+  'button',
+  {
+    fontSize: 14
+  },
+  // ${t('variantsCode')}
+  {
+    size: {
+      small: {
+        fontSize: 12
+      },
+      large: {
+        fontSize: 16
+      }
+    }
+  }
 )
+
+render(<Button variants={{ size: 'small' }}>Button</Button>)
+`
+
+  const themeCode = `import { createSystem } from '@styil/react'
+
+const { styled, SystemProvider, useSystem } = createSystem({
+  theme(mode) {
+    return {
+      color: mode === 'light' ? '#333' : '#fff',
+      ...other // ${t('themeCode')}
+    }
+  }
+})
+
+const Button = styled('div', (theme) => {
+  return {
+    color: theme.color
+  }
+})
+
+render(() => {
+  const { mode, setMode, theme } = useSystem()
+
+  return (
+    <SystemProvider>
+      <Button onClick={() => setMode('dark')}>hello styil {mode}</Button>
+    </SystemProvider>
+  )
+})`
+
+  const errorCode = `const Side = styled('div', () => ({
+  transform: translateX(\`\${props.move}px\`);
+}))
+
+function foo() {
+  // ${t('errorCode')}
+  const [move, setMove] = useState(0)
+  return <Side move={move} />
+}`
+
+  const baseCode = `import { styled } from '@styil/react';
+
+// ${t('baseCode.1')}
+const Image = styled({tag:'img',namespce:'label'},{ ... })
+
+const Button = styled('button', {
+  // ${t('baseCode.2')}
+  ':global':{
+    body:{
+      ...
+    },
+  }
+  fontSize: '13px',
+  padding: '10px 15px',
+  '&:hover': {
+    fontSize: 18, // ${t('baseCode.3')}
+  },
+  '& .foo':{
+    ...
+  },
+  [\`& \${Image}\`]:{
+    ...
+  }
+});
+
+render(<Button as="a" href="google.com"><Image/></Button>)
+`
+
+  const ssrCode = `import React from 'react'
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
+import { getCssValue } from '@styil/react'
+// import { getCssValue } from 'to-path'
+
+export default class Document extends NextDocument {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <style
+            dangerouslySetInnerHTML={{ __html: getCssValue() }}
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+`
+
+  const keyframesCode = `const Foo = styled('div',{
+  '@keyframes superAnimation': {
+    '11.1%': {
+      opacity: '0.9999'
+    },
+    '111%': {
+      opacity: '1'
+    }
+  }
+})
+// or
+import { keyframes } from '@styil/react'
+
+const out = keyframes({
+  from: {
+    transform: 'rotate(0deg)'
+  },
+  to: {
+    transform: 'rotate(360deg)'
+  }
+})
+
+const Foo = styled('div',{
+  animation: \`13s ease 1.5s infinite none running \${out}\`
+})
+,
+`
+
+  const globalCode = `import { global, SystemProvider } from '@styil/react'
+
+global({
+  body: {
+    backgroundColor: 'red'
+  }
+})
+// or
+// ${t('globalCode.1')}
+const Glob = global((theme) => ({
+  body: {
+    backgroundColor: theme.color
+  }
+}))
+
+render(
+  <SystemProvider>
+    <Glob />
+  </SystemProvider>
+)
+// or
+const Foo = styled('div',{
+  // ${t('globalCode.2')}
+  ':global':{
+    body: { backgroundColor: 'red' }
+  }
+}
+`
+
+  const mediaCode = `const Root = styled('div', () => ({
+  maxWidth: 1280,
+  margin: '0 auto',
+  minHeight: '100vh',
+  padding: '0 64px',
+  transition: 'padding .3s',
+  '@media screen and (max-width: 900px)': {
+    padding: '0 28px'
+  }
+}))
+`
+
+  const codes = {
+    mediaCode,
+    globalCode,
+    baseCode,
+    ssrCode,
+    keyframesCode,
+    errorCode,
+    themeCode,
+    variantsCode
+  }
+
+  return (
+    <CodeRoot variants={variants}>
+      <CodeWeapper>{children}</CodeWeapper>
+      <Code>
+        <CodeHeader>
+          <section>
+            <div />
+            <div />
+            <div />
+          </section>
+          {!disabledType && (
+            <section>
+              <img src={htmlSvg} alt="html" />
+              <img src={reactSvg} alt="react" />
+              <img src={vueSvg} alt="vue" />
+            </section>
+          )}
+        </CodeHeader>
+        <SyntaxHighlighter language={language} useInlineStyles={false}>
+          {codes[code]}
+        </SyntaxHighlighter>
+      </Code>
+    </CodeRoot>
+  )
+}

@@ -12,38 +12,27 @@ import vueSvg from '../svg/vue.svg'
 import htmlSvg from '../svg/html.svg'
 import Switch, { SwitchWapper } from './Switch'
 import Card, { CardBox } from './Card'
+import { useTranslation } from 'react-i18next'
 
 import React from 'react'
-import {
-  baseCode,
-  errorCode,
-  StyilCode,
-  themeCode,
-  variantsCode,
-  ssrCode,
-  keyframesCode,
-  globalCode,
-  mediaCode
-} from './code'
+import { StyilCode } from './code'
 
 const Logo = styled('img', {
   zIndex: 1,
   width: 200,
   transition: 'all .3s',
-  filter: 'drop-shadow(0px 8px 6px rgba(26,58,70,0.8))',
-  '@media screen and (max-width: 1200px)': {
-    width: 160
-  }
+  filter: 'drop-shadow(0px 8px 6px rgba(26,58,70,0.8))'
 })
 
 const Styil = styled('img', {
+  display: 'block',
   height: 56,
   width: 210,
-  float: 'left',
   marginRight: 8,
+  marginBottom: 12,
   '@media screen and (max-width: 1000px)': {
-    height: 40,
-    width: 150
+    height: 50,
+    width: 180
   }
 })
 
@@ -76,12 +65,6 @@ const LogoWapper = styled('section', () => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  '@media screen and (max-width: 1200px)': {
-    width: '50%'
-  },
-  '@media screen and (max-width: 800px)': {
-    display: 'none'
-  },
 
   '&:after': {
     position: 'absolute',
@@ -116,13 +99,13 @@ const LogoWapper = styled('section', () => ({
     animation: '13s ease 1.5s infinite none running complex',
     boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.17), 0 2px 4px -1px rgb(104 112 118 / 0.14);',
     top: 40,
-    left: 120
+    left: 40
   },
 
   [`& ${SupportLabel}[datatype="html"]`]: {
     animation: '13s ease 0.5s infinite none running complex',
     boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.17), 0 2px 4px -1px rgb(104 112 118 / 0.14);',
-    left: 60,
+    left: 20,
     bottom: 70,
     fontSize: 24,
     '& img': {
@@ -134,7 +117,7 @@ const LogoWapper = styled('section', () => ({
   [`& ${SupportLabel}[datatype="vue"]`]: {
     boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.17), 0 2px 4px -1px rgb(104 112 118 / 0.14);',
     bottom: 0,
-    right: 40
+    right: 20
   },
 
   '@keyframes complex': {
@@ -166,13 +149,21 @@ const PrimaryWapper = styled('section', () => ({
   padding: '64px 0 96px 0',
   '@media screen and (max-width: 1000px)': {
     flexWrap: 'wrap',
-    padding: '64px 0',
+    flexDirection: 'column-reverse',
+    alignItems: 'center',
+    padding: '48px 0 48px 0',
 
     [`& ${SloganWapper}`]: {
       width: '100%'
     },
     [`& ${LogoWapper}`]: {
-      display: 'none'
+      marginBottom: 36,
+      '& > *:not(:first-child)': {
+        display: 'none'
+      },
+      '& *:first-child': {
+        width: 260
+      }
     }
   }
 }))
@@ -182,13 +173,17 @@ const CodeContent = styled('section', () => ({
 }))
 
 const Slogan = styled('section', () => ({
-  fontSize: 42,
-  '@media screen and (max-width: 1000px)': {
-    fontSize: 36,
+  fontSize: 36,
+  fontWeight: 700,
+  whiteSpace: 'pre-wrap',
 
-    '& img': {
-      height: 40
-    }
+  '@media screen and (max-width: 1000px)': {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    fontSize: 28,
+    maxWidth: 600,
+    margin: '0 auto'
   }
 }))
 
@@ -231,6 +226,14 @@ const Button = styled('button', () => ({
 
 const ButtonGroup = styled('section', () => ({
   paddingTop: 62,
+  '@media screen and (max-width: 1000px)': {
+    textAlign: 'center',
+
+    '& > div': {
+      margin: '20px auto 0 auto'
+    }
+  },
+
   [`& ${Button}`]: {
     marginRight: 16,
     backgroundColor: '#e6e8eb8d',
@@ -302,6 +305,31 @@ const Author = styled('section', () => ({
   }
 }))
 
+const Translate = styled('div', () => ({
+  display: 'flex',
+  alignItems: 'center',
+  cursor: 'pointer',
+  zIndex: '99',
+  position: 'absolute',
+  top: '10%',
+  right: 0,
+  height: 32,
+  borderTopLeftRadius: 12,
+  borderBottomLeftRadius: 12,
+  padding: '8px 15px',
+  fontWeight: 500,
+  userSelect: 'none',
+  boxShadow: '0 2px 8px 2px rgb(104 112 118 / 17%), 0 2px 4px -1px rgb(104 112 118 / 14%)',
+
+  '&:active svg': {
+    transform: 'scale(1.5)'
+  },
+  '& svg': {
+    transition: 'all .3s',
+    paddingRight: 8
+  }
+}))
+
 const Title = styled('h1', () => ({
   textAlign: 'center',
   padding: 48
@@ -334,21 +362,31 @@ export default function Home() {
     })
   }, [])
 
+  const { t, i18n } = useTranslation()
+
   return (
     <>
+      <div>
+        <Translate onClick={() => i18n.changeLanguage(i18n.language === 'Zh' ? 'En' : 'Zh')}>
+          <svg fill="currentColor" viewBox="0 0 24 24" height="1.5em" width="1.5em">
+            <path d="M5 15v2a2 2 0 0 0 1.85 1.995L7 19h3v2H7a4 4 0 0 1-4-4v-2h2zm13-5l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16 10h2zm-1 2.885L15.753 16h2.492L17 12.885zM8 2v2h4v7H8v3H6v-3H2V4h4V2h2zm9 1a4 4 0 0 1 4 4v2h-2V7a2 2 0 0 0-2-2h-3V3h3zM6 6H4v3h2V6zm4 0H8v3h2V6z" />
+          </svg>
+          {i18n.language}
+        </Translate>
+      </div>
       <PrimaryWapper>
         <SloganWapper>
           <Slogan>
-            <Styil alt="styil" src={StyilSvg} /> 有接近于零的运行时、SSR、主题和完全类型化的API,
-            它的大小只有3kb。
+            <Styil alt="styil" src={StyilSvg} />
+            <span>{t('slogan')}</span>
           </Slogan>
 
           <ButtonGroup>
             <Button as="a" href="#quick">
-              快速开始
+              {t('quick')}
             </Button>
             <Button as="a" href="https://github.com/zoy-l/styil" target="_blank">
-              在Github上查看
+              {t('github')}
             </Button>
             <InstallBox>
               <strong>$</strong>
@@ -376,109 +414,99 @@ export default function Home() {
           </SupportLabel>
           <SupportLabel datatype="vue">
             <img src={vueSvg} alt="vue" />
-            <span>Vue (开发中)</span>
+            <span>Vue ({t('plan')})</span>
           </SupportLabel>
         </LogoWapper>
       </PrimaryWapper>
 
       <Introduce>
-        <Card icon={<img src={quickSvg} alt="quick" />} name="快速的">
-          在运行时避免不必要的样式道具，避免重复计算渲染。
+        <Card icon={<img src={quickSvg} alt="quick" />} name={t('fast')}>
+          {t('fastDesc')}
         </Card>
-        <Card icon={<img src={tyoeSvg} alt="type" />} name="完全类型化">
-          灵活的 API 和完整 TypeScript 类型。
+        <Card icon={<img src={tyoeSvg} alt="type" />} name={t('typescript')}>
+          {t('typescriptDesc')}
         </Card>
-        <Card icon={<img src={themeSvg} alt="theme" />} name="主题化">
-          提供一种自定义主题的简单方法，您可以更改颜色、字体、断点和您需要的一切。
+        <Card icon={<img src={themeSvg} alt="theme" />} name={t('theme')}>
+          {t('themeDesc')}
         </Card>
-        <Card icon={<img src={sizeSvg} alt="size" />} name="够小的">
-          提供完整的功能的同时, 只有3kb的大小开销。
+        <Card icon={<img src={sizeSvg} alt="size" />} name={t('small')}>
+          {t('smallDesc')}
         </Card>
       </Introduce>
-      <Title id="quick">快速开始</Title>
+      <Title id="quick">{t('quick')}</Title>
       <CodeContent>
         <Author>
           <div>
-            <a href="#base">基础使用</a>
-            <a href="#variants">动态渲染</a>
-            <a href="#theme">使用主题</a>
-            <a href="#ssr">服务端渲染</a>
-            <a href="#keyframes">动画 Keyframes</a>
-            <a href="#global">全局 Global</a>
-            <a href="#media">查询 Media</a>
+            <a href="#base">{t('withBase')}</a>
+            <a href="#variants">{t('withVariants')}</a>
+            <a href="#theme">{t('withTheme')}</a>
+            <a href="#ssr">{t('withSSR')}</a>
+            <a href="#keyframes">{t('withKeyframes')}</a>
+            <a href="#global">{t('withGlobal')}</a>
+            <a href="#media">{t('withMedia')}</a>
           </div>
         </Author>
 
-        <StyilCode code={baseCode}>
-          <h2 id="base">基础使用</h2>
+        <StyilCode code={'baseCode'}>
+          <h2 id="base">{t('withBase')}</h2>
           <p>
-            在用法上和其它上的 <strong>CSS In JS</strong> 框架几乎没有区别
+            <span dangerouslySetInnerHTML={{ __html: t('withBaseDesc.1') }} />
           </p>
           <p>
-            支持特殊嵌套选择器<strong>`&`</strong>及<strong>CSS</strong>所有原生选择器,
-            还提供了一个多态<strong>`as`</strong>属性，用于定义组件渲染的标签
+            <span dangerouslySetInnerHTML={{ __html: t('withBaseDesc.2') }} />
           </p>
           <p>
-            此外，如果使用<strong>Typescript</strong>, 添加<strong>`as`</strong>
-            道具时，道具定义会更新
+            <span dangerouslySetInnerHTML={{ __html: t('withBaseDesc.3') }} />
           </p>
         </StyilCode>
 
-        <StyilCode code={variantsCode} variants={{ padding: 'false' }}>
-          <h2 id="variants">动态渲染</h2>
+        <StyilCode code={'variantsCode'} variants={{ padding: 'false' }}>
+          <h2 id="variants">{t('withVariants')}</h2>
           <p>
-            创建的样式组件都带有一个<strong>`variants`</strong>
-            属性
+            <span dangerouslySetInnerHTML={{ __html: t('withVariantsDesc.1') }} />
           </p>
-          <p>可以定义单个动态规则、多个动态规则，甚至是复合动态规则</p>
+          <p>{t('withVariantsDesc.2')}</p>
         </StyilCode>
 
-        <StyilCode code={errorCode} disabledType>
-          <p>
-            动态插值代替 props 道具传递，因为通过props传值会带来较大的性能开销,
-            此外我们可能写出下面这段代码。
-          </p>
+        <StyilCode code={'errorCode'} disabledType>
+          <p>{t('withVariantsDesc.3')}</p>
         </StyilCode>
 
-        <StyilCode code={themeCode}>
-          <h2 id="theme">使用主题</h2>
+        <StyilCode code={'themeCode'}>
+          <h2 id="theme">{t('withTheme')}</h2>
           <p>
-            <strong>Styil</strong>
-            提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。
+            <span dangerouslySetInnerHTML={{ __html: t('withThemeDesc') }} />
           </p>
         </StyilCode>
 
-        <StyilCode code={ssrCode}>
-          <h2 id="ssr">服务端渲染</h2>
+        <StyilCode code={'ssrCode'}>
+          <h2 id="ssr">{t('withSSR')}</h2>
           <p>
-            <strong>Styil</strong>
-            提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。
+            <span dangerouslySetInnerHTML={{ __html: t('withSSRDesc.1') }} />
           </p>
           <p>
-            如果使用主题<strong>getCssValue</strong>
-            应该从<strong>createSystem</strong>导出
+            <span dangerouslySetInnerHTML={{ __html: t('withSSRDesc.2') }} />
           </p>
         </StyilCode>
 
-        <StyilCode code={keyframesCode}>
-          <h2 id="keyframes">动画 Keyframes</h2>
+        <StyilCode code={'keyframesCode'}>
+          <h2 id="keyframes">{t('withKeyframes')}</h2>
           <p>
-            <strong>Styil</strong> 提供两种方式定义, 任你喜欢。
+            <span dangerouslySetInnerHTML={{ __html: t('withKeyframesDesc') }} />
           </p>
         </StyilCode>
 
-        <StyilCode code={globalCode}>
-          <h2 id="global">全局 Global</h2>
+        <StyilCode code={'globalCode'}>
+          <h2 id="global">{t('withGlobal')}</h2>
           <p>
-            <strong>Styil</strong> 提供两种方式定义, 任你喜欢。
+            <span dangerouslySetInnerHTML={{ __html: t('withGlobalDesc') }} />
           </p>
         </StyilCode>
 
-        <StyilCode code={mediaCode} variants={{ padding: 'false' }}>
-          <h2 id="media">查询 Media</h2>
+        <StyilCode code={'mediaCode'} variants={{ padding: 'false' }}>
+          <h2 id="media">{t('withMedia')}</h2>
           <p>
-            就像在常规<strong>CSS</strong>中使用媒体查询一样，可以将<strong>@media</strong>
-            直接放在<strong>CSS</strong>块中。
+            <span dangerouslySetInnerHTML={{ __html: t('withMediaDesc') }} />
           </p>
         </StyilCode>
       </CodeContent>

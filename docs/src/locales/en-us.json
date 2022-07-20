@@ -1,0 +1,53 @@
+{
+  "license": "Released under the MIT License",
+  "copyright": "Copyright © 2022-present Zoy-l",
+  "variantsCode": "variants is the third parameter of styled",
+  "themeCode": "any",
+  "errorCode": "Each setMove will create multiple almost identical CSS rules, in this case we should use style",
+  "baseCode": {
+    "1": "We can add namespce which may be useful when developing class libraries",
+    "2": ":Styles inside global will generate global styles",
+    "3": "The default unit is px"
+  },
+  "globalCode": {
+    "1": "To use theme functionality, it must be wrapped by `SystemProvider`",
+    "2": "Use in styled"
+  },
+  "slogan": "Has near-zero runtime, SSR, theming, and a fully typed API, and it's only 3kb in size.",
+  "quick": "Quick Start",
+  "github": "View on Github",
+  "plan": "Planning",
+  "fast": "fast",
+  "fastDesc": "Avoid unnecessary style props at runtime and avoid double-computing rendering.",
+  "typescript": "Fully Typed",
+  "typescriptDesc": "Flexible API and full TypeScript types.",
+  "theme": "Theming",
+  "themeDesc": "Provides an easy way to customize the theme, you can change colors, fonts, breakpoints and everything you need.",
+  "small": "Extra small packet size",
+  "smallDesc": "Only 3kb overhead while providing full functionality.",
+  "withBase": "Base use",
+  "withVariants": "Dynamic rendering",
+  "withTheme": "Use Theme",
+  "withSSR": "Server-side rendering",
+  "withKeyframes": "Animation Keyframes",
+  "withGlobal": "Global Global",
+  "withMedia": "Query Media",
+  "withBaseDesc": {
+    "1": "The usage is almost the same as other<strong>CSS In JS</strong>frameworks",
+    "2": "Supports special nested selectors<strong>`&`</strong>and<strong>CSS</strong>all native selectors, and also provides a polymorphic<strong>`as`</strong>property, used to define the label that the component renders",
+    "3": "Also, if using<strong>Typescript</strong>, prop definitions are updated when<strong>`as`</strong>props are added"
+  },
+  "withVariantsDesc": {
+    "1": "Style components are created with a<strong>`variants`</strong>attribute",
+    "2": "You can define a single dynamic rule, multiple dynamic rules, or even compound dynamic rules",
+    "3": "Dynamic interpolation replaces props props passing, because passing values ​​through props will bring a large performance overhead, in addition, we may write the following code."
+  },
+  "withThemeDesc": "<strong>Styil</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
+  "withSSRDesc": {
+    "1": "<strong>Styil</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
+    "2": "If using theme<strong>getCssValue</strong>should be exported from<strong>createSystem</strong>"
+  },
+  "withKeyframesDesc": "<strong>Styil</strong>provides two ways to define as you like.",
+  "withGlobalDesc": "<strong>Styil</strong>provides two ways to define as you like.",
+  "withMediaDesc": "Just like using media queries in regular<strong>CSS</strong>,<strong>@media</strong>can be placed directly in the<strong>CSS</strong>block."
+}

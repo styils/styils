@@ -9,8 +9,10 @@
     "build": "vite build && vite build --ssr entryServer --outDir dist/server && node prerender.js"
   },
   "dependencies": {
+    "i18next": "^21.8.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^11.18.1",
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {

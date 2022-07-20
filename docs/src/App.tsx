@@ -1,5 +1,6 @@
 import { styled } from '@styil/react'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import Home from './Home'
 
 const Root = styled('div', () => ({
@@ -25,12 +26,14 @@ const Footer = styled('footer', () => ({
 }))
 
 export default function App() {
+  const { t } = useTranslation()
+
   return (
     <Root>
       <Home />
       <Footer>
-        <span>根据 MIT 许可证发布</span>
-        <span>Copyright © 2022-present Zoy-l</span>
+        <span>{t('license')}</span>
+        <span>{t('copyright')}</span>
       </Footer>
     </Root>
   )
