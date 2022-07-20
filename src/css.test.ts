@@ -1,10 +1,8 @@
-import { css, glob, keyframes, createStyls } from './css'
+import { css, glob, keyframes, createStyls, flush } from './css'
 
 describe('css', () => {
   afterEach(() => {
-    document.head.childNodes.forEach((node) => {
-      document.head.removeChild(node)
-    })
+    flush()
   })
 
   it('base css', () => {

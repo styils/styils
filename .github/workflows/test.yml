@@ -3,13 +3,8 @@ name: Test CI
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - './docs/**'
-      - './types/**'
-      - './scripts/**'
-      - '*.md'
-      - '*.json'
-
+    paths:
+      - 'src/**'
 jobs:
   test:
     runs-on: ${{ matrix.os }}

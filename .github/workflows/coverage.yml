@@ -3,12 +3,8 @@ name: Coverage CI
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - './docs/**'
-      - './types/**'
-      - './scripts/**'
-      - '*.md'
-      - '*.json'
+    paths:
+      - 'src/**'
 
 jobs:
   coverage:

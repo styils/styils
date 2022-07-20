@@ -1,4 +1,4 @@
-import { StyleSheetOptions, type CSSAttribute, type Rules } from './types'
+import { StyleSheetOptions, type CSSAttribute } from './types'
 import { StyleSheet } from './sheet'
 import { parseRules } from './parse'
 import { createSelector } from './createSelector'
@@ -6,7 +6,7 @@ import { createSelector } from './createSelector'
 export function createStyls(options: Partial<StyleSheetOptions> = {}) {
   const { key, container, speedy, nonce } = options
 
-  const cacheStyle: Record<string, Rules> = {}
+  const globalCache = new Set<string>([])
 
   const sheet = new StyleSheet({
     key: key ?? 'css',
@@ -19,12 +19,15 @@ export function createStyls(options: Partial<StyleSheetOptions> = {}) {
     const { styles, keyframes, glob } = options
     const className = createSelector(styles)
 
-    if (!cacheStyle[className]) {
-      cacheStyle[className] = parseRules(
-        keyframes ? { [`@keyframes ${className}`]: styles } : styles,
-        glob ? undefined : `.${className}`
+    if (!globalCache.has(className)) {
+      globalCache.add(className)
+
+      sheet.insertStyle(
+        parseRules(
+          keyframes ? { [`@keyframes ${className}`]: styles } : styles,
+          glob ? undefined : `.${className}`
+        )
       )
-      sheet.insertStyle(cacheStyle[className])
     }
 
     return glob ? undefined : className
@@ -46,7 +49,12 @@ export function createStyls(options: Partial<StyleSheetOptions> = {}) {
     return sheet.ssrData
   }
 
-  return { css, glob, keyframes, getCssValue }
+  function flush() {
+    sheet.flush()
+    globalCache.clear()
+  }
+
+  return { css, glob, keyframes, getCssValue, flush }
 }
 
-export const { css, glob, keyframes, getCssValue } = createStyls()
+export const { css, glob, keyframes, getCssValue, flush } = createStyls()

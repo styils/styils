@@ -82,6 +82,82 @@ exports[`system createSystem 4`] = `
 </html>
 `;
 
+exports[`system global 1`] = `
+<html>
+  <head>
+    <style
+      data-styil="css"
+    >
+      
+      body{background-color:#fff;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`system global with theme 1`] = `
+<div>
+  <div>
+    light
+  </div>
+</div>
+`;
+
+exports[`system global with theme 2`] = `
+<html>
+  <head>
+    <style
+      data-styil="css"
+    >
+      
+      body{background-color:blue;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        light
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system global with theme 3`] = `
+<div>
+  <div>
+    dark
+  </div>
+</div>
+`;
+
+exports[`system global with theme 4`] = `
+<html>
+  <head>
+    <style
+      data-styil="css"
+    >
+      
+      body{background-color:blue;}
+    </style>
+    <style
+      data-styil="css"
+    >
+      
+      body{background-color:red;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        dark
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
 exports[`system hydrate 1`] = `
 "
       <meta id=\\"__styls_cache__\\" name=\\"styil-cache\\" content=\\"css-2242710476\\">
@@ -230,6 +306,40 @@ exports[`system styled production 1`] = `
     class="css-3465392085"
   />
 </div>
+`;
+
+exports[`system styled with styled components 1`] = `
+<div>
+  <button
+    class="css-3433634237 css-2341007075"
+  />
+</div>
+`;
+
+exports[`system styled with styled components 2`] = `
+<html>
+  <head>
+    <style
+      data-styil="css"
+    >
+      
+      .css-2341007075{background-color:#fff;}
+    </style>
+    <style
+      data-styil="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <button
+        class="css-3433634237 css-2341007075"
+      />
+    </div>
+  </body>
+</html>
 `;
 
 exports[`system theme does not render repeatedly 1`] = `

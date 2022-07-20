@@ -1,4 +1,4 @@
-import { createSystem, styled, flush } from './system'
+import { createSystem, styled, flush, global } from './system'
 import { render, fireEvent, getByText } from '@testing-library/react'
 import React from 'react'
 
@@ -26,6 +26,80 @@ describe('system', () => {
     expect(container).toMatchSnapshot()
 
     expect(document.documentElement).toMatchSnapshot()
+  })
+
+  it('styled with styled components', () => {
+    const Button = styled('button', {
+      backgroundColor: '#fff'
+    })
+
+    const Button2 = styled(Button, {
+      color: 'red'
+    })
+
+    const { container } = render(React.createElement(Button2))
+    expect(container).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+  })
+
+  it('global', () => {
+    global({
+      body: {
+        backgroundColor: '#fff'
+      }
+    })
+
+    expect(document.documentElement).toMatchSnapshot()
+  })
+
+  it('global with theme', () => {
+    const {
+      global: globalTheme,
+      useSystem,
+      SystemProvider,
+      flush
+    } = createSystem({
+      theme: (mode) => {
+        return {
+          dark: {
+            color: 'red'
+          },
+          light: {
+            color: 'blue'
+          }
+        }[mode]
+      },
+      defaultMode: 'light'
+    })
+
+    const Glob = globalTheme((theme) => ({
+      body: {
+        backgroundColor: theme.color
+      }
+    }))
+
+    const { container } = render(
+      React.createElement(SystemProvider, {
+        children: React.createElement(() => {
+          const { mode, setMode } = useSystem()
+
+          return React.createElement(
+            'div',
+            { onClick: () => setMode('dark') },
+            React.createElement(Glob),
+            mode
+          )
+        })
+      })
+    )
+
+    expect(container).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+    fireEvent.click(getByText(container, 'light'))
+    expect(container).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+
+    flush()
   })
 
   it('styled speedy', () => {

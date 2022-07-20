@@ -1,4 +1,4 @@
-import { createSystem, glob, getCssValue } from '@styil/react'
+import { createSystem, global, getCssValue } from '@styil/react'
 
 const { styled } = createSystem({
   theme: (mode: 'light' | 'dark') => {
@@ -14,4 +14,4 @@ const { styled } = createSystem({
   defaultMode: localStorage.getItem('styil-theme-mode') ?? 'light'
 })
 
-export { styled, glob, getCssValue }
+export { styled, global, getCssValue }

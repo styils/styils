@@ -1,7 +1,7 @@
 import React from 'react'
 import { createSelector } from './createSelector'
 import { type SystemOptions, type Styled, type System } from './systemTypes'
-import { type AnyObject } from './types'
+import { CSSAttribute, type AnyObject } from './types'
 import { parseRules } from './parse'
 import { StyleSheet } from './sheet'
 
@@ -18,6 +18,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     sheetOptions = {}
   } = options
   const { key, container, speedy, nonce } = sheetOptions
+  let currentMode: string = defaultMode
 
   if (globalThis.document && !globalCache.size) {
     const meta = document.getElementById(cacheKey) as HTMLMetaElement
@@ -61,11 +62,10 @@ export function createSystem<Theme extends AnyObject = {}>(
     let inputTag = tag
     const inputNamespace = (tag as { namespace: string }).namespace ?? ''
 
-    if (typeof tag === 'object') {
+    if (typeof tag === 'object' && tag.tag) {
       inputTag = tag.tag
     }
 
-    let currentMode: string = defaultMode
     const modeIdentifier: Record<string, { targetClassName: string; namespaceJoiner: string }> = {}
 
     function createRule(
@@ -144,7 +144,7 @@ export function createSystem<Theme extends AnyObject = {}>(
       const { as = inputTag, className = '', variants: variantsProps, ...rest } = props
       let variantsClassName = ''
 
-      const { mode } = React.useContext(themeContent)
+      const { mode } = useSystem()
 
       if (mode !== currentMode && mode !== undefined) {
         createRule(mode, targetInfo)
@@ -194,12 +194,37 @@ export function createSystem<Theme extends AnyObject = {}>(
     `
   }
 
+  function global(styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) {
+    function createGlobRules(mode: string) {
+      const style = typeof styles === 'function' ? styles(inputTheme(mode), mode) : styles
+      const selector = createSelector(style)
+
+      if (!globalCache.has(selector)) {
+        globalCache.add(selector)
+
+        sheet.insertStyle(parseRules(style))
+      }
+    }
+
+    createGlobRules(currentMode)
+
+    return function Glob() {
+      const { mode } = useSystem()
+
+      if (mode !== currentMode && mode !== undefined) {
+        createGlobRules(mode)
+      }
+
+      return null
+    }
+  }
+
   function flush() {
     sheet.flush()
     globalCache.clear()
   }
 
-  return { styled, SystemProvider, useSystem, getCssValue, flush }
+  return { styled, SystemProvider, useSystem, getCssValue, flush, global }
 }
 
-export const { styled, getCssValue, flush } = createSystem()
+export const { styled, getCssValue, flush, global } = createSystem()
