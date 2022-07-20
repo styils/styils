@@ -2,7 +2,6 @@ name: Docs CI
 
 on:
   push:
-    branches: [main]
     paths:
       - 'docs/**'
       - 'deploy.sh'
