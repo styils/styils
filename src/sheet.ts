@@ -67,15 +67,25 @@ export class StyleSheet {
   insertStyle({ ruleCode, segmentRuleCode }: Rules) {
     if (this.container) {
       if (this.speedy) {
+        const ruleIndexs: {
+          tag: HTMLStyleElement
+          index: number
+        }[] = []
         for (let index = 0; index < segmentRuleCode.length; index++) {
-          this.insert(segmentRuleCode[index])
+          ruleIndexs.push(
+            this.insert(segmentRuleCode[index]) as {
+              tag: HTMLStyleElement
+              index: number
+            }
+          )
         }
-      } else {
-        this.insert(ruleCode)
+
+        return ruleIndexs
       }
-    } else {
-      this.ssrData += ruleCode
+
+      return [this.insert(ruleCode)]
     }
+    this.ssrData += ruleCode
   }
 
   insert(rule: string) {
@@ -93,7 +103,8 @@ export class StyleSheet {
 
       this.insertTag(tag)
     }
-    const tag = this.tags[this.tags.length - 1]
+    const tagIndex = this.tags.length - 1
+    const tag = this.tags[tagIndex]
 
     if (process.env.NODE_ENV !== 'production') {
       // is `@import`
@@ -116,12 +127,13 @@ export class StyleSheet {
         this.alreadyInsertedOrderInsensitiveRule || !isImportRule
     }
 
+    this.insertIndex++
     if (this.speedy) {
       try {
         // this is the ultrafast version, works across browsers
         // the big drawback is that the css won't be editable in devtools
         // here tag.sheet is required unless manually modified
-        tag.sheet!.insertRule(rule, tag.sheet!.cssRules.length)
+        return { tag, index: tag.sheet!.insertRule(rule, tag.sheet!.cssRules.length) }
       } catch (error) {
         if (
           process.env.NODE_ENV !== 'production' &&
@@ -137,9 +149,17 @@ export class StyleSheet {
       }
     } else {
       tag.appendChild(document.createTextNode(rule))
+      return { tag, index: tagIndex }
     }
+  }
 
-    this.insertIndex++
+  flushSingle({ tag, index }: { tag: HTMLStyleElement; index: number }) {
+    if (this.speedy) {
+      tag.sheet.deleteRule(index)
+    } else {
+      this.container.removeChild(tag)
+      this.tags.splice(index, 1)
+    }
   }
 
   flush() {

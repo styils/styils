@@ -5,7 +5,8 @@ import {
   createSystem,
   getCssValue as defaultGetCssValue,
   styled as defaultStyled,
-  flush as defaultFlush
+  flush as defaultFlush,
+  useInsertionEffectMaybe
 } from './system'
 
 describe('css node', () => {
@@ -45,5 +46,14 @@ describe('css node', () => {
     expect(defaultGetCssValue()).toMatchSnapshot()
 
     defaultFlush()
+  })
+
+  it('useInsertionEffectMaybe', async () => {
+    try {
+      useInsertionEffectMaybe(() => {}, [])
+      expect(true).toEqual(true)
+    } catch {
+      expect(false).toEqual(true)
+    }
   })
 })

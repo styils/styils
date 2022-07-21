@@ -5,9 +5,26 @@ import { CSSAttribute, type AnyObject } from './types'
 import { parseRules } from './parse'
 import { StyleSheet } from './sheet'
 
-const globalCache = new Set<string>([])
+const selectorCache = new Set<string>([])
+const globalCache: Record<
+  string,
+  {
+    segmentRuleCode: string[]
+    ruleCode: string
+  }
+> = {}
 const cacheKey = '__styil_cache__'
 const splitSymbol = '|'
+
+const isBrowser = !!globalThis.document
+
+export const useInsertionEffect = React.useInsertionEffect
+  ? React.useInsertionEffect
+  : React.useLayoutEffect
+
+export function useInsertionEffectMaybe(create: () => void, deps: any[]) {
+  isBrowser ? useInsertionEffect(create, deps) : create()
+}
 
 export function createSystem<Theme extends AnyObject = {}>(
   options: SystemOptions<Theme> = {}
@@ -18,20 +35,19 @@ export function createSystem<Theme extends AnyObject = {}>(
     sheetOptions = {}
   } = options
   const { key, container, speedy, nonce } = sheetOptions
-  let currentMode: string = defaultMode
 
-  if (globalThis.document && !globalCache.size) {
+  if (isBrowser && !selectorCache.size) {
     const meta = document.getElementById(cacheKey) as HTMLMetaElement
 
     meta?.content.split(splitSymbol).forEach((name) => {
-      globalCache.add(name)
+      selectorCache.add(name)
     })
   }
 
   const sheet = new StyleSheet({
     key: key ?? 'css',
     speedy: speedy === undefined ? process.env.NODE_ENV === 'production' : speedy,
-    container: globalThis.document ? container ?? globalThis.document.head : null,
+    container: isBrowser ? container ?? document.head : null,
     nonce
   })
 
@@ -95,8 +111,8 @@ export function createSystem<Theme extends AnyObject = {}>(
         namespaceJoiner = `${inputNamespace}-`
       }
 
-      if (!globalCache.has(targetClassName)) {
-        globalCache.add(targetClassName)
+      if (!selectorCache.has(targetClassName)) {
+        selectorCache.add(targetClassName)
         sheet.insertStyle(parseRules(style, `.${targetClassName}`))
       }
 
@@ -116,8 +132,8 @@ export function createSystem<Theme extends AnyObject = {}>(
             const value = variantsValue[key]
             const variantsClassName = `${targetClassName}.${namespaceJoiner}${variantsKey}-${key}`
 
-            if (!globalCache.has(variantsClassName)) {
-              globalCache.add(variantsClassName)
+            if (!selectorCache.has(variantsClassName)) {
+              selectorCache.add(variantsClassName)
               sheet.insertStyle(parseRules(value, `.${variantsClassName}`))
             }
           }
@@ -146,10 +162,9 @@ export function createSystem<Theme extends AnyObject = {}>(
 
       const { mode } = useSystem()
 
-      if (mode !== currentMode && mode !== undefined) {
+      useInsertionEffectMaybe(() => {
         createRule(mode, targetInfo)
-        currentMode = mode
-      }
+      }, [mode])
 
       if (variantsProps) {
         const variantsPropsKeys = Object.keys(variantsProps)
@@ -189,31 +204,45 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   function getCssValue() {
     return `
-      <meta id="${cacheKey}" name="styil-cache" content="${[...globalCache].join(splitSymbol)}">
+      <meta id="${cacheKey}" name="styil-cache" content="${[...selectorCache].join(splitSymbol)}">
       <style data-styil="${sheet.key}">${sheet.ssrData}</style>
     `
   }
 
   function global(styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) {
+    let oldRule: {
+      tag: HTMLStyleElement
+      index: number
+    }[]
+
     function createGlobRules(mode: string) {
       const style = typeof styles === 'function' ? styles(inputTheme(mode), mode) : styles
       const selector = createSelector(style)
 
-      if (!globalCache.has(selector)) {
-        globalCache.add(selector)
+      if (oldRule) {
+        oldRule.forEach((rule) => {
+          sheet.flushSingle(rule)
+        })
+      }
 
-        sheet.insertStyle(parseRules(style))
+      if (!globalCache[selector]) {
+        const rules = parseRules(style)
+        globalCache[selector] = rules
+
+        oldRule = sheet.insertStyle(rules)
+      } else {
+        oldRule = sheet.insertStyle(globalCache[selector])
       }
     }
 
-    createGlobRules(currentMode)
+    createGlobRules(defaultMode)
 
     return function Glob() {
       const { mode } = useSystem()
 
-      if (mode !== currentMode && mode !== undefined) {
+      useInsertionEffectMaybe(() => {
         createGlobRules(mode)
-      }
+      }, [mode])
 
       return null
     }
@@ -221,7 +250,7 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   function flush() {
     sheet.flush()
-    globalCache.clear()
+    selectorCache.clear()
   }
 
   return { styled, SystemProvider, useSystem, getCssValue, flush, global }

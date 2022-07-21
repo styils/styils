@@ -250,4 +250,13 @@ describe('StyleSheet', () => {
       ].join('')
     )
   })
+
+  it('should be speedy by production delete', () => {
+    const sheet = new StyleSheet({ ...defaultOptions, speedy: true })
+    const oldRule = sheet.insert(rule)
+    const { tag } = oldRule
+    expect(tag.sheet.cssRules.length).toEqual(1)
+    sheet.flushSingle(oldRule)
+    expect(tag.sheet.cssRules.length).toEqual(0)
+  })
 })
