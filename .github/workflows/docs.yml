@@ -58,7 +58,7 @@ jobs:
         run: |
           cd docs/dist
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "zoy-l@outlook.com"
+          git config --global user.email "github-actions[bot]"
           git init
           git checkout -B gh-pages
           git add -A
