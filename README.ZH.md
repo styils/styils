@@ -8,8 +8,8 @@
 </p>
 
 <p align="center">
-  <img src="https://codecov.io/gh/zoy-l/styil/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
-  <img src="https://img.badgesize.io/https://unpkg.com/@styil/base@latest/index.prod.esm.js?compression=gzip&style=square&label=gzip%20size&color=#4fc08d" alt="gzip" />
+  <img src="https://img.badgesize.io/https://unpkg.com/@styil/css@latest/index.prod.esm.js?compression=gzip&style=square&label=css&color=#4fc08d" alt="gzip" />
+  <img src="https://img.badgesize.io/https://unpkg.com/@styil/react@latest/index.prod.esm.js?compression=gzip&style=square&label=react&color=#4fc08d" alt="gzip" /> alt="gzip" />
 
 </p>
 
