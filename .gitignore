@@ -2,7 +2,6 @@ coverage
 
 # compiled output
 dist
-dist-ncc
 node_modules
 lib
 

@@ -1,5 +1,5 @@
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { styled } from '@styil/react'
+import { styled } from '../theme'
 import reactSvg from '../svg/react.svg'
 import vueSvg from '../svg/vue.svg'
 import htmlSvg from '../svg/html.svg'
@@ -29,7 +29,7 @@ const CodeRoot = styled(
   }
 )
 
-const Code = styled('div', () => ({
+const Code = styled('div', (theme) => ({
   display: 'inline-block',
   borderRadius: 14,
   fontSize: 14,
@@ -38,7 +38,7 @@ const Code = styled('div', () => ({
   wordBreak: 'normal',
   overflowX: 'auto',
   color: '#fff',
-  background: '#363449'
+  background: theme.codeBg
 }))
 
 const CodeHeader = styled('div', () => ({
@@ -112,7 +112,7 @@ export const StyilCode = ({
   variants?: { padding: 'false' }
 }) => {
   const { t } = useTranslation()
-  const variantsCode = `import { styled } from '@styil/react'
+  const variantsCode = `import { styled } from 'import { global } from '../theme''
 
 const Button = styled(
   'button',
@@ -135,7 +135,7 @@ const Button = styled(
 render(<Button variants={{ size: 'small' }}>Button</Button>)
 `
 
-  const themeCode = `import { createSystem } from '@styil/react'
+  const themeCode = `import { createSystem } from 'import { global } from '../theme''
 
 const { styled, SystemProvider, useSystem } = createSystem({
   theme(mode) {
@@ -172,7 +172,7 @@ function foo() {
   return <Side move={move} />
 }`
 
-  const baseCode = `import { styled } from '@styil/react';
+  const baseCode = `import { styled } from 'import { global } from '../theme'';
 
 // ${t('baseCode.1')}
 const Image = styled({tag:'img',namespce:'label'},{ ... })
@@ -202,7 +202,7 @@ render(<Button as="a" href="google.com"><Image/></Button>)
 
   const ssrCode = `import React from 'react'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
-import { getCssValue } from '@styil/react'
+import { getCssValue } from 'import { global } from '../theme''
 // import { getCssValue } from 'to-path'
 
 export default class Document extends NextDocument {
@@ -235,7 +235,7 @@ export default class Document extends NextDocument {
   }
 })
 // or
-import { keyframes } from '@styil/react'
+import { keyframes } from 'import { global } from '../theme''
 
 const out = keyframes({
   from: {
@@ -252,7 +252,7 @@ const Foo = styled('div',{
 ,
 `
 
-  const globalCode = `import { global, SystemProvider } from '@styil/react'
+  const globalCode = `import { global, SystemProvider } from 'import { global } from '../theme''
 
 global({
   body: {

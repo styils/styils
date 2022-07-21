@@ -17,7 +17,7 @@
   "quick": "Quick Start",
   "github": "View on Github",
   "plan": "Planning",
-  "fast": "fast",
+  "fast": "Fast",
   "fastDesc": "Avoid unnecessary style props at runtime and avoid double-computing rendering.",
   "typescript": "Fully Typed",
   "typescriptDesc": "Flexible API and full TypeScript types.",

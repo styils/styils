@@ -1,6 +1,6 @@
 import LogoSvg from '../../../logo.svg'
 import StyilSvg from '../../../styil.svg'
-import { styled } from '@styil/react'
+import { styled, useSystem } from '../theme'
 import quickSvg from '../svg/quick.svg'
 import copySvg from '../svg/copy.svg'
 import sizeSvg from '../svg/size.svg'
@@ -36,29 +36,32 @@ const Styil = styled('img', {
   }
 })
 
-const SupportLabel = styled('section', () => ({
-  zIndex: 2,
-  position: 'absolute',
-  display: 'flex',
-  alignItems: 'center',
-  marginRight: 32,
-  color: '#707b8a',
-  backgroundColor: '#e6e8eb8d',
-  borderRadius: 12,
-  padding: '10px 15px',
-  backdropFilter: 'saturate(180%) blur(84px)',
+const SupportLabel = styled('section', (theme) => {
+  return {
+    zIndex: 2,
+    position: 'absolute',
+    display: 'flex',
+    alignItems: 'center',
+    marginRight: 32,
+    color: theme.secondColor,
+    borderRadius: 12,
+    padding: '10px 15px',
+    backdropFilter: 'saturate(180%) blur(84px)',
+    backgroundColor: theme.bgSecondColor,
 
-  '& img': {
-    height: 30,
-    width: 30
-  },
+    '& img': {
+      height: 30,
+      width: 30
+    },
 
-  '& span': {
-    paddingLeft: 6
+    '& span': {
+      paddingLeft: 6
+    },
+    aa: 1
   }
-}))
+})
 
-const LogoWapper = styled('section', () => ({
+const LogoWapper = styled('section', (theme) => ({
   position: 'relative',
   width: '46%',
   height: 399,
@@ -91,20 +94,20 @@ const LogoWapper = styled('section', () => ({
     animation: '13s ease 1s infinite reverse none running complex',
     position: 'absolute',
     right: '20%',
-    boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.17), 0 2px 4px -1px rgb(104 112 118 / 0.14);',
+    boxShadow: theme.boxShadow,
     top: 0
   },
 
   [`& ${SupportLabel}[datatype="react"]`]: {
     animation: '13s ease 1.5s infinite none running complex',
-    boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.17), 0 2px 4px -1px rgb(104 112 118 / 0.14);',
+    boxShadow: theme.boxShadow,
     top: 40,
     left: 40
   },
 
   [`& ${SupportLabel}[datatype="html"]`]: {
     animation: '13s ease 0.5s infinite none running complex',
-    boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.17), 0 2px 4px -1px rgb(104 112 118 / 0.14);',
+    boxShadow: theme.boxShadow,
     left: 20,
     bottom: 70,
     fontSize: 24,
@@ -115,7 +118,7 @@ const LogoWapper = styled('section', () => ({
   },
 
   [`& ${SupportLabel}[datatype="vue"]`]: {
-    boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.17), 0 2px 4px -1px rgb(104 112 118 / 0.14);',
+    boxShadow: theme.boxShadow,
     bottom: 0,
     right: 20
   },
@@ -248,18 +251,17 @@ const ButtonGroup = styled('section', () => ({
   }
 }))
 
-const InstallBox = styled('div', () => ({
+const InstallBox = styled('div', (theme) => ({
   width: 'fit-content',
   padding: '0 20px',
   lineHeight: '40px',
   marginTop: 20,
-  color: '#687076',
+  color: theme.secondColor,
   backdropFilter: 'saturate(180%) blur(10px)',
-  background: 'rgba(255, 255, 255, 0.3)',
   borderRadius: 12,
   display: 'flex',
   alignItems: 'center',
-  boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.07), 0 2px 4px -1px rgb(104 112 118 / 0.04)',
+  boxShadow: theme.boxShadow,
   strong: {
     paddingRight: 10
   },
@@ -272,7 +274,7 @@ const InstallBox = styled('div', () => ({
   }
 }))
 
-const Author = styled('section', () => ({
+const Author = styled('section', (theme) => ({
   position: 'absolute',
   height: '100%',
 
@@ -288,8 +290,9 @@ const Author = styled('section', () => ({
     lineHeight: '40px',
     padding: '0 20px',
     textAlign: 'center',
-    color: '#687076',
-    backgroundColor: '#e6e8eb8d',
+    color: theme.secondColor,
+    backgroundColor: theme.bgSecondColor,
+    boxShadow: theme.boxShadow,
     transition: 'all .3s',
     fontWeight: 500,
 
@@ -305,7 +308,7 @@ const Author = styled('section', () => ({
   }
 }))
 
-const Translate = styled('div', () => ({
+const Translate = styled('div', (theme) => ({
   display: 'flex',
   alignItems: 'center',
   cursor: 'pointer',
@@ -319,7 +322,7 @@ const Translate = styled('div', () => ({
   padding: '8px 15px',
   fontWeight: 500,
   userSelect: 'none',
-  boxShadow: '0 2px 8px 2px rgb(104 112 118 / 17%), 0 2px 4px -1px rgb(104 112 118 / 14%)',
+  boxShadow: theme.boxShadow,
 
   '&:active svg': {
     transform: 'scale(1.5)'
@@ -363,6 +366,8 @@ export default function Home() {
   }, [])
 
   const { t, i18n } = useTranslation()
+  const { setMode, mode } = useSystem()
+  const [check, setCheck] = React.useState(mode !== 'light')
 
   return (
     <>
@@ -409,7 +414,15 @@ export default function Home() {
 
         <LogoWapper>
           <Logo alt="styil-logo" src={LogoSvg} />
-          <Switch />
+          <Switch
+            checked={check}
+            onChange={(value) => {
+              const mode = value ? 'dark' : 'light'
+              setCheck(value)
+              setMode(mode)
+              localStorage.setItem('styil-theme-mode', mode)
+            }}
+          />
           <SupportLabel datatype="html">
             <img src={htmlSvg} alt="html" />
             <span>Html</span>

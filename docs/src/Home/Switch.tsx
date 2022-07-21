@@ -1,12 +1,13 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { styled } from '@styil/react'
+import { styled } from '../theme'
 
-export const SwitchWapper = styled('label', () => ({
+export const SwitchWapper = styled('label', (theme) => ({
   zIndex: 2,
   position: 'relative',
   borderRadius: 28,
   overflow: 'hidden',
   backdropFilter: 'saturate(180%) blur(14px)',
+  boxShadow: theme.boxShadow,
 
   '& input': {
     cursor: 'pointer',
@@ -50,18 +51,22 @@ const SwitchChecked = styled(
       textAlign: 'center'
     }
   }),
-  () => ({
-    checked: {
-      true: {
-        backgroundColor: '#4dd865',
-        '&::after': {
-          transform: 'translateX(30px)',
-          content: '☀️'
-        }
-      },
-      false: {}
+  (theme) => {
+    // something wrong
+    return {
+      checked: {
+        true: {
+          backgroundColor: theme.bgSecondColor,
+          '&::after': {
+            transform: 'translateX(30px)',
+            content: '☀️',
+            backgroundColor: theme.secondColor
+          }
+        },
+        false: {}
+      }
     }
-  })
+  }
 )
 
 export default function Switch({

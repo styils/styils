@@ -1,7 +1,7 @@
-import { styled } from '@styil/react'
+import { styled } from '../theme'
 import React from 'react'
 
-export const CardBox = styled('div', () => ({
+export const CardBox = styled('div', (theme) => ({
   backdropFilter: 'saturate(180%) blur(14px)',
   background: 'rgba(255, 255, 255, 0.05)',
   boxShadow: '0 2px 8px 2px rgb(104 112 118 / 0.07), 0 2px 4px -1px rgb(104 112 118 / 0.04);',
@@ -9,18 +9,18 @@ export const CardBox = styled('div', () => ({
   display: 'flex',
   flexDirection: 'column',
   padding: 24,
-  color: '#687076'
+  color: theme.secondColor
 }))
 
-const CardHeader = styled('section', () => ({
+const CardHeader = styled('section', (theme) => ({
   display: 'flex',
   alignItems: 'center',
-
   paddingBottom: 16,
 
   '& div': {
     width: 40,
     height: 40,
+    flexShrink: 0,
     borderRadius: 14,
     display: 'flex',
     alignItems: 'center',
@@ -35,9 +35,8 @@ const CardHeader = styled('section', () => ({
 
   '& span': {
     marginLeft: 16,
-    color: '#11181C',
     fontWeight: 500,
-    fontSize: '1.1rem'
+    color: theme.mainColor
   }
 }))
 

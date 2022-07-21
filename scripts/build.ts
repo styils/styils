@@ -206,11 +206,11 @@ async function run() {
     )
 
     const README = fs.readFileSync(path.join(cwd, 'README.md'))
-    const READMEEN = fs.readFileSync(path.join(cwd, 'README.EN.md'))
+    const READMEEN = fs.readFileSync(path.join(cwd, 'README.ZH.md'))
 
     fs.writeFileSync(path.join(cwd, 'dist', name, 'README.md'), README)
 
-    fs.writeFileSync(path.join(cwd, 'dist', name, 'README.EN.md'), READMEEN)
+    fs.writeFileSync(path.join(cwd, 'dist', name, 'README.ZH.md'), READMEEN)
   })
 
   distFiles.forEach((item) => {
