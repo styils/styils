@@ -105,6 +105,67 @@ describe('system', () => {
     flush()
   })
 
+  it('delete old rules', () => {
+    const {
+      global: globalTheme,
+      useSystem,
+      SystemProvider,
+      flush
+    } = createSystem({
+      theme: (mode) => {
+        return {
+          dark: {
+            color: 'red'
+          },
+          light: {
+            color: 'blue'
+          }
+        }[mode]
+      },
+      defaultMode: 'light',
+      sheetOptions: { speedy: true }
+    })
+
+    const Glob = globalTheme((theme) => ({
+      body: {
+        backgroundColor: theme.color
+      }
+    }))
+
+    const { container } = render(
+      React.createElement(SystemProvider, {
+        children: React.createElement(() => {
+          const { mode, setMode } = useSystem()
+
+          return React.createElement(
+            'div',
+            { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') },
+            React.createElement(Glob),
+            mode
+          )
+        })
+      })
+    )
+
+    let styleHtml: HTMLStyleElement
+
+    document.head.childNodes.forEach((item: HTMLStyleElement) => {
+      styleHtml = item
+    })
+
+    expect(styleHtml.sheet.cssRules.length).toEqual(1)
+    expect(styleHtml.sheet.cssRules[0].cssText).toEqual('body {background-color: blue;}')
+
+    fireEvent.click(getByText(container, 'light'))
+    expect(styleHtml.sheet.cssRules.length).toEqual(1)
+    expect(styleHtml.sheet.cssRules[0].cssText).toEqual('body {background-color: red;}')
+    fireEvent.click(getByText(container, 'dark'))
+    expect(styleHtml.sheet.cssRules.length).toEqual(1)
+    expect(styleHtml.sheet.cssRules[0].cssText).toEqual('body {background-color: blue;}')
+
+    flush()
+  })
+
   it('styled speedy', () => {
     const { flush, styled: thmeStyle } = createSystem({ sheetOptions: { speedy: true } })
 

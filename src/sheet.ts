@@ -4,6 +4,12 @@
 
 import { Rules, StyleSheetOptions } from './types'
 
+export interface OldRule {
+  tag: HTMLStyleElement
+  index: number
+  tagIndex?: number
+}
+
 export class StyleSheet {
   /**
    * used to record whether another rule is inserted before
@@ -67,17 +73,9 @@ export class StyleSheet {
   insertStyle({ ruleCode, segmentRuleCode }: Rules) {
     if (this.container) {
       if (this.speedy) {
-        const ruleIndexs: {
-          tag: HTMLStyleElement
-          index: number
-        }[] = []
+        const ruleIndexs: OldRule[] = []
         for (let index = 0; index < segmentRuleCode.length; index++) {
-          ruleIndexs.push(
-            this.insert(segmentRuleCode[index]) as {
-              tag: HTMLStyleElement
-              index: number
-            }
-          )
+          ruleIndexs.push(this.insert(segmentRuleCode[index]) as OldRule)
         }
 
         return ruleIndexs
@@ -127,13 +125,13 @@ export class StyleSheet {
         this.alreadyInsertedOrderInsensitiveRule || !isImportRule
     }
 
-    this.insertIndex++
+    let oldRule: OldRule
     if (this.speedy) {
       try {
         // this is the ultrafast version, works across browsers
         // the big drawback is that the css won't be editable in devtools
         // here tag.sheet is required unless manually modified
-        return { tag, index: tag.sheet!.insertRule(rule, tag.sheet!.cssRules.length) }
+        oldRule = { tag, index: tag.sheet!.insertRule(rule, tag.sheet!.cssRules.length), tagIndex }
       } catch (error) {
         if (
           process.env.NODE_ENV !== 'production' &&
@@ -149,8 +147,11 @@ export class StyleSheet {
       }
     } else {
       tag.appendChild(document.createTextNode(rule))
-      return { tag, index: tagIndex }
+      oldRule = { tag, index: tagIndex }
     }
+
+    this.insertIndex++
+    return oldRule
   }
 
   flushSingle({ tag, index }: { tag: HTMLStyleElement; index: number }) {

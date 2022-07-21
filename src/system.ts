@@ -3,7 +3,7 @@ import { createSelector } from './createSelector'
 import { type SystemOptions, type Styled, type System } from './systemTypes'
 import { CSSAttribute, type AnyObject } from './types'
 import { parseRules } from './parse'
-import { StyleSheet } from './sheet'
+import { StyleSheet, type OldRule } from './sheet'
 
 const selectorCache = new Set<string>([])
 const globalCache: Record<
@@ -212,10 +212,7 @@ export function createSystem<Theme extends AnyObject = {}>(
   }
 
   function global(styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) {
-    let oldRule: {
-      tag: HTMLStyleElement
-      index: number
-    }[]
+    let oldRule: OldRule[]
     let currentMode = defaultMode
 
     function createGlobRules(mode: string) {
@@ -230,8 +227,16 @@ export function createSystem<Theme extends AnyObject = {}>(
       }
 
       if (oldRule) {
+        const tagIndex: number[] = []
         oldRule.forEach((rule) => {
-          sheet.flushSingle(rule)
+          if (!tagIndex[rule.tagIndex]) tagIndex[rule.tagIndex] = 0
+
+          sheet.flushSingle({
+            tag: rule.tag,
+            index: sheet.speedy ? rule.index - tagIndex[rule.tagIndex] : rule.index
+          })
+
+          tagIndex[rule.tagIndex]++
         })
       }
 

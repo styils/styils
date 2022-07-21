@@ -21,7 +21,8 @@ const { styled, SystemProvider, getCssValue, global, useSystem } = createSystem(
       }
     }[mode]
   },
-  defaultMode: import.meta.env.SSR ? 'light' : localStorage.getItem('styil-theme-mode') ?? 'light'
+  defaultMode: import.meta.env.SSR ? 'light' : localStorage.getItem('styil-theme-mode') ?? 'light',
+  sheetOptions: { speedy: true }
 })
 
 export { styled, global, getCssValue, SystemProvider, useSystem }

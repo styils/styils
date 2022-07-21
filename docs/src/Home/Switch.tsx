@@ -44,8 +44,7 @@ const SwitchChecked = styled(
       width: 26,
       height: 26,
       borderRadius: '50%',
-      backgroundColor: '#fff',
-      content: '🌛',
+
       transition: 'all 0.3s',
       lineHeight: '26px',
       textAlign: 'center'
@@ -59,11 +58,16 @@ const SwitchChecked = styled(
           backgroundColor: theme.bgSecondColor,
           '&::after': {
             transform: 'translateX(30px)',
-            content: '☀️',
-            backgroundColor: theme.secondColor
+            content: '🌛',
+            backgroundColor: theme.bgSecondColor
           }
         },
-        false: {}
+        false: {
+          '&::after': {
+            backgroundColor: '#fff',
+            content: '☀️'
+          }
+        }
       }
     }
   }
