@@ -85,7 +85,7 @@ describe('system', () => {
 
           return React.createElement(
             'div',
-            { onClick: () => setMode('dark') },
+            { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') },
             React.createElement(Glob),
             mode
           )
@@ -96,6 +96,9 @@ describe('system', () => {
     expect(container).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     fireEvent.click(getByText(container, 'light'))
+    expect(container).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+    fireEvent.click(getByText(container, 'dark'))
     expect(container).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
 

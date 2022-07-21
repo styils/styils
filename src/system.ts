@@ -87,6 +87,7 @@ export function createSystem<Theme extends AnyObject = {}>(
       inputTargetInfo: { targetClassName: string; namespaceJoiner: string }
     ) {
       const identifier = modeIdentifier[mode]
+      console.log(identifier)
 
       if (identifier) {
         const { namespaceJoiner, targetClassName } = identifier

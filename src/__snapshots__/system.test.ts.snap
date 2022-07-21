@@ -152,6 +152,34 @@ exports[`system global with theme 4`] = `
 </html>
 `;
 
+exports[`system global with theme 5`] = `
+<div>
+  <div>
+    light
+  </div>
+</div>
+`;
+
+exports[`system global with theme 6`] = `
+<html>
+  <head>
+    <style
+      data-styil="css"
+    >
+      
+      body{background-color:blue;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        light
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
 exports[`system hydrate 1`] = `
 "
       <meta id=\\"__styil_cache__\\" name=\\"styil-cache\\" content=\\"css-2242710476\\">
