@@ -17,7 +17,7 @@
 3KB css-in-js solution with near zero runtime. Support Themes, SSR
 </p>
 
-[Documentation](https://zoy-l.github.io/styil)
+[Documentation](https://styils.github.io/styil)
 
 > Currently, it is experimental!
 
