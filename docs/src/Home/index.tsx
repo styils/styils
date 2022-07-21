@@ -207,7 +207,7 @@ const Introduce = styled('section', () => ({
   }
 }))
 
-const Button = styled('button', () => ({
+const Button = styled('button', (theme) => ({
   textDecoration: 'none',
   display: 'inline-block',
   border: 'none',
@@ -220,10 +220,13 @@ const Button = styled('button', () => ({
   lineHeight: '40px',
   fontSize: '14px',
   cursor: 'pointer',
+  color: theme.secondColor,
+  boxShadow: theme.boxShadow,
+  backgroundColor: theme.bgSecondColor,
 
   '&:hover': {
-    color: '#213547',
-    backgroundColor: '#e5e5e5'
+    color: '#333',
+    backgroundColor: '#e6e8eb'
   }
 }))
 
@@ -239,7 +242,6 @@ const ButtonGroup = styled('section', () => ({
 
   [`& ${Button}`]: {
     marginRight: 16,
-    backgroundColor: '#e6e8eb8d',
 
     '&:first-child': {
       backgroundColor: '#fb304f',
