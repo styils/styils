@@ -18,14 +18,6 @@ const splitSymbol = '|'
 
 const isBrowser = !!globalThis.document
 
-export const useInsertionEffect = React.useInsertionEffect
-  ? React.useInsertionEffect
-  : React.useLayoutEffect
-
-export function useInsertionEffectMaybe(create: () => void, deps: any[]) {
-  isBrowser ? useInsertionEffect(create, deps) : create()
-}
-
 export function createSystem<Theme extends AnyObject = {}>(
   options: SystemOptions<Theme> = {}
 ): System<Theme> {
@@ -35,6 +27,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     sheetOptions = {}
   } = options
   const { key, container, speedy, nonce } = sheetOptions
+  let globalMode = defaultMode
 
   if (isBrowser && !selectorCache.size) {
     const meta = document.getElementById(cacheKey) as HTMLMetaElement
@@ -63,9 +56,14 @@ export function createSystem<Theme extends AnyObject = {}>(
   const SystemProvider = (props: { children: React.ReactNode }) => {
     const [mode, setMode] = React.useState<string>(defaultMode)
 
+    const updataMode = (value: string) => {
+      setMode(value)
+      globalMode = value
+    }
+
     return React.createElement(
       themeContent.Provider,
-      { value: { mode, setMode, theme: inputTheme(mode) } },
+      { value: { mode, setMode: updataMode, theme: inputTheme(mode) } },
       props.children
     )
   }
@@ -99,10 +97,12 @@ export function createSystem<Theme extends AnyObject = {}>(
 
       const theme = inputTheme(mode)
       const style = typeof styles === 'function' ? styles(theme, mode) : styles
+
       const variants =
         typeof interpolation === 'function' ? interpolation(theme, mode) : interpolation
 
       const selector = createSelector(style)
+
       let targetClassName = selector
       let namespaceJoiner = ''
 
@@ -162,9 +162,9 @@ export function createSystem<Theme extends AnyObject = {}>(
 
       const { mode } = useSystem()
 
-      useInsertionEffectMaybe(() => {
+      if (mode !== undefined) {
         createRule(mode, targetInfo)
-      }, [mode])
+      }
 
       if (variantsProps) {
         const variantsPropsKeys = Object.keys(variantsProps)
@@ -195,6 +195,8 @@ export function createSystem<Theme extends AnyObject = {}>(
 
     Object.defineProperty(styledComponent, 'toString', {
       value() {
+        // Cross-rendering, after being fetched, child components will not be recalculated
+        createRule(globalMode, targetInfo)
         return `.${targetInfo.targetClassName}`
       }
     })
@@ -214,10 +216,18 @@ export function createSystem<Theme extends AnyObject = {}>(
       tag: HTMLStyleElement
       index: number
     }[]
+    let currentMode = defaultMode
 
     function createGlobRules(mode: string) {
-      const style = typeof styles === 'function' ? styles(inputTheme(mode), mode) : styles
-      const selector = createSelector(style)
+      let rules: { segmentRuleCode: string[]; ruleCode: string }
+      const cache = globalCache[mode]
+
+      if (globalCache[mode]) {
+        rules = cache
+      } else {
+        rules = parseRules(typeof styles === 'function' ? styles(inputTheme(mode), mode) : styles)
+        globalCache[mode] = rules
+      }
 
       if (oldRule) {
         oldRule.forEach((rule) => {
@@ -225,14 +235,7 @@ export function createSystem<Theme extends AnyObject = {}>(
         })
       }
 
-      if (!globalCache[selector]) {
-        const rules = parseRules(style)
-        globalCache[selector] = rules
-
-        oldRule = sheet.insertStyle(rules)
-      } else {
-        oldRule = sheet.insertStyle(globalCache[selector])
-      }
+      oldRule = sheet.insertStyle(rules)
     }
 
     createGlobRules(defaultMode)
@@ -240,9 +243,10 @@ export function createSystem<Theme extends AnyObject = {}>(
     return function Glob() {
       const { mode } = useSystem()
 
-      useInsertionEffectMaybe(() => {
+      if (mode !== undefined && mode !== currentMode) {
         createGlobRules(mode)
-      }, [mode])
+        currentMode = mode
+      }
 
       return null
     }

@@ -44,7 +44,7 @@ exports[`system createSystem 3`] = `
     data-testid="use-system"
   >
     <button
-      class="css-3433634237"
+      class="css-3183262666"
     />
     dark
   </div>
@@ -73,7 +73,7 @@ exports[`system createSystem 4`] = `
         data-testid="use-system"
       >
         <button
-          class="css-3433634237"
+          class="css-3183262666"
         />
         dark
       </div>
@@ -380,7 +380,7 @@ exports[`system theme does not render repeatedly 3`] = `
     data-testid="use-system"
   >
     <button
-      class="css-3433634237"
+      class="css-3183262666"
     />
     dark
   </div>
@@ -409,7 +409,7 @@ exports[`system theme does not render repeatedly 4`] = `
         data-testid="use-system"
       >
         <button
-          class="css-3433634237"
+          class="css-3183262666"
         />
         dark
       </div>
@@ -424,7 +424,7 @@ exports[`system theme does not render repeatedly 5`] = `
     data-testid="use-system"
   >
     <button
-      class="css-3183262666"
+      class="css-3433634237"
     />
     light
   </div>
@@ -453,7 +453,7 @@ exports[`system theme does not render repeatedly 6`] = `
         data-testid="use-system"
       >
         <button
-          class="css-3183262666"
+          class="css-3433634237"
         />
         light
       </div>

@@ -1,4 +1,4 @@
-import { createSystem, styled, flush, global, useInsertionEffect } from './system'
+import { createSystem, styled, flush, global } from './system'
 import { render, fireEvent, getByText } from '@testing-library/react'
 import React from 'react'
 
@@ -539,9 +539,5 @@ describe('system', () => {
     expect(getCssValue()).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     globalThis.document.head.removeChild(meta)
-  })
-
-  it('useInsertionEffectMaybe', async () => {
-    expect(useInsertionEffect).toEqual(React.useInsertionEffect)
   })
 })
