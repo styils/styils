@@ -102,7 +102,10 @@ const LogoWapper = styled('section', (theme) => ({
     animation: '13s ease 1.5s infinite none running complex',
     boxShadow: theme.boxShadow,
     top: 40,
-    left: 40
+    left: 40,
+    '@media screen and (max-width: 580px)': {
+      left: 20
+    }
   },
 
   [`& ${SupportLabel}[datatype="html"]`]: {
@@ -111,6 +114,9 @@ const LogoWapper = styled('section', (theme) => ({
     left: 20,
     bottom: 70,
     fontSize: 24,
+    '@media screen and (max-width: 580px)': {
+      left: 0
+    },
     '& img': {
       width: 40,
       height: 40
@@ -120,7 +126,10 @@ const LogoWapper = styled('section', (theme) => ({
   [`& ${SupportLabel}[datatype="vue"]`]: {
     boxShadow: theme.boxShadow,
     bottom: 0,
-    right: 20
+    right: 20,
+    '@media screen and (max-width: 580px)': {
+      right: 0
+    }
   },
 
   '@keyframes complex': {
@@ -161,13 +170,8 @@ const PrimaryWapper = styled('section', () => ({
       width: '100%'
     },
     [`& ${LogoWapper}`]: {
-      marginBottom: 36,
-      '& > *:not(:first-child)': {
-        display: 'none'
-      },
-      '& *:first-child': {
-        width: 260
-      }
+      width: '100%',
+      marginBottom: 36
     }
   }
 }))
