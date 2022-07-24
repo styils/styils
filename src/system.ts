@@ -15,7 +15,6 @@ const globalCache: Record<
 > = {}
 const cacheKey = '__styil_cache__'
 const splitSymbol = '|'
-
 const isBrowser = !!globalThis.document
 
 export function createSystem<Theme extends AnyObject = {}>(
@@ -28,11 +27,10 @@ export function createSystem<Theme extends AnyObject = {}>(
   } = options
   const { key, container, speedy, nonce } = sheetOptions
   let globalMode = defaultMode
+  const metaHtml = isBrowser ? (document.getElementById(cacheKey) as HTMLMetaElement) : null
 
-  if (isBrowser && !selectorCache.size) {
-    const meta = document.getElementById(cacheKey) as HTMLMetaElement
-
-    meta?.content.split(splitSymbol).forEach((name) => {
+  if (isBrowser && !selectorCache.size && metaHtml) {
+    metaHtml.content.split(splitSymbol).forEach((name) => {
       selectorCache.add(name)
     })
   }
@@ -206,7 +204,9 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   function getCssValue() {
     return `
-      <meta id="${cacheKey}" name="styil-cache" content="${[...selectorCache].join(splitSymbol)}">
+      <meta id="${cacheKey}" name="styil-cache" mode="${globalMode}" content="${[
+      ...selectorCache
+    ].join(splitSymbol)}">
       <style data-styil="${sheet.key}">${sheet.ssrData}</style>
     `
   }
@@ -216,21 +216,10 @@ export function createSystem<Theme extends AnyObject = {}>(
     let currentMode = defaultMode
 
     function createGlobRules(mode: string) {
-      let rules: { segmentRuleCode: string[]; ruleCode: string }
-      const cache = globalCache[mode]
-
-      if (globalCache[mode]) {
-        rules = cache
-      } else {
-        rules = parseRules(typeof styles === 'function' ? styles(inputTheme(mode), mode) : styles)
-        globalCache[mode] = rules
-      }
-
       if (oldRule) {
         const tagIndex: number[] = []
         oldRule.forEach((rule) => {
           if (!tagIndex[rule.tagIndex]) tagIndex[rule.tagIndex] = 0
-
           sheet.flushSingle({
             tag: rule.tag,
             index: sheet.speedy ? rule.index - tagIndex[rule.tagIndex] : rule.index
@@ -238,6 +227,23 @@ export function createSystem<Theme extends AnyObject = {}>(
 
           tagIndex[rule.tagIndex]++
         })
+
+        oldRule = undefined
+      }
+
+      if (isBrowser && metaHtml && mode === metaHtml.getAttribute('mode')) {
+        return
+      }
+
+      let rules: { segmentRuleCode: string[]; ruleCode: string }
+      const cache = globalCache[mode]
+
+      if (globalCache[mode]) {
+        rules = cache
+      } else {
+        const style = typeof styles === 'function' ? styles(inputTheme(mode), mode) : styles
+        rules = parseRules(style)
+        globalCache[mode] = rules
       }
 
       oldRule = sheet.insertStyle(rules)

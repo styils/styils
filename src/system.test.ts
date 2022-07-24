@@ -52,7 +52,7 @@ describe('system', () => {
     expect(document.documentElement).toMatchSnapshot()
   })
 
-  it('global with theme', () => {
+  it('with theme global', () => {
     const {
       global: globalTheme,
       useSystem,
@@ -507,7 +507,7 @@ describe('system', () => {
     flush()
   })
 
-  it('hydrate', () => {
+  it('hydrate', async () => {
     const meta = document.createElement('meta')
     meta.name = 'styil-cache'
     meta.id = '__styil_cache__'
@@ -518,7 +518,7 @@ describe('system', () => {
       return meta
     })
 
-    const { styled: hydrateStyled, getCssValue } = createSystem()
+    const { styled: hydrateStyled, getCssValue } = (await import('./system')).createSystem()
     const Button = hydrateStyled('button', {
       backgroundColor: 'gainsboro',
       borderRadius: '9999px'
@@ -531,7 +531,7 @@ describe('system', () => {
     globalThis.document.head.removeChild(meta)
   })
 
-  it('hydrate variants', () => {
+  it('variants hydrate', () => {
     const meta = document.createElement('meta')
     meta.name = 'styil-cache'
     meta.id = '__styil_cache__'
@@ -568,7 +568,7 @@ describe('system', () => {
     globalThis.document.head.removeChild(meta)
   })
 
-  it('hydrate namespace', () => {
+  it('namespace hydrate', () => {
     const meta = document.createElement('meta')
     meta.name = 'styil-cache'
     meta.id = '__styil_cache__'
