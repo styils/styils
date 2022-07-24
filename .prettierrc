@@ -5,13 +5,5 @@
   "proseWrap": "never",
   "arrowParens": "always",
   "endOfLine": "lf",
-  "semi": false,
-  "overrides": [
-    {
-      "files": ".prettierrc",
-      "options": {
-        "parser": "json"
-      }
-    }
-  ]
+  "semi": false
 }
