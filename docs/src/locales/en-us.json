@@ -3,7 +3,7 @@
   "copyright": "Copyright © 2022-present Zoy-l",
   "variantsCode": "variants is the third parameter of styled",
   "themeCode": "any",
-  "errorCode": "Each setMove will create multiple almost identical CSS rules, in this case we should use style",
+  "errorCode": "Each setMove will create multiple almost identical CSS rules\n  // in this case we should use style",
   "baseCode": {
     "1": "We can add namespce which may be useful when developing class libraries",
     "2": ":Styles inside global will generate global styles",

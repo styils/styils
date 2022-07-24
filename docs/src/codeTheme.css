@@ -10,7 +10,6 @@ pre[class*='language-'] {
   color: #f92aad;
   text-shadow: 0 0 2px #100c0f, 0 0 5px #dc078e33, 0 0 10px #fff3;
   background: none;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 1em;
   text-align: left;
   white-space: pre;
@@ -31,15 +30,12 @@ pre[class*='language-'] {
 
 /* Code blocks */
 pre[class*='language-'] {
-  padding: 1em;
-  margin: 0.5em 0;
   overflow: auto;
 }
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
   background-color: transparent !important;
-  background-image: linear-gradient(to bottom, #2a2139 75%, #34294f);
 }
 
 /* Inline code */
@@ -137,4 +133,12 @@ pre[class*='language-'] {
 
 .token.inserted {
   color: green;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  background: none;
 }

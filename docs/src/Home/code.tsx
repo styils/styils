@@ -1,10 +1,11 @@
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { styled } from '../theme'
 import reactSvg from '../svg/react.svg'
 import vueSvg from '../svg/vue.svg'
 import htmlSvg from '../svg/html.svg'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import Prism from 'prismjs'
+import 'prismjs/components/prism-jsx'
 
 const CodeRoot = styled(
   'div',
@@ -44,7 +45,7 @@ const Code = styled('div', (theme) => ({
 const CodeHeader = styled('div', () => ({
   display: 'flex',
   justifyContent: 'space-between',
-  marginBottom: 20,
+  marginBottom: 16,
 
   '& section:first-child': {
     display: 'flex',
@@ -101,7 +102,6 @@ const CodeWeapper = styled('div', () => ({
 export const StyilCode = ({
   children,
   code,
-  language = 'jsx',
   disabledType,
   variants = { padding: undefined }
 }: {
@@ -304,6 +304,14 @@ const Foo = styled('div',{
     variantsCode
   }
 
+  const codeRef = React.createRef<HTMLPreElement>()
+
+  React.useEffect(() => {
+    if (codeRef.current) {
+      Prism.highlightElement(codeRef.current)
+    }
+  }, [codeRef])
+
   return (
     <CodeRoot variants={variants}>
       <CodeWeapper>{children}</CodeWeapper>
@@ -322,9 +330,11 @@ const Foo = styled('div',{
             </section>
           )}
         </CodeHeader>
-        <SyntaxHighlighter language={language} useInlineStyles={false}>
-          {codes[code]}
-        </SyntaxHighlighter>
+        <pre>
+          <code className="language-jsx" ref={codeRef}>
+            {codes[code]}
+          </code>
+        </pre>
       </Code>
     </CodeRoot>
   )
