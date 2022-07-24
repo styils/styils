@@ -23,7 +23,7 @@
   "typescriptDesc": "Flexible API and full TypeScript types.",
   "theme": "Theming",
   "themeDesc": "Provides an easy way to customize the theme, you can change colors, fonts, breakpoints and everything you need.",
-  "small": "Extra small packet size",
+  "small": "Super small",
   "smallDesc": "Only 3kb overhead while providing full functionality.",
   "withBase": "Base use",
   "withVariants": "Dynamic rendering",

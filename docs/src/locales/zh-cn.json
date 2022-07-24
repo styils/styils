@@ -23,7 +23,7 @@
   "typescriptDesc": "灵活的 API 和完整 TypeScript 类型。",
   "theme": "主题化",
   "themeDesc": "提供一种自定义主题的简单方法，您可以更改颜色、字体、断点和您需要的一切。",
-  "small": "超小的包大小",
+  "small": "超小的",
   "smallDesc": "提供完整的功能的同时，只有3kb的大小开销。",
   "withBase": "基础使用",
   "withVariants": "动态渲染",
