@@ -46,5 +46,7 @@
   },
   "withKeyframesDesc": "<strong>Styil</strong>提供两种方式定义, 任你喜欢。",
   "withGlobalDesc": "<strong>Styil</strong>提供两种方式定义, 任你喜欢。",
-  "withMediaDesc": "就像在常规<strong>CSS</strong>中使用媒体查询一样，可以将<strong>@media</strong>直接放在<strong>CSS</strong>块中。"
+  "withMediaDesc": "就像在常规<strong>CSS</strong>中使用媒体查询一样，可以将<strong>@media</strong>直接放在<strong>CSS</strong>块中。",
+  "back": "返回",
+  "bench": "基准"
 }

@@ -60,52 +60,50 @@ const targetSize = 10
 export function SierpinskiTriangle({ testIndex, x = 0, y = 0, depth = 0, s: _s = 200 }) {
   let s = _s
 
-  if (Dot) {
-    if (s <= targetSize) {
-      let fn
-      switch (depth) {
-        case 1:
-          fn = interpolatePurples
-          break
-        case 2:
-          fn = interpolateBuPu
-          break
-        case 3:
-        default:
-          fn = interpolateRdPu
-      }
-
-      // introduce randomness to ensure that repeated runs don't produce the same colors
-      const color = fn((testIndex * Math.random()) / 20)
-      return (
-        <Dot
-          style={{
-            borderBottomColor: color,
-            borderRightWidth: targetSize / 2,
-            borderBottomWidth: targetSize / 2,
-            borderLeftWidth: targetSize / 2,
-            marginLeft: x - targetSize / 2,
-            marginTop: y - targetSize / 2
-          }}
-        />
-      )
+  if (s <= targetSize) {
+    let fn
+    switch (depth) {
+      case 1:
+        fn = interpolatePurples
+        break
+      case 2:
+        fn = interpolateBuPu
+        break
+      case 3:
+      default:
+        fn = interpolateRdPu
     }
 
-    s /= 2
+    // introduce randomness to ensure that repeated runs don't produce the same colors
+    const color = fn((testIndex * Math.random()) / 20)
 
     return (
-      <React.Fragment>
-        <SierpinskiTriangle depth={1} testIndex={testIndex} s={s} x={x} y={y - s / 2} />
-        <SierpinskiTriangle depth={2} testIndex={testIndex} s={s} x={x - s} y={y + s / 2} />
-        <SierpinskiTriangle depth={3} testIndex={testIndex} s={s} x={x + s} y={y + s / 2} />
-      </React.Fragment>
+      <Dot
+        style={{
+          borderBottomColor: color,
+          borderRightWidth: targetSize / 2,
+          borderBottomWidth: targetSize / 2,
+          borderLeftWidth: targetSize / 2,
+          marginLeft: x - targetSize / 2,
+          marginTop: y - targetSize / 2
+        }}
+      />
     )
   }
-  return <span style={{ color: 'white' }}>No implementation available</span>
+
+  s /= 2
+
+  return (
+    <React.Fragment>
+      <SierpinskiTriangle depth={1} testIndex={testIndex} s={s} x={x} y={y - s / 2} />
+      <SierpinskiTriangle depth={2} testIndex={testIndex} s={s} x={x - s} y={y + s / 2} />
+      <SierpinskiTriangle depth={3} testIndex={testIndex} s={s} x={x + s} y={y + s / 2} />
+    </React.Fragment>
+  )
 }
 
 const StitchesTest = () => {
-  return <TestRunner numberOfRuns={1} iterationN={2} TestComponent={SierpinskiTriangle as any} />
+  return <TestRunner numberOfRuns={3} iterationN={50} TestComponent={SierpinskiTriangle as any} />
 }
 
 export default StitchesTest

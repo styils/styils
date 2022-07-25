@@ -46,5 +46,7 @@
   },
   "withKeyframesDesc": "<strong>Styil</strong>provides two ways to define as you like.",
   "withGlobalDesc": "<strong>Styil</strong>provides two ways to define as you like.",
-  "withMediaDesc": "Just like using media queries in regular<strong>CSS</strong>,<strong>@media</strong>can be placed directly in the<strong>CSS</strong>block."
+  "withMediaDesc": "Just like using media queries in regular<strong>CSS</strong>,<strong>@media</strong>can be placed directly in the<strong>CSS</strong>block.",
+  "back": "Back",
+  "bench": "Bench"
 }

@@ -134,7 +134,11 @@ export default function App() {
             </svg>
             {i18n.language}
           </Translate>
-          {isBench ? <Link to="/styil/">home</Link> : <Link to="/styil/benchmark/">bench</Link>}
+          {isBench ? (
+            <Link to="/styil/">{t('back')}</Link>
+          ) : (
+            <Link to="/styil/benchmark/">{t('bench')}</Link>
+          )}
         </Header>
         <Routes>
           <Route path="/styil" element={<Home />} />
