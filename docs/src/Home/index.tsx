@@ -57,8 +57,7 @@ const SupportLabel = styled('section', (theme) => {
 
     '& span': {
       paddingLeft: 6
-    },
-    aa: 1
+    }
   }
 })
 
@@ -159,7 +158,7 @@ const SloganWapper = styled('section', () => ({
 const PrimaryWapper = styled('section', () => ({
   display: 'flex',
   justifyContent: 'space-between',
-  padding: '64px 0 96px 0',
+  padding: '48px 0 96px 0',
 
   '@media screen and (max-width: 1000px)': {
     flexWrap: 'wrap',
@@ -316,31 +315,6 @@ const Author = styled('section', (theme) => ({
   }
 }))
 
-const Translate = styled('div', (theme) => ({
-  display: 'flex',
-  alignItems: 'center',
-  cursor: 'pointer',
-  zIndex: '99',
-  position: 'absolute',
-  top: '10%',
-  right: 0,
-  height: 32,
-  borderTopLeftRadius: 12,
-  borderBottomLeftRadius: 12,
-  padding: '8px 15px',
-  fontWeight: 500,
-  userSelect: 'none',
-  boxShadow: theme.boxShadow,
-
-  '&:active svg': {
-    transform: 'scale(1.5)'
-  },
-  '& svg': {
-    transition: 'all .3s',
-    paddingRight: 8
-  }
-}))
-
 const Title = styled('h1', () => ({
   textAlign: 'center',
   padding: 48
@@ -373,25 +347,12 @@ export default function Home() {
     })
   }, [])
 
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const { setMode, mode } = useSystem()
   const [check, setCheck] = React.useState(mode !== 'light')
 
   return (
     <>
-      <Translate
-        onClick={() => {
-          const currentLanguage = i18n.language === 'Zh' ? 'En' : 'Zh'
-          localStorage.setItem('styil-doc-key', currentLanguage)
-          i18n.changeLanguage(currentLanguage)
-        }}
-      >
-        <svg fill="currentColor" viewBox="0 0 24 24" height="1.5em" width="1.5em">
-          <path d="M5 15v2a2 2 0 0 0 1.85 1.995L7 19h3v2H7a4 4 0 0 1-4-4v-2h2zm13-5l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16 10h2zm-1 2.885L15.753 16h2.492L17 12.885zM8 2v2h4v7H8v3H6v-3H2V4h4V2h2zm9 1a4 4 0 0 1 4 4v2h-2V7a2 2 0 0 0-2-2h-3V3h3zM6 6H4v3h2V6zm4 0H8v3h2V6z" />
-        </svg>
-        {i18n.language}
-      </Translate>
-
       <PrimaryWapper>
         <SloganWapper>
           <Slogan>

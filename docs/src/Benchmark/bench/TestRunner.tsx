@@ -1,5 +1,5 @@
 import React, { Profiler, useEffect } from 'react'
-import { Link, useSearchParams, useNavigate } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { createId } from './utils/createId'
 import { TestResults } from './TestResults'
 
@@ -157,6 +157,7 @@ export const TestRunner = ({
   /** The N number of iterations to run inside each test */
   iterationN: number
 }) => {
+  const router = useNavigate()
   const [searchParams] = useSearchParams()
   const testId = searchParams.get('testId')
   const finished = searchParams.get('finished')
@@ -178,7 +179,15 @@ export const TestRunner = ({
     }
     localStorage.setItem(newTestId, JSON.stringify(testInfo))
 
-    return <Link to={`?testId=${newTestId}&runIndex=0`}>start test</Link>
+    return (
+      <button
+        onClick={() => {
+          router(`?testId=${newTestId}&runIndex=0`)
+        }}
+      >
+        start test
+      </button>
+    )
   }
   if (typeof testId === 'string') {
     // We are mid-test or finished with a test

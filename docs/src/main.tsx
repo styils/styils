@@ -13,5 +13,3 @@ ReactDOM.render(
   </SystemProvider>,
   document.getElementById('root')
 )
-
-// (document.getElementById('root') as HTMLElement).

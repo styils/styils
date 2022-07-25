@@ -1,4 +1,3 @@
-import { useLocation, Link } from 'react-router-dom'
 import React from 'react'
 import { RunResult, TestInfo } from './TestRunner'
 
@@ -29,8 +28,6 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
     variance: calculateAverage(testInfo.results, 'variance', testInfo.numberOfRuns)
   }
 
-  const router = useLocation()
-
   return (
     <div>
       <style
@@ -38,11 +35,6 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
           __html: `
             th, td {
               padding: 10px;
-            }
-
-            ul {
-              margin-top: 20px;
-              margin-bottom: 20px;
             }
 
             li {
@@ -56,10 +48,8 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
         }}
       />
 
-      <Link to={`/${router.pathname.split('/')[1]}`}>go back</Link>
-
-      <div>N: {testInfo.N}</div>
-      <div>Ran test: {testInfo.numberOfRuns} times</div>
+      <div style={{ padding: '10px' }}>个数: {testInfo.N}</div>
+      <div style={{ padding: '10px' }}>次数: {testInfo.numberOfRuns}</div>
 
       <table>
         <thead>

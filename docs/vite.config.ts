@@ -15,7 +15,6 @@ export default defineConfig({
   },
 
   build: {
-    sourcemap: 'inline',
-    minify: false
+    sourcemap: 'inline'
   }
 })
