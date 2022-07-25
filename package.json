@@ -69,5 +69,12 @@
   "engines": {
     "node": ">=12",
     "pnpm": ">=7"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@babel/*"
+      ]
+    }
   }
 }

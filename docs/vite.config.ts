@@ -7,11 +7,15 @@ export default defineConfig({
   base: '/styil/',
   plugins: [react()],
   resolve: {
-    alias: {
-      '@styil/react': path.join(__dirname, '..', 'src', 'indexReact.ts')
-    }
+    alias: [
+      { find: '@styil/react', replacement: path.join(__dirname, '..', 'src', 'indexReact.ts') },
+      { find: /react-dom$/, replacement: 'react-dom/profiling' },
+      { find: 'scheduler/tracing', replacement: 'scheduler/tracing-profiling' }
+    ]
   },
+
   build: {
-    minify: 'esbuild'
+    sourcemap: 'inline',
+    minify: false
   }
 })
