@@ -95,8 +95,8 @@ importers:
       '@stitches/stringify': ^1.2.8
       '@types/fs-extra': ^9.0.13
       '@types/prismjs': ^1.26.0
-      '@types/react': ^17.0.15
-      '@types/react-dom': ^17.0.6
+      '@types/react': ^17.0.47
+      '@types/react-dom': ^17.0.17
       '@types/styled-components': ^5.1.25
       '@vitejs/plugin-react': ^2.0.0
       d3-scale-chromatic: ^3.0.0
@@ -130,9 +130,9 @@ importers:
       '@types/react': 17.0.47
       '@types/react-dom': 17.0.17
       '@types/styled-components': 5.1.25
-      '@vitejs/plugin-react': 2.0.0_vite@3.0.2
+      '@vitejs/plugin-react': 2.0.0_vite@3.0.3
       fs-extra: 10.1.0
-      vite: 3.0.2
+      vite: 3.0.3
 
 packages:
 
@@ -1557,7 +1557,7 @@ packages:
   /@types/hoist-non-react-statics/3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
-      '@types/react': 18.0.15
+      '@types/react': 17.0.47
       hoist-non-react-statics: 3.3.2
     dev: true
 
@@ -1686,7 +1686,7 @@ packages:
     resolution: {integrity: sha512-fgwl+0Pa8pdkwXRoVPP9JbqF0Ivo9llnmsm+7TCI330kbPIFd9qv1Lrhr37shf4tnxCOSu+/IgqM7uJXLWZZNQ==}
     dependencies:
       '@types/hoist-non-react-statics': 3.3.1
-      '@types/react': 18.0.15
+      '@types/react': 17.0.47
       csstype: 3.1.0
     dev: true
 
@@ -1836,7 +1836,7 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-react/2.0.0_vite@3.0.2:
+  /@vitejs/plugin-react/2.0.0_vite@3.0.3:
     resolution: {integrity: sha512-zHkRR+X4zqEPNBbKV2FvWSxK7Q6crjMBVIAYroSU8Nbb4M3E5x4qOiLoqJBHtXgr27kfednXjkwr3lr8jS6Wrw==}
     engines: {node: '>=14.18.0'}
     peerDependencies:
@@ -1849,7 +1849,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.18.6_@babel+core@7.18.9
       magic-string: 0.26.2
       react-refresh: 0.14.0
-      vite: 3.0.2
+      vite: 3.0.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6050,8 +6050,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite/3.0.2:
-    resolution: {integrity: sha512-TAqydxW/w0U5AoL5AsD9DApTvGb2iNbGs3sN4u2VdT1GFkQVUfgUldt+t08TZgi23uIauh1TUOQJALduo9GXqw==}
+  /vite/3.0.3:
+    resolution: {integrity: sha512-sDIpIcl3mv1NUaSzZwiXGEy1ZoWwwC2vkxUHY6yiDacR6zf//ZFuBJrozO62gedpE43pmxnLATNR5IYUdAEkMQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
