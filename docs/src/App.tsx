@@ -16,6 +16,7 @@ global((theme) => ({
     color: theme.mainColor,
     fontSize: 16,
     backgroundColor: theme.bgColor,
+    fontDisplay: 'optional',
     fontFamily: `PingFang SC,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`
   },
   '*': {
