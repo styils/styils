@@ -9,10 +9,7 @@
     "2": ":Styles inside global will generate global styles",
     "3": "The default unit is px"
   },
-  "globalCode": {
-    "1": "To use theme functionality, it must be wrapped by `SystemProvider`",
-    "2": "Use in styled"
-  },
+  "globalCode": "Use in styled",
   "slogan": "Has near-zero runtime, SSR, theming, and a fully typed API, and it's only 3kb in size.",
   "quick": "Quick Start",
   "github": "View on Github",
@@ -40,7 +37,7 @@
   "withVariantsDesc": {
     "1": "Style components are created with a<strong>`variants`</strong>attribute",
     "2": "You can define a single dynamic rule, multiple dynamic rules, or even compound dynamic rules",
-    "3": "Dynamic interpolation replaces props props passing, because passing values ​​through props will bring a large performance overhead, in addition, we may write the following code."
+    "3": "Dynamic interpolation replaces props props passing, because passing values through props will bring a large performance overhead, in addition, we may write the following code."
   },
   "withThemeDesc": "<strong>Styil</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
   "withSSRDesc": {

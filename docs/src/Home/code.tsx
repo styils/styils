@@ -260,21 +260,14 @@ global({
   }
 })
 // or
-// ${t('globalCode.1')}
-const Glob = global((theme) => ({
+global((theme) => ({
   body: {
     backgroundColor: theme.color
   }
 }))
-
-render(
-  <SystemProvider>
-    <Glob />
-  </SystemProvider>
-)
 // or
 const Foo = styled('div',{
-  // ${t('globalCode.2')}
+  // ${t('globalCode')}
   ':global':{
     body: { backgroundColor: 'red' }
   }

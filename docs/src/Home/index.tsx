@@ -20,6 +20,7 @@ import { StyilCode } from './code'
 const Logo = styled('img', {
   zIndex: 1,
   width: 200,
+  height: 240,
   transition: 'all .3s',
   filter: 'drop-shadow(0px 8px 6px rgba(26,58,70,0.8))'
 })

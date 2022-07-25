@@ -5,7 +5,7 @@ import Home from './Home'
 
 import i18n from './i18n'
 
-const Glob = global((theme) => ({
+global((theme) => ({
   html: {
     'scroll-behavior': 'smooth'
   },
@@ -52,7 +52,6 @@ export default function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <Root>
-        <Glob />
         <Home />
         <Footer>
           <span>{t('license')}</span>

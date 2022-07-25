@@ -9,10 +9,7 @@
     "2": ":global 内的样式将生成全局样式",
     "3": "默认单位是 px"
   },
-  "globalCode": {
-    "1": "要使用主题功能，必须被 `SystemProvider` 包裹",
-    "2": "在styled内使用"
-  },
+  "globalCode": "在styled内使用",
   "slogan": "有接近于零的运行时、SSR、主题和完全类型化的API，它的大小只有3kb。",
   "quick": "快速开始",
   "github": "在Github上查看",
