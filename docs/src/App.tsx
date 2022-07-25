@@ -1,7 +1,7 @@
 import { styled, global } from './theme'
 import React from 'react'
 import { useTranslation, I18nextProvider } from 'react-i18next'
-import { Link, Route, Routes } from 'react-router-dom'
+import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import Home from './Home'
 import Benchmark from './Benchmark'
 
@@ -114,6 +114,10 @@ const Translate = styled('div', {
 export default function App() {
   const { t } = useTranslation()
 
+  const { pathname } = useLocation()
+
+  const isBench = pathname.indexOf('benchmark') >= 0
+
   return (
     <I18nextProvider i18n={i18n}>
       <Root>
@@ -130,8 +134,7 @@ export default function App() {
             </svg>
             {i18n.language}
           </Translate>
-          <Link to="/styil/">home</Link>
-          <Link to="/styil/benchmark/">bench</Link>
+          {isBench ? <Link to="/styil/">home</Link> : <Link to="/styil/benchmark/">bench</Link>}
         </Header>
         <Routes>
           <Route path="/styil" element={<Home />} />

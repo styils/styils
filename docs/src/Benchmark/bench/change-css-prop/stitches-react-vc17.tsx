@@ -27,9 +27,7 @@ const StitchesTest = () => {
       <TestRunner numberOfRuns={3} iterationN={1000} TestComponent={Test} />
 
       <div style={{ opacity: 0, pointerEvents: 'none' }}>
-        <Button>
-          we mount the button outside the test to make sure we&apos;re not clocking any mount time
-        </Button>
+        <Button>将按钮安装在测试之外，以确保没有计时任何安装时间</Button>
       </div>
     </>
   )

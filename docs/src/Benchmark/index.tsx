@@ -7,6 +7,11 @@ const BenchmarkRoot = styled('div', (theme) => ({
   display: 'flex',
   paddingTop: 20,
 
+  '.start-test': {
+    cursor: 'pointer',
+    padding: '10px 15px'
+  },
+
   '& > div': {
     flex: 1,
     padding: '0 60px',
@@ -14,15 +19,18 @@ const BenchmarkRoot = styled('div', (theme) => ({
       '& >ul': {
         display: 'flex',
         alignItems: 'center',
-
         marginBottom: 20,
+
+        '& li': {
+          marginRight: 20
+        },
+
         '& a': {
           display: 'block',
-          marginRight: 20,
+
           borderRadius: '12px',
           lineHeight: '40px',
           padding: '0 20px',
-
           color: theme.secondColor,
           backgroundColor: theme.bgSecondColor,
           boxShadow: theme.boxShadow,
@@ -38,11 +46,15 @@ const BenchmarkRoot = styled('div', (theme) => ({
   '& > ul': {
     flexShrink: 0,
 
+    '& li': {
+      marginBottom: 14
+    },
+
     '& a': {
+      flexShrink: 0,
       display: 'block',
       fontSize: '14px',
       borderRadius: '12px',
-      marginBottom: 14,
       lineHeight: '40px',
       padding: '0 20px',
       textAlign: 'center',

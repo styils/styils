@@ -29,20 +29,12 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
   }
 
   return (
-    <div>
+    <div style={{ display: 'inline-block' }}>
       <style
         dangerouslySetInnerHTML={{
           __html: `
             th, td {
               padding: 10px;
-            }
-
-            li {
-              padding: 5px;
-            }
-
-            h3 {
-              margin-bottom: 5px;
             }
         `
         }}
@@ -55,13 +47,13 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
         <thead>
           <tr>
             <th />
-            <th>First run</th>
-            <th>Last run</th>
-            <th>Mean</th>
-            <th>Median</th>
-            <th>Fastest</th>
-            <th>Slowest</th>
-            <th>SD</th>
+            <th>第一次运行</th>
+            <th>最后一次运行</th>
+            <th>平均值</th>
+            <th>中位值</th>
+            <th>最快值</th>
+            <th>最慢值</th>
+            <th>标准偏差</th>
           </tr>
         </thead>
         <tbody>
@@ -76,7 +68,7 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
         </tbody>
         <tfoot>
           <tr>
-            <th>Average</th>
+            <th>平均</th>
             <ResultCells result={averageInfo} />
           </tr>
         </tfoot>
@@ -85,11 +77,8 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
       <hr />
 
       <ul>
-        <li>Last run should be about the same or faster than the first run</li>
-        <li>
-          Standard deviation should only be a few milliseconds or something is causing renders to be
-          wildly different
-        </li>
+        <li>最后一次运行应该与第一次运行大致相同或更快</li>
+        <li>标准偏差应该只有几毫秒，否则会导致渲染截然不同</li>
       </ul>
     </div>
   )

@@ -181,11 +181,12 @@ export const TestRunner = ({
 
     return (
       <button
+        className="start-test"
         onClick={() => {
           router(`?testId=${newTestId}&runIndex=0`)
         }}
       >
-        start test
+        开始测试
       </button>
     )
   }
