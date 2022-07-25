@@ -274,7 +274,7 @@ const Foo = styled('div',{
 }
 `
 
-  const mediaCode = `const Root = styled('div', () => ({
+  const mediaCode = `const Root = styled('div', {
   maxWidth: 1280,
   margin: '0 auto',
   minHeight: '100vh',
@@ -283,7 +283,7 @@ const Foo = styled('div',{
   '@media screen and (max-width: 900px)': {
     padding: '0 28px'
   }
-}))
+})
 `
 
   const codes = {

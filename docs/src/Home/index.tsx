@@ -73,7 +73,7 @@ const LogoWapper = styled('section', (theme) => ({
   '&:after': {
     position: 'absolute',
     borderRadius: '50%',
-    height: '100%',
+    height: '65%',
     width: '80%',
     left: '50%',
     transform: 'translateX(-50%)',
