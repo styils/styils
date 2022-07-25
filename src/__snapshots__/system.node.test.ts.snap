@@ -2,14 +2,14 @@
 
 exports[`css node createStyil node 1`] = `
 "
-      <meta id=\\"__styil_cache__\\" name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-1473887168|css-2950234073\\">
+      <meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-1473887168|css-2950234073\\">
       <style data-styil=\\"css\\">.css-1473887168{width:100px;}.css-2950234073{height:100px;}</style>
     "
 `;
 
 exports[`css node node default getCssValue  1`] = `
 "
-      <meta id=\\"__styil_cache__\\" name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-1473887168|css-2950234073\\">
+      <meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-1473887168|css-2950234073\\">
       <style data-styil=\\"css\\">.css-1473887168{width:100px;}.css-2950234073{height:100px;}</style>
     "
 `;

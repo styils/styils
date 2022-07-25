@@ -96,9 +96,28 @@ exports[`system global 1`] = `
 </html>
 `;
 
+exports[`system global hydrate 1`] = `
+"
+      <meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"\\">
+      <style data-styil=\\"css\\"></style>
+    "
+`;
+
+exports[`system global hydrate 2`] = `
+<html>
+  <head>
+    <meta
+      mode="none"
+      name="styil-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
 exports[`system hydrate 1`] = `
 "
-      <meta id=\\"__styil_cache__\\" name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
+      <meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
       <style data-styil=\\"css\\"></style>
     "
 `;
@@ -108,7 +127,6 @@ exports[`system hydrate 2`] = `
   <head>
     <meta
       content="css-2242710476"
-      id="__styil_cache__"
       name="styil-cache"
     />
   </head>
@@ -124,7 +142,7 @@ exports[`system hydrate 2`] = `
 
 exports[`system namespace hydrate 1`] = `
 "
-      <meta id=\\"__styil_cache__\\" name=\\"styil-cache\\" mode=\\"none\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
+      <meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
       <style data-styil=\\"css\\"></style>
     "
 `;
@@ -134,7 +152,6 @@ exports[`system namespace hydrate 2`] = `
   <head>
     <meta
       content="ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small"
-      id="__styil_cache__"
       name="styil-cache"
     />
   </head>
@@ -486,7 +503,7 @@ exports[`system variants 4`] = `
 
 exports[`system variants hydrate 1`] = `
 "
-      <meta id=\\"__styil_cache__\\" name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
+      <meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
       <style data-styil=\\"css\\"></style>
     "
 `;
@@ -496,7 +513,6 @@ exports[`system variants hydrate 2`] = `
   <head>
     <meta
       content="css-2242710476|css-2242710476.size-max|css-2242710476.size-small"
-      id="__styil_cache__"
       name="styil-cache"
     />
   </head>

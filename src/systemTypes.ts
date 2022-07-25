@@ -105,7 +105,7 @@ export interface System<Theme> {
     setMode: React.Dispatch<React.SetStateAction<string>>
     theme: Theme
   }
-  global: (styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) => () => null
+  global: (styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) => void
   getCssValue: () => string
   flush: () => void
 }

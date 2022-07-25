@@ -72,7 +72,7 @@ describe('system', () => {
       defaultMode: 'light'
     })
 
-    const Glob = globalTheme((theme) => ({
+    globalTheme((theme) => ({
       body: {
         backgroundColor: theme.color
       }
@@ -86,7 +86,6 @@ describe('system', () => {
           return React.createElement(
             'div',
             { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') },
-            React.createElement(Glob),
             mode
           )
         })
@@ -126,7 +125,7 @@ describe('system', () => {
       sheetOptions: { speedy: true }
     })
 
-    const Glob = globalTheme((theme) => ({
+    globalTheme((theme) => ({
       body: {
         backgroundColor: theme.color
       }
@@ -140,7 +139,6 @@ describe('system', () => {
           return React.createElement(
             'div',
             { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') },
-            React.createElement(Glob),
             mode
           )
         })
@@ -510,11 +508,10 @@ describe('system', () => {
   it('hydrate', async () => {
     const meta = document.createElement('meta')
     meta.name = 'styil-cache'
-    meta.id = '__styil_cache__'
     meta.content = `css-2242710476`
     globalThis.document.head.appendChild(meta)
 
-    jest.spyOn(document, 'getElementById').mockImplementationOnce(() => {
+    jest.spyOn(document, 'querySelector').mockImplementationOnce(() => {
       return meta
     })
 
@@ -534,11 +531,10 @@ describe('system', () => {
   it('variants hydrate', () => {
     const meta = document.createElement('meta')
     meta.name = 'styil-cache'
-    meta.id = '__styil_cache__'
     meta.content = `css-2242710476|css-2242710476.size-max|css-2242710476.size-small`
     globalThis.document.head.appendChild(meta)
 
-    jest.spyOn(document, 'getElementById').mockImplementationOnce(() => {
+    jest.spyOn(document, 'querySelector').mockImplementationOnce(() => {
       return meta
     })
 
@@ -571,11 +567,10 @@ describe('system', () => {
   it('namespace hydrate', () => {
     const meta = document.createElement('meta')
     meta.name = 'styil-cache'
-    meta.id = '__styil_cache__'
     meta.content = `ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small`
     globalThis.document.head.appendChild(meta)
 
-    jest.spyOn(document, 'getElementById').mockImplementationOnce(() => {
+    jest.spyOn(document, 'querySelector').mockImplementationOnce(() => {
       return meta
     })
 
@@ -599,6 +594,29 @@ describe('system', () => {
     )
 
     render(React.createElement(Button, { variants: { size: 'small' } }))
+
+    expect(getCssValue()).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+    globalThis.document.head.removeChild(meta)
+  })
+
+  it('global hydrate', () => {
+    const meta = document.createElement('meta')
+    meta.name = 'styil-cache'
+    meta.setAttribute('mode', 'none')
+    globalThis.document.head.appendChild(meta)
+
+    jest.spyOn(document, 'querySelector').mockImplementationOnce(() => {
+      return meta
+    })
+
+    const { global: hydrateGlobal, getCssValue } = createSystem()
+    hydrateGlobal({
+      body: {
+        backgroundColor: 'gainsboro',
+        borderRadius: '9999px'
+      }
+    })
 
     expect(getCssValue()).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()

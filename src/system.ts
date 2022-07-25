@@ -13,7 +13,7 @@ const globalCache: Record<
     ruleCode: string
   }
 > = {}
-const cacheKey = '__styil_cache__'
+
 const splitSymbol = '|'
 const isBrowser = !!globalThis.document
 
@@ -26,8 +26,11 @@ export function createSystem<Theme extends AnyObject = {}>(
     sheetOptions = {}
   } = options
   const { key, container, speedy, nonce } = sheetOptions
-  let globalMode = defaultMode
-  const metaHtml = isBrowser ? (document.getElementById(cacheKey) as HTMLMetaElement) : null
+  const globalMode = { mode: defaultMode }
+  let currentMode = globalMode.mode
+  const metaHtml = isBrowser
+    ? (document.querySelector(`meta[name="styil-cache"]`) as HTMLMetaElement)
+    : null
 
   if (isBrowser && !selectorCache.size && metaHtml) {
     metaHtml.content.split(splitSymbol).forEach((name) => {
@@ -56,7 +59,8 @@ export function createSystem<Theme extends AnyObject = {}>(
 
     const updataMode = (value: string) => {
       setMode(value)
-      globalMode = value
+      globalMode.mode = value
+      currentMode = value
     }
 
     return React.createElement(
@@ -194,7 +198,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     Object.defineProperty(styledComponent, 'toString', {
       value() {
         // Cross-rendering, after being fetched, child components will not be recalculated
-        createRule(globalMode, targetInfo)
+        createRule(currentMode, targetInfo)
         return `.${targetInfo.targetClassName}`
       }
     })
@@ -204,16 +208,15 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   function getCssValue() {
     return `
-      <meta id="${cacheKey}" name="styil-cache" mode="${globalMode}" content="${[
-      ...selectorCache
-    ].join(splitSymbol)}">
+      <meta name="styil-cache" mode="${currentMode}" content="${[...selectorCache].join(
+      splitSymbol
+    )}">
       <style data-styil="${sheet.key}">${sheet.ssrData}</style>
     `
   }
 
   function global(styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) {
     let oldRule: OldRule[]
-    let currentMode = defaultMode
 
     function createGlobRules(mode: string) {
       if (oldRule) {
@@ -251,16 +254,9 @@ export function createSystem<Theme extends AnyObject = {}>(
 
     createGlobRules(defaultMode)
 
-    return function Glob() {
-      const { mode } = useSystem()
-
-      if (mode !== undefined && mode !== currentMode) {
-        createGlobRules(mode)
-        currentMode = mode
-      }
-
-      return null
-    }
+    Object.defineProperty(globalMode, 'mode', {
+      set: createGlobRules
+    })
   }
 
   function flush() {

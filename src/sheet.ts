@@ -23,7 +23,6 @@ export class StyleSheet {
 
   /**
    * use insertRule, the production default `true`, and the development environment default to `appendChild`
-   * @def
    */
   speedy: boolean
 
