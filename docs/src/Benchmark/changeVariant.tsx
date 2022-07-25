@@ -8,9 +8,6 @@ export default function Home() {
     <div>
       <ul>
         <li>
-          <Link to="stitches-core-v025">Stitches Core v0.2.5</Link>
-        </li>
-        <li>
           <Link to="stitches-react-vc17">Stitches React</Link>
         </li>
         <li>

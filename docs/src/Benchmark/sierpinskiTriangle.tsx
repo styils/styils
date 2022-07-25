@@ -7,7 +7,7 @@ export const sierpinskiTriangle = import.meta.glob('./bench/sierpinski-triangle/
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <ul>
         <li>
           <Link to="stitches-react-vc17">Stitches React</Link>

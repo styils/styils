@@ -8,21 +8,41 @@ const BenchmarkRoot = styled('div', (theme) => ({
   paddingTop: 20,
 
   '& > div': {
+    flex: 1,
     padding: '0 60px',
+    '& >div': {
+      '& >ul': {
+        display: 'flex',
+        alignItems: 'center',
 
-    '& ul': {
-      display: 'flex'
+        marginBottom: 20,
+        '& a': {
+          display: 'block',
+          marginRight: 20,
+          borderRadius: '12px',
+          lineHeight: '40px',
+          padding: '0 20px',
+
+          color: theme.secondColor,
+          backgroundColor: theme.bgSecondColor,
+          boxShadow: theme.boxShadow,
+          '&:hover': {
+            color: '#333',
+            backgroundColor: '#e6e8eb'
+          }
+        }
+      }
     }
   },
 
   '& > ul': {
     flexShrink: 0,
 
-    '& li': {
+    '& a': {
+      display: 'block',
       fontSize: '14px',
       borderRadius: '12px',
       marginBottom: 14,
-      display: 'block',
       lineHeight: '40px',
       padding: '0 20px',
       textAlign: 'center',
