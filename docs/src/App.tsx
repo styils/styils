@@ -1,8 +1,7 @@
 import { styled, global } from './theme'
 import React from 'react'
 import { useTranslation, I18nextProvider } from 'react-i18next'
-import { Route, Routes } from 'react-router-dom'
-
+import { Link, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 
 import i18n from './i18n'
@@ -16,8 +15,6 @@ import MountDeepTren, { mountDeepTree } from './Benchmark/mountDeepTree'
 
 import MoutWideTree, { mountWideTree } from './Benchmark/mountWideTree'
 import SierpinskiTriangle, { sierpinskiTriangle } from './Benchmark/sierpinskiTriangle'
-
-// Link,
 
 function getPathElement(modules: Record<string, any>, base: string) {
   const child = []
@@ -79,10 +76,10 @@ export default function App() {
 
   return (
     <I18nextProvider i18n={i18n}>
-      {/* <header>
+      <header>
         <Link to="/styil">Home</Link>
         <Link to="/styil/benchmark">benchmark</Link>
-      </header> */}
+      </header>
       <Root>
         <Routes>
           <Route path="/styil" element={<Home />} />
