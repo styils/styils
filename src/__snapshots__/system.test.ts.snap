@@ -140,6 +140,13 @@ exports[`system hydrate 2`] = `
 </html>
 `;
 
+exports[`system mix hydrate 1`] = `
+"
+      <meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
+      <style data-styil=\\"css\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>
+    "
+`;
+
 exports[`system namespace hydrate 1`] = `
 "
       <meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">

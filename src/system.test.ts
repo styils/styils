@@ -622,4 +622,26 @@ describe('system', () => {
     expect(document.documentElement).toMatchSnapshot()
     globalThis.document.head.removeChild(meta)
   })
+
+  it('mix hydrate', async () => {
+    styled('div', {
+      backgroundColor: 'gainsboro',
+      borderRadius: '9999px'
+    })
+
+    Object.defineProperty(globalThis, 'document', {
+      get() {
+        return undefined
+      }
+    })
+
+    const { styled: hydrateStyled, getCssValue } = createSystem()
+
+    hydrateStyled('div', {
+      backgroundColor: 'gainsboro',
+      borderRadius: '9999px'
+    })
+
+    expect(getCssValue()).toMatchSnapshot()
+  })
 })

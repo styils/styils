@@ -5,21 +5,21 @@ import { CSSAttribute, type AnyObject } from './types'
 import { parseRules } from './parse'
 import { StyleSheet, type OldRule } from './sheet'
 
-const selectorCache = new Set<string>([])
-const globalCache: Record<
-  string,
-  {
-    segmentRuleCode: string[]
-    ruleCode: string
-  }
-> = {}
-
-const splitSymbol = '|'
-const isBrowser = !!globalThis.document
-
 export function createSystem<Theme extends AnyObject = {}>(
   options: SystemOptions<Theme> = {}
 ): System<Theme> {
+  const splitSymbol = '|'
+  const isBrowser = !!globalThis.document
+
+  const selectorCache = new Set<string>([])
+  const globalCache: Record<
+    string,
+    {
+      segmentRuleCode: string[]
+      ruleCode: string
+    }
+  > = {}
+
   const {
     theme: inputTheme = () => ({} as AnyObject),
     defaultMode = 'none',
