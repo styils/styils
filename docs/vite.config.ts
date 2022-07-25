@@ -12,9 +12,5 @@ export default defineConfig({
       { find: /react-dom$/, replacement: 'react-dom/profiling' },
       { find: 'scheduler/tracing', replacement: 'scheduler/tracing-profiling' }
     ]
-  },
-
-  build: {
-    sourcemap: 'inline'
   }
 })
