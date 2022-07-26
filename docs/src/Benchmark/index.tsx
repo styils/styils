@@ -20,6 +20,10 @@ const BenchmarkRoot = styled('div', (theme) => ({
   '& > div': {
     flex: 1,
     padding: '0 60px',
+    '& p': {
+      marginTop: 20,
+      color: theme.secondColor
+    },
     '& >div': {
       '& >ul': {
         display: 'flex',
@@ -103,6 +107,7 @@ export default function Benchmark() {
       </ul>
       <div>
         <Outlet />
+        <p>- {t('benchmarkDesc')}</p>
       </div>
     </BenchmarkRoot>
   )

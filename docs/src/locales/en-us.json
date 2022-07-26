@@ -55,6 +55,7 @@
   "sierpinski-triangle": "Sierpinski triangle",
   "mount-deep-tree": "Mount depth style",
   "mount-wide-tree": "Mount wide-tree",
+  "benchmarkDesc": "After each test, the page will be reloaded to refresh the cache",
   "testResults": {
     "start-test": "Start test",
     "count": "Count",

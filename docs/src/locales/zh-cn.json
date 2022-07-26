@@ -55,6 +55,7 @@
   "sierpinski-triangle": "谢尔宾斯基三角",
   "mount-deep-tree": "挂载深度样式",
   "mount-wide-tree": "挂载广度样式",
+  "benchmarkDesc": "每次测试结束,页面都会 reload 刷新缓存",
   "testResults": {
     "start-test": "开始测试",
     "count": "个数",
