@@ -2,6 +2,7 @@ import React, { Profiler, useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { createId } from './utils/createId'
 import { TestResults } from './TestResults'
+import { useTranslation } from 'react-i18next'
 
 /** The localStorage object that stores our tests between runs */
 export type TestInfo = {
@@ -160,6 +161,7 @@ export const TestRunner = ({
   /** The N number of iterations to run inside each test */
   iterationN: number
 }) => {
+  const { t } = useTranslation()
   const router = useNavigate()
   const [searchParams] = useSearchParams()
   const testId = searchParams.get('testId')
@@ -189,7 +191,7 @@ export const TestRunner = ({
           router(`?testId=${newTestId}&runIndex=0`)
         }}
       >
-        开始测试
+        {t('testResults.start-test')}
       </button>
     )
   }
