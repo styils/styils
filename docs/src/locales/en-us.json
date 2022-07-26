@@ -56,7 +56,7 @@
   "mount-deep-tree": "Mount depth style",
   "mount-wide-tree": "Mount wide-tree",
   "testResults": {
-    "start-test": "start-test",
+    "start-test": "Start test",
     "count": "Count",
     "frequency": "Frequency",
     "th1": "First run",
