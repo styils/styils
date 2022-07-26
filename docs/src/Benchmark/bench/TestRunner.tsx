@@ -111,6 +111,9 @@ const TestAndRefresh = ({
     if (runIndex === testInfo.numberOfRuns - 1) {
       // This was the last test, redirect to the results
       router(`?testId=${testInfo.testId}&finished=true`)
+
+      // reload styles
+      location.reload()
     } else {
       // We have more sample sizes to run, +1 the sampleIndex
       router(`?testId=${testInfo.testId}&runIndex=${runIndex + 1}`)

@@ -48,5 +48,25 @@
   "withGlobalDesc": "<strong>Styil</strong>提供两种方式定义, 任你喜欢。",
   "withMediaDesc": "就像在常规<strong>CSS</strong>中使用媒体查询一样，可以将<strong>@media</strong>直接放在<strong>CSS</strong>块中。",
   "back": "返回",
-  "bench": "基准"
+  "bench": "基准",
+  "create-and-mount-button": "创建并挂载按钮",
+  "change-a-variant": "更改组件的变体",
+  "change-css-prop": "更改道具中的值",
+  "sierpinski-triangle": "谢尔宾斯基三角",
+  "mount-deep-tree": "挂载深度样式",
+  "mount-wide-tree": "挂载广度样式",
+  "testResults": {
+    "count": "个数",
+    "frequency": "次数",
+    "th1": "第一次运行",
+    "th2": "最后一次运行",
+    "th3": "平均值",
+    "th4": "中位值",
+    "th5": "最快值",
+    "th6": "最慢值",
+    "th7": "标准偏差",
+    "th8": "平均",
+    "desc1": "最后一次运行应该与第一次运行相差不多或更快",
+    "desc2": "标准偏差应该只有几毫秒"
+  }
 }

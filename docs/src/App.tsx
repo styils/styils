@@ -153,7 +153,6 @@ export default function App() {
                 return <Route key={path} path={path} element={<Element />} />
               })}
             </Route>
-
             <Route path="create-and-mount-button" element={<CreateMountButton />}>
               {getPathElement(createMountButton, 'create-and-mount-button').map(
                 ({ path, Element }) => {

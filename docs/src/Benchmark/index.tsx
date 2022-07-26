@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, Outlet } from 'react-router-dom'
 import { styled } from '../theme'
 
@@ -8,6 +9,10 @@ const BenchmarkRoot = styled('div', (theme) => ({
   paddingTop: 20,
 
   '.start-test': {
+    color: '#fff',
+    backgroundColor: '#fb304f',
+    borderRadius: 12,
+    border: 'none',
     cursor: 'pointer',
     padding: '10px 15px'
   },
@@ -61,7 +66,7 @@ const BenchmarkRoot = styled('div', (theme) => ({
       color: theme.secondColor,
       backgroundColor: theme.bgSecondColor,
       boxShadow: theme.boxShadow,
-      transition: 'all .3s',
+
       fontWeight: 500,
 
       '&:hover': {
@@ -73,26 +78,27 @@ const BenchmarkRoot = styled('div', (theme) => ({
 }))
 
 export default function Benchmark() {
+  const { t } = useTranslation()
   return (
     <BenchmarkRoot>
       <ul>
         <li>
-          <Link to="create-and-mount-button">创建并挂载按钮</Link>
+          <Link to="create-and-mount-button">{t('create-and-mount-button')}</Link>
         </li>
         <li>
-          <Link to="change-a-variant">更改组件的变体</Link>
+          <Link to="change-a-variant">{t('change-a-variant')}</Link>
         </li>
         <li>
-          <Link to="change-css-prop">更改道具中的值</Link>
+          <Link to="change-css-prop">{t('change-css-prop')}</Link>
         </li>
         <li>
-          <Link to="sierpinski-triangle">谢尔宾斯基三角</Link>
+          <Link to="sierpinski-triangle">{t('sierpinski-triangle')}</Link>
         </li>
         <li>
-          <Link to="mount-deep-tree">挂载深度样式</Link>
+          <Link to="mount-deep-tree">{t('mount-deep-tree')}</Link>
         </li>
         <li>
-          <Link to="mount-wide-tree">挂载广度样式</Link>
+          <Link to="mount-wide-tree">{t('mount-wide-tree')}</Link>
         </li>
       </ul>
       <div>

@@ -48,5 +48,25 @@
   "withGlobalDesc": "<strong>Styil</strong>provides two ways to define as you like.",
   "withMediaDesc": "Just like using media queries in regular<strong>CSS</strong>,<strong>@media</strong>can be placed directly in the<strong>CSS</strong>block.",
   "back": "Back",
-  "bench": "Bench"
+  "bench": "Bench",
+  "create-and-mount-button": "Create and mount button",
+  "change-a-variant": "Change the variant of the component",
+  "change-css-prop": "Change the value in the prop",
+  "sierpinski-triangle": "Sierpinski triangle",
+  "mount-deep-tree": "Mount depth style",
+  "mount-wide-tree": "Mount wide-tree",
+  "testResults": {
+    "count": "Count",
+    "frequency": "Frequency",
+    "th1": "First run",
+    "th2": "Last run",
+    "th3": "Average",
+    "th4": "Median",
+    "th5": "Fastest",
+    "th6": "Slowest",
+    "th7": "SD",
+    "th8": "Average",
+    "desc1": "The last run should be about the same or faster than the first",
+    "desc2": "Standard deviation should be only a few milliseconds"
+  }
 }

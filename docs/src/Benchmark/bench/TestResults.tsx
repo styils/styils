@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { RunResult, TestInfo } from './TestRunner'
 
 type Result = Omit<RunResult, 'N'>
@@ -28,6 +29,8 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
     variance: calculateAverage(testInfo.results, 'variance', testInfo.numberOfRuns)
   }
 
+  const { t } = useTranslation()
+
   return (
     <div style={{ display: 'inline-block' }}>
       <style
@@ -40,20 +43,24 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
         }}
       />
 
-      <div style={{ padding: '10px' }}>个数: {testInfo.N}</div>
-      <div style={{ padding: '10px' }}>次数: {testInfo.numberOfRuns}</div>
+      <div style={{ padding: '10px' }}>
+        {t('testResults.count')}: {testInfo.N}
+      </div>
+      <div style={{ padding: '10px' }}>
+        {t('testResults.frequency')}: {testInfo.numberOfRuns}
+      </div>
 
       <table>
         <thead>
           <tr>
             <th />
-            <th>第一次运行</th>
-            <th>最后一次运行</th>
-            <th>平均值</th>
-            <th>中位值</th>
-            <th>最快值</th>
-            <th>最慢值</th>
-            <th>标准偏差</th>
+            <th>{t('testResults.th1')}</th>
+            <th>{t('testResults.th2')}</th>
+            <th>{t('testResults.th3')}</th>
+            <th>{t('testResults.th4')}</th>
+            <th>{t('testResults.th5')}</th>
+            <th>{t('testResults.th6')}</th>
+            <th>{t('testResults.th7')}</th>
           </tr>
         </thead>
         <tbody>
@@ -68,17 +75,17 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
         </tbody>
         <tfoot>
           <tr>
-            <th>平均</th>
+            <th>{t('testResults.th8')}</th>
             <ResultCells result={averageInfo} />
           </tr>
         </tfoot>
       </table>
-
       <hr />
+      <br />
 
       <ul>
-        <li>最后一次运行应该与第一次运行大致相同或更快</li>
-        <li>标准偏差应该只有几毫秒，否则会导致渲染截然不同</li>
+        <li>- {t('testResults.desc1')}</li>
+        <li>- {t('testResults.desc2')}</li>
       </ul>
     </div>
   )
