@@ -20,7 +20,6 @@ export type StyleCSSAttribute<Theme> = CSSAttribute | ((props: Theme, mode: stri
 
 export interface FunctionComponent {
   displayName?: string
-  label?: string
 }
 
 export type StyledComponentProps<Props, As extends React.ElementType> = MergeProps<
