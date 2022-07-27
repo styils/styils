@@ -13,7 +13,7 @@ export function render(url) {
     </SystemProvider>
   )
 
-  const style = getCssValue()
+  const { html } = getCssValue()
 
-  return { appHtml, style }
+  return { appHtml, style: html }
 }
