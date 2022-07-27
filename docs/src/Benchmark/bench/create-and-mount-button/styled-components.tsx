@@ -15,7 +15,14 @@ const Test = ({ testIndex }: TestComponentProps) => {
 }
 
 const StitchesTest = () => {
-  return <TestRunner numberOfRuns={3} iterationN={1000} TestComponent={Test} />
+  return (
+    <TestRunner
+      testIdentifier="create-and-mount-button-styled-components"
+      numberOfRuns={3}
+      iterationN={1000}
+      TestComponent={Test}
+    />
+  )
 }
 
 export default StitchesTest

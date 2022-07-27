@@ -100,7 +100,6 @@ importers:
       d3-scale-chromatic: ^3.0.0
       fs-extra: ^10.1.0
       i18next: ^21.8.14
-      nanoid: ^4.0.0
       prismjs: ^1.28.0
       react: ^17.0.2
       react-dom: ^17.0.2
@@ -116,7 +115,6 @@ importers:
       '@stitches/stringify': 1.2.8
       d3-scale-chromatic: 3.0.0
       i18next: 21.8.14
-      nanoid: 4.0.0
       prismjs: 1.28.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -4821,12 +4819,6 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
-
-  /nanoid/4.0.0:
-    resolution: {integrity: sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==}
-    engines: {node: ^14 || ^16 || >=18}
-    hasBin: true
-    dev: false
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}

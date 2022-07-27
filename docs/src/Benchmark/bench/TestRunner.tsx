@@ -1,6 +1,5 @@
 import React, { Profiler, useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
-import { createId } from './utils/createId'
 import { TestResults } from './TestResults'
 import { useTranslation } from 'react-i18next'
 
@@ -105,6 +104,7 @@ const TestAndRefresh = ({
       meanIteration,
       variance
     }
+
     // Serialize the testInfo and pop it back onto localStorage:
     localStorage.setItem(testInfo.testId, JSON.stringify(testInfo))
 
@@ -150,6 +150,7 @@ const TestAndRefresh = ({
 }
 
 export const TestRunner = ({
+  testIdentifier,
   TestComponent,
   numberOfRuns,
   iterationN
@@ -160,6 +161,8 @@ export const TestRunner = ({
   numberOfRuns: number
   /** The N number of iterations to run inside each test */
   iterationN: number
+  /**  identifier */
+  testIdentifier: string
 }) => {
   const { t } = useTranslation()
   const router = useNavigate()
@@ -172,23 +175,39 @@ export const TestRunner = ({
     return null
   }
 
+  const onRetest = () => {
+    const old = JSON.parse(localStorage.getItem(testIdentifier))
+    old.results = {}
+    localStorage.setItem(testIdentifier, JSON.stringify(old))
+    router(`?testId=${testIdentifier}&runIndex=0`)
+  }
+
   if (!testId) {
     // No test is running yet
-    const newTestId = createId()
+
+    try {
+      const old = JSON.parse(localStorage.getItem(testIdentifier))
+      if (Object.keys(old.results).length) {
+        return <TestResults testInfo={old} onRetest={onRetest} />
+      }
+    } catch {
+      //
+    }
 
     const testInfo: TestInfo = {
-      testId: newTestId,
+      testId: testIdentifier,
       N: iterationN,
       numberOfRuns,
       results: {}
     }
-    localStorage.setItem(newTestId, JSON.stringify(testInfo))
+
+    localStorage.setItem(testIdentifier, JSON.stringify(testInfo))
 
     return (
       <button
         className="start-test"
         onClick={() => {
-          router(`?testId=${newTestId}&runIndex=0`)
+          router(`?testId=${testIdentifier}&runIndex=0`)
         }}
       >
         {t('testResults.start-test')}
@@ -202,7 +221,7 @@ export const TestRunner = ({
       // Test is done!
       const testInfo: TestInfo = JSON.parse(localStorage.getItem(testId))
 
-      return <TestResults testInfo={testInfo} />
+      return <TestResults testInfo={testInfo} onRetest={onRetest} />
     }
     // We have a test to run
 

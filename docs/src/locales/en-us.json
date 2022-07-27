@@ -70,5 +70,6 @@
     "th8": "Average",
     "desc1": "The last run should be about the same or faster than the first",
     "desc2": "Standard deviation should be only a few milliseconds"
-  }
+  },
+  "retest": "Retest"
 }

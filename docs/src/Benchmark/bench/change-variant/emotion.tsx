@@ -19,7 +19,12 @@ const Test: React.FunctionComponent<TestComponentProps> = ({ testIndex }: TestCo
 const StitchesTest = () => {
   return (
     <>
-      <TestRunner numberOfRuns={3} iterationN={1000} TestComponent={Test} />
+      <TestRunner
+        testIdentifier="change-variant-button-emotion"
+        numberOfRuns={3}
+        iterationN={1000}
+        TestComponent={Test}
+      />
 
       <div style={{ opacity: 0, pointerEvents: 'none' }}>
         <Button>将按钮安装在测试之外，以确保没有计时任何安装时间</Button>

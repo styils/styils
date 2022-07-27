@@ -1,6 +1,25 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { RunResult, TestInfo } from './TestRunner'
+import { styled } from '../../theme'
+
+const Header = styled('section', () => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  button: {
+    color: '#fff',
+    backgroundColor: '#fb304f',
+    borderRadius: 12,
+    border: 'none',
+    cursor: 'pointer',
+    padding: '10px 15px',
+    marginRight: 20
+  },
+  'div span': {
+    paddingRight: 10
+  }
+}))
 
 type Result = Omit<RunResult, 'N'>
 type ResultKey = keyof Result
@@ -18,7 +37,13 @@ const calculateAverage = (
   return total / numberOfRuns
 }
 
-export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
+export const TestResults = ({
+  testInfo,
+  onRetest
+}: {
+  testInfo: TestInfo
+  onRetest: () => void
+}) => {
   const averageInfo: Result = {
     firstIteration: calculateAverage(testInfo.results, 'firstIteration', testInfo.numberOfRuns),
     lastIteration: calculateAverage(testInfo.results, 'lastIteration', testInfo.numberOfRuns),
@@ -32,25 +57,31 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
   const { t } = useTranslation()
 
   return (
-    <div style={{ display: 'inline-block' }}>
+    <div style={{ width: '100%' }}>
       <style
         dangerouslySetInnerHTML={{
           __html: `
             th, td {
               padding: 10px;
+              text-align: center;
             }
         `
         }}
       />
 
-      <div style={{ padding: '10px' }}>
-        {t('testResults.count')}: {testInfo.N}
-      </div>
-      <div style={{ padding: '10px' }}>
-        {t('testResults.frequency')}: {testInfo.numberOfRuns}
-      </div>
+      <Header>
+        <div>
+          <span>
+            {t('testResults.count')}: {testInfo.N}
+          </span>
+          <span>
+            {t('testResults.frequency')}: {testInfo.numberOfRuns}
+          </span>
+        </div>
+        <button onClick={onRetest}>{t('retest')}</button>
+      </Header>
 
-      <table>
+      <table style={{ width: '100%', marginTop: '20px' }}>
         <thead>
           <tr>
             <th />
@@ -86,6 +117,7 @@ export const TestResults = ({ testInfo }: { testInfo: TestInfo }) => {
       <ul>
         <li>- {t('testResults.desc1')}</li>
         <li>- {t('testResults.desc2')}</li>
+        <li>- {t('benchmarkDesc')}</li>
       </ul>
     </div>
   )

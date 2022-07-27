@@ -22,7 +22,12 @@ const Test = ({ testIndex }: TestComponentProps) => {
 const StitchesTest = () => {
   return (
     <>
-      <TestRunner numberOfRuns={3} iterationN={1000} TestComponent={Test} />
+      <TestRunner
+        testIdentifier="change-css-prop-baseline"
+        numberOfRuns={3}
+        iterationN={1000}
+        TestComponent={Test}
+      />
 
       <style
         dangerouslySetInnerHTML={{

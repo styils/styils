@@ -76,7 +76,14 @@ export const Test = () => {
 }
 
 const StitchesTest = () => {
-  return <TestRunner numberOfRuns={3} iterationN={50} TestComponent={Test} />
+  return (
+    <TestRunner
+      testIdentifier="mount-wide-tree-styil-react"
+      numberOfRuns={3}
+      iterationN={50}
+      TestComponent={Test}
+    />
+  )
 }
 
 export default StitchesTest

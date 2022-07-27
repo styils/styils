@@ -9,44 +9,44 @@ const BenchmarkRoot = styled('div', (theme) => ({
   paddingTop: 20,
 
   '.start-test': {
+    display: 'inline-block',
     color: '#fff',
     backgroundColor: '#fb304f',
     borderRadius: 12,
     border: 'none',
     cursor: 'pointer',
+    margin: '0 20px',
+    float: 'right',
     padding: '10px 15px'
   },
 
   '& > div': {
     flex: 1,
     padding: '0 60px',
-    '& p': {
-      marginTop: 20,
-      color: theme.secondColor
-    },
-    '& >div': {
-      '& >ul': {
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: 20,
 
-        '& li': {
-          marginRight: 20
-        },
+    '& >ul': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
 
-        '& a': {
-          display: 'block',
+      marginBottom: 20,
 
-          borderRadius: '12px',
-          lineHeight: '40px',
-          padding: '0 20px',
-          color: theme.secondColor,
-          backgroundColor: theme.bgSecondColor,
-          boxShadow: theme.boxShadow,
-          '&:hover': {
-            color: '#333',
-            backgroundColor: '#e6e8eb'
-          }
+      '& li': {
+        marginRight: 20
+      },
+
+      '& a': {
+        display: 'block',
+
+        borderRadius: '12px',
+        lineHeight: '40px',
+        padding: '0 20px',
+        color: theme.secondColor,
+        backgroundColor: theme.bgSecondColor,
+        boxShadow: theme.boxShadow,
+        '&:hover': {
+          color: '#333',
+          backgroundColor: '#e6e8eb'
         }
       }
     }
@@ -105,10 +105,8 @@ export default function Benchmark() {
           <Link to="mount-wide-tree">{t('mount-wide-tree')}</Link>
         </li>
       </ul>
-      <div>
-        <Outlet />
-        <p>- {t('benchmarkDesc')}</p>
-      </div>
+
+      <Outlet />
     </BenchmarkRoot>
   )
 }
