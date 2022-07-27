@@ -1,7 +1,7 @@
 import { Link, Outlet } from 'react-router-dom'
 import React from 'react'
 
-export const changeVariant = import.meta.glob('./bench/change-a-variant/*.tsx', { eager: true })
+export const changeVariant = import.meta.glob('./bench/change-variant/*.tsx', { eager: true })
 
 export default function Home() {
   return (

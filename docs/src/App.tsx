@@ -141,10 +141,10 @@ export default function App() {
           )}
         </Header>
         <Routes>
-          <Route path="/styil" element={<Home />} />
-          <Route path="/styil/benchmark" element={<Benchmark />}>
-            <Route path="change-a-variant" element={<ChangeVariant />}>
-              {getPathElement(changeVariant, 'change-a-variant').map(({ path, Element }) => {
+          <Route path="/styil/" element={<Home />} />
+          <Route path="/styil/benchmark/" element={<Benchmark />}>
+            <Route path="change-variant" element={<ChangeVariant />}>
+              {getPathElement(changeVariant, 'change-variant').map(({ path, Element }) => {
                 return <Route key={path} path={path} element={<Element />} />
               })}
             </Route>

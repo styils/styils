@@ -18,7 +18,7 @@ fs.writeFileSync(
     .replace(/styled\$4\(/g, 'styled$4.default(')
 )
 
-const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
+const template = fs.readFileSync(toAbsolute('./dist/index.html'), 'utf-8')
 
 function getKebabCase2(str) {
   return str.replace(/[A-Z]/g, function (item) {
@@ -52,13 +52,16 @@ const routesBenchmarkChildPrerender = fs
 
 ;(async () => {
   const { render } = await import('./dist/server/entryServer.js')
+
   // pre-render each route...
-  for (const url of ['/', ...routesBenchmarkPrerender, ...routesBenchmarkChildPrerender]) {
+  for (const url of ['/', ...routesBenchmarkPrerender, ...routesBenchmarkChildPrerender].sort(
+    (a, b) => a.length - b.length
+  )) {
     const { appHtml, style } = render(url)
 
-    const html = format(template.replace(`<!--app-html-->`, appHtml), { parser: 'vue' }).replace(
-      '<!--styil-->',
-      style
+    const html = format(
+      template.replace(`<!--app-html-->`, appHtml).replace('<!--styil-->', style),
+      { parser: 'vue' }
     )
 
     const filePath = `dist${url === '/' ? '/index' : url}.html`

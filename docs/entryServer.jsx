@@ -9,7 +9,7 @@ export function render(url) {
 
   const appHtml = ReactDOMServer.renderToString(
     <SystemProvider>
-      <StaticRouter url={'/styil' + url}>
+      <StaticRouter location={'/styil' + url}>
         <App />
       </StaticRouter>
     </SystemProvider>

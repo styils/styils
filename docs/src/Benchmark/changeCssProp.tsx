@@ -17,7 +17,7 @@ export default function Home() {
           <Link to="emotion">Emotion</Link>
         </li>
         <li>
-          <Link to="baseline">Styil-react</Link>
+          <Link to="styil-react">Styil-react</Link>
         </li>
         <li>
           <Link to="baseline">Baseline</Link>

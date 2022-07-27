@@ -182,8 +182,7 @@ const CodeContent = styled('section', () => ({
 
 const Slogan = styled('section', () => ({
   fontSize: 36,
-  fontWeight: 700,
-  whiteSpace: 'pre-wrap',
+  fontWeight: 600,
 
   '@media screen and (max-width: 1000px)': {
     display: 'flex',

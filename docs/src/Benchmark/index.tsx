@@ -65,7 +65,7 @@ const BenchmarkRoot = styled('div', (theme) => ({
       fontSize: '14px',
       borderRadius: '12px',
       lineHeight: '40px',
-      padding: '0 20px',
+      width: '210px',
       textAlign: 'center',
       color: theme.secondColor,
       backgroundColor: theme.bgSecondColor,
@@ -90,7 +90,7 @@ export default function Benchmark() {
           <Link to="create-and-mount-button">{t('create-and-mount-button')}</Link>
         </li>
         <li>
-          <Link to="change-a-variant">{t('change-a-variant')}</Link>
+          <Link to="change-variant">{t('change-a-variant')}</Link>
         </li>
         <li>
           <Link to="change-css-prop">{t('change-css-prop')}</Link>
