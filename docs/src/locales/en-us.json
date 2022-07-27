@@ -10,7 +10,7 @@
     "3": "The default unit is px"
   },
   "globalCode": "Use in styled",
-  "slogan": "Has near-zero runtime, SSR, theming, and a fully typed API, and it's only 3kb in size.",
+  "slogan": "Has near-zero runtime, SSR, theming, and a fully typed API, and it's only 4kb in size.",
   "quick": "Quick Start",
   "github": "View on Github",
   "plan": "Planning",
@@ -21,7 +21,7 @@
   "theme": "Theming",
   "themeDesc": "Provides an easy way to customize the theme, you can change colors, fonts, breakpoints and everything you need.",
   "small": "Super small",
-  "smallDesc": "Only 3kb overhead while providing full functionality.",
+  "smallDesc": "Only 4kb overhead while providing full functionality.",
   "withBase": "Base use",
   "withVariants": "Dynamic rendering",
   "withTheme": "Use Theme",

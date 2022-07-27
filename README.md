@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-3KB css-in-js solution with near zero runtime. Support Themes, SSR
+Lightweight and fast css-in-js solution with near zero runtime. Support Themes, SSR
 </p>
 
 [Documentation](https://styils.github.io/styil)
