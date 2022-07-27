@@ -1,6 +1,6 @@
 import { createSystem } from '@styil/react'
 
-const { styled, SystemProvider, getCssValue, global, useSystem } = createSystem({
+const { styled, SystemProvider, getCssValue, global, useSystem, flush } = createSystem({
   theme: (mode: 'light' | 'dark') => {
     return {
       dark: {
@@ -24,4 +24,4 @@ const { styled, SystemProvider, getCssValue, global, useSystem } = createSystem(
   defaultMode: import.meta.env.SSR ? 'light' : localStorage.getItem('styil-theme-mode') ?? 'light'
 })
 
-export { styled, global, getCssValue, SystemProvider, useSystem }
+export { styled, global, getCssValue, SystemProvider, useSystem, flush }
