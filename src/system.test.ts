@@ -531,7 +531,7 @@ describe('hydrate', () => {
       borderRadius: '9999px'
     })
 
-    expect(getCssValue()).toMatchSnapshot()
+    expect(getCssValue().html).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
   })
@@ -560,7 +560,7 @@ describe('hydrate', () => {
       }
     )
 
-    expect(getCssValue()).toMatchSnapshot()
+    expect(getCssValue().html).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
   })
@@ -589,7 +589,7 @@ describe('hydrate', () => {
       }
     )
 
-    expect(getCssValue()).toMatchSnapshot()
+    expect(getCssValue().html).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
   })
@@ -608,7 +608,7 @@ describe('hydrate', () => {
       }
     })
 
-    expect(getCssValue()).toMatchSnapshot()
+    expect(getCssValue().html).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
 
     globalThis.document = document
@@ -620,9 +620,24 @@ describe('hydrate', () => {
       }
     })
 
-    expect(getCssValue1()).toMatchSnapshot()
+    expect(getCssValue1().html).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
+  })
+
+  it('render Element hydrate', async () => {
+    const { styled: hydrateStyled, getCssValue } = createSystem()
+
+    hydrateStyled('div', {
+      backgroundColor: 'gainsboro',
+      borderRadius: '9999px'
+    })
+    const { StyilRules } = getCssValue()
+
+    globalThis.document = document
+    const { container } = render(StyilRules)
+
+    expect(container).toMatchSnapshot()
   })
 
   it('mix hydrate', async () => {
@@ -640,6 +655,6 @@ describe('hydrate', () => {
       borderRadius: '9999px'
     })
 
-    expect(getCssValue()).toMatchSnapshot()
+    expect(getCssValue().html).toMatchSnapshot()
   })
 })

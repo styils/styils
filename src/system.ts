@@ -1,7 +1,7 @@
 import React from 'react'
 import { createSelector } from './createSelector'
 import { type SystemOptions, type Styled, type System } from './systemTypes'
-import { CSSAttribute, type AnyObject } from './types'
+import { type CSSAttribute, type AnyObject } from './types'
 import { parseRules } from './parse'
 import { StyleSheet, type OldRule } from './sheet'
 
@@ -216,17 +216,32 @@ export function createSystem<Theme extends AnyObject = {}>(
   }
 
   function getCssValue() {
+    const selectorCacheString = [...selectorCache].join(splitSymbol)
     const globalStyleTag = sheet.ssrGlobalData
       ? `\n<style data-styil="${sheet.key}" global>${sheet.ssrGlobalData}</style>`
       : ''
 
-    const html = `<meta name="styil-cache" mode="${currentMode}" content="${[...selectorCache].join(
-      splitSymbol
-    )}">${globalStyleTag}
+    const html = `<meta name="styil-cache" mode="${currentMode}" content="${selectorCacheString}">${globalStyleTag}
     <style data-styil="${sheet.key}">${sheet.ssrData}</style>`
 
+    const StyilRules = React.createElement(
+      React.Fragment,
+      {},
+      React.createElement('meta', {
+        name: 'styil-cache',
+        mode: currentMode,
+        content: selectorCacheString
+      }),
+      React.createElement(
+        'style',
+        { 'data-styil': sheet.key, global: 'true' },
+        sheet.ssrGlobalData
+      ),
+      React.createElement('style', { 'data-styil': sheet.key }, sheet.ssrData)
+    )
+
     flush('global')
-    return html
+    return { html, StyilRules }
   }
 
   function global(styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) {
@@ -273,6 +288,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     })
   }
 
+  // global style retention
   function flush(type: 'all' | 'global' = 'all') {
     sheet.flush(type)
     selectorCache.clear()

@@ -105,7 +105,7 @@ export interface System<Theme> {
     theme: Theme
   }
   global: (styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) => void
-  getCssValue: () => string
+  getCssValue: () => { html: string; StyilRules: JSX.Element }
   flush: () => void
 }
 

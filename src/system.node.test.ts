@@ -24,7 +24,7 @@ describe('css node', () => {
       height: 100
     })
 
-    expect(getCssValue()).toMatchSnapshot()
+    expect(getCssValue().html).toMatchSnapshot()
 
     flush()
   })
@@ -42,7 +42,7 @@ describe('css node', () => {
       height: 100
     })
 
-    expect(defaultGetCssValue()).toMatchSnapshot()
+    expect(defaultGetCssValue().html).toMatchSnapshot()
 
     defaultFlush()
   })
