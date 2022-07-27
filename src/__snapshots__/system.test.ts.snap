@@ -2,7 +2,8 @@
 
 exports[`hydrate base hydrate 1`] = `
 "<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
-    <style data-styil=\\"css\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"
+     <style data-styil=\\"css-ssr-global\\"></style>
+     <style data-styil=\\"css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"
 `;
 
 exports[`hydrate base hydrate 2`] = `
@@ -19,8 +20,8 @@ exports[`hydrate base hydrate 2`] = `
 
 exports[`hydrate global hydrate 1`] = `
 "<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"\\">
-<style data-styil=\\"css\\" global>body{background-color:gainsboro;border-radius:9999px;}</style>
-    <style data-styil=\\"css\\"></style>"
+     <style data-styil=\\"css-ssr-global\\">body{background-color:gainsboro;border-radius:9999px;}</style>
+     <style data-styil=\\"css-ssr\\"></style>"
 `;
 
 exports[`hydrate global hydrate 2`] = `
@@ -38,7 +39,8 @@ exports[`hydrate global hydrate 2`] = `
 
 exports[`hydrate global hydrate 3`] = `
 "<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"\\">
-    <style data-styil=\\"css\\"></style>"
+     <style data-styil=\\"css-ssr-global\\"></style>
+     <style data-styil=\\"css-ssr\\"></style>"
 `;
 
 exports[`hydrate global hydrate 4`] = `
@@ -56,12 +58,14 @@ exports[`hydrate global hydrate 4`] = `
 
 exports[`hydrate mix hydrate 1`] = `
 "<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
-    <style data-styil=\\"css\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"
+     <style data-styil=\\"css-ssr-global\\"></style>
+     <style data-styil=\\"css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"
 `;
 
 exports[`hydrate namespace hydrate 1`] = `
 "<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
-    <style data-styil=\\"css\\">.ssr-css-2242710476{background-color:gainsboro;border-radius:9999px;}.ssr-css-2242710476.ssr-size-max{font-size:12px;}.ssr-css-2242710476.ssr-size-small{font-size:14px;}</style>"
+     <style data-styil=\\"css-ssr-global\\"></style>
+     <style data-styil=\\"css-ssr\\">.ssr-css-2242710476{background-color:gainsboro;border-radius:9999px;}.ssr-css-2242710476.ssr-size-max{font-size:12px;}.ssr-css-2242710476.ssr-size-small{font-size:14px;}</style>"
 `;
 
 exports[`hydrate namespace hydrate 2`] = `
@@ -84,11 +88,10 @@ exports[`hydrate render Element hydrate 1`] = `
     name="styil-cache"
   />
   <style
-    data-styil="css"
-    global="true"
+    data-styil="css-ssr-global"
   />
   <style
-    data-styil="css"
+    data-styil="css-ssr"
   >
     .css-2242710476{background-color:gainsboro;border-radius:9999px;}
   </style>
@@ -97,7 +100,8 @@ exports[`hydrate render Element hydrate 1`] = `
 
 exports[`hydrate variants hydrate 1`] = `
 "<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
-    <style data-styil=\\"css\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}.css-2242710476.size-max{font-size:12px;}.css-2242710476.size-small{font-size:14px;}</style>"
+     <style data-styil=\\"css-ssr-global\\"></style>
+     <style data-styil=\\"css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}.css-2242710476.size-max{font-size:12px;}.css-2242710476.size-small{font-size:14px;}</style>"
 `;
 
 exports[`hydrate variants hydrate 2`] = `

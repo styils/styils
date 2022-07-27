@@ -216,13 +216,20 @@ export function createSystem<Theme extends AnyObject = {}>(
   }
 
   function getCssValue() {
-    const selectorCacheString = [...selectorCache].join(splitSymbol)
-    const globalStyleTag = sheet.ssrGlobalData
-      ? `\n<style data-styil="${sheet.key}" global>${sheet.ssrGlobalData}</style>`
-      : ''
+    const styleHtml = isBrowser
+      ? document.querySelector(`style[data-styil="${sheet.key}-ssr"]`)
+      : null
+    const styleGlobalHtml = isBrowser
+      ? document.querySelector(`style[data-styil="${sheet.key}-ssr-global"]`)
+      : null
 
-    const html = `<meta name="styil-cache" mode="${currentMode}" content="${selectorCacheString}">${globalStyleTag}
-    <style data-styil="${sheet.key}">${sheet.ssrData}</style>`
+    const ssrGlobalData = sheet.ssrGlobalData || (styleGlobalHtml?.textContent ?? '')
+    const ssrData = sheet.ssrData || (styleHtml?.textContent ?? '')
+
+    const selectorCacheString = [...selectorCache].join(splitSymbol)
+    const html = `<meta name="styil-cache" mode="${currentMode}" content="${selectorCacheString}">
+     <style data-styil="${sheet.key}-ssr-global">${ssrGlobalData}</style>
+     <style data-styil="${sheet.key}-ssr">${ssrData}</style>`
 
     const StyilRules = React.createElement(
       React.Fragment,
@@ -232,12 +239,8 @@ export function createSystem<Theme extends AnyObject = {}>(
         mode: currentMode,
         content: selectorCacheString
       }),
-      React.createElement(
-        'style',
-        { 'data-styil': sheet.key, global: 'true' },
-        sheet.ssrGlobalData
-      ),
-      React.createElement('style', { 'data-styil': sheet.key }, sheet.ssrData)
+      React.createElement('style', { 'data-styil': `${sheet.key}-ssr-global` }, ssrGlobalData),
+      React.createElement('style', { 'data-styil': `${sheet.key}-ssr` }, ssrData)
     )
 
     flush('global')
