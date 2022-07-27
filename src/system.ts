@@ -243,7 +243,6 @@ export function createSystem<Theme extends AnyObject = {}>(
       React.createElement('style', { 'data-styil': `${sheet.key}-ssr` }, ssrData)
     )
 
-    flush('global')
     return { html, StyilRules }
   }
 
