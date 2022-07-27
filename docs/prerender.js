@@ -54,9 +54,7 @@ const routesBenchmarkChildPrerender = fs
   const { render } = await import('./dist/server/entryServer.js')
 
   // pre-render each route...
-  for (const url of ['/', ...routesBenchmarkPrerender, ...routesBenchmarkChildPrerender].sort(
-    (a, b) => a.length - b.length
-  )) {
+  for (const url of ['/', ...routesBenchmarkPrerender, ...routesBenchmarkChildPrerender]) {
     const { appHtml, style } = render(url)
 
     const html = format(
@@ -69,16 +67,3 @@ const routesBenchmarkChildPrerender = fs
     console.log('pre-rendered:', filePath)
   }
 })()
-
-// ;(async () => {
-//   const { appHtml, style } = render()
-
-//   const html = format(template.replace(`<!--app-html-->`, appHtml), { parser: 'html' }).replace(
-//     '<!--styil-->',
-//     style
-//   )
-
-//   const filePath = `dist/index.html`
-//   fs.writeFileSync(toAbsolute(filePath), html)
-//   console.log('pre-rendered:', filePath)
-// })()

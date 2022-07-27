@@ -5,8 +5,6 @@ import App from './src/App'
 import { getCssValue, SystemProvider } from './src/theme'
 
 export function render(url) {
-  const style = getCssValue()
-
   const appHtml = ReactDOMServer.renderToString(
     <SystemProvider>
       <StaticRouter location={'/styil' + url}>
@@ -14,6 +12,8 @@ export function render(url) {
       </StaticRouter>
     </SystemProvider>
   )
+
+  const style = getCssValue()
 
   return { appHtml, style }
 }
