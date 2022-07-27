@@ -74,6 +74,9 @@ export function createSystem<Theme extends AnyObject = {}>(
     return React.useContext(themeContent)
   }
 
+  let modeIdentifier: Record<string, { targetClassName: string; namespaceJoiner: string }>[] = []
+  let withIndex = 0
+
   const styled: Styled<Theme> = (tag, styles, interpolation) => {
     let inputTag = tag
     const inputNamespace = (tag as { namespace: string }).namespace ?? ''
@@ -82,13 +85,13 @@ export function createSystem<Theme extends AnyObject = {}>(
       inputTag = tag.tag
     }
 
-    const modeIdentifier: Record<string, { targetClassName: string; namespaceJoiner: string }> = {}
+    const currentWithIndex = withIndex
 
     function createRule(
       mode: string,
       inputTargetInfo: { targetClassName: string; namespaceJoiner: string }
     ) {
-      const identifier = modeIdentifier[mode]
+      const identifier = modeIdentifier[currentWithIndex]?.[mode]
 
       if (identifier) {
         const { namespaceJoiner, targetClassName } = identifier
@@ -145,10 +148,16 @@ export function createSystem<Theme extends AnyObject = {}>(
       inputTargetInfo.targetClassName = targetClassName
       inputTargetInfo.namespaceJoiner = namespaceJoiner
 
-      modeIdentifier[mode] = {
+      if (!modeIdentifier[currentWithIndex]) {
+        modeIdentifier[currentWithIndex] = {}
+      }
+
+      modeIdentifier[currentWithIndex][mode] = {
         targetClassName,
         namespaceJoiner
       }
+
+      withIndex++
     }
 
     const targetInfo = {
@@ -207,12 +216,17 @@ export function createSystem<Theme extends AnyObject = {}>(
   }
 
   function getCssValue() {
-    return `
-      <meta name="styil-cache" mode="${currentMode}" content="${[...selectorCache].join(
+    const globalStyleTag = sheet.ssrGlobalData
+      ? `\n<style data-styil="${sheet.key}" global>${sheet.ssrGlobalData}</style>`
+      : ''
+
+    const html = `<meta name="styil-cache" mode="${currentMode}" content="${[...selectorCache].join(
       splitSymbol
-    )}">
-      <style data-styil="${sheet.key}">${sheet.ssrData}</style>
-    `
+    )}">${globalStyleTag}
+    <style data-styil="${sheet.key}">${sheet.ssrData}</style>`
+
+    flush('global')
+    return html
   }
 
   function global(styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) {
@@ -249,7 +263,7 @@ export function createSystem<Theme extends AnyObject = {}>(
         globalCache[mode] = rules
       }
 
-      oldRule = sheet.insertStyle(rules)
+      oldRule = sheet.insertStyle(rules, true)
     }
 
     createGlobRules(defaultMode)
@@ -259,9 +273,10 @@ export function createSystem<Theme extends AnyObject = {}>(
     })
   }
 
-  function flush() {
-    sheet.flush()
+  function flush(type: 'all' | 'global' = 'all') {
+    sheet.flush(type)
     selectorCache.clear()
+    modeIdentifier = []
   }
 
   return { styled, SystemProvider, useSystem, getCssValue, flush, global }

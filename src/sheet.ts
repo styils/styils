@@ -48,9 +48,14 @@ export class StyleSheet {
   key: string
 
   /**
-   * ssr data
+   * ssr css data
    */
   ssrData = ''
+
+  /**
+   * ssr global css data
+   */
+  ssrGlobalData = ''
 
   constructor(options: StyleSheetOptions) {
     this.speedy = options.speedy
@@ -69,7 +74,7 @@ export class StyleSheet {
     this.tags.push(tag)
   }
 
-  insertStyle({ ruleCode, segmentRuleCode }: Rules) {
+  insertStyle({ ruleCode, segmentRuleCode }: Rules, global = false) {
     if (this.container) {
       if (this.speedy) {
         const ruleIndexs: OldRule[] = []
@@ -82,7 +87,8 @@ export class StyleSheet {
 
       return [this.insert(ruleCode)]
     }
-    this.ssrData += ruleCode
+
+    this[global ? 'ssrGlobalData' : 'ssrData'] += ruleCode
   }
 
   insert(rule: string) {
@@ -162,9 +168,13 @@ export class StyleSheet {
     }
   }
 
-  flush() {
+  flush(type: 'all' | 'global' = 'all') {
     this.tags.forEach((tag) => tag.parentNode && tag.parentNode.removeChild(tag))
+    if (type !== 'global') {
+      this.ssrGlobalData = ''
+    }
     this.ssrData = ''
+
     this.tags = []
     this.insertIndex = 0
 

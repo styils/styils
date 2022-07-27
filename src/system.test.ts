@@ -2,9 +2,19 @@ import { createSystem, styled, flush, global } from './system'
 import { render, fireEvent, getByText } from '@testing-library/react'
 import React from 'react'
 
+const meta = globalThis.document.createElement('meta')
+const { document } = globalThis
+
+jest.spyOn(globalThis.document, 'querySelector').mockImplementationOnce(() => {
+  return meta
+})
+
+Object.defineProperty(globalThis, 'document', { value: undefined, writable: true })
+
 describe('system', () => {
   beforeEach(() => {
     flush()
+    globalThis.document = document
   })
   it('styled', () => {
     const Button = styled('button', {
@@ -504,42 +514,35 @@ describe('system', () => {
 
     flush()
   })
+})
 
-  it('hydrate', async () => {
-    const meta = document.createElement('meta')
+describe('hydrate', () => {
+  beforeEach(() => {
+    globalThis.document = undefined
+  })
+  it('base hydrate', async () => {
     meta.name = 'styil-cache'
     meta.content = `css-2242710476`
-    globalThis.document.head.appendChild(meta)
+    document.head.appendChild(meta)
 
-    jest.spyOn(document, 'querySelector').mockImplementationOnce(() => {
-      return meta
-    })
-
-    const { styled: hydrateStyled, getCssValue } = (await import('./system')).createSystem()
-    const Button = hydrateStyled('button', {
+    const { styled: hydrateStyled, getCssValue } = createSystem()
+    hydrateStyled('button', {
       backgroundColor: 'gainsboro',
       borderRadius: '9999px'
     })
 
-    render(React.createElement(Button))
-
     expect(getCssValue()).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
-    globalThis.document.head.removeChild(meta)
+    document.head.removeChild(meta)
   })
 
   it('variants hydrate', () => {
-    const meta = document.createElement('meta')
     meta.name = 'styil-cache'
     meta.content = `css-2242710476|css-2242710476.size-max|css-2242710476.size-small`
-    globalThis.document.head.appendChild(meta)
-
-    jest.spyOn(document, 'querySelector').mockImplementationOnce(() => {
-      return meta
-    })
+    document.head.appendChild(meta)
 
     const { styled: hydrateStyled, getCssValue } = createSystem()
-    const Button = hydrateStyled(
+    hydrateStyled(
       'button',
       {
         backgroundColor: 'gainsboro',
@@ -557,25 +560,18 @@ describe('system', () => {
       }
     )
 
-    render(React.createElement(Button))
-
     expect(getCssValue()).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
-    globalThis.document.head.removeChild(meta)
+    document.head.removeChild(meta)
   })
 
   it('namespace hydrate', () => {
-    const meta = document.createElement('meta')
     meta.name = 'styil-cache'
     meta.content = `ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small`
-    globalThis.document.head.appendChild(meta)
-
-    jest.spyOn(document, 'querySelector').mockImplementationOnce(() => {
-      return meta
-    })
+    document.head.appendChild(meta)
 
     const { styled: hydrateStyled, getCssValue } = createSystem()
-    const Button = hydrateStyled(
+    hydrateStyled(
       { tag: 'button', namespace: 'ssr' },
       {
         backgroundColor: 'gainsboro',
@@ -593,22 +589,16 @@ describe('system', () => {
       }
     )
 
-    render(React.createElement(Button, { variants: { size: 'small' } }))
-
     expect(getCssValue()).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
-    globalThis.document.head.removeChild(meta)
+    document.head.removeChild(meta)
   })
 
   it('global hydrate', () => {
-    const meta = document.createElement('meta')
     meta.name = 'styil-cache'
+    meta.content = ''
     meta.setAttribute('mode', 'none')
-    globalThis.document.head.appendChild(meta)
-
-    jest.spyOn(document, 'querySelector').mockImplementationOnce(() => {
-      return meta
-    })
+    document.head.appendChild(meta)
 
     const { global: hydrateGlobal, getCssValue } = createSystem()
     hydrateGlobal({
@@ -620,21 +610,29 @@ describe('system', () => {
 
     expect(getCssValue()).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
-    globalThis.document.head.removeChild(meta)
+
+    globalThis.document = document
+    const { global: hydrateGlobal1, getCssValue: getCssValue1 } = createSystem()
+    hydrateGlobal1({
+      body: {
+        backgroundColor: 'red',
+        borderRadius: '99px'
+      }
+    })
+
+    expect(getCssValue1()).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+    document.head.removeChild(meta)
   })
 
   it('mix hydrate', async () => {
+    globalThis.document = document
+
     styled('div', {
       backgroundColor: 'gainsboro',
       borderRadius: '9999px'
     })
-
-    Object.defineProperty(globalThis, 'document', {
-      get() {
-        return undefined
-      }
-    })
-
+    Object.defineProperty(globalThis, 'document', { value: undefined })
     const { styled: hydrateStyled, getCssValue } = createSystem()
 
     hydrateStyled('div', {
