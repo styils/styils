@@ -10,7 +10,7 @@
     "3": "The default unit is px"
   },
   "globalCode": "Use in styled",
-  "slogan": "Has near-zero runtime, SSR, theming, and a fully typed API, and it's only 4kb in size.",
+  "slogan": "Lightweight and fast css-in-js solution with near zero runtime. Support Themes、SSR",
   "quick": "Quick Start",
   "github": "View on Github",
   "plan": "Planning",
