@@ -41,7 +41,7 @@ global((theme) => ({
     fontDisplay: 'optional',
     fontFamily: `PingFang SC,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`
   },
-  '*': {
+  '*:not(pre *)': {
     color: theme.mainColor,
     listStyle: 'none',
     margin: 0,
