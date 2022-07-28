@@ -3,7 +3,7 @@ import { TestComponentProps, TestRunner } from '../TestRunner'
 import { buttonStyles } from '../utils/buttonStyles'
 import { stringify } from '@stitches/stringify'
 
-const Test = ({ testIndex }: TestComponentProps) => {
+const TestBase = ({ testIndex }: TestComponentProps) => {
   return (
     <button
       className="static-button-styles"
@@ -19,14 +19,14 @@ const Test = ({ testIndex }: TestComponentProps) => {
   )
 }
 
-const StitchesTest = () => {
+const Test = () => {
   return (
     <>
       <TestRunner
         testIdentifier="change-css-prop-baseline"
         numberOfRuns={3}
         iterationN={1000}
-        TestComponent={Test}
+        TestComponent={TestBase}
       />
 
       <style
@@ -38,4 +38,4 @@ const StitchesTest = () => {
   )
 }
 
-export default StitchesTest
+export default Test

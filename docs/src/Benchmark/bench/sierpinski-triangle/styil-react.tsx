@@ -102,7 +102,7 @@ export function SierpinskiTriangle({ testIndex, x = 0, y = 0, depth = 0, s: _s =
   )
 }
 
-const StitchesTest = () => {
+const Test = () => {
   return (
     <TestRunner
       testIdentifier="sierpinski-triangle-styil-react"
@@ -113,4 +113,4 @@ const StitchesTest = () => {
   )
 }
 
-export default StitchesTest
+export default Test

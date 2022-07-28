@@ -11,7 +11,9 @@ const Button = styled(
   buttonVariants.variants
 )
 
-const Test: React.FunctionComponent<TestComponentProps> = ({ testIndex }: TestComponentProps) => {
+const TestBase: React.FunctionComponent<TestComponentProps> = ({
+  testIndex
+}: TestComponentProps) => {
   return (
     <Button
       variants={{
@@ -24,14 +26,14 @@ const Test: React.FunctionComponent<TestComponentProps> = ({ testIndex }: TestCo
   )
 }
 
-const StitchesTest = () => {
+const Test = () => {
   return (
     <>
       <TestRunner
         testIdentifier="change-variant-styil-react"
         numberOfRuns={3}
         iterationN={1000}
-        TestComponent={Test}
+        TestComponent={TestBase}
       />
 
       <div style={{ opacity: 0, pointerEvents: 'none' }}>
@@ -41,4 +43,4 @@ const StitchesTest = () => {
   )
 }
 
-export default StitchesTest
+export default Test

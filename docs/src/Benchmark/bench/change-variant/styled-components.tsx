@@ -8,7 +8,9 @@ const Button = styled('button')((props) => ({
   ...(buttonInterpolatedVariants(props) as any)
 }))
 
-const Test: React.FunctionComponent<TestComponentProps> = ({ testIndex }: TestComponentProps) => {
+const TestBase: React.FunctionComponent<TestComponentProps> = ({
+  testIndex
+}: TestComponentProps) => {
   const variants = {
     variant: testIndex % 2 === 0 ? 'red' : 'blue',
     size: testIndex % 2 === 0 ? '1' : '2'
@@ -16,14 +18,14 @@ const Test: React.FunctionComponent<TestComponentProps> = ({ testIndex }: TestCo
   return <Button {...variants}>testing</Button>
 }
 
-const StitchesTest = () => {
+const Test = () => {
   return (
     <>
       <TestRunner
         testIdentifier="change-variant-styled-components"
         numberOfRuns={3}
         iterationN={1000}
-        TestComponent={Test}
+        TestComponent={TestBase}
       />
 
       <div style={{ opacity: 0, pointerEvents: 'none' }}>
@@ -33,4 +35,4 @@ const StitchesTest = () => {
   )
 }
 
-export default StitchesTest
+export default Test

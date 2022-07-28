@@ -8,7 +8,7 @@ const Button: any = styled('button')((props: any) => ({
   ...props.css
 }))
 
-const Test = ({ testIndex }: TestComponentProps) => {
+const TestBase = ({ testIndex }: TestComponentProps) => {
   return (
     <Button
       css={{
@@ -22,14 +22,14 @@ const Test = ({ testIndex }: TestComponentProps) => {
   )
 }
 
-const StitchesTest = () => {
+const Test = () => {
   return (
     <>
       <TestRunner
         testIdentifier="change-css-prop-styled-components"
         numberOfRuns={3}
         iterationN={1000}
-        TestComponent={Test}
+        TestComponent={TestBase}
       />
 
       <div style={{ opacity: 0, pointerEvents: 'none' }}>
@@ -39,4 +39,4 @@ const StitchesTest = () => {
   )
 }
 
-export default StitchesTest
+export default Test

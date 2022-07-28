@@ -3,8 +3,8 @@ import { TestRunner } from '../TestRunner'
 import { Tree } from '../utils/Tree'
 import styled from '@emotion/styled'
 
-export const Test = () => {
-  // This purposefully creates the styled component inside the Test component
+export const TestBase = () => {
+  // This purposefully creates the styled component inside the TestBase component
   // so that we can measure the time it takes using the React profiler
 
   const getColor = (color: any) => {
@@ -59,15 +59,15 @@ export const Test = () => {
   return <Tree breadth={6} depth={3} id={0} wrap={2} box={Box} />
 }
 
-const StitchesTest = () => {
+const Test = () => {
   return (
     <TestRunner
       testIdentifier="mount-wide-tree-emotion"
       numberOfRuns={3}
       iterationN={50}
-      TestComponent={Test}
+      TestComponent={TestBase}
     />
   )
 }
 
-export default StitchesTest
+export default Test

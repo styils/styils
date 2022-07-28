@@ -7,7 +7,7 @@ const Button = styled('button', {
   ...(buttonStyles as any)
 })
 
-const Test = ({ testIndex }: TestComponentProps) => {
+const TestBase = ({ testIndex }: TestComponentProps) => {
   return (
     <Button
       style={{
@@ -29,7 +29,7 @@ const StyilTest = () => {
         testIdentifier="change-css-prop-styil-react"
         numberOfRuns={3}
         iterationN={1000}
-        TestComponent={Test}
+        TestComponent={TestBase}
       />
 
       <div style={{ opacity: 0, pointerEvents: 'none' }}>
