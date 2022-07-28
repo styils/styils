@@ -1,9 +1,19 @@
-import { Link, Outlet } from 'react-router-dom'
-import React from 'react'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import Link from './Link'
 
 export const changeCssProp = import.meta.glob('./bench/change-css-prop/*.tsx', { eager: true })
 
 export default function Home() {
+  const { pathname } = useLocation()
+  const router = useNavigate()
+
+  useEffect(() => {
+    if (pathname === '/styil/benchmark/change-css-prop') {
+      router('stitches-react-vc17')
+    }
+  }, [pathname, router])
+
   return (
     <div>
       <ul>

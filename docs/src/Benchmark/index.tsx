@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { styled } from '../theme'
+import Link from './Link'
 
 const BenchmarkRoot = styled('div', (theme) => ({
   minHeight: 'calc(100vh - 100px)',
@@ -83,6 +84,15 @@ const BenchmarkRoot = styled('div', (theme) => ({
 
 export default function Benchmark() {
   const { t } = useTranslation()
+  const { pathname } = useLocation()
+  const router = useNavigate()
+
+  useEffect(() => {
+    if (pathname === '/styil/benchmark') {
+      router('create-and-mount-button')
+    }
+  }, [pathname, router])
+
   return (
     <BenchmarkRoot>
       <ul>
