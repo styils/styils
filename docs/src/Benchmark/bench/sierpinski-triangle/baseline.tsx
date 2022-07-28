@@ -40,7 +40,7 @@ export function SierpinskiTriangle({ testIndex, x = 0, y = 0, depth = 0, s: _s =
           borderColor: 'transparent',
           borderStyle: 'solid',
           borderTopWidth: 0,
-          transform: 'translate(50%, 50%)',
+          transform: 'translate(3000%, 3000%)',
           alignItems: 'stretch',
           boxSizing: 'border-box',
           display: 'flex',

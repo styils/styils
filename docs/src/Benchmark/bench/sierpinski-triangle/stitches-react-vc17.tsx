@@ -52,7 +52,7 @@ const Dot = styled(View, {
   borderColor: 'transparent',
   borderStyle: 'solid',
   borderTopWidth: 0,
-  transform: 'translate(50%, 50%)'
+  transform: 'translate(3000%, 3000%)'
 })
 
 const targetSize = 10

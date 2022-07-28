@@ -52,7 +52,7 @@ const Dot: any = styled(View)((props: any) => ({
   borderColor: 'transparent',
   borderStyle: 'solid',
   borderTopWidth: '0',
-  transform: 'translate(50%, 50%)',
+  transform: 'translate(3000%, 3000%)',
   marginLeft: `${props.x}px`,
   marginTop: `${props.y}px`,
   borderRightWidth: `${props.size / 2}px`,
