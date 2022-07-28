@@ -31,6 +31,9 @@ export default function Home() {
         <li>
           <Link to="emotion">Emotion</Link>
         </li>
+        <li>
+          <Link to="baseline">baseline</Link>
+        </li>
       </ul>
       <Outlet />
     </div>

@@ -29,6 +29,9 @@ export default function Home() {
         <li>
           <Link to="styil-react">styil-react</Link>
         </li>
+        <li>
+          <Link to="baseline">baseline</Link>
+        </li>
       </ul>
       <Outlet />
     </div>
