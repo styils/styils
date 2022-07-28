@@ -27,7 +27,6 @@ export function createSystem<Theme extends AnyObject = {}>(
   } = options
   const { key, container, speedy, nonce } = sheetOptions
   const globalMode = { mode: defaultMode }
-  let currentMode = globalMode.mode
   const metaHtml = isBrowser
     ? (document.querySelector(`meta[name="styil-cache"]`) as HTMLMetaElement)
     : null
@@ -60,7 +59,6 @@ export function createSystem<Theme extends AnyObject = {}>(
     const updataMode = (value: string) => {
       setMode(value)
       globalMode.mode = value
-      currentMode = value
     }
 
     return React.createElement(
@@ -70,9 +68,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     )
   }
 
-  const useSystem = () => {
-    return React.useContext(themeContent)
-  }
+  const useSystem = () => React.useContext(themeContent)
 
   let modeIdentifier: Record<string, { targetClassName: string; namespaceJoiner: string }>[] = []
   let withIndex = 0
@@ -207,7 +203,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     Object.defineProperty(styledComponent, 'toString', {
       value() {
         // Cross-rendering, after being fetched, child components will not be recalculated
-        createRule(currentMode, targetInfo)
+        createRule(globalMode.mode, targetInfo)
         return `.${targetInfo.targetClassName}`
       }
     })
@@ -227,7 +223,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     const ssrData = sheet.ssrData || (styleHtml?.textContent ?? '')
 
     const selectorCacheString = [...selectorCache].join(splitSymbol)
-    const html = `<meta name="styil-cache" mode="${currentMode}" content="${selectorCacheString}">
+    const html = `<meta name="styil-cache" mode="${globalMode.mode}" content="${selectorCacheString}">
      <style data-styil="${sheet.key}-ssr-global">${ssrGlobalData}</style>
      <style data-styil="${sheet.key}-ssr">${ssrData}</style>`
 
@@ -236,7 +232,7 @@ export function createSystem<Theme extends AnyObject = {}>(
       {},
       React.createElement('meta', {
         name: 'styil-cache',
-        mode: currentMode,
+        mode: globalMode.mode,
         content: selectorCacheString
       }),
       React.createElement('style', { 'data-styil': `${sheet.key}-ssr-global` }, ssrGlobalData),
@@ -251,6 +247,8 @@ export function createSystem<Theme extends AnyObject = {}>(
 
     function createGlobRules(mode: string) {
       if (oldRule) {
+        // Global styles are not like local styles, which need to be removed here
+        // Consider cases where there are multiple tags
         const tagIndex: number[] = []
         oldRule.forEach((rule) => {
           if (!tagIndex[rule.tagIndex]) tagIndex[rule.tagIndex] = 0
@@ -286,11 +284,19 @@ export function createSystem<Theme extends AnyObject = {}>(
     createGlobRules(defaultMode)
 
     Object.defineProperty(globalMode, 'mode', {
-      set: createGlobRules
+      set(value) {
+        this.value = value
+        createGlobRules(value)
+      },
+      get() {
+        return this.value ?? defaultMode
+      }
     })
   }
 
   // global style retention
+  // In some cases, you do not need to reset the global style
+  // such as in the case of pre-rendering
   function flush(type: 'all' | 'global' = 'all') {
     sheet.flush(type)
     selectorCache.clear()
