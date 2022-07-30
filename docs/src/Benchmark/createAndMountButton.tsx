@@ -1,6 +1,6 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import React, { useEffect } from 'react'
-import Link from './Link'
+import Link from '../Link'
 
 export const createMountButton = import.meta.glob('./bench/create-and-mount-button/*.tsx', {
   eager: true

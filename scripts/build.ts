@@ -11,6 +11,7 @@ import prettier from 'prettier'
 import { box } from './colors'
 import copy from 'rollup-plugin-copy'
 
+const packageBaseName = '@styils'
 const cwd = process.cwd()
 const typeFile: any[] = []
 
@@ -191,7 +192,7 @@ async function run() {
     // eslint-disable-next-line global-require
     const json = require('./package.temp.json')
 
-    json.name = `@styil/${name}`
+    json.name = `${packageBaseName}/${name}`
     json.files = files
 
     fs.writeFileSync(
@@ -235,7 +236,7 @@ async function run() {
       }
     })
 
-    console.log(box({ name: `@styil/${name}`, types }))
+    console.log(box({ name: `${packageBaseName}/${name}`, types }))
   })
 }
 

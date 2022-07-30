@@ -82,6 +82,12 @@ export interface Styled<Theme> {
       }
     }
   >
+  sourceMap?: string
+}
+
+export interface Global<Theme> {
+  (styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)): void
+  sourceMap?: string
 }
 
 export interface SystemOptions<Theme> {
@@ -104,7 +110,7 @@ export interface System<Theme> {
     setMode: React.Dispatch<React.SetStateAction<string>>
     theme: Theme
   }
-  global: (styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) => void
+  global: Global<Theme>
   getCssValue: () => { html: string; StyilRules: JSX.Element }
   flush: () => void
 }

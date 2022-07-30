@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { styled } from '../theme'
-import Link from './Link'
+import Link from '../Link'
 
 const BenchmarkRoot = styled('div', (theme) => ({
   minHeight: 'calc(100vh - 100px)',

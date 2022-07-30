@@ -1,6 +1,6 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import React, { useEffect } from 'react'
-import Link from './Link'
+import Link from '../Link'
 
 export const changeCssProp = import.meta.glob('./bench/change-css-prop/*.tsx', { eager: true })
 

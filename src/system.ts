@@ -1,7 +1,7 @@
 import React from 'react'
 import { createSelector } from './createSelector'
-import { type SystemOptions, type Styled, type System } from './systemTypes'
-import { type CSSAttribute, type AnyObject } from './types'
+import { type SystemOptions, type Styled, type System, type Global } from './systemTypes'
+import { type AnyObject } from './types'
 import { parseRules } from './parse'
 import { StyleSheet, type OldRule } from './sheet'
 
@@ -114,7 +114,15 @@ export function createSystem<Theme extends AnyObject = {}>(
 
       if (!selectorCache.has(targetClassName)) {
         selectorCache.add(targetClassName)
-        sheet.insertStyle(parseRules(style, `.${targetClassName}`))
+        const rules = parseRules(style, `.${targetClassName}`)
+
+        if (process.env.NODE_ENV !== 'production') {
+          if (styled.sourceMap) {
+            rules.ruleCode += styled.sourceMap
+          }
+        }
+
+        sheet.insertStyle(rules)
       }
 
       if (variants) {
@@ -135,7 +143,13 @@ export function createSystem<Theme extends AnyObject = {}>(
 
             if (!selectorCache.has(variantsClassName)) {
               selectorCache.add(variantsClassName)
-              sheet.insertStyle(parseRules(value, `.${variantsClassName}`))
+              const rules = parseRules(value, `.${variantsClassName}`)
+              if (process.env.NODE_ENV !== 'production') {
+                if (styled.sourceMap) {
+                  rules.ruleCode += styled.sourceMap
+                }
+              }
+              sheet.insertStyle(rules)
             }
           }
         }
@@ -208,6 +222,9 @@ export function createSystem<Theme extends AnyObject = {}>(
       }
     })
 
+    if (process.env.NODE_ENV !== 'production') {
+      delete styled.sourceMap
+    }
     return styledComponent
   }
 
@@ -242,7 +259,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     return { html, StyilRules }
   }
 
-  function global(styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)) {
+  const global: Global<Theme> = (styles) => {
     let oldRule: OldRule[]
 
     function createGlobRules(mode: string) {
@@ -276,6 +293,13 @@ export function createSystem<Theme extends AnyObject = {}>(
         const style = typeof styles === 'function' ? styles(inputTheme(mode), mode) : styles
         rules = parseRules(style)
         globalCache[mode] = rules
+      }
+
+      if (process.env.NODE_ENV !== 'production') {
+        if (global.sourceMap) {
+          rules.ruleCode += global.sourceMap
+          delete global.sourceMap
+        }
       }
 
       oldRule = sheet.insertStyle(rules, true)
