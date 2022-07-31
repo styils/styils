@@ -1,0 +1,38 @@
+{
+  "name": "@styils/babel-plugin",
+  "version": "1.0.1",
+  "description": "babel plugin styils",
+  "types": "lib/types/index.d.ts",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.esm.js",
+  "scripts": {
+    "test": "jest-easy",
+    "test:coverage": "jest-easy --coverage",
+    "build": "build-easy",
+    "build:watch": "build-easy -w"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "babel",
+    "babel-plugin",
+    "styils",
+    "styils-plugin",
+    "styils-bable-plugin",
+    "source-map"
+  ],
+  "author": "zoy-l <zoy-l@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "source-map": "^0.7.4",
+    "convert-source-map": "^1.8.0",
+    "@babel/helper-plugin-utils": "^7.18.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@types/babel__core": "^7.1.19",
+    "@types/babel__helper-plugin-utils": "^7.10.0",
+    "@types/convert-source-map": "^1.5.2"
+  }
+}

@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-Lightweight and fast css-in-js solution with near zero runtime. Support Themes, SSR
+Lightweight and fast css-in-js solution with near zero runtime. Support Themes、SSR、Sourcemap
 </p>
 
 [Documentation](https://styils.github.io/styils)

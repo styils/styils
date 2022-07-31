@@ -29,6 +29,7 @@
   "author": "zoy-l <zoy-l@outlook.com>",
   "license": "MIT",
   "devDependencies": {
+    "build-easy": "^2.2.1",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@rollup/plugin-replace": "^4.0.0",

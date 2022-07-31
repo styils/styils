@@ -10,7 +10,7 @@
     "3": "默认单位是 px"
   },
   "globalCode": "在styled内使用",
-  "slogan": "轻量级和快速的 css-in-js 解决方案，运行时接近于零。支持主题、SSR",
+  "slogan": "轻量级和快速的 css-in-js 解决方案，运行时接近于零。支持主题、SSR、Sourcemap",
   "quick": "快速开始",
   "github": "在Github上查看",
   "plan": "计划中",
