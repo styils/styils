@@ -5,8 +5,9 @@
   "sideEffects": false,
   "scripts": {
     "prepare": "husky install",
-    "build:doc": "cd ./docs && pnpm run build",
     "build": "node -r esbuild-register scripts/build.ts",
+    "build:doc": "cd docs && pnpm run build",
+    "build:babel": "cd packages/babel && pnpm run build",
     "test": "jest-easy",
     "test:coverage": "jest-easy --coverage",
     "update:deps": "pnpm update --latest --interactive",
