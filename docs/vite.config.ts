@@ -13,7 +13,7 @@ function parseId(id: string) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/styil/',
+  base: '/styils/',
   plugins: [
     {
       name: 'test',
@@ -28,11 +28,11 @@ export default defineConfig({
               [
                 '@styils',
                 {
-                  importPaths: ['../theme', './theme'],
-                  sourceFileName: filename
+                  importPaths: /theme$/
                 } as Options
               ]
-            ]
+            ],
+            filename
           })
 
           return fileResult || code
@@ -45,7 +45,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: [
-      { find: '@styil/react', replacement: path.join(__dirname, '..', 'src', 'indexReact.ts') },
+      { find: '@styils/react', replacement: path.join(__dirname, '..', 'src', 'indexReact.ts') },
       { find: /react-dom$/, replacement: 'react-dom/profiling' },
       { find: 'scheduler/tracing', replacement: 'scheduler/tracing-profiling' }
     ]

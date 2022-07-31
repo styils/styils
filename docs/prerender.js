@@ -58,7 +58,7 @@ const routesBenchmarkChildPrerender = fs
     const { appHtml, style } = render(url)
 
     const html = format(
-      template.replace(`<!--app-html-->`, appHtml).replace('<!--styil-->', style),
+      template.replace(`<!--app-html-->`, appHtml).replace('<!--styils-->', style),
       { parser: 'vue' }
     )
 

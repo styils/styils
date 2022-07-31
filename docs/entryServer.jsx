@@ -7,7 +7,7 @@ import { getCssValue, SystemProvider, flush } from './src/theme'
 export function render(url) {
   const appHtml = ReactDOMServer.renderToString(
     <SystemProvider>
-      <StaticRouter location={'/styil' + url}>
+      <StaticRouter location={'/styils' + url}>
         <App />
       </StaticRouter>
     </SystemProvider>

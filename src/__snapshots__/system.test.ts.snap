@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`hydrate base hydrate 1`] = `
-"<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
-     <style data-styil=\\"css-ssr-global\\"></style>
-     <style data-styil=\\"css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"
+"<meta name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
+     <style data-styils=\\"css-ssr-global\\"></style>
+     <style data-styils=\\"css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"
 `;
 
 exports[`hydrate base hydrate 2`] = `
@@ -11,7 +11,7 @@ exports[`hydrate base hydrate 2`] = `
   <head>
     <meta
       content="css-2242710476"
-      name="styil-cache"
+      name="styils-cache"
     />
   </head>
   <body />
@@ -19,9 +19,9 @@ exports[`hydrate base hydrate 2`] = `
 `;
 
 exports[`hydrate global hydrate 1`] = `
-"<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"\\">
-     <style data-styil=\\"css-ssr-global\\">body{background-color:gainsboro;border-radius:9999px;}</style>
-     <style data-styil=\\"css-ssr\\"></style>"
+"<meta name=\\"styils-cache\\" mode=\\"none\\" content=\\"\\">
+     <style data-styils=\\"css-ssr-global\\">body{background-color:gainsboro;border-radius:9999px;}</style>
+     <style data-styils=\\"css-ssr\\"></style>"
 `;
 
 exports[`hydrate global hydrate 2`] = `
@@ -30,7 +30,7 @@ exports[`hydrate global hydrate 2`] = `
     <meta
       content=""
       mode="none"
-      name="styil-cache"
+      name="styils-cache"
     />
   </head>
   <body />
@@ -38,9 +38,9 @@ exports[`hydrate global hydrate 2`] = `
 `;
 
 exports[`hydrate global hydrate 3`] = `
-"<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"\\">
-     <style data-styil=\\"css-ssr-global\\"></style>
-     <style data-styil=\\"css-ssr\\"></style>"
+"<meta name=\\"styils-cache\\" mode=\\"none\\" content=\\"\\">
+     <style data-styils=\\"css-ssr-global\\"></style>
+     <style data-styils=\\"css-ssr\\"></style>"
 `;
 
 exports[`hydrate global hydrate 4`] = `
@@ -49,7 +49,7 @@ exports[`hydrate global hydrate 4`] = `
     <meta
       content=""
       mode="none"
-      name="styil-cache"
+      name="styils-cache"
     />
   </head>
   <body />
@@ -57,15 +57,15 @@ exports[`hydrate global hydrate 4`] = `
 `;
 
 exports[`hydrate mix hydrate 1`] = `
-"<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
-     <style data-styil=\\"css-ssr-global\\"></style>
-     <style data-styil=\\"css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"
+"<meta name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
+     <style data-styils=\\"css-ssr-global\\"></style>
+     <style data-styils=\\"css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"
 `;
 
 exports[`hydrate namespace hydrate 1`] = `
-"<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
-     <style data-styil=\\"css-ssr-global\\"></style>
-     <style data-styil=\\"css-ssr\\">.ssr-css-2242710476{background-color:gainsboro;border-radius:9999px;}.ssr-css-2242710476.ssr-size-max{font-size:12px;}.ssr-css-2242710476.ssr-size-small{font-size:14px;}</style>"
+"<meta name=\\"styils-cache\\" mode=\\"none\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
+     <style data-styils=\\"css-ssr-global\\"></style>
+     <style data-styils=\\"css-ssr\\">.ssr-css-2242710476{background-color:gainsboro;border-radius:9999px;}.ssr-css-2242710476.ssr-size-max{font-size:12px;}.ssr-css-2242710476.ssr-size-small{font-size:14px;}</style>"
 `;
 
 exports[`hydrate namespace hydrate 2`] = `
@@ -73,7 +73,7 @@ exports[`hydrate namespace hydrate 2`] = `
   <head>
     <meta
       content="ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small"
-      name="styil-cache"
+      name="styils-cache"
     />
   </head>
   <body />
@@ -85,13 +85,13 @@ exports[`hydrate render Element hydrate 1`] = `
   <meta
     content="css-2242710476"
     mode="none"
-    name="styil-cache"
+    name="styils-cache"
   />
   <style
-    data-styil="css-ssr-global"
+    data-styils="css-ssr-global"
   />
   <style
-    data-styil="css-ssr"
+    data-styils="css-ssr"
   >
     .css-2242710476{background-color:gainsboro;border-radius:9999px;}
   </style>
@@ -99,9 +99,9 @@ exports[`hydrate render Element hydrate 1`] = `
 `;
 
 exports[`hydrate variants hydrate 1`] = `
-"<meta name=\\"styil-cache\\" mode=\\"none\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
-     <style data-styil=\\"css-ssr-global\\"></style>
-     <style data-styil=\\"css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}.css-2242710476.size-max{font-size:12px;}.css-2242710476.size-small{font-size:14px;}</style>"
+"<meta name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
+     <style data-styils=\\"css-ssr-global\\"></style>
+     <style data-styils=\\"css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}.css-2242710476.size-max{font-size:12px;}.css-2242710476.size-small{font-size:14px;}</style>"
 `;
 
 exports[`hydrate variants hydrate 2`] = `
@@ -109,7 +109,7 @@ exports[`hydrate variants hydrate 2`] = `
   <head>
     <meta
       content="css-2242710476|css-2242710476.size-max|css-2242710476.size-small"
-      name="styil-cache"
+      name="styils-cache"
     />
   </head>
   <body />
@@ -133,7 +133,7 @@ exports[`system createSystem 2`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
@@ -171,13 +171,13 @@ exports[`system createSystem 4`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3183262666{color:blue;}
@@ -202,7 +202,7 @@ exports[`system global 1`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       body{background-color:#fff;}
@@ -224,7 +224,7 @@ exports[`system styled 2`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3397010960{background-color:gainsboro;border-radius:9999px;font-weight:500;padding:0.75em 1em;border:0px;transition:all 200ms ease;}.css-3397010960:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0, 0, 0, .3);}
@@ -252,7 +252,7 @@ exports[`system styled className 2`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-2129283522{background-color:gainsboro;}
@@ -296,13 +296,13 @@ exports[`system styled with styled components 2`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-2341007075{background-color:#fff;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
@@ -335,7 +335,7 @@ exports[`system theme does not render repeatedly 2`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
@@ -373,13 +373,13 @@ exports[`system theme does not render repeatedly 4`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3183262666{color:blue;}
@@ -417,13 +417,13 @@ exports[`system theme does not render repeatedly 6`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3183262666{color:blue;}
@@ -462,19 +462,19 @@ exports[`system variants 2`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237.size-max{font-size:99px;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237.size-small{font-size:14px;}
@@ -514,19 +514,19 @@ exports[`system variants 4`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237.size-max{font-size:99px;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237.size-small{font-size:14px;}
@@ -566,13 +566,13 @@ exports[`system variants single 2`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237.size-small{font-size:14px;}
@@ -610,13 +610,13 @@ exports[`system variants single 4`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237.size-small{font-size:14px;}
@@ -653,19 +653,19 @@ exports[`system variants theme 2`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237.color-light{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237.color-dark{color:red;}
@@ -703,19 +703,19 @@ exports[`system variants theme 4`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237.color-light{color:red;}
     </style>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       .css-3433634237.color-dark{color:red;}
@@ -748,7 +748,7 @@ exports[`system with theme global 2`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       body{background-color:blue;}
@@ -776,7 +776,7 @@ exports[`system with theme global 4`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       body{background-color:red;}
@@ -804,7 +804,7 @@ exports[`system with theme global 6`] = `
 <html>
   <head>
     <style
-      data-styil="css"
+      data-styils="css"
     >
       
       body{background-color:blue;}

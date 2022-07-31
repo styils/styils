@@ -1,40 +1,40 @@
 [English](./README.md)
 
 <p align="center">
-<img src="./logo.svg" alt="styil" style="width:120px">
+<img src="./logo.svg" alt="styils" style="width:120px">
 <br/>
 <br/>
-<img src="./styil.svg" alt="styil" style="width:100px;">
+<img src="./styils.svg" alt="styils" style="width:100px;">
 </p>
 
 <p align="center">
-  <img src="https://codecov.io/gh/zoy-l/styil/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
-  <img src="https://img.badgesize.io/https://unpkg.com/@styil/css@latest/index.prod.esm.js?compression=gzip&style=square&label=css&color=#4fc08d" alt="gzip" />
-  <img src="https://img.badgesize.io/https://unpkg.com/@styil/react@latest/index.prod.esm.js?compression=gzip&style=square&label=react&color=#4fc08d" alt="gzip" />
+  <img src="https://codecov.io/gh/zoy-l/styils/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
+  <img src="https://img.badgesize.io/https://unpkg.com/@styils/css@latest/index.prod.esm.js?compression=gzip&style=square&label=css&color=#4fc08d" alt="gzip" />
+  <img src="https://img.badgesize.io/https://unpkg.com/@styils/react@latest/index.prod.esm.js?compression=gzip&style=square&label=react&color=#4fc08d" alt="gzip" />
 </p>
 
 <p align="center">
  轻量级和快速的 css-in-js 解决方案，运行时接近于零。支持主题、SSR
 </p>
 
-[文档](https://styils.github.io/styil)
+[文档](https://styils.github.io/styils)
 
 > 目前，它是处于实验阶段的!
 
-## Styil React
+## Styils React
 
 React 包装器，包括 `styled` API。
 
 ```sh
-npm install @styil/react
+npm install @styils/react
 ```
 
-## Styil Css
+## Styils Css
 
 与框架无关的实现，包括 `css` API。
 
 ```sh
-npm install @styil/css
+npm install @styils/css
 ```
 
 ## License

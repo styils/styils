@@ -1,7 +1,7 @@
 import React from 'react'
 import { TestComponentProps, TestRunner } from '../TestRunner'
 import { buttonStyles, buttonVariants } from '../utils/buttonStyles'
-import { styled } from '@styil/react'
+import { styled } from '@styils/react'
 
 const Button = styled(
   'button',
@@ -21,7 +21,7 @@ const TestBase: React.FunctionComponent<TestComponentProps> = ({
         size: testIndex % 2 === 0 ? '1' : '2'
       }}
     >
-      styil {testIndex}
+      styils {testIndex}
     </Button>
   )
 }
@@ -30,7 +30,7 @@ const Test = () => {
   return (
     <>
       <TestRunner
-        testIdentifier="change-variant-styil-react"
+        testIdentifier="change-variant-styils-react"
         numberOfRuns={3}
         iterationN={1000}
         TestComponent={TestBase}

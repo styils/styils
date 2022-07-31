@@ -1,4 +1,4 @@
-# 为 Styil 做贡献
+# 为 Styils 做贡献
 
 欢迎并感谢您的关注！在提交拉取请求之前，请花点时间查看这些指南。
 
@@ -19,10 +19,10 @@
 
    ```bash
    # 克隆存储库
-   git@github.com:**path**/styil.git
+   git@github.com:**path**/styils.git
 
    # 导航到新克隆的目录
-   cd styil
+   cd styils
 
    # 安装测试所需的工具
    pnpm install
@@ -67,7 +67,7 @@ git push origin update/something
 
 现在 [打开一个拉取请求] 带有清晰的标题和描述。
 
-[已被报告]: https://github.com/zoy-l/styil/issues
-[fork这个项目]: https://github.com/zoy-l/styil/fork
+[已被报告]: https://github.com/zoy-l/styils/issues
+[fork这个项目]: https://github.com/zoy-l/styils/fork
 [代码示例]: https://codesandbox.io/
 [打开一个拉取请求]: https://help.github.com/articles/using-pull-requests/

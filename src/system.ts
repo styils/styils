@@ -28,7 +28,7 @@ export function createSystem<Theme extends AnyObject = {}>(
   const { key, container, speedy, nonce } = sheetOptions
   const globalMode = { mode: defaultMode }
   const metaHtml = isBrowser
-    ? (document.querySelector(`meta[name="styil-cache"]`) as HTMLMetaElement)
+    ? (document.querySelector(`meta[name="styils-cache"]`) as HTMLMetaElement)
     : null
 
   if (isBrowser && !selectorCache.size && metaHtml) {
@@ -230,30 +230,30 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   function getCssValue() {
     const styleHtml = isBrowser
-      ? document.querySelector(`style[data-styil="${sheet.key}-ssr"]`)
+      ? document.querySelector(`style[data-styils="${sheet.key}-ssr"]`)
       : null
     const styleGlobalHtml = isBrowser
-      ? document.querySelector(`style[data-styil="${sheet.key}-ssr-global"]`)
+      ? document.querySelector(`style[data-styils="${sheet.key}-ssr-global"]`)
       : null
 
     const ssrGlobalData = sheet.ssrGlobalData || (styleGlobalHtml?.textContent ?? '')
     const ssrData = sheet.ssrData || (styleHtml?.textContent ?? '')
 
     const selectorCacheString = [...selectorCache].join(splitSymbol)
-    const html = `<meta name="styil-cache" mode="${globalMode.mode}" content="${selectorCacheString}">
-     <style data-styil="${sheet.key}-ssr-global">${ssrGlobalData}</style>
-     <style data-styil="${sheet.key}-ssr">${ssrData}</style>`
+    const html = `<meta name="styils-cache" mode="${globalMode.mode}" content="${selectorCacheString}">
+     <style data-styils="${sheet.key}-ssr-global">${ssrGlobalData}</style>
+     <style data-styils="${sheet.key}-ssr">${ssrData}</style>`
 
     const StyilRules = React.createElement(
       React.Fragment,
       {},
       React.createElement('meta', {
-        name: 'styil-cache',
+        name: 'styils-cache',
         mode: globalMode.mode,
         content: selectorCacheString
       }),
-      React.createElement('style', { 'data-styil': `${sheet.key}-ssr-global` }, ssrGlobalData),
-      React.createElement('style', { 'data-styil': `${sheet.key}-ssr` }, ssrData)
+      React.createElement('style', { 'data-styils': `${sheet.key}-ssr-global` }, ssrGlobalData),
+      React.createElement('style', { 'data-styils': `${sheet.key}-ssr` }, ssrData)
     )
 
     return { html, StyilRules }

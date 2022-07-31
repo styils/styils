@@ -26,7 +26,7 @@
 import React from 'react'
 import { TestRunner } from '../TestRunner'
 import { interpolatePurples, interpolateBuPu, interpolateRdPu } from 'd3-scale-chromatic'
-import { styled } from '@styil/react'
+import { styled } from '@styils/react'
 
 const View = styled('div', {
   alignItems: 'stretch',
@@ -105,7 +105,7 @@ export function SierpinskiTriangle({ testIndex, x = 0, y = 0, depth = 0, s: _s =
 const Test = () => {
   return (
     <TestRunner
-      testIdentifier="sierpinski-triangle-styil-react"
+      testIdentifier="sierpinski-triangle-styils-react"
       numberOfRuns={3}
       iterationN={50}
       TestComponent={SierpinskiTriangle as any}

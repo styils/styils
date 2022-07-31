@@ -63,4 +63,4 @@ jobs:
           git checkout -B gh-pages
           git add -A
           git commit -m 'docs: update docs'
-          git push -f git@github.com:styils/styil.git gh-pages
+          git push -f git@github.com:styils/styils.git gh-pages

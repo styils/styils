@@ -98,7 +98,7 @@ export class StyleSheet {
     if (this.insertIndex % (this.speedy ? 65000 : 1) === 0) {
       const tag = document.createElement('style')
 
-      tag.setAttribute('data-styil', this.key)
+      tag.setAttribute('data-styils', this.key)
       if (this.nonce !== undefined) {
         tag.setAttribute('nonce', this.nonce)
       }

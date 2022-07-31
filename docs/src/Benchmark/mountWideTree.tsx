@@ -9,7 +9,7 @@ export default function Home() {
   const router = useNavigate()
 
   useEffect(() => {
-    if (pathname === '/styil/benchmark/mount-wide-tree') {
+    if (pathname === '/styils/benchmark/mount-wide-tree') {
       router('stitches-react-vc17')
     }
   }, [pathname, router])
@@ -27,7 +27,7 @@ export default function Home() {
           <Link to="emotion">Emotion</Link>
         </li>
         <li>
-          <Link to="styil-react">styil-react</Link>
+          <Link to="styils-react">styils-react</Link>
         </li>
         <li>
           <Link to="baseline">baseline</Link>

@@ -1,11 +1,11 @@
 {
   "name": "root",
-  "version": "1.2.3-alpha",
+  "version": "0.0.4-alpha.14",
   "description": "lightweight and fast css-in-js solution",
   "sideEffects": false,
   "keywords": [
     "css-in-js",
-    "styil",
+    "styils",
     "styled",
     "emotion",
     "styled-components",
@@ -30,11 +30,11 @@
     "./global": "./index.prod.global.js"
   },
   "files": [],
-  "homepage": "https://github.com/zoy-l/styil",
-  "bugs": "https://github.com/zoy-l/styil/issues",
+  "homepage": "https://github.com/zoy-l/styils",
+  "bugs": "https://github.com/zoy-l/styils/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zoy-l/styil"
+    "url": "https://github.com/zoy-l/styils"
   },
   "typesVersions": { ">= 4.1": { "*": ["index.d.ts"] } }
 }

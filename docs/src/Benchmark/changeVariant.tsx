@@ -9,7 +9,7 @@ export default function Home() {
   const router = useNavigate()
 
   useEffect(() => {
-    if (pathname === '/styil/benchmark/change-variant') {
+    if (pathname === '/styils/benchmark/change-variant') {
       router('stitches-react-vc17')
     }
   }, [pathname, router])
@@ -24,7 +24,7 @@ export default function Home() {
           <Link to="styled-components">Styled Components</Link>
         </li>
         <li>
-          <Link to="styil-react">styil-react</Link>
+          <Link to="styils-react">styils-react</Link>
         </li>
         <li>
           <Link to="emotion">Emotion</Link>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { TestComponentProps, TestRunner } from '../TestRunner'
 import { buttonStyles } from '../utils/buttonStyles'
-import { styled } from '@styil/react'
+import { styled } from '@styils/react'
 
 const TestBase = ({ testIndex }: TestComponentProps) => {
   // This purposefully creates the styled component inside the TestBase component
@@ -11,13 +11,13 @@ const TestBase = ({ testIndex }: TestComponentProps) => {
     ...(buttonStyles as any)
   })
 
-  return <Button>styil</Button>
+  return <Button>styils</Button>
 }
 
 const StyilTest = () => {
   return (
     <TestRunner
-      testIdentifier="create-and-mount-button-styil-react"
+      testIdentifier="create-and-mount-button-styils-react"
       numberOfRuns={3}
       iterationN={1000}
       TestComponent={TestBase}

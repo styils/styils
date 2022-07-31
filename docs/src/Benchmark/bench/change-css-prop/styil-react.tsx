@@ -1,7 +1,7 @@
 import React from 'react'
 import { TestComponentProps, TestRunner } from '../TestRunner'
 import { buttonStyles } from '../utils/buttonStyles'
-import { styled } from '@styil/react'
+import { styled } from '@styils/react'
 
 const Button = styled('button', {
   ...(buttonStyles as any)
@@ -26,7 +26,7 @@ const StyilTest = () => {
   return (
     <>
       <TestRunner
-        testIdentifier="change-css-prop-styil-react"
+        testIdentifier="change-css-prop-styils-react"
         numberOfRuns={3}
         iterationN={1000}
         TestComponent={TestBase}

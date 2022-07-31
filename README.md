@@ -1,40 +1,40 @@
 [简体中文](./README.ZH.md)
 
 <p align="center">
-<img src="./logo.svg" alt="styil" style="width:120px">
+<img src="./logo.svg" alt="styils" style="width:120px">
 <br/>
 <br/>
-<img src="./styil.svg" alt="styil" style="width:100px;">
+<img src="./styils.svg" alt="styils" style="width:100px;">
 </p>
 
 <p align="center">
-  <img src="https://codecov.io/gh/zoy-l/styil/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
-  <img src="https://img.badgesize.io/https://unpkg.com/@styil/css@latest/index.prod.esm.js?compression=gzip&style=square&label=css&color=#4fc08d" alt="gzip" />
-  <img src="https://img.badgesize.io/https://unpkg.com/@styil/react@latest/index.prod.esm.js?compression=gzip&style=square&label=react&color=#4fc08d" alt="gzip" />
+  <img src="https://codecov.io/gh/zoy-l/styils/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
+  <img src="https://img.badgesize.io/https://unpkg.com/@styils/css@latest/index.prod.esm.js?compression=gzip&style=square&label=css&color=#4fc08d" alt="gzip" />
+  <img src="https://img.badgesize.io/https://unpkg.com/@styils/react@latest/index.prod.esm.js?compression=gzip&style=square&label=react&color=#4fc08d" alt="gzip" />
 </p>
 
 <p align="center">
 Lightweight and fast css-in-js solution with near zero runtime. Support Themes, SSR
 </p>
 
-[Documentation](https://styils.github.io/styil)
+[Documentation](https://styils.github.io/styils)
 
 > Currently, it is experimental!
 
-### Styil React
+### Styils React
 
 React wrapper including the `styled` API.
 
 ```sh
-npm install @styil/react
+npm install @styils/react
 ```
 
-### Styil Css
+### Styils Css
 
 Framework-agnostic implementation, including the `css` API.
 
 ```sh
-npm install @styil/css
+npm install @styils/css
 ```
 
 ## License

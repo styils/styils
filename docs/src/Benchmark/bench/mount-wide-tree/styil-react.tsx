@@ -1,7 +1,7 @@
 import React from 'react'
 import { TestRunner } from '../TestRunner'
 import { Tree } from '../utils/Tree'
-import { styled } from '@styil/react'
+import { styled } from '@styils/react'
 
 export const TestBase = () => {
   // This purposefully creates the styled component inside the TestBase component
@@ -78,7 +78,7 @@ export const TestBase = () => {
 const Test = () => {
   return (
     <TestRunner
-      testIdentifier="mount-wide-tree-styil-react"
+      testIdentifier="mount-wide-tree-styils-react"
       numberOfRuns={3}
       iterationN={50}
       TestComponent={TestBase}

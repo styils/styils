@@ -1,5 +1,5 @@
 import LogoSvg from '../../../logo.svg'
-import StyilSvg from '../../../styil.svg'
+import StyilSvg from '../../../styils.svg'
 import { styled, useSystem } from '../theme'
 import quickSvg from '../svg/quick.svg'
 import copySvg from '../svg/copy.svg'
@@ -25,15 +25,15 @@ const Logo = styled('img', {
   filter: 'drop-shadow(0px 8px 6px rgba(26,58,70,0.8))'
 })
 
-const Styil = styled('img', {
+const Styils = styled('img', {
   display: 'block',
-  height: 56,
-  width: 210,
+  height: 65,
+  width: 295,
   marginRight: 8,
   marginBottom: 12,
   '@media screen and (max-width: 1000px)': {
     height: 50,
-    width: 180
+    width: 220
   }
 })
 
@@ -71,7 +71,7 @@ const LogoWapper = styled('section', (theme) => ({
 
   '&:after': {
     position: 'absolute',
-    borderRadius: '50%',
+    borderRadius: '51%',
     height: '65%',
     width: '80%',
     left: '50%',
@@ -355,7 +355,7 @@ export default function Home() {
       <PrimaryWapper>
         <SloganWapper>
           <Slogan>
-            <Styil alt="styil" src={StyilSvg} />
+            <Styils alt="styils" src={StyilSvg} />
             <span>{t('slogan')}</span>
           </Slogan>
 
@@ -363,31 +363,31 @@ export default function Home() {
             <Button as="a" href="#quick">
               {t('quick')}
             </Button>
-            <Button as="a" href="https://github.com/zoy-l/styil" target="_blank">
+            <Button as="a" href="https://github.com/zoy-l/styils" target="_blank">
               {t('github')}
             </Button>
             <InstallBox>
               <strong>$</strong>
-              <pre ref={installRef}>npm install @styil/react</pre>
+              <pre ref={installRef}>npm install @styils/react</pre>
               <img src={copyReactIcon} alt="copy" onClick={() => copyReact()} aria-hidden="true" />
             </InstallBox>
             <InstallBox>
               <strong>$</strong>
-              <pre ref={installRef}>npm install @styil/css</pre>
+              <pre ref={installRef}>npm install @styils/css</pre>
               <img src={copyCssIcon} alt="copy" onClick={() => copyCss()} aria-hidden="true" />
             </InstallBox>
           </ButtonGroup>
         </SloganWapper>
 
         <LogoWapper>
-          <Logo alt="styil-logo" src={LogoSvg} />
+          <Logo alt="styils-logo" src={LogoSvg} />
           <Switch
             checked={check}
             onChange={(value) => {
               const mode = value ? 'dark' : 'light'
               setCheck(value)
               setMode(mode)
-              localStorage.setItem('styil-theme-mode', mode)
+              localStorage.setItem('styils-theme-mode', mode)
             }}
           />
           <SupportLabel datatype="html">

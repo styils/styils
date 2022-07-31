@@ -39,13 +39,13 @@
     "2": "You can define a single dynamic rule, multiple dynamic rules, or even compound dynamic rules",
     "3": "Dynamic interpolation replaces props props passing, because passing values through props will bring a large performance overhead, in addition, we may write the following code."
   },
-  "withThemeDesc": "<strong>Styil</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
+  "withThemeDesc": "<strong>Styils</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
   "withSSRDesc": {
-    "1": "<strong>Styil</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
+    "1": "<strong>Styils</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
     "2": "If using theme<strong>getCssValue</strong>should be exported from<strong>createSystem</strong>"
   },
-  "withKeyframesDesc": "<strong>Styil</strong>provides two ways to define as you like.",
-  "withGlobalDesc": "<strong>Styil</strong>provides two ways to define as you like.",
+  "withKeyframesDesc": "<strong>Styils</strong>provides two ways to define as you like.",
+  "withGlobalDesc": "<strong>Styils</strong>provides two ways to define as you like.",
   "withMediaDesc": "Just like using media queries in regular<strong>CSS</strong>,<strong>@media</strong>can be placed directly in the<strong>CSS</strong>block.",
   "back": "Back",
   "bench": "Bench",

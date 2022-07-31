@@ -112,7 +112,7 @@ export const StyilCode = ({
   variants?: { padding: 'false' }
 }) => {
   const { t } = useTranslation()
-  const variantsCode = `import { styled } from '@styil/react'
+  const variantsCode = `import { styled } from '@styils/react'
 
 const Button = styled(
   'button',
@@ -135,7 +135,7 @@ const Button = styled(
 render(<Button variants={{ size: 'small' }}>Button</Button>)
 `
 
-  const themeCode = `import { createSystem } from '@styil/react'
+  const themeCode = `import { createSystem } from '@styils/react'
 
 const { styled, SystemProvider, useSystem } = createSystem({
   theme(mode) {
@@ -157,7 +157,7 @@ render(() => {
 
   return (
     <SystemProvider>
-      <Button onClick={() => setMode('dark')}>hello styil {mode}</Button>
+      <Button onClick={() => setMode('dark')}>hello styils {mode}</Button>
     </SystemProvider>
   )
 })`
@@ -172,7 +172,7 @@ function foo() {
   return <Side move={move} />
 }`
 
-  const baseCode = `import { styled } from '@styil/react';
+  const baseCode = `import { styled } from '@styils/react';
 
 // ${t('baseCode.1')}
 const Image = styled({tag:'img',namespce:'label'},{ ... })
@@ -202,7 +202,7 @@ render(<Button as="a" href="google.com"><Image/></Button>)
 
   const ssrCode = `import React from 'react'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
-import { getCssValue } from '@styil/react'
+import { getCssValue } from '@styils/react'
 // import { getCssValue } from 'to-path'
 
 export default class Document extends NextDocument {
@@ -235,7 +235,7 @@ export default class Document extends NextDocument {
   }
 })
 // or
-import { keyframes } from '@styil/react'
+import { keyframes } from '@styils/react'
 
 const out = keyframes({
   from: {
@@ -252,7 +252,7 @@ const Foo = styled('div',{
 ,
 `
 
-  const globalCode = `import { global, SystemProvider } from '@styil/react'
+  const globalCode = `import { global, SystemProvider } from '@styils/react'
 
 global({
   body: {

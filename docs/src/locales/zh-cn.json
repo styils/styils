@@ -39,13 +39,13 @@
     "2": "可以定义单个动态规则、多个动态规则，甚至是复合动态规则",
     "3": "动态插值代替 props 道具传递，因为通过props传值会带来较大的性能开销，此外我们可能写出下面这段代码。"
   },
-  "withThemeDesc": "<strong>Styil</strong>提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。",
+  "withThemeDesc": "<strong>Styils</strong>提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。",
   "withSSRDesc": {
-    "1": "<strong>Styil</strong>提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。",
+    "1": "<strong>Styils</strong>提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。",
     "2": "如果使用主题<strong>getCssValue</strong>应该从<strong>createSystem</strong>导出"
   },
-  "withKeyframesDesc": "<strong>Styil</strong>提供两种方式定义, 任你喜欢。",
-  "withGlobalDesc": "<strong>Styil</strong>提供两种方式定义, 任你喜欢。",
+  "withKeyframesDesc": "<strong>Styils</strong>提供两种方式定义, 任你喜欢。",
+  "withGlobalDesc": "<strong>Styils</strong>提供两种方式定义, 任你喜欢。",
   "withMediaDesc": "就像在常规<strong>CSS</strong>中使用媒体查询一样，可以将<strong>@media</strong>直接放在<strong>CSS</strong>块中。",
   "back": "返回",
   "bench": "基准",

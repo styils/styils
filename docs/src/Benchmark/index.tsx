@@ -88,7 +88,7 @@ export default function Benchmark() {
   const router = useNavigate()
 
   useEffect(() => {
-    if (pathname === '/styil/benchmark') {
+    if (pathname === '/styils/benchmark') {
       router('create-and-mount-button')
     }
   }, [pathname, router])

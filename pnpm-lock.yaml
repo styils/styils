@@ -93,7 +93,7 @@ importers:
       '@emotion/styled': ^11.9.3
       '@stitches/react': ^1.2.8
       '@stitches/stringify': ^1.2.8
-      '@styils/babel-plugin': link:/Users/zoy/babel-plugin-styils
+      '@styils/babel-plugin': ^1.0.1
       '@types/babel__core': ^7.1.19
       '@types/fs-extra': ^9.0.13
       '@types/prismjs': ^1.26.0
@@ -129,7 +129,7 @@ importers:
     devDependencies:
       '@babel/core': 7.18.9
       '@babel/preset-typescript': 7.18.6_@babel+core@7.18.9
-      '@styils/babel-plugin': link:../../babel-plugin-styils
+      '@styils/babel-plugin': 1.0.1
       '@types/babel__core': 7.1.19
       '@types/fs-extra': 9.0.13
       '@types/prismjs': 1.26.0
@@ -1362,6 +1362,15 @@ packages:
   /@stitches/stringify/1.2.8:
     resolution: {integrity: sha512-juDrnCsfBlckOu0pFOCzEN8iX6oIbLS7vFlrqXwG0Y6yzS6EnOtbP4NGNtB7XzyF9u82jLoCDq1EmBwsgBssqQ==}
     dev: false
+
+  /@styils/babel-plugin/1.0.1:
+    resolution: {integrity: sha512-LWlm+zBKWt1oOHsWoFrrMrk+OsRHIRvSwcau/Txr+U17Eh5+G9GUi4D8u5O4FohzsEj9BIT5XJdkpK+LoZe/8A==}
+    engines: {node: '>=14', pnpm: '>=7'}
+    dependencies:
+      '@babel/helper-plugin-utils': 7.18.9
+      convert-source-map: 1.8.0
+      source-map: 0.7.4
+    dev: true
 
   /@swc/core-android-arm-eabi/1.2.218:
     resolution: {integrity: sha512-Q/uLCh262t3xxNzhCz+ZW9t+g2nWd0gZZO4jMYFWJs7ilKVNsBfRtfnNGGACHzkVuWLNDIWtAS2PSNodl7VUHQ==}
@@ -5639,6 +5648,11 @@ packages:
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /source-map/0.7.4:
+    resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
+    engines: {node: '>= 8'}
     dev: true
 
   /sourcemap-codec/1.4.8:

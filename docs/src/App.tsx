@@ -125,7 +125,7 @@ export default function App() {
           <Translate
             onClick={() => {
               const currentLanguage = i18n.language === 'Zh' ? 'En' : 'Zh'
-              localStorage.setItem('styil-doc-key', currentLanguage)
+              localStorage.setItem('styils-doc-key', currentLanguage)
               i18n.changeLanguage(currentLanguage)
             }}
           >
@@ -135,14 +135,14 @@ export default function App() {
             {i18n.language}
           </Translate>
           {isBench ? (
-            <Link to="/styil">{t('back')}</Link>
+            <Link to="/styils">{t('back')}</Link>
           ) : (
-            <Link to="/styil/benchmark">{t('bench')}</Link>
+            <Link to="/styils/benchmark">{t('bench')}</Link>
           )}
         </Header>
         <Routes>
-          <Route path="/styil" element={<Home />} />
-          <Route path="/styil/benchmark" element={<Benchmark />}>
+          <Route path="/styils" element={<Home />} />
+          <Route path="/styils/benchmark" element={<Benchmark />}>
             <Route path="change-variant" element={<ChangeVariant />}>
               {getPathElement(changeVariant, 'change-variant').map(({ path, Element }) => {
                 return <Route key={path} path={path} element={<Element />} />
