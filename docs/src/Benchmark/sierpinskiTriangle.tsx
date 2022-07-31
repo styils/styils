@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     if (pathname === '/styils/benchmark/sierpinski-triangle') {
-      router('stitches-react-vc17')
+      router('stitches-react')
     }
   }, [pathname, router])
 
@@ -20,7 +20,7 @@ export default function Home() {
     <div style={{ position: 'relative' }}>
       <ul>
         <li>
-          <Link to="stitches-react-vc17">Stitches React</Link>
+          <Link to="stitches-react">Stitches React</Link>
         </li>
         <li>
           <Link to="styled-components">Styled components</Link>
