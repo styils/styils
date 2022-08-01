@@ -88,6 +88,10 @@ export interface Global<Theme> {
   (styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)): void
 }
 
+export interface Keyframes {
+  (styles: Record<string, CSSAttribute>): string
+}
+
 export interface SystemOptions<Theme> {
   theme?: (mode: string) => Theme
   defaultMode?: string
@@ -109,6 +113,7 @@ export interface System<Theme> {
     theme: Theme
   }
   global: Global<Theme>
+  keyframes: Keyframes
   getCssValue: () => { html: string; StyilRules: JSX.Element }
   flush: () => void
 }

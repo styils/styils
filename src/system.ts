@@ -1,5 +1,5 @@
 import React from 'react'
-import { type SystemOptions, type Styled, type System, type Global } from './systemTypes'
+import { type SystemOptions, type Styled, type System, type Global, Keyframes } from './systemTypes'
 import { createSelector } from './createSelector'
 import { StyleSheet, type OldRule } from './sheet'
 import { type AnyObject } from './types'
@@ -11,6 +11,7 @@ export function createSystem<Theme extends AnyObject = {}>(
   const splitSymbol = '|'
   const isBrowser = !!globalThis.document
 
+  // selector cache is mainly used for ssr
   const selectorCache = new Set<string>([])
   const globalCache: Record<
     string,
@@ -25,6 +26,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     defaultMode = 'none',
     sheetOptions = {}
   } = options
+
   const { key = 'css', container, speedy, nonce } = sheetOptions
   const globalMode = { mode: defaultMode }
   const metaHtml = isBrowser
@@ -70,6 +72,8 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   const useSystem = () => React.useContext(themeContent)
 
+  // Mode-based cache
+  // The difference with `selectorCache` is that this only works at runtime
   let modeIdentifier: Record<string, { targetClassName: string; namespaceJoiner: string }>[] = []
   let withIndex = 0
 
@@ -262,6 +266,19 @@ export function createSystem<Theme extends AnyObject = {}>(
     return { html, StyilRules }
   }
 
+  const keyframes: Keyframes = (style) => {
+    const selector = `${key}-${createSelector(style)}`
+
+    if (!selectorCache.has(selector)) {
+      selectorCache.add(selector)
+
+      const rules = parseRules({ [`@keyframes ${selector}`]: style })
+      sheet.insertStyle(rules, true)
+    }
+
+    return selector
+  }
+
   const global: Global<Theme> & { sourceMap?: string } = (styles) => {
     let oldRule: OldRule[]
 
@@ -308,7 +325,7 @@ export function createSystem<Theme extends AnyObject = {}>(
       oldRule = sheet.insertStyle(rules, true)
     }
 
-    createGlobRules(defaultMode)
+    createGlobRules(globalMode.mode)
 
     Object.defineProperty(globalMode, 'mode', {
       set(value) {
@@ -330,7 +347,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     modeIdentifier = []
   }
 
-  return { styled, SystemProvider, useSystem, getCssValue, flush, global }
+  return { styled, SystemProvider, useSystem, getCssValue, flush, global, keyframes }
 }
 
-export const { styled, getCssValue, flush, global } = createSystem()
+export const { styled, getCssValue, flush, global, keyframes } = createSystem()

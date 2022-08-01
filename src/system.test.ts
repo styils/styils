@@ -1,4 +1,4 @@
-import { createSystem, styled, flush, global } from './system'
+import { createSystem, styled, flush, global, keyframes } from './system'
 import { render, fireEvent, getByText } from '@testing-library/react'
 import React from 'react'
 
@@ -62,6 +62,25 @@ describe('system', () => {
     const { container } = render(React.createElement(Button2))
     expect(container).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
+  })
+
+  it('keyframes css', () => {
+    const out = keyframes({
+      from: {
+        transform: 'rotate(0deg)'
+      },
+      to: {
+        transform: 'rotate(360deg)'
+      }
+    })
+
+    document.head.childNodes.forEach((item) => {
+      expect(item.textContent).toEqual(
+        '@keyframes css-854127283{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}'
+      )
+    })
+
+    expect(out).toEqual('css-854127283')
   })
 
   it('global', () => {

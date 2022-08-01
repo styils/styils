@@ -1,6 +1,6 @@
 import LogoSvg from '../../../logo.svg'
 import StyilSvg from '../../../styils.svg'
-import { styled, useSystem } from '../theme'
+import { styled, useSystem, keyframes } from '../theme'
 import quickSvg from '../svg/quick.svg'
 import copySvg from '../svg/copy.svg'
 import sizeSvg from '../svg/size.svg'
@@ -16,6 +16,24 @@ import { useTranslation } from 'react-i18next'
 
 import React from 'react'
 import { StyilCode } from './code'
+
+const complex = keyframes({
+  '0%': {
+    transform: 'translateY(0px)'
+  },
+  '30%': {
+    transform: 'translateY(-10px)'
+  },
+  '50%': {
+    transform: 'translateY(4px)'
+  },
+  '70%': {
+    transform: 'translateY(-15px)'
+  },
+  '100%': {
+    transform: 'translateY(0px)'
+  }
+})
 
 const Logo = styled('img', {
   zIndex: 1,
@@ -87,11 +105,11 @@ const LogoWapper = styled('section', (theme) => ({
   },
 
   [`& ${Logo}`]: {
-    animation: '10s ease 0s infinite none running complex'
+    animation: `10s ease 0s infinite none running ${complex}`
   },
 
   [`& ${SwitchWapper}`]: {
-    animation: '13s ease 1s infinite reverse none running complex',
+    animation: `13s ease 1s infinite reverse none running ${complex}`,
     position: 'absolute',
     right: '20%',
     boxShadow: theme.boxShadow,
@@ -99,7 +117,7 @@ const LogoWapper = styled('section', (theme) => ({
   },
 
   [`& ${SupportLabel}[datatype="react"]`]: {
-    animation: '13s ease 1.5s infinite none running complex',
+    animation: `13s ease 1.5s infinite none running ${complex}`,
     boxShadow: theme.boxShadow,
     top: 40,
     left: 40,
@@ -109,7 +127,7 @@ const LogoWapper = styled('section', (theme) => ({
   },
 
   [`& ${SupportLabel}[datatype="html"]`]: {
-    animation: '13s ease 0.5s infinite none running complex',
+    animation: `13s ease 0.5s infinite none running ${complex}`,
     boxShadow: theme.boxShadow,
     left: 20,
     bottom: 70,
@@ -129,24 +147,6 @@ const LogoWapper = styled('section', (theme) => ({
     right: 20,
     '@media screen and (max-width: 580px)': {
       right: 0
-    }
-  },
-
-  '@keyframes complex': {
-    '0%': {
-      transform: 'translateY(0px)'
-    },
-    '30%': {
-      transform: 'translateY(-10px)'
-    },
-    '50%': {
-      transform: 'translateY(4px)'
-    },
-    '70%': {
-      transform: 'translateY(-15px)'
-    },
-    '100%': {
-      transform: 'translateY(0px)'
     }
   }
 }))
