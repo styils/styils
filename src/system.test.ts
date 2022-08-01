@@ -39,11 +39,13 @@ describe('system', () => {
   })
 
   it('styled with sourceMap', () => {
+    // @ts-expect-error
     styled.sourceMap = '1'
     styled('button', {
       backgroundColor: 'gainsboro'
     })
 
+    // @ts-expect-error
     expect(styled.sourceMap).toEqual(undefined)
     expect(document.documentElement).toMatchSnapshot()
   })
@@ -73,6 +75,7 @@ describe('system', () => {
   })
 
   it('global with sourceMap', () => {
+    // @ts-expect-error
     global.sourceMap = 'sourceMap'
     global({
       body: {
@@ -80,6 +83,7 @@ describe('system', () => {
       }
     })
 
+    // @ts-expect-error
     expect(global.sourceMap).toEqual(undefined)
     expect(document.documentElement).toMatchSnapshot()
   })

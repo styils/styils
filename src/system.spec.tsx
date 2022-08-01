@@ -1,4 +1,4 @@
-import { createSystem, styled } from './system'
+import { createSystem, styled, global } from './system'
 import React from 'react'
 
 const { styled: styleTheme } = createSystem({
@@ -22,6 +22,12 @@ const Anthor = styled(
     }
   }
 )
+
+// @ts-expect-error Do not expose to the outside world
+styled.sourceMap
+
+// @ts-expect-error Do not expose to the outside world
+global.sourceMap
 
 export function asButton() {
   return (

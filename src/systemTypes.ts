@@ -82,12 +82,10 @@ export interface Styled<Theme> {
       }
     }
   >
-  sourceMap?: string
 }
 
 export interface Global<Theme> {
   (styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)): void
-  sourceMap?: string
 }
 
 export interface SystemOptions<Theme> {

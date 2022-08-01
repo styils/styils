@@ -73,7 +73,7 @@ export function createSystem<Theme extends AnyObject = {}>(
   let modeIdentifier: Record<string, { targetClassName: string; namespaceJoiner: string }>[] = []
   let withIndex = 0
 
-  const styled: Styled<Theme> = (tag, styles, interpolation) => {
+  const styled: Styled<Theme> & { sourceMap?: string } = (tag, styles, interpolation) => {
     let inputTag = tag
     const inputNamespace = (tag as { namespace: string }).namespace ?? ''
 
@@ -262,7 +262,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     return { html, StyilRules }
   }
 
-  const global: Global<Theme> = (styles) => {
+  const global: Global<Theme> & { sourceMap?: string } = (styles) => {
     let oldRule: OldRule[]
 
     function createGlobRules(mode: string) {
