@@ -363,7 +363,7 @@ export default function Home() {
             <Button as="a" href="#quick">
               {t('quick')}
             </Button>
-            <Button as="a" href="https://github.com/zoy-l/styils" target="_blank">
+            <Button as="a" href="https://github.com/styils/styils" target="_blank">
               {t('github')}
             </Button>
             <InstallBox>
