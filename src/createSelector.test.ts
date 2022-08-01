@@ -6,7 +6,7 @@ describe('createSelector', () => {
     const res = createSelector(obj)
     expect(obj).toEqual({ button: { fontSize: 14, color: 'red' }, fontSize: 12 })
 
-    expect(res).toEqual('css-4283868801')
+    expect(`${res}`).toEqual('4283868801')
   })
 
   it('regression: keyframes', () => {
@@ -29,6 +29,6 @@ describe('createSelector', () => {
       }
     })
 
-    expect(res).toEqual('css-854127283')
+    expect(`${res}`).toEqual('854127283')
   })
 })

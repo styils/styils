@@ -25,7 +25,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     defaultMode = 'none',
     sheetOptions = {}
   } = options
-  const { key, container, speedy, nonce } = sheetOptions
+  const { key = 'css', container, speedy, nonce } = sheetOptions
   const globalMode = { mode: defaultMode }
   const metaHtml = isBrowser
     ? (document.querySelector(`meta[name="styils-cache"]`) as HTMLMetaElement)
@@ -38,7 +38,7 @@ export function createSystem<Theme extends AnyObject = {}>(
   }
 
   const sheet = new StyleSheet({
-    key: key ?? 'css',
+    key,
     speedy: speedy === undefined ? process.env.NODE_ENV === 'production' : speedy,
     container: isBrowser ? container ?? document.head : null,
     nonce
@@ -102,7 +102,7 @@ export function createSystem<Theme extends AnyObject = {}>(
       const variants =
         typeof interpolation === 'function' ? interpolation(theme, mode) : interpolation
 
-      const selector = createSelector(style)
+      const selector = `${key}-${createSelector(style)}`
 
       let targetClassName = selector
       let namespaceJoiner = ''
@@ -112,17 +112,16 @@ export function createSystem<Theme extends AnyObject = {}>(
         namespaceJoiner = `${inputNamespace}-`
       }
 
+      const rules = {
+        segmentRuleCode: [],
+        ruleCode: ''
+      }
+
       if (!selectorCache.has(targetClassName)) {
         selectorCache.add(targetClassName)
-        const rules = parseRules(style, `.${targetClassName}`)
-
-        if (process.env.NODE_ENV !== 'production') {
-          if (styled.sourceMap) {
-            rules.ruleCode += styled.sourceMap
-          }
-        }
-
-        sheet.insertStyle(rules)
+        const { segmentRuleCode, ruleCode } = parseRules(style, `.${targetClassName}`)
+        rules.ruleCode = ruleCode
+        rules.segmentRuleCode = segmentRuleCode
       }
 
       if (variants) {
@@ -143,16 +142,23 @@ export function createSystem<Theme extends AnyObject = {}>(
 
             if (!selectorCache.has(variantsClassName)) {
               selectorCache.add(variantsClassName)
-              const rules = parseRules(value, `.${variantsClassName}`)
-              if (process.env.NODE_ENV !== 'production') {
-                if (styled.sourceMap) {
-                  rules.ruleCode += styled.sourceMap
-                }
-              }
-              sheet.insertStyle(rules)
+              const { segmentRuleCode, ruleCode } = parseRules(value, `.${variantsClassName}`)
+              rules.ruleCode += ruleCode
+              rules.segmentRuleCode.push(...segmentRuleCode)
             }
           }
         }
+      }
+
+      if (process.env.NODE_ENV !== 'production') {
+        if (styled.sourceMap) {
+          rules.ruleCode += styled.sourceMap
+          delete styled.sourceMap
+        }
+      }
+
+      if (rules.ruleCode || rules.segmentRuleCode.length) {
+        sheet.insertStyle(rules)
       }
 
       inputTargetInfo.targetClassName = targetClassName
@@ -222,9 +228,6 @@ export function createSystem<Theme extends AnyObject = {}>(
       }
     })
 
-    if (process.env.NODE_ENV !== 'production') {
-      delete styled.sourceMap
-    }
     return styledComponent
   }
 

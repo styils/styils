@@ -38,6 +38,16 @@ describe('system', () => {
     expect(document.documentElement).toMatchSnapshot()
   })
 
+  it('styled with sourceMap', () => {
+    styled.sourceMap = '1'
+    styled('button', {
+      backgroundColor: 'gainsboro'
+    })
+
+    expect(styled.sourceMap).toEqual(undefined)
+    expect(document.documentElement).toMatchSnapshot()
+  })
+
   it('styled with styled components', () => {
     const Button = styled('button', {
       backgroundColor: '#fff'
@@ -59,6 +69,18 @@ describe('system', () => {
       }
     })
 
+    expect(document.documentElement).toMatchSnapshot()
+  })
+
+  it('global with sourceMap', () => {
+    global.sourceMap = 'sourceMap'
+    global({
+      body: {
+        backgroundColor: '#fff'
+      }
+    })
+
+    expect(global.sourceMap).toEqual(undefined)
     expect(document.documentElement).toMatchSnapshot()
   })
 

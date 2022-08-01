@@ -4,12 +4,12 @@ import { StyleSheet } from './sheet'
 import { parseRules } from './parse'
 
 export function createStyil(options: Partial<StyleSheetOptions> = {}) {
-  const { key, container, speedy, nonce } = options
+  const { key = 'css', container, speedy, nonce } = options
 
   const globalCache = new Set<string>([])
 
   const sheet = new StyleSheet({
-    key: key ?? 'css',
+    key,
     speedy: speedy === undefined ? process.env.NODE_ENV === 'production' : speedy,
     container: globalThis.document ? container ?? globalThis.document.head : null,
     nonce
@@ -17,7 +17,7 @@ export function createStyil(options: Partial<StyleSheetOptions> = {}) {
 
   function createStyle(options: { styles: CSSAttribute; keyframes?: boolean; glob?: boolean }) {
     const { styles, keyframes, glob } = options
-    const className = createSelector(styles)
+    const className = `${key}-${createSelector(styles)}`
 
     if (!globalCache.has(className)) {
       globalCache.add(className)

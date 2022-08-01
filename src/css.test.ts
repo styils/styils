@@ -44,7 +44,7 @@ describe('css', () => {
   })
 
   it('createStyil', () => {
-    const { css } = createStyil({
+    const { css, flush } = createStyil({
       key: 'abc',
       container: document.body,
       nonce: '123456'
@@ -55,7 +55,8 @@ describe('css', () => {
 
     expect(document.documentElement).toMatchSnapshot()
 
-    expect(out).toEqual('css-2883881200')
+    expect(out).toEqual('abc-2883881200')
+    flush()
   })
 
   it('createStyil speedy', () => {

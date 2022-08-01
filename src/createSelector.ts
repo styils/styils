@@ -1,11 +1,6 @@
 import type { CSSAttribute, AnyObject } from './types'
 
 /**
- * In-memory cache.
- */
-const cacheClssName: Record<string, string> = {}
-
-/**
  * Generates the needed className
  */
 export function createSelector(styles: CSSAttribute) {
@@ -29,20 +24,16 @@ export function createSelector(styles: CSSAttribute) {
     }
   }
 
-  if (!cacheClssName[stringify]) {
-    // Convert input to class name.
-    // is the initial value of 11.
-    let index = 0
-    let value = 11
+  // Convert input to class name.
+  // is the initial value of 11.
+  let index = 0
+  let value = 11
 
-    while (index < stringify.length) {
-      // the multiplicative constant 101 is chosen to be prime,
-      // unsigned integer
-      value = (101 * value + stringify.charCodeAt(index++)) >>> 0
-    }
-
-    cacheClssName[stringify] = `css-${value}`
+  while (index < stringify.length) {
+    // the multiplicative constant 101 is chosen to be prime,
+    // unsigned integer
+    value = (101 * value + stringify.charCodeAt(index++)) >>> 0
   }
 
-  return cacheClssName[stringify]
+  return value
 }

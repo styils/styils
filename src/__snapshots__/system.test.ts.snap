@@ -212,6 +212,20 @@ exports[`system global 1`] = `
 </html>
 `;
 
+exports[`system global with sourceMap 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:#fff;}sourceMap
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
 exports[`system styled 1`] = `
 <div>
   <button
@@ -282,6 +296,20 @@ exports[`system styled production 1`] = `
     class="css-3465392085"
   />
 </div>
+`;
+
+exports[`system styled with sourceMap 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2129283522{background-color:gainsboro;}1
+    </style>
+  </head>
+  <body />
+</html>
 `;
 
 exports[`system styled with styled components 1`] = `
@@ -465,19 +493,7 @@ exports[`system variants 2`] = `
       data-styils="css"
     >
       
-      .css-3433634237{color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237.size-max{font-size:99px;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237.size-small{font-size:14px;}
+      .css-3433634237{color:red;}.css-3433634237.size-max{font-size:99px;}.css-3433634237.size-small{font-size:14px;}
     </style>
   </head>
   <body>
@@ -517,19 +533,7 @@ exports[`system variants 4`] = `
       data-styils="css"
     >
       
-      .css-3433634237{color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237.size-max{font-size:99px;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237.size-small{font-size:14px;}
+      .css-3433634237{color:red;}.css-3433634237.size-max{font-size:99px;}.css-3433634237.size-small{font-size:14px;}
     </style>
   </head>
   <body>
@@ -569,13 +573,7 @@ exports[`system variants single 2`] = `
       data-styils="css"
     >
       
-      .css-3433634237{color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237.size-small{font-size:14px;}
+      .css-3433634237{color:red;}.css-3433634237.size-small{font-size:14px;}
     </style>
   </head>
   <body>
@@ -613,13 +611,7 @@ exports[`system variants single 4`] = `
       data-styils="css"
     >
       
-      .css-3433634237{color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237.size-small{font-size:14px;}
+      .css-3433634237{color:red;}.css-3433634237.size-small{font-size:14px;}
     </style>
   </head>
   <body>
@@ -656,19 +648,7 @@ exports[`system variants theme 2`] = `
       data-styils="css"
     >
       
-      .css-3433634237{color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237.color-light{color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237.color-dark{color:red;}
+      .css-3433634237{color:red;}.css-3433634237.color-light{color:red;}.css-3433634237.color-dark{color:red;}
     </style>
   </head>
   <body>
@@ -706,19 +686,7 @@ exports[`system variants theme 4`] = `
       data-styils="css"
     >
       
-      .css-3433634237{color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237.color-light{color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237.color-dark{color:red;}
+      .css-3433634237{color:red;}.css-3433634237.color-light{color:red;}.css-3433634237.color-dark{color:red;}
     </style>
   </head>
   <body>

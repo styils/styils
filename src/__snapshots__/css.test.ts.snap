@@ -9,7 +9,7 @@ exports[`css createStyil 1`] = `
       nonce="123456"
     >
       
-      .css-2883881200{width:auto;}
+      .abc-2883881200{width:auto;}
     </style>
   </body>
 </html>
@@ -24,14 +24,6 @@ exports[`css createStyil speedy 1`] = `
       
     </style>
   </head>
-  <body>
-    <style
-      data-styils="abc"
-      nonce="123456"
-    >
-      
-      .css-2883881200{width:auto;}
-    </style>
-  </body>
+  <body />
 </html>
 `;
