@@ -1,21 +1,37 @@
 import fs from 'fs'
 import path from 'path'
 import shell from 'shelljs'
-
+import { format } from 'prettier'
 import packageTemp from './package.temp.json'
 
 const args = process.argv.slice(2)[0].slice(1)
 
-function publish(args: string) {
+async function publish(args: string) {
   let command = 'npm publish'
-  const [version, tag, type = 'all'] = args.split('-')
-  packageTemp.version = `${version}-${tag}`
+  let version = ''
+  let tag = ''
+  let type = ''
+
+  const arg = args.split('-')
+  if (arg.length === 2) {
+    version = arg[0]
+    type = arg[1]
+  } else if (arg.length === 3) {
+    version = arg[0]
+    tag = arg[1]
+    type = arg[2]
+  } else {
+    console.log(`unsupported format ${args}, example: v1.1.1-alpha-react or v1.1.1-react`)
+    process.exit(1)
+  }
 
   if (tag === 'alpha') {
+    tag = '-alpha'
     command += ' --tag alpha'
   }
 
   if (tag === 'beta') {
+    tag = '-beta'
     command += ' --tag beta'
   }
 
@@ -26,6 +42,9 @@ function publish(args: string) {
     case 'css':
     case 'base':
       targetPath.push(path.join(__dirname, '..', 'dist', type))
+      break
+    case 'babel':
+      targetPath.push(path.join(__dirname, '..', 'babel'))
       break
     case 'all':
       // eslint-disable-next-line @typescript-eslint/no-extra-semi
@@ -38,8 +57,32 @@ function publish(args: string) {
       process.exit(1)
   }
 
-  fs.writeFileSync(path.join(__dirname, 'package.temp.json'), JSON.stringify(packageTemp))
-  shell.exec('pnpm run build')
+  if (type !== 'babel') {
+    packageTemp.version = `${version}${tag}`
+
+    fs.writeFileSync(path.join(__dirname, 'package.temp.json'), JSON.stringify(packageTemp))
+    shell.exec('pnpm run build')
+  } else {
+    // eslint-disable-next-line global-require
+    const packageJson = require('../babel/package.json')
+
+    packageJson.version = `${version}${tag}`
+
+    fs.writeFileSync(
+      path.join(__dirname, '..', 'babel', 'package.json'),
+      format(JSON.stringify(packageJson), { parser: 'json' })
+    )
+
+    shell.exec('pnpm run build:babel')
+
+    fs.writeFileSync(
+      path.join(__dirname, '..', 'babel', '.npmrc'),
+      `registry=https://registry.npmjs.org/
+//registry.npmjs.org/:always-auth=true
+//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}
+`
+    )
+  }
 
   try {
     targetPath.forEach((p) => {
