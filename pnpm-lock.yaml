@@ -78,6 +78,25 @@ importers:
       shelljs: 0.8.5
       typescript: 4.7.4
 
+  babel:
+    specifiers:
+      '@babel/core': ^7.18.9
+      '@babel/helper-plugin-utils': ^7.18.9
+      '@types/babel__core': ^7.1.19
+      '@types/babel__helper-plugin-utils': ^7.10.0
+      '@types/convert-source-map': ^1.5.2
+      convert-source-map: ^1.8.0
+      source-map: ^0.7.4
+    dependencies:
+      '@babel/helper-plugin-utils': 7.18.9
+      convert-source-map: 1.8.0
+      source-map: 0.7.4
+    devDependencies:
+      '@babel/core': 7.18.9
+      '@types/babel__core': 7.1.19
+      '@types/babel__helper-plugin-utils': 7.10.0
+      '@types/convert-source-map': 1.5.2
+
   docs:
     specifiers:
       '@babel/core': ^7.18.9
@@ -132,25 +151,6 @@ importers:
       '@vitejs/plugin-react': 1.3.2
       fs-extra: 10.1.0
       vite: 3.0.4
-
-  packages/babel:
-    specifiers:
-      '@babel/core': ^7.18.9
-      '@babel/helper-plugin-utils': ^7.18.9
-      '@types/babel__core': ^7.1.19
-      '@types/babel__helper-plugin-utils': ^7.10.0
-      '@types/convert-source-map': ^1.5.2
-      convert-source-map: ^1.8.0
-      source-map: ^0.7.4
-    dependencies:
-      '@babel/helper-plugin-utils': 7.18.9
-      convert-source-map: 1.8.0
-      source-map: 0.7.4
-    devDependencies:
-      '@babel/core': 7.18.9
-      '@types/babel__core': 7.1.19
-      '@types/babel__helper-plugin-utils': 7.10.0
-      '@types/convert-source-map': 1.5.2
 
 packages:
 

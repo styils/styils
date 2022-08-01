@@ -18,5 +18,5 @@
       "nativeCssTypes": ["types/nativeCssTypes.d.ts"]
     }
   },
-  "include": ["src", "types.d.ts"]
+  "include": ["src", "types.d.ts", "babel"]
 }

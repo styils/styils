@@ -1,9 +1,9 @@
 import React from 'react'
-import { createSelector } from './createSelector'
 import { type SystemOptions, type Styled, type System, type Global } from './systemTypes'
+import { createSelector } from './createSelector'
+import { StyleSheet, type OldRule } from './sheet'
 import { type AnyObject } from './types'
 import { parseRules } from './parse'
-import { StyleSheet, type OldRule } from './sheet'
 
 export function createSystem<Theme extends AnyObject = {}>(
   options: SystemOptions<Theme> = {}

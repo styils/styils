@@ -7,7 +7,7 @@
 module.exports = {
   collectCoverageFrom: process.env.JEST_EASY
     ? (memo) => {
-        return memo.concat(['packages/**/*.{ts,tsx}', '!**/*.spec.{ts,tsx}'])
+        return memo.concat(['babel/**/*.ts', '!**/*.spec.{ts,tsx}'])
       }
     : [],
   testMatch: [`**/?*.test.(j|t)s?(x)`],
