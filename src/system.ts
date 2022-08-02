@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { type SystemOptions, type Styled, type System, type Global, Keyframes } from './systemTypes'
 import { createSelector } from './createSelector'
 import { StyleSheet, type OldRule } from './sheet'
