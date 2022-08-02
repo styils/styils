@@ -346,6 +346,56 @@ exports[`system styled with styled components 2`] = `
 </html>
 `;
 
+exports[`system styled with theme and sourceMap 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+  </head>
+  <body>
+    <div>
+      <button
+        class="css-916997065"
+      >
+        light
+      </button>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system styled with theme and sourceMap 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2405978758{background-color:blue;}1
+    </style>
+  </head>
+  <body>
+    <div>
+      <button
+        class="css-2405978758"
+      >
+        dark
+      </button>
+    </div>
+  </body>
+</html>
+`;
+
 exports[`system theme does not render repeatedly 1`] = `
 <div>
   <div
@@ -782,6 +832,26 @@ exports[`system with theme global 6`] = `
     <div>
       <div>
         light
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`system with theme global and sourcemap 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:red;}1
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        dark
       </div>
     </div>
   </body>

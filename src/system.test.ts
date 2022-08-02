@@ -50,6 +50,53 @@ describe('system', () => {
     expect(document.documentElement).toMatchSnapshot()
   })
 
+  it('styled with theme and sourceMap', () => {
+    const {
+      styled: themeStyled,
+      useSystem: useThemeSystem,
+      SystemProvider: ThemeSystemProvider,
+      flush: themeFlush
+    } = createSystem({
+      theme: (mode) => ({ light: { color: 'red' }, dark: { color: 'blue' } }[mode]),
+      defaultMode: 'light'
+    })
+    // @ts-expect-error
+    themeStyled.sourceMap = '1'
+    const Button = themeStyled('button', (theme) => ({
+      backgroundColor: theme.color
+    }))
+
+    const { container } = render(
+      React.createElement(ThemeSystemProvider, {
+        children: React.createElement(() => {
+          const { mode, setMode } = useThemeSystem()
+
+          return React.createElement(
+            Button,
+            {
+              onClick: () => {
+                setMode(mode === 'light' ? 'dark' : 'light')
+              }
+            },
+            mode
+          )
+        })
+      })
+    )
+
+    // @ts-expect-error
+    expect(styled.sourceMap).toEqual(undefined)
+    expect(document.documentElement).toMatchSnapshot()
+
+    fireEvent.click(getByText(container, 'light'))
+
+    // @ts-expect-error
+    expect(styled.sourceMap).toEqual(undefined)
+    expect(document.documentElement).toMatchSnapshot()
+
+    themeFlush()
+  })
+
   it('styled with styled components', () => {
     const Button = styled('button', {
       backgroundColor: '#fff'
@@ -105,6 +152,54 @@ describe('system', () => {
     // @ts-expect-error
     expect(global.sourceMap).toEqual(undefined)
     expect(document.documentElement).toMatchSnapshot()
+  })
+
+  it('with theme global and sourcemap', () => {
+    const {
+      global: globalTheme,
+      useSystem,
+      SystemProvider,
+      flush
+    } = createSystem({
+      theme: (mode) => {
+        return {
+          dark: {
+            color: 'red'
+          },
+          light: {
+            color: 'blue'
+          }
+        }[mode]
+      },
+      defaultMode: 'light'
+    })
+
+    // @ts-expect-error
+    globalTheme.sourceMap = '1'
+    globalTheme((theme) => ({
+      body: {
+        backgroundColor: theme.color
+      }
+    }))
+
+    const { container } = render(
+      React.createElement(SystemProvider, {
+        children: React.createElement(() => {
+          const { mode, setMode } = useSystem()
+
+          return React.createElement(
+            'div',
+            { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') },
+            mode
+          )
+        })
+      })
+    )
+
+    fireEvent.click(getByText(container, 'light'))
+    expect(document.documentElement).toMatchSnapshot()
+
+    flush()
   })
 
   it('with theme global', () => {

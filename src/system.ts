@@ -5,6 +5,19 @@ import { StyleSheet, type OldRule } from './sheet'
 import { type AnyObject } from './types'
 import { parseRules } from './parse'
 
+function injectSourceMap(
+  styled: { sourceMap?: string },
+  rule: {
+    segmentRuleCode: string[]
+    ruleCode: string
+  }
+) {
+  const { sourceMap } = styled
+  rule.ruleCode += sourceMap
+  delete styled.sourceMap
+  return sourceMap
+}
+
 export function createSystem<Theme extends AnyObject = {}>(
   options: SystemOptions<Theme> = {}
 ): System<Theme> {
@@ -79,6 +92,7 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   const styled: Styled<Theme> & { sourceMap?: string } = (tag, styles, interpolation) => {
     let inputTag = tag
+    let cacheSourceMap = ''
     const inputNamespace = (tag as { namespace: string }).namespace ?? ''
 
     if (typeof tag === 'object' && tag.tag) {
@@ -156,8 +170,9 @@ export function createSystem<Theme extends AnyObject = {}>(
 
       if (process.env.NODE_ENV !== 'production') {
         if (styled.sourceMap) {
-          rules.ruleCode += styled.sourceMap
-          delete styled.sourceMap
+          cacheSourceMap = injectSourceMap(styled, rules)
+        } else if (cacheSourceMap && rules.ruleCode) {
+          rules.ruleCode += cacheSourceMap
         }
       }
 
@@ -281,6 +296,7 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   const global: Global<Theme> & { sourceMap?: string } = (styles) => {
     let oldRule: OldRule[]
+    let cacheSourceMap = ''
 
     function createGlobRules(mode: string) {
       if (oldRule) {
@@ -317,8 +333,9 @@ export function createSystem<Theme extends AnyObject = {}>(
 
       if (process.env.NODE_ENV !== 'production') {
         if (global.sourceMap) {
-          rules.ruleCode += global.sourceMap
-          delete global.sourceMap
+          cacheSourceMap = injectSourceMap(global, rules)
+        } else if (cacheSourceMap) {
+          rules.ruleCode += cacheSourceMap
         }
       }
 
