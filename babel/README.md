@@ -8,7 +8,7 @@ This is required for sourcemap
 // .babelrc
 // Make sure to put it first to make the sourcemap more readable
 {
-  "plugins": ["@styils"]
+  plugins: ['@styils']
 }
 ```
 

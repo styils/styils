@@ -1,4 +1,6 @@
 coverage
+.cache
+build
 
 # compiled output
 dist

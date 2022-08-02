@@ -12,7 +12,7 @@
     "test:coverage": "jest-easy --coverage",
     "update:deps": "pnpm update --latest --interactive",
     "format": "prettier \"**/*.{js,ts,tsx,md}\" --write",
-    "lint": "eslint \"**/*.{ts,tsx}\" --fix",
+    "lint": "eslint \"{src,babel}/*.{ts,tsx}\" --fix",
     "release": "node -r esbuild-register scripts/release.ts",
     "typescript": "tsc -p tsconfig.json"
   },
