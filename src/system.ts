@@ -5,19 +5,6 @@ import { StyleSheet, type OldRule } from './sheet'
 import { type AnyObject } from './types'
 import { parseRules } from './parse'
 
-function injectSourceMap(
-  styled: { sourceMap?: string },
-  rule: {
-    segmentRuleCode: string[]
-    ruleCode: string
-  }
-) {
-  const { sourceMap } = styled
-  rule.ruleCode += sourceMap
-  delete styled.sourceMap
-  return sourceMap
-}
-
 export function createSystem<Theme extends AnyObject = {}>(
   options: SystemOptions<Theme> = {}
 ): System<Theme> {
@@ -169,9 +156,12 @@ export function createSystem<Theme extends AnyObject = {}>(
       }
 
       if (process.env.NODE_ENV !== 'production') {
-        if (styled.sourceMap) {
-          cacheSourceMap = injectSourceMap(styled, rules)
-        } else if (cacheSourceMap && rules.ruleCode) {
+        if (!cacheSourceMap && styled.sourceMap) {
+          cacheSourceMap = styled.sourceMap
+          delete styled.sourceMap
+        }
+
+        if (rules.ruleCode) {
           rules.ruleCode += cacheSourceMap
         }
       }
@@ -332,11 +322,12 @@ export function createSystem<Theme extends AnyObject = {}>(
       }
 
       if (process.env.NODE_ENV !== 'production') {
-        if (global.sourceMap) {
-          cacheSourceMap = injectSourceMap(global, rules)
-        } else if (cacheSourceMap) {
-          rules.ruleCode += cacheSourceMap
+        if (!cacheSourceMap && global.sourceMap) {
+          cacheSourceMap = global.sourceMap
+          delete global.sourceMap
         }
+
+        rules.ruleCode += cacheSourceMap
       }
 
       oldRule = sheet.insertStyle(rules, true)

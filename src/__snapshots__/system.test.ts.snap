@@ -56,6 +56,19 @@ exports[`hydrate global hydrate 4`] = `
 </html>
 `;
 
+exports[`hydrate global hydrate with sourcemap 1`] = `
+<html>
+  <head>
+    <meta
+      content="css-2242710476"
+      mode="none"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
 exports[`hydrate mix hydrate 1`] = `
 "<meta name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
      <style data-styils=\\"css-ssr-global\\"></style>

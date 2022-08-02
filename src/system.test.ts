@@ -765,6 +765,24 @@ describe('hydrate', () => {
     document.head.removeChild(meta)
   })
 
+  it('global hydrate with sourcemap', () => {
+    meta.name = 'styils-cache'
+    meta.content = 'css-2242710476'
+    meta.setAttribute('mode', 'none')
+    document.head.appendChild(meta)
+
+    const { styled: sstyled } = createSystem()
+    // @ts-expect-error
+    sstyled.sourceMap = '1'
+    sstyled('button', {
+      backgroundColor: 'gainsboro',
+      borderRadius: '9999px'
+    })
+
+    expect(document.documentElement).toMatchSnapshot()
+    document.head.removeChild(meta)
+  })
+
   it('render Element hydrate', async () => {
     const { styled: hydrateStyled, getCssValue } = createSystem()
 
