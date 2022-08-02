@@ -1,4 +1,4 @@
-import { NodePath, types as t, type PluginPass } from '@babel/core'
+import { type NodePath, type PluginPass } from '@babel/core'
 import { declare } from '@babel/helper-plugin-utils'
 import addSourceMaps from './sourceMap'
 
@@ -19,6 +19,7 @@ export interface State extends PluginPass {
 const sourceMapProperty = 'sourceMap'
 
 export default declare((api) => {
+  const { types: t } = api
   api.assertVersion(7)
   let readyImport = false
 
@@ -82,7 +83,7 @@ export default declare((api) => {
           state.opts.identifier[path.node.callee.name] &&
           path.node.loc
         ) {
-          let parent: NodePath<t.Node> | null = null
+          let parent: NodePath | null = null
 
           if (path.node.callee.name === state.opts.identifier.styled) {
             parent = path.findParent((parent) => parent.isVariableDeclaration())
