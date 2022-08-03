@@ -2,7 +2,7 @@
   "name": "@styils/babel-plugin",
   "version": "1.0.1",
   "description": "babel plugin styils",
-  "types": "lib/types/index.d.ts",
+  "types": "types.d.ts",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.esm.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "build:watch": "build-easy -w"
   },
   "files": [
-    "lib"
+    "lib",
+    "types.d.ts"
   ],
   "keywords": [
     "babel",
