@@ -239,13 +239,13 @@ import { createExtracts } from '@styils/react'
 // or import { createExtracts } from 'yours-path'
 
 export default class Document extends NextDocument {
-  const { ExtractElement } = createExtracts()
+  const { extractElement } = createExtracts()
 
   render() {
     return (
       <Html lang="en">
         <Head>
-          <ExtractElement />
+          {extractElement}
         </Head>
         <body>
           <Main />

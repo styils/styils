@@ -790,10 +790,10 @@ describe('hydrate', () => {
       backgroundColor: 'gainsboro',
       borderRadius: '9999px'
     })
-    const { ExtractElement } = createExtracts()
+    const { extractElement } = createExtracts()
 
     globalThis.document = document
-    const { container } = render(React.createElement(ExtractElement))
+    const { container } = render(extractElement)
 
     expect(container).toMatchSnapshot()
   })

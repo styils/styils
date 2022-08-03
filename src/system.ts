@@ -256,20 +256,25 @@ export function createSystem<Theme extends AnyObject = {}>(
      <style data-styils="${sheet.key}-ssr-global">${ssrGlobalData}</style>
      <style data-styils="${sheet.key}-ssr">${ssrData}</style>`
 
-    const ExtractElement = () =>
-      React.createElement(
-        React.Fragment,
-        {},
-        React.createElement('meta', {
-          name: 'styils-cache',
-          mode: globalMode.mode,
-          content: selectorCacheString
-        }),
-        React.createElement('style', { 'data-styils': `${sheet.key}-ssr-global` }, ssrGlobalData),
-        React.createElement('style', { 'data-styils': `${sheet.key}-ssr` }, ssrData)
-      )
+    const extractElement = React.createElement(
+      React.Fragment,
+      {},
+      React.createElement('meta', {
+        name: 'styils-cache',
+        mode: globalMode.mode,
+        content: selectorCacheString
+      }),
+      React.createElement('style', {
+        'data-styils': `${sheet.key}-ssr-global`,
+        dangerouslySetInnerHTML: { __html: ssrGlobalData }
+      }),
+      React.createElement('style', {
+        'data-styils': `${sheet.key}-ssr`,
+        dangerouslySetInnerHTML: { __html: ssrData }
+      })
+    )
 
-    return { extractHtml, ExtractElement }
+    return { extractHtml, extractElement }
   }
 
   const keyframes: Keyframes = (style) => {

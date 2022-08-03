@@ -114,7 +114,7 @@ export interface System<Theme> {
   }
   global: Global<Theme>
   keyframes: Keyframes
-  createExtracts: () => { extractHtml: string; ExtractElement: () => JSX.Element }
+  createExtracts: () => { extractHtml: string; extractElement: JSX.Element }
   flush: () => void
 }
 
