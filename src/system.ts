@@ -251,7 +251,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     const ssrGlobalData = sheet.ssrGlobalData || (styleGlobalHtml?.textContent ?? '')
     const ssrData = sheet.ssrData || (styleHtml?.textContent ?? '')
 
-    const selectorCacheString = [...selectorCache].join(splitSymbol)
+    const selectorCacheString = metaHtml?.content ?? [...selectorCache].join(splitSymbol)
     const extractHtml = `<meta name="styils-cache" mode="${globalMode.mode}" content="${selectorCacheString}">
      <style data-styils="${sheet.key}-ssr-global">${ssrGlobalData}</style>
      <style data-styils="${sheet.key}-ssr">${ssrData}</style>`
@@ -261,7 +261,7 @@ export function createSystem<Theme extends AnyObject = {}>(
       {},
       React.createElement('meta', {
         name: 'styils-cache',
-        mode: globalMode.mode,
+        mode: metaHtml?.getAttribute('mode') ?? globalMode.mode,
         content: selectorCacheString
       }),
       React.createElement('style', {
