@@ -1,6 +1,6 @@
 import { createSystem } from '@styils/react'
 
-export const { styled, SystemProvider, getCssValue, global, useSystem, flush, keyframes } =
+export const { styled, SystemProvider, createExtracts, global, useSystem, flush, keyframes } =
   createSystem({
     theme: (mode: 'light' | 'dark') => {
       return {

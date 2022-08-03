@@ -31,18 +31,20 @@
   "withMedia": "查询 Media",
   "withBaseDesc": {
     "1": "在用法上和其它上的 <strong>CSS In JS</strong> 框架几乎没有区别",
-    "2": "支持特殊嵌套选择器<strong>`&`</strong>及<strong>CSS</strong>所有原生选择器,还提供了一个多态<strong>`as`</strong>属性，用于定义组件渲染的标签",
-    "3": "此外，如果使用<strong>Typescript</strong>，添加<strong>`as`</strong>道具时，道具定义会更新"
+    "2": "支持特殊嵌套选择器<strong>&</strong>及<strong>CSS</strong>所有原生选择器,还提供了一个多态<strong>as</strong>属性，用于定义组件渲染的标签",
+    "3": "此外，如果使用<strong>Typescript</strong>，添加<strong>as</strong>道具时，道具定义会更新"
   },
   "withVariantsDesc": {
-    "1": "创建的样式组件都带有一个<strong>`variants`</strong>属性",
+    "1": "创建的样式组件都带有一个<strong>variants</strong>属性",
     "2": "可以定义单个动态规则、多个动态规则，甚至是复合动态规则",
     "3": "动态插值代替 props 道具传递，因为通过props传值会带来较大的性能开销，此外我们可能写出下面这段代码。"
   },
   "withThemeDesc": "<strong>Styils</strong>提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。",
   "withSSRDesc": {
-    "1": "<strong>Styils</strong>提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。",
-    "2": "如果使用主题<strong>getCssValue</strong>应该从<strong>createSystem</strong>导出"
+    "1": "<strong>Styils</strong>支持<strong>ssr</strong>并且很容易集成在常用框架中",
+    "2": "如果使用主题<strong>createExtracts</strong>应该从<strong>createSystem</strong>导出",
+    "3": "查看示例:<a href='https://github.com/styils/styils-examples/tree/main/next'>Next</a>和<a href='https://github.com/styils/styils-examples/tree/main/remix'>Remix</a>",
+    "4": "不是用框架,<strong>createExtracts</strong>返回的对象里有一个<strong>extractHtml</strong>属性, 它返回字符串把它加入到<strong>html</strong>中即可"
   },
   "withKeyframesDesc": "<strong>Styils</strong>提供两种方式定义, 任你喜欢。",
   "withGlobalDesc": "<strong>Styils</strong>提供两种方式定义, 任你喜欢。",

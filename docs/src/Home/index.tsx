@@ -465,13 +465,21 @@ export default function Home() {
           </p>
         </StyilCode>
 
-        <StyilCode code={'ssrCode'}>
+        <StyilCode code={'ssrCode'} variants={{ padding: 'false' }}>
           <h2 id="ssr">{t('withSSR')}</h2>
           <p>
             <span dangerouslySetInnerHTML={{ __html: t('withSSRDesc.1') }} />
           </p>
           <p>
             <span dangerouslySetInnerHTML={{ __html: t('withSSRDesc.2') }} />
+          </p>
+          <p>
+            <span dangerouslySetInnerHTML={{ __html: t('withSSRDesc.3') }} />
+          </p>
+        </StyilCode>
+        <StyilCode code={'ssrBaseCode'}>
+          <p>
+            <span dangerouslySetInnerHTML={{ __html: t('withSSRDesc.4') }} />
           </p>
         </StyilCode>
 

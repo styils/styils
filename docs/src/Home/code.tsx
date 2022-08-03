@@ -90,6 +90,14 @@ const CodeWeapper = styled('div', () => ({
     color: '#fb304f',
     padding: 4
   },
+  '& a': {
+    padding: '2px 12px',
+    margin: '0 8px',
+    backgroundColor: 'rgba(117, 63, 131, 0.07)',
+    borderRadius: 6,
+    fontSize: 14,
+    fontWeight: 'bold'
+  },
   '& p': {
     lineHeight: 1.75,
     '&::before': {
@@ -200,19 +208,44 @@ const Button = styled('button', {
 render(<Button as="a" href="google.com"><Image/></Button>)
 `
 
+  const ssrBaseCode = `import React from 'react'
+import { createExtracts } from '@styils/react'
+// or import { createExtracts } from 'yours-path'
+
+const app = renderToString(
+  <App />
+)
+
+const { extractHtml } = createExtracts()
+
+res
+  .status(200)
+  .header('Content-Type', 'text/html')
+  .send(\`<!DOCTYPE html>
+<html lang="en">
+  <head>
+      \${extractHtml}
+      ...other
+  </head>
+  <body>
+    ...app
+  </body>
+</html>\`);
+`
+
   const ssrCode = `import React from 'react'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
-import { getCssValue } from '@styils/react'
-// import { getCssValue } from 'to-path'
+import { createExtracts } from '@styils/react'
+// or import { createExtracts } from 'yours-path'
 
 export default class Document extends NextDocument {
+  const { ExtractElement } = createExtracts()
+
   render() {
     return (
       <Html lang="en">
         <Head>
-          <style
-            dangerouslySetInnerHTML={{ __html: getCssValue() }}
-          />
+          <ExtractElement />
         </Head>
         <body>
           <Main />
@@ -222,6 +255,7 @@ export default class Document extends NextDocument {
     );
   }
 }
+
 `
 
   const keyframesCode = `const Foo = styled('div',{
@@ -287,6 +321,7 @@ const Foo = styled('div',{
 `
 
   const codes = {
+    ssrBaseCode,
     mediaCode,
     globalCode,
     baseCode,

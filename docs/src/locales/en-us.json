@@ -35,14 +35,16 @@
     "3": "Also, if using<strong>Typescript</strong>, prop definitions are updated when<strong>`as`</strong>props are added"
   },
   "withVariantsDesc": {
-    "1": "Style components are created with a<strong>`variants`</strong>attribute",
+    "1": "Style components are created with a<strong>variants</strong>attribute",
     "2": "You can define a single dynamic rule, multiple dynamic rules, or even compound dynamic rules",
     "3": "Dynamic interpolation replaces props props passing, because passing values through props will bring a large performance overhead, in addition, we may write the following code."
   },
   "withThemeDesc": "<strong>Styils</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
   "withSSRDesc": {
-    "1": "<strong>Styils</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
-    "2": "If using theme<strong>getCssValue</strong>should be exported from<strong>createSystem</strong>"
+    "1": "<strong>Styils</strong>supports<strong>ssr</strong>and is easy to integrate into commonly used frameworks",
+    "2": "If using theme<strong>createExtracts</strong>should be exported from<strong>createSystem</strong>",
+    "3": "View examples:<a href='https://github.com/styils/styils-examples/tree/main/next'>Next</a>and<a href='https://github.com/styils/styils-examples/tree/main/remix'>Remix</a>",
+    "4": "Instead of using the framework,<strong>createExtracts returns</strong> an object with an <strong>extractHtml</strong> attribute, it returns a string and adds it to the <strong>html</strong>"
   },
   "withKeyframesDesc": "<strong>Styils</strong>provides two ways to define as you like.",
   "withGlobalDesc": "<strong>Styils</strong>provides two ways to define as you like.",
