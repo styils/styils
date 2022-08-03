@@ -37,6 +37,12 @@ Framework-agnostic implementation, including the `css` API.
 npm install @styils/css
 ```
 
+## Credits
+
+Styils was inspired by other css in js tools such as **emotion**, **goober**, **stitches**. Thanks.
+
+Benchmarks come from **stitches**
+
 ## License
 
 Licensed under the MIT License, Copyright © 2022-present zoy-l

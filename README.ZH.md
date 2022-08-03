@@ -37,6 +37,12 @@ npm install @styils/react
 npm install @styils/css
 ```
 
+## 鸣谢
+
+Styils 的灵感来自其他 css in js 工具，如**emotion**，**goober**，**stitches** 感谢
+
+基准测试来自 **针脚**
+
 ## License
 
 根据 MIT 许可证获得许可, 版权 © 2022-present zoy-l
