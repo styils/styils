@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="https://codecov.io/gh/zoy-l/styils/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
+  <img src="https://codecov.io/gh/styils/styils/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
   <img src="https://img.badgesize.io/https://unpkg.com/@styils/css@latest/index.prod.esm.js?compression=gzip&style=square&label=css&color=#4fc08d" alt="gzip" />
   <img src="https://img.badgesize.io/https://unpkg.com/@styils/react@latest/index.prod.esm.js?compression=gzip&style=square&label=react&color=#4fc08d" alt="gzip" />
 </p>
