@@ -114,7 +114,7 @@ export interface System<Theme> {
   }
   global: Global<Theme>
   keyframes: Keyframes
-  getCssValue: () => { html: string; StyilRules: JSX.Element }
+  createExtracts: () => { extractHtml: string; ExtractElement: () => JSX.Element }
   flush: () => void
 }
 

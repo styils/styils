@@ -240,7 +240,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     return styledComponent
   }
 
-  function getCssValue() {
+  function createExtracts() {
     const styleHtml = isBrowser
       ? document.querySelector(`style[data-styils="${sheet.key}-ssr"]`)
       : null
@@ -252,23 +252,24 @@ export function createSystem<Theme extends AnyObject = {}>(
     const ssrData = sheet.ssrData || (styleHtml?.textContent ?? '')
 
     const selectorCacheString = [...selectorCache].join(splitSymbol)
-    const html = `<meta name="styils-cache" mode="${globalMode.mode}" content="${selectorCacheString}">
+    const extractHtml = `<meta name="styils-cache" mode="${globalMode.mode}" content="${selectorCacheString}">
      <style data-styils="${sheet.key}-ssr-global">${ssrGlobalData}</style>
      <style data-styils="${sheet.key}-ssr">${ssrData}</style>`
 
-    const StyilRules = React.createElement(
-      React.Fragment,
-      {},
-      React.createElement('meta', {
-        name: 'styils-cache',
-        mode: globalMode.mode,
-        content: selectorCacheString
-      }),
-      React.createElement('style', { 'data-styils': `${sheet.key}-ssr-global` }, ssrGlobalData),
-      React.createElement('style', { 'data-styils': `${sheet.key}-ssr` }, ssrData)
-    )
+    const ExtractElement = () =>
+      React.createElement(
+        React.Fragment,
+        {},
+        React.createElement('meta', {
+          name: 'styils-cache',
+          mode: globalMode.mode,
+          content: selectorCacheString
+        }),
+        React.createElement('style', { 'data-styils': `${sheet.key}-ssr-global` }, ssrGlobalData),
+        React.createElement('style', { 'data-styils': `${sheet.key}-ssr` }, ssrData)
+      )
 
-    return { html, StyilRules }
+    return { extractHtml, ExtractElement }
   }
 
   const keyframes: Keyframes = (style) => {
@@ -355,7 +356,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     modeIdentifier = []
   }
 
-  return { styled, SystemProvider, useSystem, getCssValue, flush, global, keyframes }
+  return { styled, SystemProvider, useSystem, createExtracts, flush, global, keyframes }
 }
 
-export const { styled, getCssValue, flush, global, keyframes } = createSystem()
+export const { styled, createExtracts, flush, global, keyframes } = createSystem()

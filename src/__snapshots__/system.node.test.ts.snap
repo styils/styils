@@ -6,7 +6,7 @@ exports[`css node createStyil node 1`] = `
      <style data-styils=\\"css-ssr\\">.css-1473887168{width:100px;}.css-2950234073{height:100px;}</style>"
 `;
 
-exports[`css node node default getCssValue  1`] = `
+exports[`css node node default createExtracts  1`] = `
 "<meta name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-1473887168|css-2950234073\\">
      <style data-styils=\\"css-ssr-global\\"></style>
      <style data-styils=\\"css-ssr\\">.css-1473887168{width:100px;}.css-2950234073{height:100px;}</style>"

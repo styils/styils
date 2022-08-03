@@ -665,13 +665,13 @@ describe('hydrate', () => {
     meta.content = `css-2242710476`
     document.head.appendChild(meta)
 
-    const { styled: hydrateStyled, getCssValue } = createSystem()
+    const { styled: hydrateStyled, createExtracts } = createSystem()
     hydrateStyled('button', {
       backgroundColor: 'gainsboro',
       borderRadius: '9999px'
     })
 
-    expect(getCssValue().html).toMatchSnapshot()
+    expect(createExtracts().extractHtml).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
   })
@@ -681,7 +681,7 @@ describe('hydrate', () => {
     meta.content = `css-2242710476|css-2242710476.size-max|css-2242710476.size-small`
     document.head.appendChild(meta)
 
-    const { styled: hydrateStyled, getCssValue } = createSystem()
+    const { styled: hydrateStyled, createExtracts } = createSystem()
     hydrateStyled(
       'button',
       {
@@ -700,7 +700,7 @@ describe('hydrate', () => {
       }
     )
 
-    expect(getCssValue().html).toMatchSnapshot()
+    expect(createExtracts().extractHtml).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
   })
@@ -710,7 +710,7 @@ describe('hydrate', () => {
     meta.content = `ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small`
     document.head.appendChild(meta)
 
-    const { styled: hydrateStyled, getCssValue } = createSystem()
+    const { styled: hydrateStyled, createExtracts } = createSystem()
     hydrateStyled(
       { tag: 'button', namespace: 'ssr' },
       {
@@ -729,7 +729,7 @@ describe('hydrate', () => {
       }
     )
 
-    expect(getCssValue().html).toMatchSnapshot()
+    expect(createExtracts().extractHtml).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
   })
@@ -740,7 +740,7 @@ describe('hydrate', () => {
     meta.setAttribute('mode', 'none')
     document.head.appendChild(meta)
 
-    const { global: hydrateGlobal, getCssValue } = createSystem()
+    const { global: hydrateGlobal, createExtracts } = createSystem()
     hydrateGlobal({
       body: {
         backgroundColor: 'gainsboro',
@@ -748,11 +748,11 @@ describe('hydrate', () => {
       }
     })
 
-    expect(getCssValue().html).toMatchSnapshot()
+    expect(createExtracts().extractHtml).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
 
     globalThis.document = document
-    const { global: hydrateGlobal1, getCssValue: getCssValue1 } = createSystem()
+    const { global: hydrateGlobal1, createExtracts: getCssValue1 } = createSystem()
     hydrateGlobal1({
       body: {
         backgroundColor: 'red',
@@ -760,7 +760,7 @@ describe('hydrate', () => {
       }
     })
 
-    expect(getCssValue1().html).toMatchSnapshot()
+    expect(getCssValue1().extractHtml).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
   })
@@ -784,16 +784,16 @@ describe('hydrate', () => {
   })
 
   it('render Element hydrate', async () => {
-    const { styled: hydrateStyled, getCssValue } = createSystem()
+    const { styled: hydrateStyled, createExtracts } = createSystem()
 
     hydrateStyled('div', {
       backgroundColor: 'gainsboro',
       borderRadius: '9999px'
     })
-    const { StyilRules } = getCssValue()
+    const { ExtractElement } = createExtracts()
 
     globalThis.document = document
-    const { container } = render(StyilRules)
+    const { container } = render(React.createElement(ExtractElement))
 
     expect(container).toMatchSnapshot()
   })
@@ -806,13 +806,13 @@ describe('hydrate', () => {
       borderRadius: '9999px'
     })
     Object.defineProperty(globalThis, 'document', { value: undefined })
-    const { styled: hydrateStyled, getCssValue } = createSystem()
+    const { styled: hydrateStyled, createExtracts } = createSystem()
 
     hydrateStyled('div', {
       backgroundColor: 'gainsboro',
       borderRadius: '9999px'
     })
 
-    expect(getCssValue().html).toMatchSnapshot()
+    expect(createExtracts().extractHtml).toMatchSnapshot()
   })
 })

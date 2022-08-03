@@ -3,14 +3,14 @@
  */
 import {
   createSystem,
-  getCssValue as defaultGetCssValue,
+  createExtracts as defaultCreateExtracts,
   styled as defaultStyled,
   flush as defaultFlush
 } from './system'
 
 describe('css node', () => {
   it('createStyil node', () => {
-    const { getCssValue, styled, flush } = createSystem()
+    const { createExtracts, styled, flush } = createSystem()
 
     styled('div', {
       width: 100
@@ -24,12 +24,12 @@ describe('css node', () => {
       height: 100
     })
 
-    expect(getCssValue().html).toMatchSnapshot()
+    expect(createExtracts().extractHtml).toMatchSnapshot()
 
     flush()
   })
 
-  it('node default getCssValue ', () => {
+  it('node default createExtracts ', () => {
     defaultStyled('div', {
       width: 100
     })
@@ -42,7 +42,7 @@ describe('css node', () => {
       height: 100
     })
 
-    expect(defaultGetCssValue().html).toMatchSnapshot()
+    expect(defaultCreateExtracts().extractHtml).toMatchSnapshot()
 
     defaultFlush()
   })
