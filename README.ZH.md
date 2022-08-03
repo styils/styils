@@ -41,7 +41,7 @@ npm install @styils/css
 
 Styils 的灵感来自其他 css in js 工具，如**emotion**，**goober**，**stitches** 感谢
 
-基准测试来自 **针脚**
+基准测试来自 **stitches**
 
 ## License
 
