@@ -1,11 +1,24 @@
-import * as React from 'react'
+/* @jsxImportSource solid-js */
+
+import {
+  createContext,
+  createSignal,
+  createComponent,
+  Accessor,
+  useContext,
+  splitProps,
+  mergeProps,
+  JSX,
+  createMemo
+} from 'solid-js'
+import { Dynamic } from 'solid-js/web'
 import {
   type SystemOptions,
   type Styled,
   type System,
   type Global,
   Keyframes
-} from './reactSystemTypes'
+} from './solidSystemTypes'
 import { createSelector } from './createSelector'
 import { StyleSheet, type OldRule } from './sheet'
 import { type AnyObject } from './types'
@@ -55,17 +68,17 @@ export function createSystem<Theme extends AnyObject = {}>(
     nonce
   })
 
-  const themeContent = React.createContext<{
-    mode: string
-    setMode: React.Dispatch<React.SetStateAction<string>>
+  const themeContent = createContext<{
+    mode: Accessor<string>
+    setMode: any
     theme: Theme
   }>(
     // @ts-expect-error no value initially
     {}
   )
 
-  const SystemProvider = (props: { children: React.ReactNode }) => {
-    const [mode, setMode] = React.useState<string>(defaultMode)
+  const SystemProvider = (props: { children: JSX.Element }) => {
+    const [mode, setMode] = createSignal<string>(defaultMode)
 
     const updataMode = (value: string) => {
       theme = inputTheme(value)
@@ -73,14 +86,15 @@ export function createSystem<Theme extends AnyObject = {}>(
       setMode(value)
     }
 
-    return React.createElement(
-      themeContent.Provider,
-      { value: { mode, setMode: updataMode, theme } },
-      props.children
-    )
+    return createComponent(themeContent.Provider, {
+      value: { mode, setMode: updataMode, theme },
+      get children() {
+        return props.children
+      }
+    })
   }
 
-  const useSystem = () => React.useContext(themeContent)
+  const useSystem = () => useContext(themeContent)
 
   // Mode-based cache
   // The difference with `selectorCache` is that this only works at runtime
@@ -198,38 +212,51 @@ export function createSystem<Theme extends AnyObject = {}>(
 
     createRule(targetInfo)
 
-    const styledComponent = React.forwardRef<HTMLElement, AnyObject>((props, ref) => {
-      const { as = inputTag, className = '', variants: variantsProps, ...rest } = props
-      let variantsClassName = ''
+    const styledComponent = (inputProps: any) => {
+      const [props, rest] = splitProps(mergeProps({ as: inputTag, class: '' }, inputProps), [
+        'as',
+        'class',
+        'variants',
+        'children'
+      ])
 
       const { mode } = useSystem()
 
-      if (mode !== undefined) {
-        createRule(targetInfo)
-      }
+      const classes = createMemo(() => {
+        if (mode?.() !== undefined) {
+          createRule(targetInfo)
+        }
 
-      if (variantsProps) {
-        const variantsPropsKeys = Object.keys(variantsProps)
-        let variantsPropsIndex = variantsPropsKeys.length
+        let variantsClassName = ''
 
-        while (variantsPropsIndex--) {
-          const key = variantsPropsKeys[variantsPropsIndex]
-          const value = variantsProps[key]
+        if (props.variants) {
+          const variantsPropsKeys = Object.keys(props.variants)
+          let variantsPropsIndex = variantsPropsKeys.length
 
-          if (value !== undefined && value !== null) {
-            variantsClassName = ` ${targetInfo.namespaceJoiner}${key}-${value}`
+          while (variantsPropsIndex--) {
+            const key = variantsPropsKeys[variantsPropsIndex]
+            const value = props.variants[key]
+
+            if (value !== undefined && value !== null) {
+              variantsClassName = ` ${targetInfo.namespaceJoiner}${key}-${value}`
+            }
           }
         }
-      }
 
-      return React.createElement(as, {
-        className: `${className ? className + ' ' : className}${
-          targetInfo.targetClassName
-        }${variantsClassName}`,
-        ref,
-        ...rest
+        const interiorProps = {
+          class: `${props.class ? props.class + ' ' : props.class}${
+            targetInfo.targetClassName
+          }${variantsClassName}`,
+          children: props.children,
+          component: props.as,
+          ...rest
+        }
+
+        return typeof props.as === 'function' ? props.as(interiorProps) : Dynamic(interiorProps)
       })
-    })
+
+      return classes
+    }
 
     if (process.env.NODE_ENV !== 'production') {
       styledComponent.displayName = styledComponent.displayName ?? targetInfo.targetClassName
@@ -260,26 +287,7 @@ export function createSystem<Theme extends AnyObject = {}>(
      <style id="${globalStyleSSRId}">${ssrGlobalData}</style>
      <style id="${styleSSRId}">${ssrData}</style>`
 
-    const extractElement = React.createElement(
-      React.Fragment,
-      {},
-      React.createElement('meta', {
-        name: 'styils-cache',
-        id: metaSelectorCacheId,
-        mode: metaHtml?.getAttribute('mode') ?? globalMode.mode,
-        content: selectorCacheString
-      }),
-      React.createElement('style', {
-        id: `${sheet.key}-ssr-global`,
-        dangerouslySetInnerHTML: { __html: ssrGlobalData }
-      }),
-      React.createElement('style', {
-        id: `${sheet.key}-ssr`,
-        dangerouslySetInnerHTML: { __html: ssrData }
-      })
-    )
-
-    return { extractHtml, extractElement }
+    return { extractHtml }
   }
 
   const keyframes: Keyframes = (style) => {

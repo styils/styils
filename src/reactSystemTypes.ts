@@ -1,5 +1,6 @@
 import React from 'react'
-import { type AnyObject, type CSSAttribute, type StyleSheetOptions } from './types'
+import { type CSSAttribute } from 'nativeCssTypes'
+import { Widen, type AnyObject, type StyleSheetOptions } from './types'
 
 export type IfEqual<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2
   ? true
@@ -54,16 +55,6 @@ export type IntrinsicProps<Element extends React.ElementType> = Element extends 
     : Props
   : React.ComponentProps<Element>
 
-export type IntrinsicTagName<Element> = {
-  [Key in keyof JSX.IntrinsicElements]: JSX.IntrinsicElements[Key] extends  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    | React.DetailedHTMLProps<infer _, infer Component>
-    | React.SVGProps<infer Component>
-    ? IfEqual<Component, Element> extends true
-      ? Key
-      : never
-    : never
-}[keyof JSX.IntrinsicElements]
-
 export type StyleTag =
   | keyof JSX.IntrinsicElements
   | React.JSXElementConstructor<{}>
@@ -117,11 +108,3 @@ export interface System<Theme> {
   createExtracts: () => { extractHtml: string; extractElement: JSX.Element }
   flush: () => void
 }
-
-export type Widen<T> = T extends number
-  ? `${T}` | T
-  : T extends 'true' | 'false'
-  ? boolean | T
-  : T extends `${number}`
-  ? number | T
-  : T
