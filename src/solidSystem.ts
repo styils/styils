@@ -287,7 +287,27 @@ export function createSystem<Theme extends AnyObject = {}>(
      <style id="${globalStyleSSRId}">${ssrGlobalData}</style>
      <style id="${styleSSRId}">${ssrData}</style>`
 
-    return { extractHtml }
+    const extractElement = [
+      Dynamic({
+        component: 'meta',
+        id: metaSelectorCacheId,
+        name: 'styils-cache',
+        mode: globalMode.mode,
+        content: selectorCacheString
+      }),
+      Dynamic({
+        component: 'style',
+        id: globalStyleSSRId,
+        children: ssrGlobalData
+      }),
+      Dynamic({
+        component: 'style',
+        id: styleSSRId,
+        children: ssrData
+      })
+    ]
+
+    return { extractHtml, extractElement }
   }
 
   const keyframes: Keyframes = (style) => {

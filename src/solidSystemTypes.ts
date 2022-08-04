@@ -59,6 +59,6 @@ export interface System<Theme> {
   }
   global: Global<Theme>
   keyframes: Keyframes
-  createExtracts: () => { extractHtml: string }
+  createExtracts: () => { extractHtml: string; extractElement: Accessor<JSX.Element>[] }
   flush: () => void
 }
