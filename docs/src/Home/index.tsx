@@ -8,7 +8,6 @@ import themeSvg from '../svg/theme.svg'
 import okSvg from '../svg/ok.svg'
 import tyoeSvg from '../svg/tyoe.svg'
 import reactSvg from '../svg/react.svg'
-import vueSvg from '../svg/vue.svg'
 import htmlSvg from '../svg/html.svg'
 import Switch, { SwitchWapper } from './Switch'
 import Card, { CardBox } from './Card'
@@ -129,24 +128,15 @@ const LogoWapper = styled('section', (theme) => ({
   [`& ${SupportLabel}[datatype="html"]`]: {
     animation: `13s ease 0.5s infinite none running ${complex}`,
     boxShadow: theme.boxShadow,
-    left: 20,
-    bottom: 70,
+    bottom: 30,
+    right: 20,
     fontSize: 24,
     '@media screen and (max-width: 580px)': {
-      left: 0
+      right: 0
     },
     '& img': {
       width: 40,
       height: 40
-    }
-  },
-
-  [`& ${SupportLabel}[datatype="vue"]`]: {
-    boxShadow: theme.boxShadow,
-    bottom: 0,
-    right: 20,
-    '@media screen and (max-width: 580px)': {
-      right: 0
     }
   }
 }))
@@ -397,10 +387,6 @@ export default function Home() {
           <SupportLabel datatype="react">
             <img src={reactSvg} alt="react" />
             <span>React</span>
-          </SupportLabel>
-          <SupportLabel datatype="vue">
-            <img src={vueSvg} alt="vue" />
-            <span>Vue ({t('plan')})</span>
           </SupportLabel>
         </LogoWapper>
       </PrimaryWapper>

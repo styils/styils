@@ -11,8 +11,7 @@
     "styled-components",
     "javascript",
     "react",
-    "preact",
-    "vue"
+    "preact"
   ],
   "author": "zoy-l <zoy-l@outlook.com>",
   "license": "MIT",

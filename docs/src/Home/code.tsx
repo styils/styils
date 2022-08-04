@@ -1,6 +1,5 @@
 import { styled } from '../theme'
 import reactSvg from '../svg/react.svg'
-import vueSvg from '../svg/vue.svg'
 import htmlSvg from '../svg/html.svg'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -354,7 +353,6 @@ const Foo = styled('div',{
             <section>
               <img src={htmlSvg} alt="html" />
               <img src={reactSvg} alt="react" />
-              <img src={vueSvg} alt="vue" />
             </section>
           )}
         </CodeHeader>
