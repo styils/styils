@@ -5,7 +5,7 @@ import React from 'react'
 const meta = globalThis.document.createElement('meta')
 const { document } = globalThis
 
-jest.spyOn(globalThis.document, 'querySelector').mockImplementationOnce(() => {
+jest.spyOn(globalThis.document, 'getElementById').mockImplementationOnce(() => {
   return meta
 })
 
@@ -661,6 +661,7 @@ describe('hydrate', () => {
     globalThis.document = undefined
   })
   it('base hydrate', async () => {
+    meta.id = 'styils-css-cache'
     meta.name = 'styils-cache'
     meta.content = `css-2242710476`
     document.head.appendChild(meta)
@@ -677,6 +678,7 @@ describe('hydrate', () => {
   })
 
   it('variants hydrate', () => {
+    meta.id = 'styils-css-cache'
     meta.name = 'styils-cache'
     meta.content = `css-2242710476|css-2242710476.size-max|css-2242710476.size-small`
     document.head.appendChild(meta)
@@ -706,6 +708,7 @@ describe('hydrate', () => {
   })
 
   it('namespace hydrate', () => {
+    meta.id = 'styils-css-cache'
     meta.name = 'styils-cache'
     meta.content = `ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small`
     document.head.appendChild(meta)
@@ -735,6 +738,7 @@ describe('hydrate', () => {
   })
 
   it('global hydrate', () => {
+    meta.id = 'styils-css-cache'
     meta.name = 'styils-cache'
     meta.content = ''
     meta.setAttribute('mode', 'none')
@@ -766,6 +770,7 @@ describe('hydrate', () => {
   })
 
   it('global hydrate with sourcemap', () => {
+    meta.id = 'styils-css-cache'
     meta.name = 'styils-cache'
     meta.content = 'css-2242710476'
     meta.setAttribute('mode', 'none')

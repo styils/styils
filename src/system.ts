@@ -29,8 +29,9 @@ export function createSystem<Theme extends AnyObject = {}>(
 
   const { key = 'css', container, speedy, nonce } = sheetOptions
   const globalMode = { mode: defaultMode }
+  const metaSelectorCacheId = `styils-${key}-cache`
   const metaHtml = isBrowser
-    ? (document.querySelector(`meta[name="styils-cache"]`) as HTMLMetaElement)
+    ? (document.getElementById(metaSelectorCacheId) as HTMLMetaElement)
     : null
 
   if (isBrowser && !selectorCache.size && metaHtml) {
@@ -241,35 +242,34 @@ export function createSystem<Theme extends AnyObject = {}>(
   }
 
   function createExtracts() {
-    const styleHtml = isBrowser
-      ? document.querySelector(`style[data-styils="${sheet.key}-ssr"]`)
-      : null
-    const styleGlobalHtml = isBrowser
-      ? document.querySelector(`style[data-styils="${sheet.key}-ssr-global"]`)
-      : null
+    const globalStyleSSRId = `styils-${key}-ssr-global`
+    const styleSSRId = `styils-${key}-ssr`
+    const styleHtml = isBrowser ? document.getElementById(styleSSRId) : null
+    const styleGlobalHtml = isBrowser ? document.getElementById(globalStyleSSRId) : null
 
     const ssrGlobalData = sheet.ssrGlobalData || (styleGlobalHtml?.textContent ?? '')
     const ssrData = sheet.ssrData || (styleHtml?.textContent ?? '')
 
     const selectorCacheString = metaHtml?.content ?? [...selectorCache].join(splitSymbol)
-    const extractHtml = `<meta name="styils-cache" mode="${globalMode.mode}" content="${selectorCacheString}">
-     <style data-styils="${sheet.key}-ssr-global">${ssrGlobalData}</style>
-     <style data-styils="${sheet.key}-ssr">${ssrData}</style>`
+    const extractHtml = `<meta id="${metaSelectorCacheId}" name="styils-cache" mode="${globalMode.mode}" content="${selectorCacheString}">
+     <style id="${globalStyleSSRId}">${ssrGlobalData}</style>
+     <style id="${styleSSRId}">${ssrData}</style>`
 
     const extractElement = React.createElement(
       React.Fragment,
       {},
       React.createElement('meta', {
         name: 'styils-cache',
+        id: metaSelectorCacheId,
         mode: metaHtml?.getAttribute('mode') ?? globalMode.mode,
         content: selectorCacheString
       }),
       React.createElement('style', {
-        'data-styils': `${sheet.key}-ssr-global`,
+        id: `${sheet.key}-ssr-global`,
         dangerouslySetInnerHTML: { __html: ssrGlobalData }
       }),
       React.createElement('style', {
-        'data-styils': `${sheet.key}-ssr`,
+        id: `${sheet.key}-ssr`,
         dangerouslySetInnerHTML: { __html: ssrData }
       })
     )
