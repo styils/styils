@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js'
-import { Dynamic, render } from 'solid-js/web'
+import { render } from 'solid-js/web'
 import { styled, SystemProvider, useSystem } from './theme'
 
 const Button = styled(
@@ -22,36 +22,36 @@ const Button = styled(
 )
 
 const App = () => {
-  const [size] = createSignal<'max' | 'small'>('max')
+  const [size, setSize] = createSignal<'max' | 'small'>('max')
 
   const { setMode, mode, theme } = useSystem()
 
-  const ExtractElement = [
-    Dynamic({
-      component: 'meta',
-      id: 'metaSelectorCacheId'
-    }),
-    Dynamic({
-      component: 'style',
-      id: 'globalStyleSSRId',
-      children: 'ssrGlobalData'
-    }),
-    Dynamic({
-      component: 'style',
-      id: 'styleSSRId',
-      children: 'ssrData'
-    })
-  ]
+  // const ExtractElement = [
+  //   Dynamic({
+  //     component: 'meta',
+  //     id: 'metaSelectorCacheId'
+  //   }),
+  //   Dynamic({
+  //     component: 'style',
+  //     id: 'globalStyleSSRId',
+  //     children: 'ssrGlobalData'
+  //   }),
+  //   Dynamic({
+  //     component: 'style',
+  //     id: 'styleSSRId',
+  //     children: 'ssrData'
+  //   })
+  // ]
 
   return (
     <div>
-      {ExtractElement}
+      {/* {ExtractElement} */}
       <Button
         onClick={() => {
           setMode(mode() === 'light' ? 'dark' : 'light')
 
           // setMode(mode() === 'light' ? 'dark' : 'light')
-          // setSize(size() === 'max' ? 'small' : 'max')
+          setSize(size() === 'max' ? 'small' : 'max')
         }}
         variants={{ size: size() }}
       >

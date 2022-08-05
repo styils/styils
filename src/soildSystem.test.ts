@@ -721,9 +721,15 @@ describe('hydrate', () => {
       borderRadius: '9999px'
     })
 
-    expect(createExtracts().extractHtml).toMatchSnapshot()
-    expect(document.documentElement).toMatchSnapshot()
-    document.head.removeChild(meta)
+    const { extractHtml } = createExtracts()
+
+    console.log(extractHtml)
+
+    // console.log(renderToString(() => createExtracts().extractHtml))
+
+    // expect().toMatchSnapshot()
+    // expect(document.documentElement).toMatchSnapshot()
+    // document.head.removeChild(meta)
   })
 
   it('variants hydrate', () => {

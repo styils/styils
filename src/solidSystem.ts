@@ -1,7 +1,6 @@
 /* @jsxImportSource solid-js */
 import {
   type JSX,
-  type Accessor,
   createContext,
   createSignal,
   createComponent,
@@ -14,21 +13,17 @@ import {
 } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import { createBaseSystem } from './baseSystem'
-import type { Styled } from './solidSystemTypes'
+import type { ExtractElement, Provider, Styled, UseSystem } from './solidSystemTypes'
 import type { BaseTag, SystemExtractElement, SystemOptions, TargetInfo } from './baseSystemTypes'
 import type { AnyObject } from './types'
 
 export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
-  const themeContent = createContext<{
-    mode: Accessor<string>
-    setMode: (mode: string) => void
-    theme: Accessor<Theme>
-  }>(
+  const themeContent = createContext<ReturnType<UseSystem<Theme>>>(
     // @ts-expect-error no value initially
     {}
   )
 
-  const useSystem = () => useContext(themeContent)
+  const useSystem: UseSystem<Theme> = () => useContext(themeContent)
 
   const SystemProvider =
     (providerOptions: { mode: string; theme: AnyObject }) => (props: { children: JSX.Element }) => {
@@ -137,13 +132,14 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
     })
   ]
 
+  // Need to create a type and specify it, otherwise the type will be lost
   return {
-    ...createBaseSystem<Styled<Theme>, Theme, typeof extractElement, typeof SystemProvider>(
-      options,
-      SystemProvider,
-      styledComponent,
-      extractElement
-    ),
+    ...createBaseSystem<
+      Styled<Theme>,
+      Theme,
+      (props: SystemExtractElement) => ExtractElement,
+      (providerOptions: { mode: string; theme: AnyObject }) => Provider
+    >(options, SystemProvider, styledComponent, extractElement),
     useSystem
   }
 }

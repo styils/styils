@@ -175,7 +175,8 @@ async function run() {
     const nameMap = {
       css: 'CSS',
       react: 'React',
-      base: 'Base'
+      base: 'Base',
+      solid: 'Solid'
     }
 
     files.forEach((file: string) => {
@@ -185,10 +186,7 @@ async function run() {
         dts.replace('src', path.join('dist', name)).replace(`index${nameMap[name]}`, 'index'),
         prettier
           .format(dtsSouce[dts], { parser: 'typescript', singleQuote: true })
-          .replace(
-            `import { Properties } from 'nativeCssTypes';`,
-            `import { Properties } from './nativeCssTypes';`
-          )
+          .replace(`'nativeCssTypes';`, `'./nativeCssTypes';`)
       )
     })
 
