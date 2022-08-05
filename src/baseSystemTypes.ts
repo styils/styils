@@ -4,7 +4,11 @@ import { type StyleSheetOptions } from './types'
 export type AnyFunc = (...props: any[]) => any
 
 export interface Global<Theme> {
-  (styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)): void
+  (
+    styles:
+      | Record<string, CSSAttribute>
+      | ((theme: Theme, mode: string) => Record<string, CSSAttribute>)
+  ): void
 }
 
 export interface Keyframes {

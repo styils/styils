@@ -1,4 +1,5 @@
-import type { CSSAttribute, AnyObject } from './types'
+import { CSSAttribute } from 'nativeCssTypes'
+import type { AnyObject } from './types'
 
 /**
  * Generates the needed className
