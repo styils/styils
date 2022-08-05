@@ -1,4 +1,4 @@
-import { createSystem, styled, global } from './system'
+import { createSystem, styled, global } from './reactSystem'
 import React from 'react'
 
 const { styled: styleTheme } = createSystem({

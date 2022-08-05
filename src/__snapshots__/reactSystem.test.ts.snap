@@ -107,10 +107,10 @@ exports[`hydrate render Element hydrate 1`] = `
     name="styils-cache"
   />
   <style
-    id="css-ssr-global"
+    id="styils-css-ssr-global"
   />
   <style
-    id="css-ssr"
+    id="styils-css-ssr"
   >
     .css-2242710476{background-color:gainsboro;border-radius:9999px;}
   </style>

@@ -6,7 +6,7 @@ import {
   createExtracts as defaultCreateExtracts,
   styled as defaultStyled,
   flush as defaultFlush
-} from './system'
+} from './reactSystem'
 
 describe('css node', () => {
   it('createStyil node', () => {

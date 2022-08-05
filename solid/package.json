@@ -10,7 +10,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "vite-plugin-solid": "^2.3.0"
+    "vite-plugin-solid": "^2.3.0",
+    "@styils/babel-plugin": "^1.0.1"
   },
   "dependencies": {
     "solid-js": "^1.4.7"

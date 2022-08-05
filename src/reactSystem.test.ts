@@ -1,4 +1,4 @@
-import { createSystem, styled, flush, global, keyframes } from './system'
+import { createSystem, styled, flush, global, keyframes } from './reactSystem'
 import { render, fireEvent, getByText } from '@testing-library/react'
 import React from 'react'
 
@@ -60,6 +60,7 @@ describe('system', () => {
       theme: (mode) => ({ light: { color: 'red' }, dark: { color: 'blue' } }[mode]),
       defaultMode: 'light'
     })
+
     // @ts-expect-error
     themeStyled.sourceMap = '1'
     const Button = themeStyled('button', (theme) => ({
@@ -385,7 +386,7 @@ describe('system', () => {
   })
 
   it('styled namespace', async () => {
-    const { styled: _styled } = await import('./system')
+    const { styled: _styled, flush } = await import('./reactSystem')
 
     const Button = _styled(
       { tag: 'button', namespace: 'button' },
@@ -400,6 +401,8 @@ describe('system', () => {
     expect(container).toMatchSnapshot()
 
     process.env.NODE_ENV = 'test'
+
+    flush()
   })
 
   it('createSystem', async () => {

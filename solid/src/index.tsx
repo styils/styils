@@ -1,20 +1,6 @@
 import { createSignal } from 'solid-js'
-import { render } from 'solid-js/web'
-import { createSystem } from '../../src/solidSystem'
-
-const { styled, SystemProvider, useSystem } = createSystem({
-  theme: (mode) => {
-    return {
-      light: {
-        color: 'red'
-      },
-      dark: {
-        color: 'blue'
-      }
-    }[mode]
-  },
-  defaultMode: 'light'
-})
+import { Dynamic, render } from 'solid-js/web'
+import { styled, SystemProvider, useSystem } from './theme'
 
 const Button = styled(
   'button',
@@ -38,8 +24,26 @@ const App = () => {
 
   const { setMode, mode } = useSystem()
 
+  const ExtractElement = [
+    Dynamic({
+      component: 'meta',
+      id: 'metaSelectorCacheId'
+    }),
+    Dynamic({
+      component: 'style',
+      id: 'globalStyleSSRId',
+      children: 'ssrGlobalData'
+    }),
+    Dynamic({
+      component: 'style',
+      id: 'styleSSRId',
+      children: 'ssrData'
+    })
+  ]
+
   return (
     <div>
+      {ExtractElement}
       <Button
         as="a"
         onClick={() => {
