@@ -1,26 +1,28 @@
 /* @jsxImportSource solid-js */
-
 import {
-  // type Accessor,
   type JSX,
+  type Accessor,
   createContext,
   createSignal,
   createComponent,
   useContext,
   splitProps,
   mergeProps,
-  createMemo
+  createMemo,
+  createEffect,
+  on
 } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import { createBaseSystem } from './baseSystem'
 import type { Styled } from './solidSystemTypes'
 import type { BaseTag, SystemExtractElement, SystemOptions, TargetInfo } from './baseSystemTypes'
+import type { AnyObject } from './types'
 
 export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
   const themeContent = createContext<{
-    mode: string
+    mode: Accessor<string>
     setMode: (mode: string) => void
-    theme: Theme
+    theme: Accessor<Theme>
   }>(
     // @ts-expect-error no value initially
     {}
@@ -29,17 +31,30 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
   const useSystem = () => useContext(themeContent)
 
   const SystemProvider =
-    (providerOptions: { mode: string; theme: Theme }) => (props: { children: JSX.Element }) => {
-      const [provider, setProvider] = createSignal(providerOptions)
+    (providerOptions: { mode: string; theme: AnyObject }) => (props: { children: JSX.Element }) => {
+      const [change, setChange] = createSignal(true)
+      const [mode, setMode] = createSignal(providerOptions.mode)
+      const [theme, setTheme] = createSignal(providerOptions.theme)
 
       const updataMode = (value: string) => {
         providerOptions.theme = options.theme(value)
         providerOptions.mode = value
-        setProvider(providerOptions)
+        setChange(!change())
       }
 
+      createEffect(
+        on(change, () => {
+          setMode(providerOptions.mode)
+          setTheme(providerOptions.theme)
+        })
+      )
+
       return createComponent(themeContent.Provider, {
-        value: { mode: provider().mode, setMode: updataMode, theme: provider().theme },
+        value: {
+          theme,
+          setMode: updataMode,
+          mode
+        },
         get children() {
           return props.children
         }
@@ -48,7 +63,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
 
   const styledComponent =
     (inputTag: BaseTag, createRule: (value: TargetInfo) => void, targetInfo: TargetInfo) =>
-    (inputProps: any) => {
+    (inputProps: AnyObject) => {
       const [props, rest] = splitProps(mergeProps({ as: inputTag, class: '' }, inputProps), [
         'as',
         'class',
@@ -59,7 +74,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       const { mode } = useSystem()
 
       const classes = createMemo(() => {
-        if (mode !== undefined) {
+        if (mode?.() !== undefined) {
           createRule(targetInfo)
         }
 

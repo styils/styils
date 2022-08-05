@@ -3,23 +3,6 @@
 exports[`hydrate global hydrate with sourcemap 1`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237{color:red;}
-    </style>
     <meta
       content="css-2242710476"
       id="styils-css-cache"
@@ -51,17 +34,6 @@ exports[`solidjs system createSystem 2`] = `
       data-styils="css"
     >
       
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}
     </style>
   </head>
@@ -86,9 +58,9 @@ exports[`solidjs system createSystem 3`] = `
     data-testid="use-system"
   >
     <button
-      class="css-3433634237"
+      class="css-3183262666"
     />
-    light
+    dark
   </div>
 </div>
 `;
@@ -100,18 +72,13 @@ exports[`solidjs system createSystem 4`] = `
       data-styils="css"
     >
       
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3183262666{color:blue;}
     </style>
   </head>
   <body>
@@ -120,9 +87,9 @@ exports[`solidjs system createSystem 4`] = `
         data-testid="use-system"
       >
         <button
-          class="css-3433634237"
+          class="css-3183262666"
         />
-        light
+        dark
       </div>
     </div>
   </body>
@@ -196,17 +163,6 @@ exports[`solidjs system styled className 1`] = `
 exports[`solidjs system styled className 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
     <style
       data-styils="css"
     >
@@ -319,13 +275,19 @@ exports[`solidjs system styled with theme and sourceMap 2`] = `
       
       .css-916997065{background-color:red;}1
     </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2405978758{background-color:blue;}1
+    </style>
   </head>
   <body>
     <div>
       <button
-        class="css-916997065"
+        class="css-2405978758"
       >
-        light
+        dark
       </button>
     </div>
   </body>
@@ -348,17 +310,6 @@ exports[`solidjs system theme does not render repeatedly 1`] = `
 exports[`solidjs system theme does not render repeatedly 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
     <style
       data-styils="css"
     >
@@ -387,9 +338,9 @@ exports[`solidjs system theme does not render repeatedly 3`] = `
     data-testid="use-system"
   >
     <button
-      class="css-3433634237"
+      class="css-3183262666"
     />
-    light
+    dark
   </div>
 </div>
 `;
@@ -401,18 +352,57 @@ exports[`solidjs system theme does not render repeatedly 4`] = `
       data-styils="css"
     >
       
-      body{background-color:red;}
+      .css-3433634237{color:red;}
     </style>
     <style
       data-styils="css"
     >
       
+      .css-3183262666{color:blue;}
     </style>
+  </head>
+  <body>
+    <div>
+      <div
+        data-testid="use-system"
+      >
+        <button
+          class="css-3183262666"
+        />
+        dark
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`solidjs system theme does not render repeatedly 5`] = `
+<div>
+  <div
+    data-testid="use-system"
+  >
+    <button
+      class="css-3433634237"
+    />
+    light
+  </div>
+</div>
+`;
+
+exports[`solidjs system theme does not render repeatedly 6`] = `
+<html>
+  <head>
     <style
       data-styils="css"
     >
       
       .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3183262666{color:blue;}
     </style>
   </head>
   <body>
@@ -446,17 +436,6 @@ exports[`solidjs system variants 1`] = `
 exports[`solidjs system variants 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
     <style
       data-styils="css"
     >
@@ -499,17 +478,6 @@ exports[`solidjs system variants 4`] = `
       data-styils="css"
     >
       
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}.css-3433634237.size-max{font-size:99px;}.css-3433634237.size-small{font-size:14px;}
     </style>
   </head>
@@ -544,17 +512,6 @@ exports[`solidjs system variants single 1`] = `
 exports[`solidjs system variants single 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
     <style
       data-styils="css"
     >
@@ -597,17 +554,6 @@ exports[`solidjs system variants single 4`] = `
       data-styils="css"
     >
       
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}.css-3433634237.size-small{font-size:14px;}
     </style>
   </head>
@@ -646,17 +592,6 @@ exports[`solidjs system variants theme 2`] = `
       data-styils="css"
     >
       
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}.css-3433634237.color-light{color:red;}.css-3433634237.color-dark{color:red;}
     </style>
   </head>
@@ -681,9 +616,9 @@ exports[`solidjs system variants theme 3`] = `
     data-testid="use-system"
   >
     <button
-      class="css-3433634237 color-light"
+      class="css-3433634237 color-dark"
     />
-    light
+    dark
   </div>
 </div>
 `;
@@ -691,17 +626,6 @@ exports[`solidjs system variants theme 3`] = `
 exports[`solidjs system variants theme 4`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
     <style
       data-styils="css"
     >
@@ -715,9 +639,9 @@ exports[`solidjs system variants theme 4`] = `
         data-testid="use-system"
       >
         <button
-          class="css-3433634237 color-light"
+          class="css-3433634237 color-dark"
         />
-        light
+        dark
       </div>
     </div>
   </body>
@@ -755,7 +679,7 @@ exports[`solidjs system with theme global 2`] = `
 exports[`solidjs system with theme global 3`] = `
 <div>
   <div>
-    light
+    dark
   </div>
 </div>
 `;
@@ -768,6 +692,34 @@ exports[`solidjs system with theme global 4`] = `
     >
       
       body{background-color:red;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        dark
+      </div>
+    </div>
+  </body>
+</html>
+`;
+
+exports[`solidjs system with theme global 5`] = `
+<div>
+  <div>
+    light
+  </div>
+</div>
+`;
+
+exports[`solidjs system with theme global 6`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}
     </style>
   </head>
   <body>
@@ -793,7 +745,7 @@ exports[`solidjs system with theme global and sourcemap 1`] = `
   <body>
     <div>
       <div>
-        light
+        dark
       </div>
     </div>
   </body>

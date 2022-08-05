@@ -4,9 +4,11 @@ import { styled, SystemProvider, useSystem } from './theme'
 
 const Button = styled(
   'button',
-  (mode) => ({
-    color: mode.color
-  }),
+  (mode) => {
+    return {
+      color: mode.color
+    }
+  },
   {
     size: {
       small: {
@@ -22,7 +24,7 @@ const Button = styled(
 const App = () => {
   const [size] = createSignal<'max' | 'small'>('max')
 
-  const { setMode, mode } = useSystem()
+  const { setMode, mode, theme } = useSystem()
 
   const ExtractElement = [
     Dynamic({
@@ -45,7 +47,6 @@ const App = () => {
     <div>
       {ExtractElement}
       <Button
-        as="a"
         onClick={() => {
           setMode(mode() === 'light' ? 'dark' : 'light')
 
@@ -56,7 +57,7 @@ const App = () => {
       >
         hello soild ${size()}
       </Button>
-      hello 123
+      hello 123 {mode()} {theme().color}
     </div>
   )
 }

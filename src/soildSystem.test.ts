@@ -74,7 +74,7 @@ describe('solidjs system', () => {
       return Dynamic({
         component: Button,
         onClick: () => {
-          setMode(mode === 'light' ? 'dark' : 'light')
+          setMode(mode() === 'light' ? 'dark' : 'light')
         },
         children: mode
       })
@@ -191,7 +191,7 @@ describe('solidjs system', () => {
       return Dynamic({
         component: 'div',
         onClick: () => {
-          setMode(mode === 'light' ? 'dark' : 'light')
+          setMode(mode() === 'light' ? 'dark' : 'light')
         },
         children: mode
       })
@@ -242,9 +242,7 @@ describe('solidjs system', () => {
       return Dynamic({
         component: 'div',
         onClick: () => {
-          console.log(mode)
-
-          setMode(mode === 'light' ? 'dark' : 'light')
+          setMode(mode() === 'light' ? 'dark' : 'light')
         },
         children: mode
       })
@@ -302,7 +300,7 @@ describe('solidjs system', () => {
       return Dynamic({
         component: 'div',
         onClick: () => {
-          setMode(mode === 'light' ? 'dark' : 'light')
+          setMode(mode() === 'light' ? 'dark' : 'light')
         },
         children: mode
       })
@@ -451,9 +449,9 @@ describe('solidjs system', () => {
     function Wapper() {
       const { mode, setMode, theme } = useSystem()
 
-      expect(['light', 'dark'].includes(mode)).toEqual(true)
+      expect(['light', 'dark'].includes(mode())).toEqual(true)
 
-      expect(theme.color).toEqual(typemap[mode])
+      expect(theme().color).toEqual(typemap[mode()])
 
       return Dynamic({
         component: 'div',
@@ -613,8 +611,8 @@ describe('solidjs system', () => {
     function Wapper() {
       const { mode, setMode, theme } = useSystem()
 
-      expect(['light', 'dark'].includes(mode)).toEqual(true)
-      expect(theme.color).toEqual(typemap[mode])
+      expect(['light', 'dark'].includes(mode())).toEqual(true)
+      expect(theme().color).toEqual(typemap[mode()])
 
       return Dynamic({
         component: 'div',
@@ -624,7 +622,7 @@ describe('solidjs system', () => {
           Dynamic({
             component: Button,
             variants: {
-              color: mode as 'light'
+              color: mode() as 'light'
             }
           }),
           mode
@@ -675,13 +673,13 @@ describe('solidjs system', () => {
     function Wapper() {
       const { mode, setMode, theme } = useSystem()
 
-      expect(['light', 'dark'].includes(mode)).toEqual(true)
-      expect(theme.color).toEqual(typemap[mode])
+      expect(['light', 'dark'].includes(mode())).toEqual(true)
+      expect(theme().color).toEqual(typemap[mode()])
 
       return Dynamic({
         component: 'div',
         'data-testid': 'use-system',
-        onClick: () => setMode(mode === 'dark' ? 'light' : 'dark'),
+        onClick: () => setMode(mode() === 'dark' ? 'light' : 'dark'),
         children: [Button, mode]
       })
     }
