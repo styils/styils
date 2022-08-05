@@ -28,7 +28,8 @@ async function build(name: string, globalsName: string, prod = false) {
   const indexMap = {
     react: 'indexReact.ts',
     css: 'indexCSS.ts',
-    base: 'indexBase.ts'
+    base: 'indexBase.ts',
+    solid: 'indexSolid.ts'
   }
 
   const inputPath = path.join(cwd, 'src', indexMap[name])
@@ -58,10 +59,14 @@ async function build(name: string, globalsName: string, prod = false) {
   const bundle = await rollup({
     input: inputPath,
     plugins,
-    external: ['react']
+    external: ['react', 'solid-js', 'solid-js/web']
   })
 
-  const globals: Record<string, string> = name === 'react' ? { react: 'React' } : {}
+  const globals: Record<string, any> =
+    {
+      react: { react: 'React' },
+      solid: { 'solid-js': 'solidJs', 'solid-js/web': 'solidJsWeb' }
+    }[name] ?? {}
 
   if (prod) {
     typeFile.push({ name, files: bundle.watchFiles })
@@ -104,9 +109,11 @@ async function run() {
 
   spinner.start()
   await Promise.all([
-    build('react', 'styilReact'),
+    build('react', 'styilsReact'),
+    build('solid', 'styilsSolid'),
     build('css', 'styilCss'),
     build('base', 'styilBase'),
+    build('solid', 'styilsSolid', true),
     build('react', 'styilReact', true),
     build('css', 'styilCss', true),
     build('base', 'styilBase', true)
