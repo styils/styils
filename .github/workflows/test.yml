@@ -1,11 +1,9 @@
 name: Test CI
 
 on:
+  pull_request:
   push:
     branches: [main]
-    paths:
-      - 'src/**'
-  pull_request:
     paths:
       - 'src/**'
 
