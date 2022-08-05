@@ -1,6 +1,6 @@
 import type { JSX, ComponentProps } from 'solid-js'
 import type { CSSAttribute } from 'nativeCssTypes'
-import type { Widen } from './types'
+import type { AnyObject, Widen } from './types'
 import type { StyleCSSAttribute, StyleInterpolation } from './baseSystemTypes'
 
 export type NativeComponent = keyof JSX.IntrinsicElements | ((...props: any[]) => JSX.Element)
@@ -10,7 +10,7 @@ type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R | unde
 type StyledProps<As extends NativeComponent, Variants> = Omit<ComponentProps<As>, 'ref'> & {
   ref?: PropsWithRef<ComponentProps<As>>
 } & {
-  as?: As extends StyledComponent<infer A, any> ? A : As
+  as?: As extends StyledComponent<infer A, AnyObject> ? A : As
   variants?: {
     [key in keyof Variants]?: Widen<keyof Variants[key]>
   }

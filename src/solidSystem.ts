@@ -1,7 +1,7 @@
 /* @jsxImportSource solid-js */
 
 import {
-  type Accessor,
+  // type Accessor,
   type JSX,
   createContext,
   createSignal,
@@ -18,8 +18,8 @@ import type { BaseTag, SystemExtractElement, SystemOptions, TargetInfo } from '.
 
 export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
   const themeContent = createContext<{
-    mode: Accessor<string>
-    setMode: any
+    mode: string
+    setMode: (mode: string) => void
     theme: Theme
   }>(
     // @ts-expect-error no value initially
@@ -30,16 +30,16 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
 
   const SystemProvider =
     (providerOptions: { mode: string; theme: Theme }) => (props: { children: JSX.Element }) => {
-      const [mode, setMode] = createSignal<string>(providerOptions.mode)
+      const [provider, setProvider] = createSignal(providerOptions)
 
       const updataMode = (value: string) => {
         providerOptions.theme = options.theme(value)
         providerOptions.mode = value
-        setMode(value)
+        setProvider(providerOptions)
       }
 
       return createComponent(themeContent.Provider, {
-        value: { mode, setMode: updataMode, theme: providerOptions.theme },
+        value: { mode: provider().mode, setMode: updataMode, theme: provider().theme },
         get children() {
           return props.children
         }
@@ -59,7 +59,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       const { mode } = useSystem()
 
       const classes = createMemo(() => {
-        if (mode?.() !== undefined) {
+        if (mode !== undefined) {
           createRule(targetInfo)
         }
 

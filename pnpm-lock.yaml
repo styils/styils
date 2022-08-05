@@ -43,6 +43,7 @@ importers:
       rollup-plugin-esbuild: ^4.9.1
       shelljs: ^0.8.5
       solid-js: ^1.4.7
+      solid-testing-library: ^0.3.0
       typescript: ^4.7.3
       vite: ^3.0.0
     devDependencies:
@@ -85,6 +86,7 @@ importers:
       rollup-plugin-esbuild: 4.9.1_ecpsl2p7zl5puhr4xxlpah6uzm
       shelljs: 0.8.5
       solid-js: 1.4.8
+      solid-testing-library: 0.3.0_solid-js@1.4.8
       typescript: 4.7.4
       vite: 3.0.4
 
@@ -1289,6 +1291,17 @@ packages:
       - supports-color
     dev: true
 
+  /@jest/types/26.6.2:
+    resolution: {integrity: sha512-fC6QCp7Sc5sX6g8Tvbmj4XUTbyrik0akgRy03yjXbQaBWWNWGE7SGtJk98m0N8nzegD/7SggrUlivxo5ax4KWQ==}
+    engines: {node: '>= 10.14.2'}
+    dependencies:
+      '@types/istanbul-lib-coverage': 2.0.4
+      '@types/istanbul-reports': 3.0.1
+      '@types/node': 18.6.3
+      '@types/yargs': 15.0.14
+      chalk: 4.1.2
+    dev: true
+
   /@jest/types/27.5.1:
     resolution: {integrity: sha512-Cx46iJ9QpwQTjIdq5VJu2QTMMs3QlEjI0x1QbBP5W1+nMzyc2XmimiRR/CbX9TO0cPTeUlxWMOu8mslYsJ8DEw==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -1611,6 +1624,20 @@ packages:
     dev: true
     optional: true
 
+  /@testing-library/dom/7.31.2:
+    resolution: {integrity: sha512-3UqjCpey6HiTZT92vODYLPxTBWlM8ZOOjr3LX5F37/VRipW2M1kX6I/Cm4VXzteZqfGfagg8yXywpcOgQBlNsQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@babel/code-frame': 7.18.6
+      '@babel/runtime': 7.18.9
+      '@types/aria-query': 4.2.2
+      aria-query: 4.2.2
+      chalk: 4.1.2
+      dom-accessibility-api: 0.5.14
+      lz-string: 1.4.4
+      pretty-format: 26.6.2
+    dev: true
+
   /@testing-library/dom/8.16.0:
     resolution: {integrity: sha512-uxF4zmnLHHDlmW4l+0WDjcgLVwCvH+OVLpD8Dfp+Bjfz85prwxWGbwXgJdLtkgjD0qfOzkJF9SmA6YZPsMYX4w==}
     engines: {node: '>=12'}
@@ -1877,6 +1904,12 @@ packages:
 
   /@types/yargs-parser/21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
+    dev: true
+
+  /@types/yargs/15.0.14:
+    resolution: {integrity: sha512-yEJzHoxf6SyQGhBhIYGXQDSCkJjB6HohDShto7m8vaKg9Yp0Yn8+71J9eakh2bnPg6BfsH9PRMhiRTZnd4eXGQ==}
+    dependencies:
+      '@types/yargs-parser': 21.0.0
     dev: true
 
   /@types/yargs/16.0.4:
@@ -5367,6 +5400,16 @@ packages:
     hasBin: true
     dev: true
 
+  /pretty-format/26.6.2:
+    resolution: {integrity: sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg==}
+    engines: {node: '>= 10'}
+    dependencies:
+      '@jest/types': 26.6.2
+      ansi-regex: 5.0.1
+      ansi-styles: 4.3.0
+      react-is: 17.0.2
+    dev: true
+
   /pretty-format/27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -5807,6 +5850,16 @@ packages:
       '@babel/generator': 7.18.10
       '@babel/helper-module-imports': 7.18.6
       '@babel/types': 7.18.10
+      solid-js: 1.4.8
+    dev: true
+
+  /solid-testing-library/0.3.0_solid-js@1.4.8:
+    resolution: {integrity: sha512-6NWVbySNVzyReBm2N6p3eF8bzxRZXHZTAmPix4vFWYol16QWVjNQsEUxvr+ZOutb0yuMZmNuGx3b6WIJYmjwMQ==}
+    engines: {node: '>= 14'}
+    peerDependencies:
+      solid-js: '>=1.0.0'
+    dependencies:
+      '@testing-library/dom': 7.31.2
       solid-js: 1.4.8
     dev: true
 

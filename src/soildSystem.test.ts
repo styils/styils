@@ -1,6 +1,7 @@
-import { createSystem, styled, flush, global, keyframes } from './reactSystem'
-import { render, fireEvent, getByText } from '@testing-library/react'
-import React from 'react'
+import { createSystem, styled, flush, global, keyframes } from './solidSystem'
+import { render, fireEvent, getByText } from 'solid-testing-library'
+import { Dynamic } from 'solid-js/web'
+import { createSignal } from 'solid-js'
 
 const meta = globalThis.document.createElement('meta')
 const { document } = globalThis
@@ -11,7 +12,7 @@ jest.spyOn(globalThis.document, 'getElementById').mockImplementationOnce(() => {
 
 Object.defineProperty(globalThis, 'document', { value: undefined, writable: true })
 
-describe('reactjs system', () => {
+describe('solidjs system', () => {
   beforeEach(() => {
     flush()
     globalThis.document = document
@@ -31,7 +32,7 @@ describe('reactjs system', () => {
       }
     })
 
-    const { container } = render(React.createElement(Button))
+    const { container } = render(Dynamic({ component: Button }))
 
     expect(container).toMatchSnapshot()
 
@@ -67,21 +68,22 @@ describe('reactjs system', () => {
       backgroundColor: theme.color
     }))
 
-    const { container } = render(
-      React.createElement(ThemeSystemProvider, {
-        children: React.createElement(() => {
-          const { mode, setMode } = useThemeSystem()
+    function Test() {
+      const { mode, setMode } = useThemeSystem()
 
-          return React.createElement(
-            Button,
-            {
-              onClick: () => {
-                setMode(mode === 'light' ? 'dark' : 'light')
-              }
-            },
-            mode
-          )
-        })
+      return Dynamic({
+        component: Button,
+        onClick: () => {
+          setMode(mode === 'light' ? 'dark' : 'light')
+        },
+        children: mode
+      })
+    }
+
+    const { container } = render(
+      Dynamic({
+        component: ThemeSystemProvider,
+        children: Test
       })
     )
 
@@ -107,7 +109,7 @@ describe('reactjs system', () => {
       color: 'red'
     })
 
-    const { container } = render(React.createElement(Button2))
+    const { container } = render(Dynamic({ component: Button2 }))
     expect(container).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
   })
@@ -183,17 +185,22 @@ describe('reactjs system', () => {
       }
     }))
 
-    const { container } = render(
-      React.createElement(SystemProvider, {
-        children: React.createElement(() => {
-          const { mode, setMode } = useSystem()
+    function Test() {
+      const { mode, setMode } = useSystem()
 
-          return React.createElement(
-            'div',
-            { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') },
-            mode
-          )
-        })
+      return Dynamic({
+        component: 'div',
+        onClick: () => {
+          setMode(mode === 'light' ? 'dark' : 'light')
+        },
+        children: mode
+      })
+    }
+
+    const { container } = render(
+      Dynamic({
+        component: SystemProvider,
+        children: Test
       })
     )
 
@@ -229,17 +236,24 @@ describe('reactjs system', () => {
       }
     }))
 
-    const { container } = render(
-      React.createElement(SystemProvider, {
-        children: React.createElement(() => {
-          const { mode, setMode } = useSystem()
+    function Test() {
+      const { mode, setMode } = useSystem()
 
-          return React.createElement(
-            'div',
-            { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') },
-            mode
-          )
-        })
+      return Dynamic({
+        component: 'div',
+        onClick: () => {
+          console.log(mode)
+
+          setMode(mode === 'light' ? 'dark' : 'light')
+        },
+        children: mode
+      })
+    }
+
+    const { container } = render(
+      Dynamic({
+        component: SystemProvider,
+        children: Test
       })
     )
 
@@ -282,17 +296,22 @@ describe('reactjs system', () => {
       }
     }))
 
-    const { container } = render(
-      React.createElement(SystemProvider, {
-        children: React.createElement(() => {
-          const { mode, setMode } = useSystem()
+    function Test() {
+      const { mode, setMode } = useSystem()
 
-          return React.createElement(
-            'div',
-            { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') },
-            mode
-          )
-        })
+      return Dynamic({
+        component: 'div',
+        onClick: () => {
+          setMode(mode === 'light' ? 'dark' : 'light')
+        },
+        children: mode
+      })
+    }
+
+    const { container } = render(
+      Dynamic({
+        component: SystemProvider,
+        children: Test
       })
     )
 
@@ -322,7 +341,7 @@ describe('reactjs system', () => {
       backgroundColor: 'gainsboro'
     })
 
-    render(React.createElement(Button))
+    render(Dynamic({ component: Button }))
 
     document.head.childNodes.forEach((item: HTMLStyleElement) => {
       expect(item.sheet.cssRules.length).toEqual(1)
@@ -336,7 +355,7 @@ describe('reactjs system', () => {
       backgroundColor: 'gainsboro'
     })
 
-    const { container } = render(React.createElement(Button, { className: 'foo' }))
+    const { container } = render(Dynamic({ component: Button, class: 'foo' }))
 
     expect(container).toMatchSnapshot()
 
@@ -377,7 +396,7 @@ describe('reactjs system', () => {
       }
     )
 
-    const { container } = render(React.createElement(Button))
+    const { container } = render(Dynamic({ component: Button }))
 
     expect(`${Button}`).toEqual('.css-3465392085')
     expect(container).toMatchSnapshot()
@@ -386,7 +405,7 @@ describe('reactjs system', () => {
   })
 
   it('styled namespace', async () => {
-    const { styled: _styled, flush } = await import('./reactSystem')
+    const { styled: _styled, flush } = await import('./solidSystem')
 
     const Button = _styled(
       { tag: 'button', namespace: 'button' },
@@ -395,7 +414,7 @@ describe('reactjs system', () => {
       }
     )
 
-    const { container } = render(React.createElement(Button))
+    const { container } = render(Dynamic({ component: Button }))
 
     expect(`${Button}`).toEqual('.button-css-3465392085')
     expect(container).toMatchSnapshot()
@@ -433,18 +452,29 @@ describe('reactjs system', () => {
       const { mode, setMode, theme } = useSystem()
 
       expect(['light', 'dark'].includes(mode)).toEqual(true)
+
       expect(theme.color).toEqual(typemap[mode])
 
-      return React.createElement(
-        'div',
-        { 'data-testid': 'use-system', onClick: () => setMode('dark') },
-        React.createElement(Button),
-        mode
-      )
+      return Dynamic({
+        component: 'div',
+        'data-testid': 'use-system',
+        onClick: () => {
+          setMode('dark')
+        },
+        children: [
+          Dynamic({
+            component: Button
+          }),
+          mode
+        ]
+      })
     }
 
     const { container } = render(
-      React.createElement(SystemProvider, { children: React.createElement(Wapper) })
+      Dynamic({
+        component: SystemProvider,
+        children: Wapper
+      })
     )
 
     expect(container).toMatchSnapshot()
@@ -475,20 +505,22 @@ describe('reactjs system', () => {
     )
 
     function Wapper() {
-      const [state, setState] = React.useState<'small' | 'max'>('small')
+      const [state, setState] = createSignal<'small' | 'max'>('small')
 
-      return React.createElement(
-        'div',
-        { 'data-testid': 'styled-variants' },
-        React.createElement(
-          Button,
-          { variants: { size: state }, onClick: () => setState('max') },
-          state
-        )
-      )
+      return Dynamic({
+        component: 'div',
+        'data-testid': 'use-system',
+        onClick: () => setState('max'),
+        children: [
+          Dynamic({
+            component: Button
+          }),
+          state()
+        ]
+      })
     }
 
-    const { container } = render(React.createElement(Wapper))
+    const { container } = render(() => Wapper)
 
     expect(container).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
@@ -515,20 +547,22 @@ describe('reactjs system', () => {
     )
 
     function Wapper() {
-      const [state, setState] = React.useState<'small' | undefined>('small')
+      const [state, setState] = createSignal<'small' | undefined>('small')
 
-      return React.createElement(
-        'div',
-        { 'data-testid': 'styled-variants' },
-        React.createElement(
-          Button,
-          { variants: { size: state }, onClick: () => setState(undefined) },
-          state
-        )
-      )
+      return Dynamic({
+        component: 'div',
+        'data-testid': 'use-system',
+        onClick: () => setState(undefined),
+        children: [
+          Dynamic({
+            component: Button
+          }),
+          state()
+        ]
+      })
     }
 
-    const { container } = render(React.createElement(Wapper))
+    const { container } = render(() => Wapper)
 
     expect(container).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
@@ -582,16 +616,27 @@ describe('reactjs system', () => {
       expect(['light', 'dark'].includes(mode)).toEqual(true)
       expect(theme.color).toEqual(typemap[mode])
 
-      return React.createElement(
-        'div',
-        { 'data-testid': 'use-system', onClick: () => setMode('dark') },
-        React.createElement(Button, { variants: { color: mode as 'light' } }),
-        mode
-      )
+      return Dynamic({
+        component: 'div',
+        'data-testid': 'use-system',
+        onClick: () => setMode('dark'),
+        children: [
+          Dynamic({
+            component: Button,
+            variants: {
+              color: mode as 'light'
+            }
+          }),
+          mode
+        ]
+      })
     }
 
     const { container } = render(
-      React.createElement(SystemProvider, { children: React.createElement(Wapper) })
+      Dynamic({
+        component: SystemProvider,
+        children: Wapper
+      })
     )
 
     expect(container).toMatchSnapshot()
@@ -633,16 +678,19 @@ describe('reactjs system', () => {
       expect(['light', 'dark'].includes(mode)).toEqual(true)
       expect(theme.color).toEqual(typemap[mode])
 
-      return React.createElement(
-        'div',
-        { 'data-testid': 'use-system', onClick: () => setMode(mode === 'dark' ? 'light' : 'dark') },
-        React.createElement(Button),
-        mode
-      )
+      return Dynamic({
+        component: 'div',
+        'data-testid': 'use-system',
+        onClick: () => setMode(mode === 'dark' ? 'light' : 'dark'),
+        children: [Button, mode]
+      })
     }
 
     const { container } = render(
-      React.createElement(SystemProvider, { children: React.createElement(Wapper) })
+      Dynamic({
+        component: SystemProvider,
+        children: Wapper
+      })
     )
 
     expect(container).toMatchSnapshot()
@@ -801,7 +849,7 @@ describe('hydrate', () => {
     const { extractElement } = createExtracts()
 
     globalThis.document = document
-    const { container } = render(extractElement)
+    const { container } = render(() => extractElement)
 
     expect(container).toMatchSnapshot()
   })
