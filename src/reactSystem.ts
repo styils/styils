@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { createBaseSystem } from './baseSystem'
-import { BaseTag, SystemExtractElement, TargetInfo } from './baseSystemTypes'
-import { Styled } from './reactSystemTypes'
-import { SystemOptions } from './solidSystemTypes'
+import { BaseTag, SystemExtractElement, SystemOptions, TargetInfo } from './baseSystemTypes'
+import type { Styled } from './reactSystemTypes'
 import { AnyObject } from './types'
 
 export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {

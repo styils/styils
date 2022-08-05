@@ -1,20 +1,20 @@
 /* @jsxImportSource solid-js */
 
 import {
+  type Accessor,
+  type JSX,
   createContext,
   createSignal,
   createComponent,
-  Accessor,
   useContext,
   splitProps,
   mergeProps,
-  JSX,
   createMemo
 } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import { createBaseSystem } from './baseSystem'
-import { BaseTag, SystemExtractElement, TargetInfo } from './baseSystemTypes'
-import { SystemOptions, Styled } from './solidSystemTypes'
+import type { Styled } from './solidSystemTypes'
+import type { BaseTag, SystemExtractElement, SystemOptions, TargetInfo } from './baseSystemTypes'
 
 export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
   const themeContent = createContext<{

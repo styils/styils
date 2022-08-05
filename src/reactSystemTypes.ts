@@ -1,6 +1,7 @@
 import React from 'react'
-import { type CSSAttribute } from 'nativeCssTypes'
-import { Widen, type AnyObject, type StyleSheetOptions } from './types'
+import type { CSSAttribute } from 'nativeCssTypes'
+import type { Widen, AnyObject } from './types'
+import type { StyleCSSAttribute, StyleInterpolation } from './baseSystemTypes'
 
 export type IfEqual<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2
   ? true
@@ -12,12 +13,6 @@ export type NeverKeys<T> = {
 
 export type MergeProps<P1 = {}, P2 = {}> = Omit<P1, keyof P2> &
   (NeverKeys<P2> extends never ? P2 : Omit<P2, NeverKeys<P2>>)
-
-export type StyleInterpolation<Theme, Variants> =
-  | Variants
-  | ((props: Theme, mode: string) => Variants)
-
-export type StyleCSSAttribute<Theme> = CSSAttribute | ((props: Theme, mode: string) => CSSAttribute)
 
 export interface FunctionComponent {
   displayName?: string
@@ -73,38 +68,4 @@ export interface Styled<Theme> {
       }
     }
   >
-}
-
-export interface Global<Theme> {
-  (styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)): void
-}
-
-export interface Keyframes {
-  (styles: Record<string, CSSAttribute>): string
-}
-
-export interface SystemOptions<Theme> {
-  theme?: (mode: string) => Theme
-  defaultMode?: string
-  sheetOptions?: Partial<StyleSheetOptions>
-}
-
-export interface System<Theme> {
-  styled: Styled<Theme>
-  SystemProvider: (props: { children: React.ReactNode }) => React.FunctionComponentElement<
-    React.ProviderProps<{
-      mode: string
-      setMode: React.Dispatch<React.SetStateAction<string>>
-      theme: Theme
-    }>
-  >
-  useSystem: () => {
-    mode: string
-    setMode: React.Dispatch<React.SetStateAction<string>>
-    theme: Theme
-  }
-  global: Global<Theme>
-  keyframes: Keyframes
-  createExtracts: () => { extractHtml: string; extractElement: JSX.Element }
-  flush: () => void
 }
