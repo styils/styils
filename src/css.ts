@@ -1,7 +1,8 @@
-import { StyleSheetOptions, type CSSAttribute } from './types'
+import { StyleSheetOptions } from './types'
 import { createSelector } from './createSelector'
 import { StyleSheet } from './sheet'
 import { parseRules } from './parse'
+import { CSSAttribute } from 'nativeCssTypes'
 
 export function createStyil(options: Partial<StyleSheetOptions> = {}) {
   const { key = 'css', container, speedy, nonce } = options

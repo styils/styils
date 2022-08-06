@@ -1,13 +1,27 @@
-import * as React from 'react'
-import { type SystemOptions, type Styled, type System, type Global, Keyframes } from './systemTypes'
 import { createSelector } from './createSelector'
 import { StyleSheet, type OldRule } from './sheet'
 import { type AnyObject } from './types'
 import { parseRules } from './parse'
+import {
+  Keyframes,
+  type BaseSystem,
+  SystemOptions,
+  Global,
+  AnyFunc,
+  BaseStyled
+} from './baseSystemTypes'
 
-export function createSystem<Theme extends AnyObject = {}>(
-  options: SystemOptions<Theme> = {}
-): System<Theme> {
+export function createBaseSystem<
+  Styled extends AnyFunc,
+  Theme extends AnyObject,
+  ExtractElement extends AnyFunc,
+  Provider extends AnyFunc
+>(
+  systemOptions: SystemOptions<Theme>,
+  inputSystemProvider: Provider,
+  inputStyledComponent: AnyFunc,
+  inputExtractElement: ExtractElement
+): BaseSystem<Styled, Theme, Provider, ExtractElement> {
   const splitSymbol = '|'
   const isBrowser = !!globalThis.document
 
@@ -25,16 +39,18 @@ export function createSystem<Theme extends AnyObject = {}>(
     theme: inputTheme = () => ({} as AnyObject),
     defaultMode = 'none',
     sheetOptions = {}
-  } = options
+  } = systemOptions
 
   const { key = 'css', container, speedy, nonce } = sheetOptions
-  const globalMode = { mode: defaultMode }
   const metaSelectorCacheId = `styils-${key}-cache`
   const metaHtml = isBrowser
     ? (document.getElementById(metaSelectorCacheId) as HTMLMetaElement)
     : null
 
-  let theme = inputTheme(defaultMode)
+  const internalState = {
+    mode: defaultMode,
+    theme: inputTheme(defaultMode)
+  }
 
   if (isBrowser && !selectorCache.size && metaHtml) {
     metaHtml.content.split(splitSymbol).forEach((name) => {
@@ -49,39 +65,14 @@ export function createSystem<Theme extends AnyObject = {}>(
     nonce
   })
 
-  const themeContent = React.createContext<{
-    mode: string
-    setMode: React.Dispatch<React.SetStateAction<string>>
-    theme: Theme
-  }>(
-    // @ts-expect-error no value initially
-    {}
-  )
-
-  const SystemProvider = (props: { children: React.ReactNode }) => {
-    const [mode, setMode] = React.useState<string>(defaultMode)
-
-    const updataMode = (value: string) => {
-      theme = inputTheme(value)
-      globalMode.mode = value
-      setMode(value)
-    }
-
-    return React.createElement(
-      themeContent.Provider,
-      { value: { mode, setMode: updataMode, theme } },
-      props.children
-    )
-  }
-
-  const useSystem = () => React.useContext(themeContent)
+  const SystemProvider = inputSystemProvider(internalState)
 
   // Mode-based cache
   // The difference with `selectorCache` is that this only works at runtime
   let modeIdentifier: Record<string, { targetClassName: string; namespaceJoiner: string }>[] = []
   let withIndex = 0
 
-  const styled: Styled<Theme> & { sourceMap?: string } = (tag, styles, interpolation) => {
+  const styled: BaseStyled = (tag, styles, interpolation) => {
     let inputTag = tag
     let cacheSourceMap = ''
     const inputNamespace = (tag as { namespace: string }).namespace ?? ''
@@ -93,7 +84,7 @@ export function createSystem<Theme extends AnyObject = {}>(
     const currentWithIndex = withIndex
 
     function createRule(inputTargetInfo: { targetClassName: string; namespaceJoiner: string }) {
-      const identifier = modeIdentifier[currentWithIndex]?.[globalMode.mode]
+      const identifier = modeIdentifier[currentWithIndex]?.[internalState.mode]
 
       if (identifier) {
         const { namespaceJoiner, targetClassName } = identifier
@@ -102,10 +93,13 @@ export function createSystem<Theme extends AnyObject = {}>(
         return
       }
 
-      const style = typeof styles === 'function' ? styles(theme, globalMode.mode) : styles
+      const style =
+        typeof styles === 'function' ? styles(internalState.theme, internalState.mode) : styles
 
       const variants =
-        typeof interpolation === 'function' ? interpolation(theme, globalMode.mode) : interpolation
+        typeof interpolation === 'function'
+          ? interpolation(internalState.theme, internalState.mode)
+          : interpolation
 
       const selector = `${key}-${createSelector(style)}`
 
@@ -177,7 +171,7 @@ export function createSystem<Theme extends AnyObject = {}>(
         modeIdentifier[currentWithIndex] = {}
       }
 
-      modeIdentifier[currentWithIndex][globalMode.mode] = {
+      modeIdentifier[currentWithIndex][internalState.mode] = {
         targetClassName,
         namespaceJoiner
       }
@@ -192,38 +186,7 @@ export function createSystem<Theme extends AnyObject = {}>(
 
     createRule(targetInfo)
 
-    const styledComponent = React.forwardRef<HTMLElement, AnyObject>((props, ref) => {
-      const { as = inputTag, className = '', variants: variantsProps, ...rest } = props
-      let variantsClassName = ''
-
-      const { mode } = useSystem()
-
-      if (mode !== undefined) {
-        createRule(targetInfo)
-      }
-
-      if (variantsProps) {
-        const variantsPropsKeys = Object.keys(variantsProps)
-        let variantsPropsIndex = variantsPropsKeys.length
-
-        while (variantsPropsIndex--) {
-          const key = variantsPropsKeys[variantsPropsIndex]
-          const value = variantsProps[key]
-
-          if (value !== undefined && value !== null) {
-            variantsClassName += ` ${targetInfo.namespaceJoiner}${key}-${value}`
-          }
-        }
-      }
-
-      return React.createElement(as, {
-        className: `${className ? className + ' ' : className}${
-          targetInfo.targetClassName
-        }${variantsClassName}`,
-        ref,
-        ...rest
-      })
-    })
+    const styledComponent = inputStyledComponent(inputTag, createRule, targetInfo)
 
     if (process.env.NODE_ENV !== 'production') {
       styledComponent.displayName = styledComponent.displayName ?? targetInfo.targetClassName
@@ -248,30 +211,21 @@ export function createSystem<Theme extends AnyObject = {}>(
 
     const ssrGlobalData = sheet.ssrGlobalData || (styleGlobalHtml?.textContent ?? '')
     const ssrData = sheet.ssrData || (styleHtml?.textContent ?? '')
-
+    const metaMode = metaHtml?.getAttribute('mode') || internalState.mode
     const selectorCacheString = metaHtml?.content ?? [...selectorCache].join(splitSymbol)
-    const extractHtml = `<meta id="${metaSelectorCacheId}" name="styils-cache" mode="${globalMode.mode}" content="${selectorCacheString}">
+    const extractHtml = `<meta id="${metaSelectorCacheId}" name="styils-cache" mode="${metaMode}" content="${selectorCacheString}">
      <style id="${globalStyleSSRId}">${ssrGlobalData}</style>
      <style id="${styleSSRId}">${ssrData}</style>`
 
-    const extractElement = React.createElement(
-      React.Fragment,
-      {},
-      React.createElement('meta', {
-        name: 'styils-cache',
-        id: metaSelectorCacheId,
-        mode: metaHtml?.getAttribute('mode') ?? globalMode.mode,
-        content: selectorCacheString
-      }),
-      React.createElement('style', {
-        id: `${sheet.key}-ssr-global`,
-        dangerouslySetInnerHTML: { __html: ssrGlobalData }
-      }),
-      React.createElement('style', {
-        id: `${sheet.key}-ssr`,
-        dangerouslySetInnerHTML: { __html: ssrData }
-      })
-    )
+    const extractElement = inputExtractElement({
+      selectorCacheString,
+      metaSelectorCacheId,
+      globalStyleSSRId,
+      ssrGlobalData,
+      styleSSRId,
+      ssrData,
+      metaMode
+    })
 
     return { extractHtml, extractElement }
   }
@@ -311,19 +265,20 @@ export function createSystem<Theme extends AnyObject = {}>(
         oldRule = undefined
       }
 
-      if (isBrowser && metaHtml && globalMode.mode === metaHtml.getAttribute('mode')) {
+      if (isBrowser && metaHtml && internalState.mode === metaHtml.getAttribute('mode')) {
         return
       }
 
       let rules: { segmentRuleCode: string[]; ruleCode: string }
-      const cache = globalCache[globalMode.mode]
+      const cache = globalCache[internalState.mode]
 
-      if (globalCache[globalMode.mode]) {
+      if (globalCache[internalState.mode]) {
         rules = cache
       } else {
-        const style = typeof styles === 'function' ? styles(theme, globalMode.mode) : styles
+        const style =
+          typeof styles === 'function' ? styles(internalState.theme, internalState.mode) : styles
         rules = parseRules(style)
-        globalCache[globalMode.mode] = rules
+        globalCache[internalState.mode] = rules
       }
 
       if (process.env.NODE_ENV !== 'production') {
@@ -340,7 +295,7 @@ export function createSystem<Theme extends AnyObject = {}>(
 
     createGlobRules()
 
-    Object.defineProperty(globalMode, 'mode', {
+    Object.defineProperty(internalState, 'mode', {
       set(value) {
         this.value = value
         createGlobRules()
@@ -360,7 +315,5 @@ export function createSystem<Theme extends AnyObject = {}>(
     modeIdentifier = []
   }
 
-  return { styled, SystemProvider, useSystem, createExtracts, flush, global, keyframes }
+  return { styled: styled as Styled, SystemProvider, createExtracts, flush, global, keyframes }
 }
-
-export const { styled, createExtracts, flush, global, keyframes } = createSystem()

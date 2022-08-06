@@ -1,3 +1,4 @@
-export * from './system'
+export * from './reactSystem'
 export * from './indexBase'
-export * from './systemTypes'
+export * from './reactSystemTypes'
+export * from './baseSystemTypes'

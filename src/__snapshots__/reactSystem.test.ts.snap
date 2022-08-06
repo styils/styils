@@ -107,10 +107,10 @@ exports[`hydrate render Element hydrate 1`] = `
     name="styils-cache"
   />
   <style
-    id="css-ssr-global"
+    id="styils-css-ssr-global"
   />
   <style
-    id="css-ssr"
+    id="styils-css-ssr"
   >
     .css-2242710476{background-color:gainsboro;border-radius:9999px;}
   </style>
@@ -136,7 +136,7 @@ exports[`hydrate variants hydrate 2`] = `
 </html>
 `;
 
-exports[`system createSystem 1`] = `
+exports[`reactjs system createSystem 1`] = `
 <div>
   <div
     data-testid="use-system"
@@ -149,7 +149,7 @@ exports[`system createSystem 1`] = `
 </div>
 `;
 
-exports[`system createSystem 2`] = `
+exports[`reactjs system createSystem 2`] = `
 <html>
   <head>
     <style
@@ -174,7 +174,7 @@ exports[`system createSystem 2`] = `
 </html>
 `;
 
-exports[`system createSystem 3`] = `
+exports[`reactjs system createSystem 3`] = `
 <div>
   <div
     data-testid="use-system"
@@ -187,7 +187,7 @@ exports[`system createSystem 3`] = `
 </div>
 `;
 
-exports[`system createSystem 4`] = `
+exports[`reactjs system createSystem 4`] = `
 <html>
   <head>
     <style
@@ -218,7 +218,7 @@ exports[`system createSystem 4`] = `
 </html>
 `;
 
-exports[`system global 1`] = `
+exports[`reactjs system global 1`] = `
 <html>
   <head>
     <style
@@ -232,7 +232,7 @@ exports[`system global 1`] = `
 </html>
 `;
 
-exports[`system global with sourceMap 1`] = `
+exports[`reactjs system global with sourceMap 1`] = `
 <html>
   <head>
     <style
@@ -246,7 +246,7 @@ exports[`system global with sourceMap 1`] = `
 </html>
 `;
 
-exports[`system styled 1`] = `
+exports[`reactjs system styled 1`] = `
 <div>
   <button
     class="css-3397010960"
@@ -254,7 +254,7 @@ exports[`system styled 1`] = `
 </div>
 `;
 
-exports[`system styled 2`] = `
+exports[`reactjs system styled 2`] = `
 <html>
   <head>
     <style
@@ -274,7 +274,7 @@ exports[`system styled 2`] = `
 </html>
 `;
 
-exports[`system styled className 1`] = `
+exports[`reactjs system styled className 1`] = `
 <div>
   <button
     class="foo css-2129283522"
@@ -282,7 +282,7 @@ exports[`system styled className 1`] = `
 </div>
 `;
 
-exports[`system styled className 2`] = `
+exports[`reactjs system styled className 2`] = `
 <html>
   <head>
     <style
@@ -302,7 +302,7 @@ exports[`system styled className 2`] = `
 </html>
 `;
 
-exports[`system styled namespace 1`] = `
+exports[`reactjs system styled namespace 1`] = `
 <div>
   <button
     class="button-css-3465392085"
@@ -310,7 +310,7 @@ exports[`system styled namespace 1`] = `
 </div>
 `;
 
-exports[`system styled production 1`] = `
+exports[`reactjs system styled production 1`] = `
 <div>
   <button
     class="css-3465392085"
@@ -318,7 +318,7 @@ exports[`system styled production 1`] = `
 </div>
 `;
 
-exports[`system styled with sourceMap 1`] = `
+exports[`reactjs system styled with sourceMap 1`] = `
 <html>
   <head>
     <style
@@ -332,7 +332,7 @@ exports[`system styled with sourceMap 1`] = `
 </html>
 `;
 
-exports[`system styled with styled components 1`] = `
+exports[`reactjs system styled with styled components 1`] = `
 <div>
   <button
     class="css-3433634237 css-2341007075"
@@ -340,7 +340,7 @@ exports[`system styled with styled components 1`] = `
 </div>
 `;
 
-exports[`system styled with styled components 2`] = `
+exports[`reactjs system styled with styled components 2`] = `
 <html>
   <head>
     <style
@@ -366,7 +366,7 @@ exports[`system styled with styled components 2`] = `
 </html>
 `;
 
-exports[`system styled with theme and sourceMap 1`] = `
+exports[`reactjs system styled with theme and sourceMap 1`] = `
 <html>
   <head>
     <style
@@ -388,7 +388,7 @@ exports[`system styled with theme and sourceMap 1`] = `
 </html>
 `;
 
-exports[`system styled with theme and sourceMap 2`] = `
+exports[`reactjs system styled with theme and sourceMap 2`] = `
 <html>
   <head>
     <style
@@ -416,7 +416,7 @@ exports[`system styled with theme and sourceMap 2`] = `
 </html>
 `;
 
-exports[`system theme does not render repeatedly 1`] = `
+exports[`reactjs system theme does not render repeatedly 1`] = `
 <div>
   <div
     data-testid="use-system"
@@ -429,7 +429,7 @@ exports[`system theme does not render repeatedly 1`] = `
 </div>
 `;
 
-exports[`system theme does not render repeatedly 2`] = `
+exports[`reactjs system theme does not render repeatedly 2`] = `
 <html>
   <head>
     <style
@@ -454,7 +454,7 @@ exports[`system theme does not render repeatedly 2`] = `
 </html>
 `;
 
-exports[`system theme does not render repeatedly 3`] = `
+exports[`reactjs system theme does not render repeatedly 3`] = `
 <div>
   <div
     data-testid="use-system"
@@ -467,7 +467,7 @@ exports[`system theme does not render repeatedly 3`] = `
 </div>
 `;
 
-exports[`system theme does not render repeatedly 4`] = `
+exports[`reactjs system theme does not render repeatedly 4`] = `
 <html>
   <head>
     <style
@@ -498,7 +498,7 @@ exports[`system theme does not render repeatedly 4`] = `
 </html>
 `;
 
-exports[`system theme does not render repeatedly 5`] = `
+exports[`reactjs system theme does not render repeatedly 5`] = `
 <div>
   <div
     data-testid="use-system"
@@ -511,7 +511,7 @@ exports[`system theme does not render repeatedly 5`] = `
 </div>
 `;
 
-exports[`system theme does not render repeatedly 6`] = `
+exports[`reactjs system theme does not render repeatedly 6`] = `
 <html>
   <head>
     <style
@@ -542,7 +542,7 @@ exports[`system theme does not render repeatedly 6`] = `
 </html>
 `;
 
-exports[`system variants 1`] = `
+exports[`reactjs system variants 1`] = `
 <div>
   <div
     data-testid="styled-variants"
@@ -556,7 +556,7 @@ exports[`system variants 1`] = `
 </div>
 `;
 
-exports[`system variants 2`] = `
+exports[`reactjs system variants 2`] = `
 <html>
   <head>
     <style
@@ -582,7 +582,7 @@ exports[`system variants 2`] = `
 </html>
 `;
 
-exports[`system variants 3`] = `
+exports[`reactjs system variants 3`] = `
 <div>
   <div
     data-testid="styled-variants"
@@ -596,7 +596,7 @@ exports[`system variants 3`] = `
 </div>
 `;
 
-exports[`system variants 4`] = `
+exports[`reactjs system variants 4`] = `
 <html>
   <head>
     <style
@@ -622,7 +622,7 @@ exports[`system variants 4`] = `
 </html>
 `;
 
-exports[`system variants single 1`] = `
+exports[`reactjs system variants single 1`] = `
 <div>
   <div
     data-testid="styled-variants"
@@ -636,7 +636,7 @@ exports[`system variants single 1`] = `
 </div>
 `;
 
-exports[`system variants single 2`] = `
+exports[`reactjs system variants single 2`] = `
 <html>
   <head>
     <style
@@ -662,7 +662,7 @@ exports[`system variants single 2`] = `
 </html>
 `;
 
-exports[`system variants single 3`] = `
+exports[`reactjs system variants single 3`] = `
 <div>
   <div
     data-testid="styled-variants"
@@ -674,7 +674,7 @@ exports[`system variants single 3`] = `
 </div>
 `;
 
-exports[`system variants single 4`] = `
+exports[`reactjs system variants single 4`] = `
 <html>
   <head>
     <style
@@ -698,7 +698,7 @@ exports[`system variants single 4`] = `
 </html>
 `;
 
-exports[`system variants theme 1`] = `
+exports[`reactjs system variants theme 1`] = `
 <div>
   <div
     data-testid="use-system"
@@ -711,7 +711,7 @@ exports[`system variants theme 1`] = `
 </div>
 `;
 
-exports[`system variants theme 2`] = `
+exports[`reactjs system variants theme 2`] = `
 <html>
   <head>
     <style
@@ -736,7 +736,7 @@ exports[`system variants theme 2`] = `
 </html>
 `;
 
-exports[`system variants theme 3`] = `
+exports[`reactjs system variants theme 3`] = `
 <div>
   <div
     data-testid="use-system"
@@ -749,7 +749,7 @@ exports[`system variants theme 3`] = `
 </div>
 `;
 
-exports[`system variants theme 4`] = `
+exports[`reactjs system variants theme 4`] = `
 <html>
   <head>
     <style
@@ -774,7 +774,7 @@ exports[`system variants theme 4`] = `
 </html>
 `;
 
-exports[`system with theme global 1`] = `
+exports[`reactjs system with theme global 1`] = `
 <div>
   <div>
     light
@@ -782,7 +782,7 @@ exports[`system with theme global 1`] = `
 </div>
 `;
 
-exports[`system with theme global 2`] = `
+exports[`reactjs system with theme global 2`] = `
 <html>
   <head>
     <style
@@ -802,7 +802,7 @@ exports[`system with theme global 2`] = `
 </html>
 `;
 
-exports[`system with theme global 3`] = `
+exports[`reactjs system with theme global 3`] = `
 <div>
   <div>
     dark
@@ -810,7 +810,7 @@ exports[`system with theme global 3`] = `
 </div>
 `;
 
-exports[`system with theme global 4`] = `
+exports[`reactjs system with theme global 4`] = `
 <html>
   <head>
     <style
@@ -830,7 +830,7 @@ exports[`system with theme global 4`] = `
 </html>
 `;
 
-exports[`system with theme global 5`] = `
+exports[`reactjs system with theme global 5`] = `
 <div>
   <div>
     light
@@ -838,7 +838,7 @@ exports[`system with theme global 5`] = `
 </div>
 `;
 
-exports[`system with theme global 6`] = `
+exports[`reactjs system with theme global 6`] = `
 <html>
   <head>
     <style
@@ -858,7 +858,7 @@ exports[`system with theme global 6`] = `
 </html>
 `;
 
-exports[`system with theme global and sourcemap 1`] = `
+exports[`reactjs system with theme global and sourcemap 1`] = `
 <html>
   <head>
     <style

@@ -41,6 +41,7 @@ async function publish(args: string) {
     case 'react':
     case 'css':
     case 'base':
+    case 'solid':
       targetPath.push(path.join(__dirname, '..', 'dist', type))
       break
     case 'babel':
@@ -48,7 +49,7 @@ async function publish(args: string) {
       break
     case 'all':
       // eslint-disable-next-line @typescript-eslint/no-extra-semi
-      ;['react', 'css', 'base'].forEach((id) => {
+      ;['react', 'css', 'base', 'solid'].forEach((id) => {
         targetPath.push(path.join(__dirname, '..', 'dist', id))
       })
       break

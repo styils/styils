@@ -1,5 +1,7 @@
 import React from 'react'
-import { type AnyObject, type CSSAttribute, type StyleSheetOptions } from './types'
+import type { CSSAttribute } from 'nativeCssTypes'
+import type { Widen, AnyObject } from './types'
+import type { StyleCSSAttribute, StyleInterpolation } from './baseSystemTypes'
 
 export type IfEqual<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2
   ? true
@@ -11,12 +13,6 @@ export type NeverKeys<T> = {
 
 export type MergeProps<P1 = {}, P2 = {}> = Omit<P1, keyof P2> &
   (NeverKeys<P2> extends never ? P2 : Omit<P2, NeverKeys<P2>>)
-
-export type StyleInterpolation<Theme, Variants> =
-  | Variants
-  | ((props: Theme, mode: string) => Variants)
-
-export type StyleCSSAttribute<Theme> = CSSAttribute | ((props: Theme, mode: string) => CSSAttribute)
 
 export interface FunctionComponent {
   displayName?: string
@@ -54,16 +50,6 @@ export type IntrinsicProps<Element extends React.ElementType> = Element extends 
     : Props
   : React.ComponentProps<Element>
 
-export type IntrinsicTagName<Element> = {
-  [Key in keyof JSX.IntrinsicElements]: JSX.IntrinsicElements[Key] extends  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    | React.DetailedHTMLProps<infer _, infer Component>
-    | React.SVGProps<infer Component>
-    ? IfEqual<Component, Element> extends true
-      ? Key
-      : never
-    : never
-}[keyof JSX.IntrinsicElements]
-
 export type StyleTag =
   | keyof JSX.IntrinsicElements
   | React.JSXElementConstructor<{}>
@@ -83,45 +69,3 @@ export interface Styled<Theme> {
     }
   >
 }
-
-export interface Global<Theme> {
-  (styles: CSSAttribute | ((theme: Theme, mode: string) => CSSAttribute)): void
-}
-
-export interface Keyframes {
-  (styles: Record<string, CSSAttribute>): string
-}
-
-export interface SystemOptions<Theme> {
-  theme?: (mode: string) => Theme
-  defaultMode?: string
-  sheetOptions?: Partial<StyleSheetOptions>
-}
-
-export interface System<Theme> {
-  styled: Styled<Theme>
-  SystemProvider: (props: { children: React.ReactNode }) => React.FunctionComponentElement<
-    React.ProviderProps<{
-      mode: string
-      setMode: React.Dispatch<React.SetStateAction<string>>
-      theme: Theme
-    }>
-  >
-  useSystem: () => {
-    mode: string
-    setMode: React.Dispatch<React.SetStateAction<string>>
-    theme: Theme
-  }
-  global: Global<Theme>
-  keyframes: Keyframes
-  createExtracts: () => { extractHtml: string; extractElement: JSX.Element }
-  flush: () => void
-}
-
-export type Widen<T> = T extends number
-  ? `${T}` | T
-  : T extends 'true' | 'false'
-  ? boolean | T
-  : T extends `${number}`
-  ? number | T
-  : T
