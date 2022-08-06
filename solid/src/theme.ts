@@ -1,6 +1,6 @@
 import { createSystem } from '../../src/solidSystem'
 
-export const { styled, SystemProvider, useSystem } = createSystem({
+export const { styled, SystemProvider, useSystem, createExtracts } = createSystem({
   theme: (mode) => {
     return {
       light: {

@@ -1,5 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`hydrate base hydrate 1`] = `
+"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
+     <style id=\\"styils-css-ssr-global\\"></style>
+     <style id=\\"styils-css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"
+`;
+
+exports[`hydrate base hydrate 2`] = `
+<html>
+  <head>
+    <meta
+      content="css-2242710476"
+      id="styils-css-cache"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
+exports[`hydrate global hydrate 1`] = `
+"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"\\">
+     <style id=\\"styils-css-ssr-global\\">body{background-color:gainsboro;border-radius:9999px;}</style>
+     <style id=\\"styils-css-ssr\\"></style>"
+`;
+
+exports[`hydrate global hydrate 2`] = `
+<html>
+  <head>
+    <meta
+      content=""
+      id="styils-css-cache"
+      mode="none"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
+exports[`hydrate global hydrate 3`] = `
+"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"\\">
+     <style id=\\"styils-css-ssr-global\\"></style>
+     <style id=\\"styils-css-ssr\\"></style>"
+`;
+
+exports[`hydrate global hydrate 4`] = `
+<html>
+  <head>
+    <meta
+      content=""
+      id="styils-css-cache"
+      mode="none"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
 exports[`hydrate global hydrate with sourcemap 1`] = `
 <html>
   <head>
@@ -7,6 +66,69 @@ exports[`hydrate global hydrate with sourcemap 1`] = `
       content="css-2242710476"
       id="styils-css-cache"
       mode="none"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
+exports[`hydrate mix hydrate 1`] = `
+"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
+     <style id=\\"styils-css-ssr-global\\"></style>
+     <style id=\\"styils-css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"
+`;
+
+exports[`hydrate namespace hydrate 1`] = `
+"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\">
+     <style id=\\"styils-css-ssr-global\\"></style>
+     <style id=\\"styils-css-ssr\\">.ssr-css-2242710476{background-color:gainsboro;border-radius:9999px;}.ssr-css-2242710476.ssr-size-max{font-size:12px;}.ssr-css-2242710476.ssr-size-small{font-size:14px;}</style>"
+`;
+
+exports[`hydrate namespace hydrate 2`] = `
+<html>
+  <head>
+    <meta
+      content="ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small"
+      id="styils-css-cache"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
+exports[`hydrate render Element hydrate 1`] = `
+<div>
+  <meta
+    content="css-2242710476"
+    id="styils-css-cache"
+    mode="none"
+    name="styils-cache"
+  />
+  <style
+    id="styils-css-ssr-global"
+  />
+  <style
+    id="styils-css-ssr"
+  >
+    .css-2242710476{background-color:gainsboro;border-radius:9999px;}
+  </style>
+</div>
+`;
+
+exports[`hydrate variants hydrate 1`] = `
+"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\">
+     <style id=\\"styils-css-ssr-global\\"></style>
+     <style id=\\"styils-css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}.css-2242710476.size-max{font-size:12px;}.css-2242710476.size-small{font-size:14px;}</style>"
+`;
+
+exports[`hydrate variants hydrate 2`] = `
+<html>
+  <head>
+    <meta
+      content="css-2242710476|css-2242710476.size-max|css-2242710476.size-small"
+      id="styils-css-cache"
       name="styils-cache"
     />
   </head>
@@ -133,6 +255,23 @@ exports[`solidjs system styled 1`] = `
 `;
 
 exports[`solidjs system styled 2`] = `
+<div>
+  <meta
+    content="css-3397010960"
+    id="styils-css-cache"
+    mode="none"
+    name="styils-cache"
+  />
+  <style
+    id="styils-css-ssr-global"
+  />
+  <style
+    id="styils-css-ssr"
+  />
+</div>
+`;
+
+exports[`solidjs system styled 3`] = `
 <html>
   <head>
     <style
@@ -146,6 +285,20 @@ exports[`solidjs system styled 2`] = `
     <div>
       <button
         class="css-3397010960"
+      />
+    </div>
+    <div>
+      <meta
+        content="css-3397010960"
+        id="styils-css-cache"
+        mode="none"
+        name="styils-cache"
+      />
+      <style
+        id="styils-css-ssr-global"
+      />
+      <style
+        id="styils-css-ssr"
       />
     </div>
   </body>

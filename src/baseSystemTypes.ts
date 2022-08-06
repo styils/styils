@@ -57,5 +57,8 @@ export interface BaseSystem<
   global: Global<Theme>
   keyframes: Keyframes
   createExtracts: () => { extractHtml: string; extractElement: ReturnType<ExtractElement> }
-  flush: () => void
+  /**
+   * @default 'all'
+   */
+  flush: (type?: 'all' | 'global') => void
 }

@@ -1,4 +1,4 @@
-import { createSystem, styled, flush, global, keyframes } from './solidSystem'
+import { createSystem, styled, flush, global, keyframes, createExtracts } from './solidSystem'
 import { render, fireEvent, getByText } from 'solid-testing-library'
 import { Dynamic } from 'solid-js/web'
 import { createSignal } from 'solid-js'
@@ -35,7 +35,9 @@ describe('solidjs system', () => {
     const { container } = render(Dynamic({ component: Button }))
 
     expect(container).toMatchSnapshot()
+    const { container: containerExtractElement } = render(() => createExtracts().extractElement)
 
+    expect(containerExtractElement).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
   })
 
@@ -721,15 +723,10 @@ describe('hydrate', () => {
       borderRadius: '9999px'
     })
 
-    const { extractHtml } = createExtracts()
-
-    console.log(extractHtml)
-
-    // console.log(renderToString(() => createExtracts().extractHtml))
-
-    // expect().toMatchSnapshot()
-    // expect(document.documentElement).toMatchSnapshot()
-    // document.head.removeChild(meta)
+    globalThis.document = document
+    expect(createExtracts().extractHtml).toMatchSnapshot()
+    expect(document.documentElement).toMatchSnapshot()
+    document.head.removeChild(meta)
   })
 
   it('variants hydrate', () => {
@@ -757,6 +754,7 @@ describe('hydrate', () => {
       }
     )
 
+    globalThis.document = document
     expect(createExtracts().extractHtml).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
@@ -787,6 +785,7 @@ describe('hydrate', () => {
       }
     )
 
+    globalThis.document = document
     expect(createExtracts().extractHtml).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
@@ -807,10 +806,10 @@ describe('hydrate', () => {
       }
     })
 
+    globalThis.document = document
     expect(createExtracts().extractHtml).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
 
-    globalThis.document = document
     const { global: hydrateGlobal1, createExtracts: getCssValue1 } = createSystem()
     hydrateGlobal1({
       body: {
@@ -850,9 +849,8 @@ describe('hydrate', () => {
       backgroundColor: 'gainsboro',
       borderRadius: '9999px'
     })
-    const { extractElement } = createExtracts()
-
     globalThis.document = document
+    const { extractElement } = createExtracts()
     const { container } = render(() => extractElement)
 
     expect(container).toMatchSnapshot()
@@ -873,6 +871,7 @@ describe('hydrate', () => {
       borderRadius: '9999px'
     })
 
+    globalThis.document = document
     expect(createExtracts().extractHtml).toMatchSnapshot()
   })
 })
