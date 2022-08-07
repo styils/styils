@@ -8,7 +8,7 @@
     "build": "node -r esbuild-register scripts/build.ts",
     "build:doc": "cd docs && pnpm run build",
     "build:babel": "cd babel && pnpm run build",
-    "test": "jest-easy -u",
+    "test": "jest-easy",
     "test:coverage": "jest-easy --coverage",
     "update:deps": "pnpm update --latest --interactive",
     "format": "prettier \"**/*.{js,ts,tsx,md}\" --write",

@@ -366,7 +366,7 @@ exports[`solidjs system styled with sourceMap 1`] = `
 exports[`solidjs system styled with styled components 1`] = `
 <div>
   <button
-    class="css-3433634237 css-2341007075 css-2341007075"
+    class="css-3433634237 css-2341007075"
   />
 </div>
 `;
@@ -390,7 +390,7 @@ exports[`solidjs system styled with styled components 2`] = `
   <body>
     <div>
       <button
-        class="css-3433634237 css-2341007075 css-2341007075"
+        class="css-3433634237 css-2341007075"
       />
     </div>
   </body>
