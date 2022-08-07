@@ -98,7 +98,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
           ...rest
         }
 
-        return typeof props.as === 'function' ? props.as(interiorProps) : Dynamic(interiorProps)
+        return Dynamic(interiorProps)
       })
 
       return classes
