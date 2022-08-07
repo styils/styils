@@ -89,16 +89,14 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
           }
         }
 
-        const interiorProps = {
+        return Dynamic({
           class: `${props.class ? props.class + ' ' : props.class}${
             targetInfo.targetClassName
           }${variantsClassName}`,
           children: props.children,
           component: props.as,
           ...rest
-        }
-
-        return typeof props.as === 'function' ? props.as(interiorProps) : Dynamic(interiorProps)
+        })
       })
 
       return classes
