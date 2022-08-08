@@ -6,7 +6,8 @@ const Button = styled(
   'button',
   (mode) => {
     return {
-      color: mode.color
+      color: mode.color,
+      height: ':height'
     }
   },
   {
@@ -24,6 +25,7 @@ const Button = styled(
 const App = () => {
   const [size, setSize] = createSignal<'max' | 'small'>('max')
   const [type, setType] = createSignal<'a' | 'button'>('button')
+  const [height, setHeight] = createSignal(0)
 
   const { setMode, mode, theme } = useSystem()
 
@@ -48,8 +50,12 @@ const App = () => {
     <div>
       {/* {ExtractElement} */}
       <Button
+        cssState={{
+          height: `${height()}px`
+        }}
         onClick={() => {
           batch(() => {
+            setHeight(height() + 10)
             setMode(mode() === 'light' ? 'dark' : 'light')
             setType(type() === 'a' ? 'button' : 'a')
             setSize(size() === 'max' ? 'small' : 'max')

@@ -62,21 +62,35 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       const [props, rest] = splitProps(mergeProps({ as: inputTag }, inputProps), [
         'as',
         'class',
-        'variants'
+        'variants',
+        'cssState',
+        'style'
       ])
 
       const { mode } = useSystem()
 
-      const classes = createMemo(() => {
+      const styles = createMemo(() => {
         if (mode?.() !== undefined) {
           createRule()
         }
 
         const variantsClassName = props.variants ? computedVariants(props.variants) : ''
 
-        return `${props.class ? props.class + ' ' : ''}${
-          targetInfo.targetClassName
-        }${variantsClassName}`
+        const transformCssState = {}
+        if (props.cssState) {
+          const keys = Object.keys(props.cssState)
+          for (let i = keys.length; i >= 0; i--) {
+            const key = keys[i]
+            transformCssState[`--${targetInfo.targetClassName}-${key}`] = props.cssState[key]
+          }
+        }
+
+        return {
+          classes: `${props.class ? props.class + ' ' : ''}${
+            targetInfo.targetClassName
+          }${variantsClassName}`,
+          style: transformCssState
+        }
       })
 
       return Dynamic({
@@ -84,7 +98,10 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
           return props.as
         },
         get class() {
-          return classes()
+          return styles().classes
+        },
+        get style() {
+          return { ...styles().style, ...props.style }
         },
         ...rest
       })

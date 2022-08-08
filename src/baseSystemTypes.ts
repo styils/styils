@@ -64,3 +64,10 @@ export interface BaseSystem<
    */
   flush: (type?: 'all' | 'global') => void
 }
+
+export type CssStateKey<T extends Record<string, string | number | object> | string | number> =
+  T extends Record<string, string | number | Record<string, string | number | object>>
+    ? CssStateKey<T[keyof T]>
+    : T extends `$${infer R}`
+    ? R
+    : never

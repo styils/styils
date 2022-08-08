@@ -1,6 +1,11 @@
 import React from 'react'
 import type { Widen, AnyObject } from './types'
-import type { BaseVariants, StyleCSSAttribute, StyleInterpolation } from './baseSystemTypes'
+import type {
+  BaseVariants,
+  StyleCSSAttribute,
+  StyleInterpolation,
+  CssStateKey
+} from './baseSystemTypes'
 
 export type IfEqual<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2
   ? true
@@ -54,10 +59,21 @@ export type StyleTag =
   | React.JSXElementConstructor<{}>
   | React.ComponentClass
 
+export type CSSState<Styles, Variants> = {
+  // @ts-expect-error hack
+  [key in CssStateKey<Styles[keyof Styles]> | CssStateKey<Variants[keyof Variants]>]?:
+    | string
+    | number
+}
+
 export interface Styled<Theme> {
-  <Component extends StyleTag, Variants extends BaseVariants>(
+  <
+    Component extends StyleTag,
+    Styles extends StyleCSSAttribute<Theme>,
+    Variants extends BaseVariants
+  >(
     tag: Component | { tag: Component; namespace?: string },
-    styles: StyleCSSAttribute<Theme>,
+    styles: Styles | ((props: Theme, mode: string) => Styles),
     interpolation?: StyleInterpolation<Theme, Variants>
   ): StyledComponent<
     IntrinsicElement<Component>,
@@ -65,7 +81,7 @@ export interface Styled<Theme> {
       variants?: {
         [key in keyof Variants]?: Widen<keyof Variants[key]>
       }
-      cssState?: AnyObject
+      cssState?: CSSState<Styles, Variants>
     }
   >
 }
