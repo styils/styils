@@ -8,8 +8,7 @@ import {
   splitProps,
   mergeProps,
   createMemo,
-  createEffect,
-  on
+  batch
 } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import { createBaseSystem } from './baseSystem'
@@ -27,22 +26,18 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
 
   const SystemProvider =
     (providerOptions: { mode: string; theme: AnyObject }) => (props: { children: JSX.Element }) => {
-      const [change, setChange] = createSignal(true)
       const [mode, setMode] = createSignal(providerOptions.mode)
       const [theme, setTheme] = createSignal(providerOptions.theme)
 
       const updataMode = (value: string) => {
         providerOptions.theme = options.theme(value)
         providerOptions.mode = value
-        setChange(!change())
-      }
 
-      createEffect(
-        on(change, () => {
+        batch(() => {
           setMode(providerOptions.mode)
           setTheme(providerOptions.theme)
         })
-      )
+      }
 
       return createComponent(themeContent.Provider, {
         value: {
@@ -57,9 +52,14 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
     }
 
   const styledComponent =
-    (inputTag: BaseTag, createRule: (value: TargetInfo) => void, targetInfo: TargetInfo) =>
+    (
+      inputTag: BaseTag,
+      createRule: () => void,
+      computedVariants: (value: AnyObject) => string,
+      targetInfo: TargetInfo
+    ) =>
     (inputProps: AnyObject) => {
-      const [props, rest] = splitProps(mergeProps({ as: inputTag, class: '' }, inputProps), [
+      const [props, rest] = splitProps(mergeProps({ as: inputTag }, inputProps), [
         'as',
         'class',
         'variants',
@@ -70,36 +70,24 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
 
       const classes = createMemo(() => {
         if (mode?.() !== undefined) {
-          createRule(targetInfo)
+          createRule()
         }
 
-        let variantsClassName = ''
+        const variantsClassName = props.variants ? computedVariants(props.variants) : ''
 
-        if (props.variants) {
-          const variantsPropsKeys = Object.keys(props.variants)
-          let variantsPropsIndex = variantsPropsKeys.length
-
-          while (variantsPropsIndex--) {
-            const key = variantsPropsKeys[variantsPropsIndex]
-            const value = props.variants[key]
-
-            if (value !== undefined && value !== null) {
-              variantsClassName = ` ${targetInfo.namespaceJoiner}${key}-${value}`
-            }
-          }
-        }
-
-        return Dynamic({
-          class: `${props.class ? props.class + ' ' : props.class}${
-            targetInfo.targetClassName
-          }${variantsClassName}`,
-          children: props.children,
-          component: props.as,
-          ...rest
-        })
+        return `${props.class ? props.class + ' ' : ''}${
+          targetInfo.targetClassName
+        }${variantsClassName}`
       })
 
-      return classes
+      return Dynamic({
+        component: props.as,
+        children: props.children,
+        get class() {
+          return classes()
+        },
+        ...rest
+      })
     }
 
   const extractElement = ({

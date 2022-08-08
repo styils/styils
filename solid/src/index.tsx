@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js'
+import { batch, createSignal } from 'solid-js'
 import { render } from 'solid-js/web'
 import { styled, SystemProvider, useSystem } from './theme'
 
@@ -48,10 +48,11 @@ const App = () => {
       {/* {ExtractElement} */}
       <Button
         onClick={() => {
-          setMode(mode() === 'light' ? 'dark' : 'light')
+          batch(() => {
+            setMode(mode() === 'light' ? 'dark' : 'light')
 
-          // setMode(mode() === 'light' ? 'dark' : 'light')
-          setSize(size() === 'max' ? 'small' : 'max')
+            setSize(size() === 'max' ? 'small' : 'max')
+          })
         }}
         variants={{ size: size() }}
       >

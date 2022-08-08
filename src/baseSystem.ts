@@ -83,13 +83,18 @@ export function createBaseSystem<
 
     const currentWithIndex = withIndex
 
-    function createRule(inputTargetInfo: { targetClassName: string; namespaceJoiner: string }) {
+    const targetInfo = {
+      targetClassName: '',
+      namespaceJoiner: ''
+    }
+
+    function createRule() {
       const identifier = modeIdentifier[currentWithIndex]?.[internalState.mode]
 
       if (identifier) {
         const { namespaceJoiner, targetClassName } = identifier
-        inputTargetInfo.namespaceJoiner = namespaceJoiner
-        inputTargetInfo.targetClassName = targetClassName
+        targetInfo.namespaceJoiner = namespaceJoiner
+        targetInfo.targetClassName = targetClassName
         return
       }
 
@@ -164,8 +169,8 @@ export function createBaseSystem<
         sheet.insertStyle(rules)
       }
 
-      inputTargetInfo.targetClassName = targetClassName
-      inputTargetInfo.namespaceJoiner = namespaceJoiner
+      targetInfo.targetClassName = targetClassName
+      targetInfo.namespaceJoiner = namespaceJoiner
 
       if (!modeIdentifier[currentWithIndex]) {
         modeIdentifier[currentWithIndex] = {}
@@ -179,14 +184,26 @@ export function createBaseSystem<
       withIndex++
     }
 
-    const targetInfo = {
-      targetClassName: '',
-      namespaceJoiner: ''
+    function computedVariants(variants: AnyObject) {
+      const variantsPropsKeys = Object.keys(variants)
+      let variantsPropsIndex = variantsPropsKeys.length
+      let variantsClassName = ''
+
+      while (variantsPropsIndex--) {
+        const key = variantsPropsKeys[variantsPropsIndex]
+        const value = variants[key]
+
+        if (value !== undefined && value !== null) {
+          variantsClassName = ` ${targetInfo.namespaceJoiner}${key}-${value}`
+        }
+      }
+
+      return variantsClassName
     }
 
-    createRule(targetInfo)
+    createRule()
 
-    const styledComponent = inputStyledComponent(inputTag, createRule, targetInfo)
+    const styledComponent = inputStyledComponent(inputTag, createRule, computedVariants, targetInfo)
 
     if (process.env.NODE_ENV !== 'production') {
       styledComponent.displayName = styledComponent.displayName ?? targetInfo.targetClassName
@@ -195,7 +212,7 @@ export function createBaseSystem<
     Object.defineProperty(styledComponent, 'toString', {
       value() {
         // Cross-rendering, after being fetched, child components will not be recalculated
-        createRule(targetInfo)
+        createRule()
         return `.${targetInfo.targetClassName}`
       }
     })

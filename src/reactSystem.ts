@@ -35,32 +35,20 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
 
   const styledComponent = (
     inputTag: BaseTag,
-    createRule: (value: TargetInfo) => void,
+    createRule: () => void,
+    computedVariants: (value: AnyObject) => string,
     targetInfo: TargetInfo
   ) =>
     React.forwardRef<HTMLElement, AnyObject>((props, ref) => {
       const { as = inputTag, className = '', variants: variantsProps, ...rest } = props
-      let variantsClassName = ''
 
       const { mode } = useSystem()
 
       if (mode !== undefined) {
-        createRule(targetInfo)
+        createRule()
       }
 
-      if (variantsProps) {
-        const variantsPropsKeys = Object.keys(variantsProps)
-        let variantsPropsIndex = variantsPropsKeys.length
-
-        while (variantsPropsIndex--) {
-          const key = variantsPropsKeys[variantsPropsIndex]
-          const value = variantsProps[key]
-
-          if (value !== undefined && value !== null) {
-            variantsClassName = ` ${targetInfo.namespaceJoiner}${key}-${value}`
-          }
-        }
-      }
+      const variantsClassName = props.variants ? computedVariants(variantsProps) : ''
 
       return React.createElement(as, {
         className: `${className ? className + ' ' : className}${
