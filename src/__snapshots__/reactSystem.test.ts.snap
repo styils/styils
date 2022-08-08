@@ -302,6 +302,14 @@ exports[`reactjs system styled className 2`] = `
 </html>
 `;
 
+exports[`reactjs system styled multiple Variants 1`] = `
+<div>
+  <button
+    class="css-2129283522 outer-true fixed-true"
+  />
+</div>
+`;
+
 exports[`reactjs system styled namespace 1`] = `
 <div>
   <button

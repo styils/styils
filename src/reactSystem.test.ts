@@ -38,6 +38,34 @@ describe('reactjs system', () => {
     expect(document.documentElement).toMatchSnapshot()
   })
 
+  it('styled multiple Variants', () => {
+    const Button = styled(
+      'button',
+      {
+        backgroundColor: 'gainsboro'
+      },
+      {
+        outer: {
+          true: {
+            padding: '4px'
+          }
+        },
+        fixed: {
+          true: {
+            width: '6px',
+            height: '6px'
+          }
+        }
+      }
+    )
+
+    const { container } = render(
+      React.createElement(Button, { variants: { fixed: true, outer: true } })
+    )
+
+    expect(container).toMatchSnapshot()
+  })
+
   it('styled with sourceMap', () => {
     // @ts-expect-error
     styled.sourceMap = '1'
