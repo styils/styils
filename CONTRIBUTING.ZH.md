@@ -67,7 +67,7 @@ git push origin update/something
 
 现在 [打开一个拉取请求] 带有清晰的标题和描述。
 
-[已被报告]: https://github.com/zoy-l/styils/issues
-[fork这个项目]: https://github.com/zoy-l/styils/fork
+[已被报告]: https://github.com/styils/styils/issues
+[fork这个项目]: https://github.com/styils/styils/fork
 [代码示例]: https://codesandbox.io/
 [打开一个拉取请求]: https://help.github.com/articles/using-pull-requests/

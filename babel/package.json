@@ -36,10 +36,10 @@
     "@types/babel__helper-plugin-utils": "^7.10.0",
     "@types/convert-source-map": "^1.5.2"
   },
-  "homepage": "https://github.com/zoy-l/styils",
-  "bugs": "https://github.com/zoy-l/styils/issues",
+  "homepage": "https://github.com/styils/styils",
+  "bugs": "https://github.com/styils/styils/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zoy-l/styils"
+    "url": "https://github.com/styils/styils"
   }
 }

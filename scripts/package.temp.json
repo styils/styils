@@ -29,11 +29,11 @@
     "./global": "./index.prod.global.js"
   },
   "files": [],
-  "homepage": "https://github.com/zoy-l/styils",
-  "bugs": "https://github.com/zoy-l/styils/issues",
+  "homepage": "https://github.com/styils/styils",
+  "bugs": "https://github.com/styils/styils/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zoy-l/styils"
+    "url": "https://github.com/styils/styils"
   },
   "typesVersions": { ">= 4.1": { "*": ["index.d.ts"] } }
 }
