@@ -1,6 +1,8 @@
 import { type CSSAttribute } from 'nativeCssTypes'
 import { type StyleSheetOptions } from './types'
 
+export type BaseVariants = Record<string, Record<string, CSSAttribute>>
+
 export type AnyFunc = (...props: any[]) => any
 
 export interface Global<Theme> {

@@ -1,7 +1,6 @@
 import type { JSX, ComponentProps, Accessor } from 'solid-js'
-import type { CSSAttribute } from 'nativeCssTypes'
 import type { AnyObject, Widen } from './types'
-import type { StyleCSSAttribute, StyleInterpolation } from './baseSystemTypes'
+import type { BaseVariants, StyleCSSAttribute, StyleInterpolation } from './baseSystemTypes'
 
 export type UseSystem<Theme> = () => {
   mode: Accessor<string>
@@ -33,10 +32,7 @@ type StyledComponent<Component extends NativeComponent, Variants> = <
 ) => JSX.Element
 
 export interface Styled<Theme> {
-  <
-    Component extends NativeComponent,
-    Variants extends Record<string, Record<string, CSSAttribute>>
-  >(
+  <Component extends NativeComponent, Variants extends BaseVariants>(
     component: Component | { tag: Component; namespace?: string },
     styles: StyleCSSAttribute<Theme>,
     interpolation?: StyleInterpolation<Theme, Variants>

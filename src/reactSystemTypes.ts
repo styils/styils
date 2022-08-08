@@ -1,7 +1,6 @@
 import React from 'react'
-import type { CSSAttribute } from 'nativeCssTypes'
 import type { Widen, AnyObject } from './types'
-import type { StyleCSSAttribute, StyleInterpolation } from './baseSystemTypes'
+import type { BaseVariants, StyleCSSAttribute, StyleInterpolation } from './baseSystemTypes'
 
 export type IfEqual<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2
   ? true
@@ -56,7 +55,7 @@ export type StyleTag =
   | React.ComponentClass
 
 export interface Styled<Theme> {
-  <Component extends StyleTag, Variants extends Record<string, Record<string, CSSAttribute>>>(
+  <Component extends StyleTag, Variants extends BaseVariants>(
     tag: Component | { tag: Component; namespace?: string },
     styles: StyleCSSAttribute<Theme>,
     interpolation?: StyleInterpolation<Theme, Variants>
