@@ -65,6 +65,7 @@ export interface Styled<Theme> {
       variants?: {
         [key in keyof Variants]?: Widen<keyof Variants[key]>
       }
+      cssState?: AnyObject
     }
   >
 }

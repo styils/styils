@@ -17,6 +17,25 @@ describe('parseRules rules', () => {
     expect(segmentRuleCode).toEqual(['base{display:value;}', 'base button{border:0;}'])
   })
 
+  it('Pass the value', () => {
+    const { ruleCode, segmentRuleCode } = parseRules(
+      {
+        display: 'value',
+        button: {
+          border: '$border'
+        }
+      },
+      'base'
+    )
+
+    expect(ruleCode).toEqual(`base{display:value;}base button{border:var(--base-border);}`)
+
+    expect(segmentRuleCode).toEqual([
+      'base{display:value;}',
+      'base button{border:var(--base-border);}'
+    ])
+  })
+
   it('camel-case', () => {
     const { ruleCode, segmentRuleCode } = parseRules(
       {
