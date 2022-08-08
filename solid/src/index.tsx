@@ -23,6 +23,7 @@ const Button = styled(
 
 const App = () => {
   const [size, setSize] = createSignal<'max' | 'small'>('max')
+  const [type, setType] = createSignal<'a' | 'button'>('button')
 
   const { setMode, mode, theme } = useSystem()
 
@@ -50,13 +51,13 @@ const App = () => {
         onClick={() => {
           batch(() => {
             setMode(mode() === 'light' ? 'dark' : 'light')
-
+            setType(type() === 'a' ? 'button' : 'a')
             setSize(size() === 'max' ? 'small' : 'max')
           })
         }}
         variants={{ size: size() }}
       >
-        hello soild ${size()}
+        hello soild {size()} {type()}
       </Button>
       hello 123 {mode()} {theme().color}
     </div>

@@ -62,8 +62,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       const [props, rest] = splitProps(mergeProps({ as: inputTag }, inputProps), [
         'as',
         'class',
-        'variants',
-        'children'
+        'variants'
       ])
 
       const { mode } = useSystem()
@@ -81,8 +80,9 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       })
 
       return Dynamic({
-        component: props.as,
-        children: props.children,
+        get component() {
+          return props.as
+        },
         get class() {
           return classes()
         },
