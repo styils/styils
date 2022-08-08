@@ -194,7 +194,7 @@ export function createBaseSystem<
         const value = variants[key]
 
         if (value !== undefined && value !== null) {
-          variantsClassName = ` ${targetInfo.namespaceJoiner}${key}-${value}`
+          variantsClassName += ` ${targetInfo.namespaceJoiner}${key}-${value}`
         }
       }
 

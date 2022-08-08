@@ -1,4 +1,4 @@
-import { createSystem } from '../../src/solidSystem'
+import { createSystem } from '../../dist/solid'
 
 export const { styled, SystemProvider, useSystem, createExtracts } = createSystem({
   theme: (mode) => {
