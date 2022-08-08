@@ -42,12 +42,6 @@ export type BaseTag = unknown | { tag: unknown; namespace?: string }
 
 export type TargetInfo = { namespaceJoiner: string; targetClassName: string }
 
-export type StyleCSSAttribute<Theme> = CSSAttribute | ((props: Theme, mode: string) => CSSAttribute)
-
-export type StyleInterpolation<Theme, Variants> =
-  | Variants
-  | ((props: Theme, mode: string) => Variants)
-
 export interface BaseSystem<
   Styled,
   Theme,
@@ -64,3 +58,9 @@ export interface BaseSystem<
    */
   flush: (type?: 'all' | 'global') => void
 }
+
+export type CssStateKey<T extends CSSAttribute | string | number> = T extends `$${infer R}`
+  ? R
+  : T extends Record<PropertyKey, string | number | CSSAttribute>
+  ? CssStateKey<T[keyof T]>
+  : never

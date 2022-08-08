@@ -11,13 +11,25 @@ const Anthor = styled(
   {
     height: 100,
     '.foo': {
-      height: 100
+      height: '$height',
+      width: '$width',
+      padding: '$123'
     }
   },
   {
     size: {
       small: {
-        width: '100'
+        width: '100',
+        '.foo': {
+          height: '$height1',
+          width: '$width1'
+        },
+        display: 'flex',
+        borderRightWidth: '$targetSize',
+        borderBottomWidth: '$targetSize',
+        borderLeftWidth: '$targetSize',
+        marginLeft: '$targetSizeX',
+        marginTop: '$targetSizeY'
       }
     }
   }
@@ -32,6 +44,12 @@ global.sourceMap
 export function asButton() {
   return (
     <Anthor
+      cssState={{
+        height: 1,
+        width: 2,
+        // @ts-expect-error test
+        foo: 2
+      }}
       as="button"
       variants={{ size: 'small' }}
       ref={(ref: HTMLButtonElement) => {

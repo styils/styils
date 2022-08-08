@@ -4,17 +4,21 @@ import { buttonStyles } from '../utils/buttonStyles'
 import { styled } from '@styils/react'
 
 const Button = styled('button', {
-  ...(buttonStyles as any)
+  ...buttonStyles,
+  backgroundColor: '$bg',
+  padding: '$padding'
 })
 
 const TestBase = ({ testIndex }: TestComponentProps) => {
   return (
     <Button
+      cssState={{
+        bg: `hsl(${Math.floor(Math.random() * 360)} 80% 80%)`,
+        padding: '20px'
+      }}
       style={{
         // @ts-expect-error test
-        '--test-index': testIndex,
-        backgroundColor: `hsl(${Math.floor(Math.random() * 360)} 80% 80%)`,
-        padding: '20px'
+        '--test-index': testIndex
       }}
     >
       testing

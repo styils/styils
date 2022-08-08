@@ -11,25 +11,6 @@ const contentValues: Record<string, 'normal' | 'none' | 'initial' | 'inherit' | 
   unset: 'unset'
 }
 
-function ruleToNative(key: string, value: string) {
-  if (unitProps.has(key) && typeof value === 'number') {
-    value = `${value}px`
-  }
-
-  // Exclude css variables, to css native writing
-  key = /^--/.test(key) ? key : key.replace(/[A-Z]/g, '-$&').toLowerCase()
-
-  if (key === 'content' && !contentValuePattern.test(value) && !contentValues[value]) {
-    try {
-      value = JSON.stringify(value).replace(/\\\\/g, '\\')
-    } catch {
-      // empty
-    }
-  }
-
-  return `${key}:${value};`
-}
-
 function transformKey(property: string, selector = '') {
   if (property === ':global') {
     return ''
@@ -47,31 +28,6 @@ function transformKey(property: string, selector = '') {
     : property
 }
 
-function transformSpecial(atRule: AnyObject, selector?: string) {
-  let blocks = ''
-  let rule = ''
-
-  const keys = Object.keys(atRule)
-  const { length } = keys
-  for (let index = 0; index < length; index++) {
-    const key = keys[index]
-    const value = atRule[key]
-
-    if (typeof value === 'object') {
-      blocks +=
-        key.charCodeAt(0) === 64
-          ? `${key}{${transformSpecial(value, selector)}}`
-          : transformSpecial(value, transformKey(key, selector))
-    } else if (value !== undefined) {
-      rule += ruleToNative(key, value)
-    }
-  }
-
-  rule = selector && rule ? `${selector}{${rule}}` : rule
-
-  return `${rule}${blocks}`
-}
-
 /**
  * Parses the object into css
  */
@@ -82,6 +38,56 @@ export function parseRules(node: AnyObject, rootSelector = '') {
   const commonRules: string[] = []
   const frontRules: string[] = []
   const rearRules: string[] = []
+
+  function ruleToNative(key: string, value: string) {
+    if (unitProps.has(key) && typeof value === 'number') {
+      value = `${value}px`
+    }
+
+    // Exclude css variables, to css native writing
+    key = /^--/.test(key) ? key : key.replace(/[A-Z]/g, '-$&').toLowerCase()
+
+    if (key === 'content' && !contentValuePattern.test(value) && !contentValues[value]) {
+      try {
+        value = JSON.stringify(value).replace(/\\\\/g, '\\')
+      } catch {
+        // empty
+      }
+    }
+
+    if (typeof value === 'string' && value.charAt(0) === '$') {
+      value = `var(--${
+        rootSelector.charAt(0) === '.' ? rootSelector.slice(1) : rootSelector
+      }-${value.slice(1)})`
+    }
+
+    return `${key}:${value};`
+  }
+
+  function transformSpecial(atRule: AnyObject, selector?: string) {
+    let blocks = ''
+    let rule = ''
+
+    const keys = Object.keys(atRule)
+    const { length } = keys
+    for (let index = 0; index < length; index++) {
+      const key = keys[index]
+      const value = atRule[key]
+
+      if (typeof value === 'object') {
+        blocks +=
+          key.charCodeAt(0) === 64
+            ? `${key}{${transformSpecial(value, selector)}}`
+            : transformSpecial(value, transformKey(key, selector))
+      } else if (value !== undefined) {
+        rule += ruleToNative(key, value)
+      }
+    }
+
+    rule = selector && rule ? `${selector}{${rule}}` : rule
+
+    return `${rule}${blocks}`
+  }
 
   while (stack.length) {
     const item = stack.shift()!

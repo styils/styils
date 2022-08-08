@@ -52,7 +52,13 @@ const Dot = styled(View, {
   borderColor: 'transparent',
   borderStyle: 'solid',
   borderTopWidth: 0,
-  transform: 'translate(3000%, 3000%)'
+  transform: 'translate(3000%, 3000%)',
+  borderBottomColor: '$color',
+  borderRightWidth: '$targetSize',
+  borderBottomWidth: '$targetSize',
+  borderLeftWidth: '$targetSize',
+  marginLeft: '$targetSizeX',
+  marginTop: '$targetSizeY'
 })
 
 const targetSize = 10
@@ -79,13 +85,11 @@ export function SierpinskiTriangle({ testIndex, x = 0, y = 0, depth = 0, s: _s =
 
     return (
       <Dot
-        style={{
-          borderBottomColor: color,
-          borderRightWidth: targetSize / 2,
-          borderBottomWidth: targetSize / 2,
-          borderLeftWidth: targetSize / 2,
-          marginLeft: x - targetSize / 2,
-          marginTop: y - targetSize / 2
+        cssState={{
+          color,
+          targetSize: `${targetSize / 2}px`,
+          targetSizeX: `${x - targetSize / 2}px`,
+          targetSizeY: `${y - targetSize / 2}px`
         }}
       />
     )

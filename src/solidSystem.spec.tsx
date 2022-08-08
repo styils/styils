@@ -8,31 +8,53 @@ const { styled: styleTheme } = createSystem({
 
 const Anthor = styled(
   'a',
-  {
+  () => ({
     height: 100,
     '.foo': {
-      height: 100
+      height: '$height',
+      width: '$width'
     }
-  },
+  }),
   {
     size: {
       small: {
-        width: '100'
+        width: '100',
+        height: '$asb',
+        borderRightWidth: '$targetSize',
+        borderBottomWidth: '$targetSize',
+        borderLeftWidth: '$targetSize',
+        marginLeft: '$targetSizeX',
+        marginTop: '$targetSizeY'
       }
     }
   }
 )
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function asButton({ ref, hello }: { ref: HTMLButtonElement; hello: boolean }) {
+  return (
+    <Anthor
+      cssState={{
+        width: 1,
+        height: 2,
+        targetSizeY: 1,
+        targetSizeX: 1,
+        targetSize: 1,
+        // @ts-expect-error test
+        foo: 2
+      }}
+      as="button"
+      variants={{ size: 'small' }}
+      ref={ref}
+    />
+  )
+}
 
 // @ts-expect-error Do not expose to the outside world
 styled.sourceMap
 
 // @ts-expect-error Do not expose to the outside world
 global.sourceMap
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function asButton({ ref, hello }: { ref: HTMLButtonElement; hello: boolean }) {
-  return <Anthor as="button" variants={{ size: 'small' }} ref={ref} />
-}
 
 const ToLink = styleTheme(asButton, (theme) => {
   expectType<
@@ -50,7 +72,7 @@ const ToLink2 = styled(ToLink, {})
 expectType<typeof ToLink, typeof ToLink2>(ToLink2)
 
 export function renderToLink({ ref }: { ref: HTMLButtonElement }) {
-  return <ToLink ref={ref} hello />
+  return <ToLink2 ref={ref} hello />
 }
 
 const ButtonDark = styled(
