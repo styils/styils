@@ -29,12 +29,12 @@ React wrapper including the `styled` API.
 npm install @styils/react
 ```
 
-### Styils Css
+### Styils Solid
 
-Framework-agnostic implementation, including the `css` API.
+Solid wrapper including the `styled` API.
 
 ```sh
-npm install @styils/css
+npm install @styils/solid
 ```
 
 ## Credits

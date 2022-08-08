@@ -29,12 +29,12 @@ React 包装器，包括 `styled` API。
 npm install @styils/react
 ```
 
-## Styils Css
+## Styils Solid
 
-与框架无关的实现，包括 `css` API。
+Solid 包装器，包括 `styled` API。
 
 ```sh
-npm install @styils/css
+npm install @styils/solid
 ```
 
 ## 鸣谢
