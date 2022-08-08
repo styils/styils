@@ -18,7 +18,11 @@ const Anthor = styled(
   {
     size: {
       small: {
-        width: '100'
+        width: '100',
+        '.foo': {
+          height: '$height1',
+          width: '$width1'
+        }
       }
     }
   }

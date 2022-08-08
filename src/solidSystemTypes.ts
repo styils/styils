@@ -1,11 +1,7 @@
 import type { JSX, ComponentProps, Accessor } from 'solid-js'
 import type { AnyObject, Widen } from './types'
-import type {
-  BaseVariants,
-  StyleCSSAttribute,
-  StyleInterpolation,
-  CssStateKey
-} from './baseSystemTypes'
+import type { BaseVariants, CssStateKey } from './baseSystemTypes'
+import { CSSAttribute } from 'nativeCssTypes'
 
 export type UseSystem<Theme> = () => {
   mode: Accessor<string>
@@ -21,7 +17,11 @@ export type NativeComponent = keyof JSX.IntrinsicElements | ((...props: any[]) =
 
 type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R | undefined } ? R : P) : P
 
-type StyledProps<As extends NativeComponent, Styles, Variants> = Omit<ComponentProps<As>, 'ref'> & {
+type StyledProps<
+  As extends NativeComponent,
+  Styles extends CSSAttribute = {},
+  Variants extends BaseVariants = {}
+> = Omit<ComponentProps<As>, 'ref'> & {
   ref?: PropsWithRef<ComponentProps<As>>
 } & {
   as?: As extends StyledComponent<infer A, AnyObject, AnyObject> ? A : As
@@ -29,27 +29,24 @@ type StyledProps<As extends NativeComponent, Styles, Variants> = Omit<ComponentP
     [key in keyof Variants]?: Widen<keyof Variants[key]>
   }
   cssState?: {
-    // @ts-expect-error hack
     [key in CssStateKey<Styles[keyof Styles]> | CssStateKey<Variants[keyof Variants]>]?:
       | string
       | number
   }
 }
 
-type StyledComponent<Component extends NativeComponent, Styles, Variants> = <
-  As extends NativeComponent = Component
->(
+type StyledComponent<
+  Component extends NativeComponent,
+  Styles extends CSSAttribute = {},
+  Variants extends BaseVariants = {}
+> = <As extends NativeComponent = Component>(
   props: StyledProps<As, Styles, Variants>
 ) => JSX.Element
 
 export interface Styled<Theme> {
-  <
-    Component extends NativeComponent,
-    Styles extends StyleCSSAttribute<Theme>,
-    Variants extends BaseVariants
-  >(
+  <Component extends NativeComponent, Styles extends CSSAttribute, Variants extends BaseVariants>(
     component: Component | { tag: Component; namespace?: string },
     styles: Styles | ((props: Theme, mode: string) => Styles),
-    interpolation?: StyleInterpolation<Theme, Variants>
+    interpolation?: Variants | ((props: Theme, mode: string) => Variants)
   ): StyledComponent<Component, Styles, Variants>
 }
