@@ -35,6 +35,35 @@ const Anthor = styled(
   }
 )
 
+const Anthor1 = styled(
+  'a',
+  () => ({
+    height: 100 as any,
+    '.foo': {
+      height: '$height',
+      width: '$width',
+      padding: '$123'
+    }
+  }),
+  {
+    size: {
+      small: {
+        width: '100',
+        '.foo': {
+          height: '$height1',
+          width: '$width1'
+        },
+        display: 'flex',
+        borderRightWidth: '$targetSize',
+        borderBottomWidth: '$targetSize',
+        borderLeftWidth: '$targetSize',
+        marginLeft: '$targetSizeX',
+        marginTop: '$targetSizeY'
+      }
+    }
+  }
+)
+
 // @ts-expect-error Do not expose to the outside world
 styled.sourceMap
 
@@ -42,8 +71,9 @@ styled.sourceMap
 global.sourceMap
 
 export function asButton() {
-  return (
+  return [
     <Anthor
+      key={1}
       cssState={{
         height: 1,
         width: 2,
@@ -55,8 +85,14 @@ export function asButton() {
       ref={(ref: HTMLButtonElement) => {
         expectType<HTMLButtonElement, typeof ref>(ref)
       }}
+    />,
+    <Anthor1
+      key={2}
+      cssState={{
+        height: 1
+      }}
     />
-  )
+  ]
 }
 
 const Link = React.forwardRef(function Link(

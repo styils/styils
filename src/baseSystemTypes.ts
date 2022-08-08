@@ -1,5 +1,5 @@
 import { type CSSAttribute } from 'nativeCssTypes'
-import { AnyObject, type StyleSheetOptions } from './types'
+import { AnyObject, IfEqual, type StyleSheetOptions } from './types'
 
 export type BaseVariants = Record<string, Record<string, CSSAttribute>>
 
@@ -60,8 +60,10 @@ export interface BaseSystem<
 }
 
 export type OmitAnyPropertyKey<T = {}> = {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  [key in keyof T as T[key] extends `$${infer _}`
+  [key in keyof T as IfEqual<T[key], any> extends true
+    ? never
+    : // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    T[key] extends `$${infer _}`
     ? key
     : T[key] extends AnyObject
     ? key
