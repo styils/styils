@@ -42,12 +42,6 @@ export type BaseTag = unknown | { tag: unknown; namespace?: string }
 
 export type TargetInfo = { namespaceJoiner: string; targetClassName: string }
 
-export type StyleCSSAttribute<Theme> = CSSAttribute | ((props: Theme, mode: string) => CSSAttribute)
-
-export type StyleInterpolation<Theme, Variants> =
-  | Variants
-  | ((props: Theme, mode: string) => Variants)
-
 export interface BaseSystem<
   Styled,
   Theme,

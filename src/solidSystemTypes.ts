@@ -15,7 +15,7 @@ export type ExtractElement = Accessor<JSX.Element>[]
 
 export type NativeComponent = keyof JSX.IntrinsicElements | ((...props: any[]) => JSX.Element)
 
-type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R | undefined } ? R : P) : P
+type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R } ? R : P) : P
 
 type StyledProps<
   As extends NativeComponent,
