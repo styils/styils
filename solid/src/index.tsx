@@ -7,7 +7,7 @@ const Button = styled(
   (mode) => {
     return {
       color: mode.color,
-      height: ':height'
+      height: '$height'
     }
   },
   {

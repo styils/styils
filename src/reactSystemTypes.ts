@@ -26,9 +26,7 @@ type StyledProps<
     [key in keyof Variants]?: Widen<keyof Variants[key]>
   }
   cssState?: {
-    [key in CssStateKey<Styles[keyof Styles]> | CssStateKey<Variants[keyof Variants]>]?:
-      | string
-      | number
+    [key in CssStateKey<Styles> | CssStateKey<Variants>]?: string | number
   }
 }
 
