@@ -19,7 +19,12 @@ const Anthor = styled(
     size: {
       small: {
         width: '100',
-        height: '$asb'
+        height: '$asb',
+        borderRightWidth: '$targetSize',
+        borderBottomWidth: '$targetSize',
+        borderLeftWidth: '$targetSize',
+        marginLeft: '$targetSizeX',
+        marginTop: '$targetSizeY'
       }
     }
   }
@@ -32,6 +37,9 @@ export function asButton({ ref, hello }: { ref: HTMLButtonElement; hello: boolea
       cssState={{
         width: 1,
         height: 2,
+        targetSizeY: 1,
+        targetSizeX: 1,
+        targetSize: 1,
         // @ts-expect-error test
         foo: 2
       }}

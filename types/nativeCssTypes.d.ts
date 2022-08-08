@@ -8,6 +8,10 @@ export interface CSSAttribute extends Properties {
   [key: string]: CSSAttribute | string | number | undefined
 }
 
+type CSSProperties = {
+  [key in keyof Properties]?: Properties[key] | OnlyString
+}
+
 export interface StandardLonghandProperties {
   /**
    * The CSS **`align-content`** property sets the distribution of space between and around content items along a flexbox's cross-axis or a grid's block axis.
@@ -7711,7 +7715,8 @@ export type OnlyNumber = number & OnlyObject
 
 export type OnlyString = string & OnlyObject
 
-export type OnlyStringNumeric = (number | string) & OnlyObject
+// hack
+export type OnlyStringNumeric = '' | ((number | string) & OnlyObject)
 
 export namespace Property {
   export type AlignContent =
@@ -9873,7 +9878,7 @@ declare namespace DataType {
     | 'ridge'
     | 'solid'
 
-  type LineWidth = number | 'medium' | 'thick' | 'thin'
+  type LineWidth = number | 'medium' | 'thick' | 'thin' | OnlyString
 
   type MaskLayer =
     | Position

@@ -1,6 +1,6 @@
 export const buttonStyles = {
   // Reset
-  all: 'unset',
+
   alignItems: 'center',
   boxSizing: 'border-box',
   userSelect: 'none',
@@ -46,7 +46,7 @@ export const buttonStyles = {
   paddingRight: '10px',
   fontSize: '13px',
   lineHeight: '25px'
-}
+} as const
 
 export const buttonVariants = {
   variants: {

@@ -12,7 +12,8 @@ const Anthor = styled(
     height: 100,
     '.foo': {
       height: '$height',
-      width: '$width'
+      width: '$width',
+      padding: '$123'
     }
   },
   {
@@ -22,7 +23,13 @@ const Anthor = styled(
         '.foo': {
           height: '$height1',
           width: '$width1'
-        }
+        },
+        display: 'flex',
+        borderRightWidth: '$targetSize',
+        borderBottomWidth: '$targetSize',
+        borderLeftWidth: '$targetSize',
+        marginLeft: '$targetSizeX',
+        marginTop: '$targetSizeY'
       }
     }
   }
