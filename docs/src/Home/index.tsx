@@ -363,7 +363,7 @@ export default function Home() {
             </InstallBox>
             <InstallBox>
               <strong>$</strong>
-              <pre ref={installRef}>npm install @styils/css</pre>
+              <pre ref={installRef}>npm install @styils/solid</pre>
               <img src={copyCssIcon} alt="copy" onClick={() => copyCss()} aria-hidden="true" />
             </InstallBox>
           </ButtonGroup>
