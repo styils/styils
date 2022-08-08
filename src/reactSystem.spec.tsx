@@ -24,7 +24,7 @@ const Anthor = styled(
           height: '$height1',
           width: '$width1'
         },
-        display: 'flex',
+
         borderRightWidth: '$targetSize',
         borderBottomWidth: '$targetSize',
         borderLeftWidth: '$targetSize',

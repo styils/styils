@@ -9878,6 +9878,7 @@ declare namespace DataType {
     | 'ridge'
     | 'solid'
 
+  // hack
   type LineWidth = number | 'medium' | 'thick' | 'thin' | OnlyString
 
   type MaskLayer =

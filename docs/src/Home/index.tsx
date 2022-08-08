@@ -8,6 +8,7 @@ import themeSvg from '../svg/theme.svg'
 import okSvg from '../svg/ok.svg'
 import tyoeSvg from '../svg/tyoe.svg'
 import reactSvg from '../svg/react.svg'
+import solidSvg from '../svg/solid.svg'
 import htmlSvg from '../svg/html.svg'
 import Switch, { SwitchWapper } from './Switch'
 import Card, { CardBox } from './Card'
@@ -85,6 +86,10 @@ const LogoWapper = styled('section', (theme) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  span: {
+    fontWeight: 'bold',
+    color: theme.mainColor
+  },
 
   '&:after': {
     position: 'absolute',
@@ -122,6 +127,20 @@ const LogoWapper = styled('section', (theme) => ({
     left: 40,
     '@media screen and (max-width: 580px)': {
       left: 20
+    }
+  },
+
+  [`& ${SupportLabel}[datatype="solid"]`]: {
+    animation: `10s ease 1.2s infinite none running ${complex}`,
+    boxShadow: theme.boxShadow,
+    bottom: 40,
+    left: 40,
+    '& img': {
+      width: 40,
+      height: 40
+    },
+    '@media screen and (max-width: 580px)': {
+      left: 0
     }
   },
 
@@ -387,6 +406,10 @@ export default function Home() {
           <SupportLabel datatype="react">
             <img src={reactSvg} alt="react" />
             <span>React</span>
+          </SupportLabel>
+          <SupportLabel datatype="solid">
+            <img src={solidSvg} alt="solid" />
+            <span>Solid</span>
           </SupportLabel>
         </LogoWapper>
       </PrimaryWapper>
