@@ -9,6 +9,7 @@ const { styled: styleTheme } = createSystem({
 const Anthor = styled(
   'a',
   {
+    width: '$height' as any,
     height: '$height',
     '.foo': {
       width: '$width',
@@ -23,7 +24,6 @@ const Anthor = styled(
           height: '$height1',
           width: '$width1'
         },
-
         borderRightWidth: '$targetSize',
         borderBottomWidth: '$targetSize',
         borderLeftWidth: '$targetSize',
@@ -86,7 +86,6 @@ export function asButton() {
       cssState={{
         height: 1,
         width: 2,
-        // @ts-expect-error test
         foo: 2
       }}
       as="button"

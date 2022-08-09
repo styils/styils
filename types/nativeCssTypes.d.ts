@@ -2,14 +2,16 @@
  * https://github.com/frenic/csstype
  */
 
+import { IfEqual } from 'src/types'
+
 export {}
 
-export interface CSSAttribute<Var = never> extends CSSProperties<Var> {
-  [key: string]: CSSAttribute<Var> | string | number | undefined
+export interface CSSAttribute extends CSSProperties {
+  [key: string]: CSSAttribute | string | number | undefined
 }
 
-type CSSProperties<Var = never> = {
-  [key in keyof Properties]?: Properties[key] | OnlyString | `$${Var}`
+type CSSProperties = {
+  [key in keyof Properties]?: Properties[key] | OnlyString
 }
 
 export interface StandardLonghandProperties {

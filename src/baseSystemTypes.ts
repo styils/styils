@@ -64,12 +64,11 @@ export type NeverToObeject<T> = [T] extends [never] ? {} : T
 export type StyleInterpolation<
   Theme,
   VariantsKey extends PropertyKey,
-  VariantsValue extends PropertyKey,
-  Var
+  VariantsValue extends PropertyKey
 > =
   | {
       [key in VariantsKey]: {
-        [key in VariantsValue]: CSSAttribute<Var>
+        [key in VariantsValue]: CSSAttribute
       }
     }
   | ((
@@ -77,6 +76,6 @@ export type StyleInterpolation<
       mode: string
     ) => {
       [key in VariantsKey]: {
-        [key in VariantsValue]: CSSAttribute<Var>
+        [key in VariantsValue]: CSSAttribute
       }
     })

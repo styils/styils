@@ -33,15 +33,6 @@ const Anthor = styled(
 export function asButton({ ref, hello }: { ref: HTMLButtonElement; hello: boolean }) {
   return (
     <Anthor
-      cssState={{
-        width: 1,
-        height: 2,
-        targetSizeY: 1,
-        targetSizeX: 1,
-        targetSize: 1,
-        // @ts-expect-error test
-        foo: 2
-      }}
       as="button"
       variants={{
         size: 'small'
