@@ -201,6 +201,12 @@ async function run() {
     json.name = `${packageBaseName}/${name}`
     json.files = files
 
+    if (/solid/.test(name)) {
+      json.unpkg = 'index.prod.esm.js'
+      json.jsdelivr = 'index.prod.esm.js'
+      delete json.exports['./global']
+    }
+
     fs.writeFileSync(
       path.join(cwd, 'dist', name, 'package.json'),
       prettier.format(JSON.stringify(json), { parser: 'json' })

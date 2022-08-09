@@ -41,7 +41,6 @@ npm install @styils/solid
 
 ### Styils Babel
 
-
 ![npm](https://img.shields.io/npm/v/@styils/babel-plugin?color=%23eeda7c&logo=babel&logoColor=%23eeda7c)
 
 This is required for sourcemap
