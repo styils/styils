@@ -120,7 +120,7 @@ export const StyilCode = ({
   variants?: { padding: 'false' }
 }) => {
   const { t } = useTranslation()
-  const variantsCode = `import { styled } from '@styils/react'
+  const variantsCode = `import { styled } from '@styils/[frame]'
 
 const Button = styled(
   'button',
@@ -143,7 +143,7 @@ const Button = styled(
 render(<Button variants={{ size: 'small' }}>Button</Button>)
 `
 
-  const varsCode = `import { styled } from '@styils/react'
+  const varsCode = `import { styled } from '@styils/[frame]'
 
 const Button = styled(
   'button',
@@ -164,15 +164,13 @@ const Button = styled(
   }
 )
 
-const [state, setState] = useState(0)
-
 // ${t('withVarsDesc.2')}
-<Button vars={{size:\`\${state}px\`}} onClick={() => {
+<Button vars={{ size:\`\${state}px\` }} onClick={() => {
   setState(state + 10)
 }}>Button</Button>
 `
 
-  const themeCode = `import { createSystem } from '@styils/react'
+  const themeCode = `import { createSystem } from '@styils/[frame]'
 
 const { styled, SystemProvider, useSystem } = createSystem({
   theme(mode) {
@@ -205,11 +203,10 @@ render(() => {
 
 function foo() {
   // ${t('errorCode')}
-  const [move, setMove] = useState(0)
-  return <Side move={move} />
+  return <Side move={move} onClick={()=> setMove(move + 10)}/>
 }`
 
-  const baseCode = `import { styled } from '@styils/react';
+  const baseCode = `import { styled } from '@styils/[frame]';
 
 // ${t('baseCode.1')}
 const Image = styled({tag:'img',namespce:'label'},{ ... })
@@ -238,7 +235,7 @@ render(<Button as="a" href="google.com"><Image/></Button>)
 `
 
   const ssrBaseCode = `import React from 'react'
-import { createExtracts } from '@styils/react'
+import { createExtracts } from '@styils/[frame]'
 // or import { createExtracts } from 'yours-path'
 
 const app = renderToString(
@@ -262,27 +259,23 @@ res
 </html>\`);
 `
 
-  const ssrCode = `import React from 'react'
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
-import { createExtracts } from '@styils/react'
+  const ssrCode = `
+import { createExtracts } from '@styils/[frame]'
 // or import { createExtracts } from 'yours-path'
 
-export default class Document extends NextDocument {
+export default function Root {
   const { extractElement } = createExtracts()
 
-  render() {
-    return (
-      <Html lang="en">
-        <Head>
-          {extractElement}
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
+  return (
+    <Html lang="en">
+      <Head>
+        {extractElement}
+      </Head>
+      <body>
+        <Main />
+      </body>
+    </Html>
+  );
 }
 
 `
@@ -298,7 +291,7 @@ export default class Document extends NextDocument {
   }
 })
 // or
-import { keyframes } from '@styils/react'
+import { keyframes } from '@styils/[frame]'
 
 const out = keyframes({
   from: {
@@ -315,7 +308,7 @@ const Foo = styled('div',{
 ,
 `
 
-  const globalCode = `import { global, SystemProvider } from '@styils/react'
+  const globalCode = `import { global, SystemProvider } from '@styils/[frame]'
 
 global({
   body: {
