@@ -3,12 +3,12 @@ import { StyleSheet, type OldRule } from './sheet'
 import { type AnyObject } from './types'
 import { parseRules } from './parse'
 import {
-  Keyframes,
+  type Keyframes,
   type BaseSystem,
-  SystemOptions,
-  Global,
-  AnyFunc,
-  BaseStyled
+  type SystemOptions,
+  type AnyFunc,
+  type BaseStyled,
+  type CreateGlobal
 } from './baseSystemTypes'
 
 export function createBaseSystem<
@@ -283,7 +283,7 @@ export function createBaseSystem<
     return selector
   }
 
-  const global: Global<Theme> & { sourceMap?: string } = (styles) => {
+  const createGlobal: CreateGlobal<Theme> & { sourceMap?: string } = (styles) => {
     let oldRule: OldRule[]
     let cacheSourceMap = ''
 
@@ -322,9 +322,9 @@ export function createBaseSystem<
       }
 
       if (process.env.NODE_ENV !== 'production') {
-        if (!cacheSourceMap && global.sourceMap) {
-          cacheSourceMap = global.sourceMap
-          delete global.sourceMap
+        if (!cacheSourceMap && createGlobal.sourceMap) {
+          cacheSourceMap = createGlobal.sourceMap
+          delete createGlobal.sourceMap
         }
 
         rules.ruleCode += cacheSourceMap
@@ -355,5 +355,12 @@ export function createBaseSystem<
     modeIdentifier = []
   }
 
-  return { styled: styled as Styled, SystemProvider, createExtracts, flush, global, keyframes }
+  return {
+    styled: styled as Styled,
+    SystemProvider,
+    createExtracts,
+    flush,
+    createGlobal,
+    keyframes
+  }
 }

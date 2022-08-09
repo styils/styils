@@ -213,7 +213,7 @@ const Image = styled({tag:'img',namespce:'label'},{ ... })
 
 const Button = styled('button', {
   // ${t('baseCode.2')}
-  ':global':{
+  ':createGlobal':{
     body:{
       ...
     },
@@ -308,15 +308,15 @@ const Foo = styled('div',{
 ,
 `
 
-  const globalCode = `import { global, SystemProvider } from '@styils/[frame]'
+  const globalCode = `import { createGlobal, SystemProvider } from '@styils/[frame]'
 
-global({
+createGlobal({
   body: {
     backgroundColor: 'red'
   }
 })
 // or
-global((theme) => ({
+createGlobal((theme) => ({
   body: {
     backgroundColor: theme.color
   }

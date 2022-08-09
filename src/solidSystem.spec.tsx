@@ -1,5 +1,5 @@
 /* @jsxImportSource solid-js */
-import { createSystem, styled, global } from './solidSystem'
+import { createSystem, styled, createGlobal } from './solidSystem'
 
 const { styled: styleTheme } = createSystem({
   theme: () => ({ color: 'red', bg: 'blue' }),
@@ -46,9 +46,9 @@ export function asButton({ ref, hello }: { ref: HTMLButtonElement; hello: boolea
 styled.sourceMap
 
 // @ts-expect-error Do not expose to the outside world
-global.sourceMap
+createGlobal.sourceMap
 
-global({
+createGlobal({
   body: {
     display: 'block'
   }

@@ -1,4 +1,4 @@
-import { createSystem, styled, flush, global, keyframes, createExtracts } from './solidSystem'
+import { createSystem, styled, flush, createGlobal, keyframes, createExtracts } from './solidSystem'
 import { render, fireEvent, getByText } from 'solid-testing-library'
 import { Dynamic } from 'solid-js/web'
 import { createSignal } from 'solid-js'
@@ -161,8 +161,8 @@ describe('solidjs system', () => {
     expect(out).toEqual('css-854127283')
   })
 
-  it('global', () => {
-    global({
+  it('createGlobal', () => {
+    createGlobal({
       body: {
         backgroundColor: '#fff'
       }
@@ -171,23 +171,23 @@ describe('solidjs system', () => {
     expect(document.documentElement).toMatchSnapshot()
   })
 
-  it('global with sourceMap', () => {
+  it('createGlobal with sourceMap', () => {
     // @ts-expect-error
-    global.sourceMap = 'sourceMap'
-    global({
+    createGlobal.sourceMap = 'sourceMap'
+    createGlobal({
       body: {
         backgroundColor: '#fff'
       }
     })
 
     // @ts-expect-error
-    expect(global.sourceMap).toEqual(undefined)
+    expect(createGlobal.sourceMap).toEqual(undefined)
     expect(document.documentElement).toMatchSnapshot()
   })
 
-  it('with theme global and sourcemap', () => {
+  it('with theme createGlobal and sourcemap', () => {
     const {
-      global: globalTheme,
+      createGlobal: globalTheme,
       useSystem,
       SystemProvider,
       flush
@@ -238,9 +238,9 @@ describe('solidjs system', () => {
     flush()
   })
 
-  it('with theme global', () => {
+  it('with theme createGlobal', () => {
     const {
-      global: globalTheme,
+      createGlobal: globalTheme,
       useSystem,
       SystemProvider,
       flush
@@ -297,7 +297,7 @@ describe('solidjs system', () => {
 
   it('delete old rules', () => {
     const {
-      global: globalTheme,
+      createGlobal: globalTheme,
       useSystem,
       SystemProvider,
       flush
@@ -817,14 +817,14 @@ describe('hydrate', () => {
     document.head.removeChild(meta)
   })
 
-  it('global hydrate', () => {
+  it('createGlobal hydrate', () => {
     meta.id = 'styils-css-cache'
     meta.name = 'styils-cache'
     meta.content = ''
     meta.setAttribute('mode', 'none')
     document.head.appendChild(meta)
 
-    const { global: hydrateGlobal, createExtracts } = createSystem()
+    const { createGlobal: hydrateGlobal, createExtracts } = createSystem()
     hydrateGlobal({
       body: {
         backgroundColor: 'gainsboro',
@@ -836,7 +836,7 @@ describe('hydrate', () => {
     expect(createExtracts().extractHtml).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
 
-    const { global: hydrateGlobal1, createExtracts: getCssValue1 } = createSystem()
+    const { createGlobal: hydrateGlobal1, createExtracts: getCssValue1 } = createSystem()
     hydrateGlobal1({
       body: {
         backgroundColor: 'red',
@@ -849,7 +849,7 @@ describe('hydrate', () => {
     document.head.removeChild(meta)
   })
 
-  it('global hydrate with sourcemap', () => {
+  it('createGlobal hydrate with sourcemap', () => {
     meta.id = 'styils-css-cache'
     meta.name = 'styils-cache'
     meta.content = 'css-2242710476'

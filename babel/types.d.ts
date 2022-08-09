@@ -1,7 +1,7 @@
 export interface Options {
   identifier?: {
     styled?: string
-    global?: string
+    createGlobal?: string
   }
   importPaths?: string | RegExp
   sourceFileName?: string

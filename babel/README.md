@@ -22,7 +22,7 @@ This is required for sourcemap
 export interface Options {
   identifier?: {
     styled?: string
-    global?: string
+    createGlobal?: string
   }
   importPaths?: string | RegExp
   sourceFileName?: string
@@ -32,7 +32,7 @@ export interface Options {
 
 #### identifier
 
-default: `{ styled:'styled', global:'global' }`
+default: `{ styled:'styled', createGlobal:'createGlobal' }`
 
 Used to mark the function name, compile time will lookup based on the function name to confirm if it is the target
 
@@ -40,7 +40,7 @@ Used to mark the function name, compile time will lookup based on the function n
 
 default: `"@styils/react"`
 
-Used for styled or global import paths, and will only be loaded if matched
+Used for `styled` or `createGlobal` import paths, and will only be loaded if matched
 
 #### sourceFileName
 

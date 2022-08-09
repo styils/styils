@@ -1,4 +1,4 @@
-import { styled, global } from './theme'
+import { styled, createGlobal } from './theme'
 import React from 'react'
 import { useTranslation, I18nextProvider } from 'react-i18next'
 import { Link, Route, Routes, useLocation } from 'react-router-dom'
@@ -28,7 +28,7 @@ function getPathElement(modules: Record<string, any>, base: string) {
   return child
 }
 
-global((theme) => ({
+createGlobal((theme) => ({
   html: {
     'scroll-behavior': 'smooth'
   },

@@ -39,7 +39,7 @@ export default declare((api) => {
 
           state.opts.identifier = {
             styled: 'styled',
-            global: 'global',
+            createGlobal: 'createGlobal',
             ...(state.opts.identifier ?? {})
           }
         }
@@ -51,6 +51,7 @@ export default declare((api) => {
             typeof importPaths === 'string'
               ? importPaths === path.node.source.value
               : importPaths.test(path.node.source.value)
+
           if (isImport) {
             readyImport = path.node.specifiers.some((childNode) => {
               return state.opts.identifier![childNode.local.name]
@@ -78,7 +79,7 @@ export default declare((api) => {
 
           if (path.node.callee.name === state.opts.identifier.styled) {
             parent = path.findParent((parent) => parent.isVariableDeclaration())
-          } else if (path.node.callee.name === state.opts.identifier.global) {
+          } else if (path.node.callee.name === state.opts.identifier.createGlobal) {
             parent = path.findParent((parent) => parent.isExpressionStatement())
           }
 

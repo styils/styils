@@ -74,7 +74,7 @@ export class StyleSheet {
     this.tags.push(tag)
   }
 
-  insertStyle({ ruleCode, segmentRuleCode }: Rules, global = false) {
+  insertStyle({ ruleCode, segmentRuleCode }: Rules, glob = false) {
     if (this.container) {
       if (this.speedy) {
         const ruleIndexs: OldRule[] = []
@@ -88,7 +88,7 @@ export class StyleSheet {
       return [this.insert(ruleCode)]
     }
 
-    this[global ? 'ssrGlobalData' : 'ssrData'] += ruleCode
+    this[glob ? 'ssrGlobalData' : 'ssrData'] += ruleCode
   }
 
   insert(rule: string) {

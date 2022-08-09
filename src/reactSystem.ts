@@ -97,4 +97,4 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
   }
 }
 
-export const { styled, createExtracts, flush, global, keyframes } = createSystem()
+export const { styled, createExtracts, flush, createGlobal, keyframes } = createSystem()

@@ -1,5 +1,6 @@
-import { createSystem, styled, global } from './reactSystem'
+import { createSystem, styled } from './reactSystem'
 import React from 'react'
+import { createGlobal } from './solidSystem'
 
 const { styled: styleTheme } = createSystem({
   theme: () => ({ color: 'red', bg: 'blue' }),
@@ -77,7 +78,7 @@ export function render1() {
 styled.sourceMap
 
 // @ts-expect-error Do not expose to the outside world
-global.sourceMap
+createGlobal.sourceMap
 
 export function asButton() {
   return [

@@ -1,7 +1,7 @@
 import React from 'react'
 import type { AnyObject, Widen } from './types'
-import { CSSAttribute } from 'nativeCssTypes'
-import { StyleInterpolation } from './baseSystemTypes'
+import type { CSSAttribute } from 'nativeCssTypes'
+import type { StyleInterpolation } from './baseSystemTypes'
 
 export interface FunctionComponent {
   displayName?: string

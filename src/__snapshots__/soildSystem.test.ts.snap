@@ -19,13 +19,13 @@ exports[`hydrate base hydrate 2`] = `
 </html>
 `;
 
-exports[`hydrate global hydrate 1`] = `
+exports[`hydrate createGlobal hydrate 1`] = `
 "<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"\\">
      <style id=\\"styils-css-ssr-global\\">body{background-color:gainsboro;border-radius:9999px;}</style>
      <style id=\\"styils-css-ssr\\"></style>"
 `;
 
-exports[`hydrate global hydrate 2`] = `
+exports[`hydrate createGlobal hydrate 2`] = `
 <html>
   <head>
     <meta
@@ -39,13 +39,13 @@ exports[`hydrate global hydrate 2`] = `
 </html>
 `;
 
-exports[`hydrate global hydrate 3`] = `
+exports[`hydrate createGlobal hydrate 3`] = `
 "<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"\\">
      <style id=\\"styils-css-ssr-global\\"></style>
      <style id=\\"styils-css-ssr\\"></style>"
 `;
 
-exports[`hydrate global hydrate 4`] = `
+exports[`hydrate createGlobal hydrate 4`] = `
 <html>
   <head>
     <meta
@@ -59,7 +59,7 @@ exports[`hydrate global hydrate 4`] = `
 </html>
 `;
 
-exports[`hydrate global hydrate with sourcemap 1`] = `
+exports[`hydrate createGlobal hydrate with sourcemap 1`] = `
 <html>
   <head>
     <meta
@@ -131,6 +131,34 @@ exports[`hydrate variants hydrate 2`] = `
       id="styils-css-cache"
       name="styils-cache"
     />
+  </head>
+  <body />
+</html>
+`;
+
+exports[`solidjs system createGlobal 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:#fff;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`solidjs system createGlobal with sourceMap 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:#fff;}sourceMap
+    </style>
   </head>
   <body />
 </html>
@@ -215,34 +243,6 @@ exports[`solidjs system createSystem 4`] = `
       </div>
     </div>
   </body>
-</html>
-`;
-
-exports[`solidjs system global 1`] = `
-<html>
-  <head>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:#fff;}
-    </style>
-  </head>
-  <body />
-</html>
-`;
-
-exports[`solidjs system global with sourceMap 1`] = `
-<html>
-  <head>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:#fff;}sourceMap
-    </style>
-  </head>
-  <body />
 </html>
 `;
 
@@ -823,7 +823,7 @@ exports[`solidjs system variants theme 4`] = `
 </html>
 `;
 
-exports[`solidjs system with theme global 1`] = `
+exports[`solidjs system with theme createGlobal 1`] = `
 <div>
   <div>
     light
@@ -831,7 +831,7 @@ exports[`solidjs system with theme global 1`] = `
 </div>
 `;
 
-exports[`solidjs system with theme global 2`] = `
+exports[`solidjs system with theme createGlobal 2`] = `
 <html>
   <head>
     <style
@@ -851,7 +851,7 @@ exports[`solidjs system with theme global 2`] = `
 </html>
 `;
 
-exports[`solidjs system with theme global 3`] = `
+exports[`solidjs system with theme createGlobal 3`] = `
 <div>
   <div>
     dark
@@ -859,7 +859,7 @@ exports[`solidjs system with theme global 3`] = `
 </div>
 `;
 
-exports[`solidjs system with theme global 4`] = `
+exports[`solidjs system with theme createGlobal 4`] = `
 <html>
   <head>
     <style
@@ -879,7 +879,7 @@ exports[`solidjs system with theme global 4`] = `
 </html>
 `;
 
-exports[`solidjs system with theme global 5`] = `
+exports[`solidjs system with theme createGlobal 5`] = `
 <div>
   <div>
     light
@@ -887,7 +887,7 @@ exports[`solidjs system with theme global 5`] = `
 </div>
 `;
 
-exports[`solidjs system with theme global 6`] = `
+exports[`solidjs system with theme createGlobal 6`] = `
 <html>
   <head>
     <style
@@ -907,7 +907,7 @@ exports[`solidjs system with theme global 6`] = `
 </html>
 `;
 
-exports[`solidjs system with theme global and sourcemap 1`] = `
+exports[`solidjs system with theme createGlobal and sourcemap 1`] = `
 <html>
   <head>
     <style

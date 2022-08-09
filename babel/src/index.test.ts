@@ -83,6 +83,20 @@ describe('transform api', () => {
     }
   })
 
+  it('import path', () => {
+    const code = `
+    import { styled } from 'test';
+    const buuton = styled('div', {
+      color: 'red'
+    });`
+
+    const res = transformSync(code, {
+      plugins: [[plugin, { sourceFileName: 'test.js', importPaths: 'test' }]]
+    })?.code
+
+    expect(/styled\.sourceMap/.test(res!)).toEqual(true)
+  })
+
   it('precompiled', () => {
     const code = `
     import { styled1 } from '../theme';
@@ -133,11 +147,11 @@ describe('transform api', () => {
     expect(/styled\.sourceMap/.test(res3!)).toEqual(false)
   })
 
-  it('global', () => {
+  it('createGlobal', () => {
     const code = `
-    import {global} from '@styils/react'
+    import {createGlobal} from '@styils/react'
 
-    global({
+    createGlobal({
       color:'red'
     })
     `
@@ -149,12 +163,12 @@ describe('transform api', () => {
     expect(res).toMatchSnapshot()
   })
 
-  it('global be wrapped', () => {
+  it('createGlobal be wrapped', () => {
     const code = `
-    import {global} from '@styils/react'
+    import {createGlobal} from '@styils/react'
 
     if (true){
-      global({
+      createGlobal({
         color:'red'
       })
     }

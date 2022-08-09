@@ -5,7 +5,7 @@ export type BaseVariants = Record<string, Record<string, CSSAttribute>>
 
 export type AnyFunc = (...props: any[]) => any
 
-export interface Global<Theme> {
+export interface CreateGlobal<Theme> {
   (
     styles:
       | Record<string, CSSAttribute>
@@ -50,7 +50,7 @@ export interface BaseSystem<
 > {
   styled: Styled
   SystemProvider: ReturnType<Provider>
-  global: Global<Theme>
+  createGlobal: CreateGlobal<Theme>
   keyframes: Keyframes
   createExtracts: () => { extractHtml: string; extractElement: ReturnType<ExtractElement> }
   /**
