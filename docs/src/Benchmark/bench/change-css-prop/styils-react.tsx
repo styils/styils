@@ -12,7 +12,7 @@ const Button = styled('button', {
 const TestBase = ({ testIndex }: TestComponentProps) => {
   return (
     <Button
-      cssState={{
+      vars={{
         bg: `hsl(${Math.floor(Math.random() * 360)} 80% 80%)`,
         padding: '20px'
       }}

@@ -66,7 +66,7 @@ const Anthor1 = styled(
 export function render1() {
   return (
     <Anthor1
-      cssState={{
+      vars={{
         height: 1
       }}
     />
@@ -83,7 +83,7 @@ export function asButton() {
   return [
     <Anthor
       key={1}
-      cssState={{
+      vars={{
         height: 1,
         width: 2,
         foo: 2
@@ -96,7 +96,7 @@ export function asButton() {
     />,
     <Anthor1
       key={2}
-      cssState={{
+      vars={{
         height1: 1,
         targetSize: 'foo'
       }}

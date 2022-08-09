@@ -24,7 +24,7 @@ type StyledProps<As extends NativeComponent, Variants> = Omit<ComponentProps<As>
   variants?: {
     [key in keyof Variants]?: Widen<Variants[key]>
   }
-  cssState?: AnyObject
+  vars?: AnyObject
 }
 
 type StyledComponent<Component extends NativeComponent, Variants> = <

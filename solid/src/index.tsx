@@ -50,7 +50,7 @@ const App = () => {
     <div>
       {/* {ExtractElement} */}
       <Button
-        cssState={{
+        vars={{
           height: `${height()}px`
         }}
         onClick={() => {

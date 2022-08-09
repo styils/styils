@@ -85,7 +85,7 @@ export function SierpinskiTriangle({ testIndex, x = 0, y = 0, depth = 0, s: _s =
 
     return (
       <Dot
-        cssState={{
+        vars={{
           color,
           targetSize: `${targetSize / 2}px`,
           targetSizeX: `${x - targetSize / 2}px`,

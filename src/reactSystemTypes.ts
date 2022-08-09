@@ -21,7 +21,7 @@ type StyledProps<As extends React.ElementType, Variants> = Omit<React.ComponentP
   variants?: {
     [key in keyof Variants]?: Widen<Variants[key]>
   }
-  cssState?: AnyObject
+  vars?: AnyObject
 }
 
 export interface StyledComponent<Component extends React.ElementType, Variants>

@@ -185,25 +185,48 @@ export function createBaseSystem<
     }
 
     function computedVariants(variants: AnyObject) {
-      const variantsPropsKeys = Object.keys(variants)
-      let variantsPropsIndex = variantsPropsKeys.length
       let variantsClassName = ''
 
-      while (variantsPropsIndex--) {
-        const key = variantsPropsKeys[variantsPropsIndex]
-        const value = variants[key]
+      if (variants) {
+        const variantsPropsKeys = Object.keys(variants)
+        let variantsPropsIndex = variantsPropsKeys.length
 
-        if (value !== undefined && value !== null) {
-          variantsClassName += ` ${targetInfo.namespaceJoiner}${key}-${value}`
+        while (variantsPropsIndex--) {
+          const key = variantsPropsKeys[variantsPropsIndex]
+          const value = variants[key]
+
+          if (value !== undefined && value !== null) {
+            variantsClassName += ` ${targetInfo.namespaceJoiner}${key}-${value}`
+          }
         }
       }
 
       return variantsClassName
     }
 
+    function computedVars(vars: AnyObject) {
+      const style = {}
+
+      if (vars) {
+        const keys = Object.keys(vars)
+        for (let i = keys.length; i >= 0; i--) {
+          const key = keys[i]
+          style[`--${targetInfo.targetClassName}-${key}`] = vars[key]
+        }
+      }
+
+      return style
+    }
+
     createRule()
 
-    const styledComponent = inputStyledComponent(inputTag, createRule, computedVariants, targetInfo)
+    const styledComponent = inputStyledComponent(
+      inputTag,
+      createRule,
+      computedVariants,
+      computedVars,
+      targetInfo
+    )
 
     if (process.env.NODE_ENV !== 'production') {
       styledComponent.displayName = styledComponent.displayName ?? targetInfo.targetClassName

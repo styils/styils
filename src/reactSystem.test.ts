@@ -50,7 +50,7 @@ describe('reactjs system', () => {
           onClick: () => {
             setColor('blue')
           },
-          cssState: {
+          vars: {
             bg: color
           },
           children: color

@@ -53,7 +53,7 @@ describe('solidjs system', () => {
         onClick: () => {
           setColor('blue')
         },
-        cssState: {
+        vars: {
           get bg() {
             return color()
           }

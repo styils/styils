@@ -56,6 +56,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       inputTag: BaseTag,
       createRule: () => void,
       computedVariants: (value: AnyObject) => string,
+      computedVars: (value: AnyObject) => AnyObject,
       targetInfo: TargetInfo
     ) =>
     (inputProps: AnyObject) => {
@@ -63,7 +64,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
         'as',
         'class',
         'variants',
-        'cssState',
+        'vars',
         'style'
       ])
 
@@ -74,22 +75,11 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
           createRule()
         }
 
-        const variantsClassName = props.variants ? computedVariants(props.variants) : ''
-
-        const transformCssState = {}
-        if (props.cssState) {
-          const keys = Object.keys(props.cssState)
-          for (let i = keys.length; i >= 0; i--) {
-            const key = keys[i]
-            transformCssState[`--${targetInfo.targetClassName}-${key}`] = props.cssState[key]
-          }
-        }
-
         return {
           classes: `${props.class ? props.class + ' ' : ''}${
             targetInfo.targetClassName
-          }${variantsClassName}`,
-          style: transformCssState
+          }${computedVariants(props.variants)}`,
+          style: computedVars(props.vars)
         }
       })
 
