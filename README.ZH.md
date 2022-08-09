@@ -21,7 +21,7 @@
 
 ### Styils React
 
-<img src="https://img.shields.io/npm/v/@styils/react?style=flat-square" alt="npm version" />
+![npm](https://img.shields.io/npm/v/@styils/react?color=%2361dafb&logo=react)
 
 React 包装器，包括 `styled` API。
 
@@ -31,7 +31,7 @@ npm install @styils/react
 
 ### Styils Solid
 
-<img src="https://img.shields.io/npm/v/@styils/solid?style=flat-square" alt="npm version" />
+![npm](https://img.shields.io/npm/v/@styils/react?color=%234f88c6&logo=solid&logoColor=%234f88c6)
 
 Solid 包装器，包括 `styled` API。
 
@@ -41,7 +41,7 @@ npm install @styils/solid
 
 ### Styils Babel
 
-<img src="https://img.shields.io/npm/v/@styils/babel-plugin?style=flat-square" alt="npm version" />
+![npm](https://img.shields.io/npm/v/@styils/babel-plugin?color=%23eeda7c&logo=babel&logoColor=%23eeda7c)
 
 [Documentation](./babel/)
 
