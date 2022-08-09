@@ -43,7 +43,7 @@ npm install @styils/solid
 
 ![npm](https://img.shields.io/npm/v/@styils/babel-plugin?color=%23eeda7c&logo=babel&logoColor=%23eeda7c)
 
-[Documentation](./babel/)
+[更多](./babel/)
 
 ```sh
 npm install @styils/babel-plugin
@@ -51,7 +51,7 @@ npm install @styils/babel-plugin
 
 ### SSR Example
 
-[Example](https://github.com/styils/styils-examples)
+[示例](https://github.com/styils/styils-examples)
 
 ## 鸣谢
 
