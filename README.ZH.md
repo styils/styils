@@ -45,6 +45,8 @@ npm install @styils/solid
 
 [更多](./babel/)
 
+This is required for sourcemap
+
 ```sh
 npm install @styils/babel-plugin
 ```
