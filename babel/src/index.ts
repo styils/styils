@@ -34,7 +34,7 @@ export default declare((api) => {
       Program: {
         enter(_, state: State) {
           if (!state.opts.importPaths) {
-            state.opts.importPaths = '@styils/react'
+            state.opts.importPaths = /@styils\/(react|solid)/
           }
 
           state.opts.identifier = {
