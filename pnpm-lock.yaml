@@ -115,7 +115,7 @@ importers:
       '@emotion/styled': ^11.9.3
       '@stitches/react': ^1.2.8
       '@stitches/stringify': ^1.2.8
-      '@styils/babel-plugin': ^1.0.1
+      '@styils/babel-plugin': ^1.0.6
       '@types/fs-extra': ^9.0.13
       '@types/prismjs': ^1.26.0
       '@types/styled-components': ^5.1.25
@@ -146,7 +146,7 @@ importers:
       react-router-dom: 6.3.0_sfoxds7t5ydpegc3knd667wn6m
       styled-components: 5.3.5_fane7jikarojcev26y27hpbhu4
     devDependencies:
-      '@styils/babel-plugin': 1.0.2
+      '@styils/babel-plugin': 1.0.6
       '@types/fs-extra': 9.0.13
       '@types/prismjs': 1.26.0
       '@types/styled-components': 5.1.25
@@ -1446,6 +1446,14 @@ packages:
 
   /@styils/babel-plugin/1.0.2:
     resolution: {integrity: sha512-Hj416dSqt6HRnWwOytrANg/g6ZAmfCKQpWawvY67V1p8hzk3VOvFH6d0rI6WJIpbn3i8qUUn3aO6HWid+N4CUw==}
+    dependencies:
+      '@babel/helper-plugin-utils': 7.18.9
+      convert-source-map: 1.8.0
+      source-map: 0.7.4
+    dev: true
+
+  /@styils/babel-plugin/1.0.6:
+    resolution: {integrity: sha512-axgNxw1GfdCKUxgNQUIfqCihqDao6VGNymdRNXeazodIWQ0HqeYUW2i2eqUcq0yAULnORwlLvANsVpyEpY8ijg==}
     dependencies:
       '@babel/helper-plugin-utils': 7.18.9
       convert-source-map: 1.8.0
