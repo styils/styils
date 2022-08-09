@@ -17,7 +17,7 @@
 Lightweight and fast css-in-js solution with near zero runtime. Support Themes、SSR、Sourcemap、Polymorphism
 </p>
 
-[Documentation](https://styils.github.io/styils)
+[Documentation](https://styils.github.io/styils) [Bench](https://styils.github.io/styils/benchmark/create-and-mount-button/stitches-react)
 
 ### Styils React
 
