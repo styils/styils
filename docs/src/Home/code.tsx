@@ -142,6 +142,35 @@ const Button = styled(
 render(<Button variants={{ size: 'small' }}>Button</Button>)
 `
 
+  const varsCode = `import { styled } from '@styils/react'
+
+const Button = styled(
+  'button',
+  {
+    fontSize: '$size'
+  },
+  // ${t('withVarsDesc.1')}
+  {
+    size: {
+      small: {
+      //
+        fontSize: '$size'
+      },
+      large: {
+        fontSize: 16
+      }
+    }
+  }
+)
+
+const [state, setState] = useState(0)
+
+// ${t('withVarsDesc.2')}
+<Button vars={{size:\`\${state}px\`}} onClick={() => {
+  setState(state + 10)
+}}>Button</Button>
+`
+
   const themeCode = `import { createSystem } from '@styils/react'
 
 const { styled, SystemProvider, useSystem } = createSystem({
@@ -328,7 +357,8 @@ const Foo = styled('div',{
     keyframesCode,
     errorCode,
     themeCode,
-    variantsCode
+    variantsCode,
+    varsCode
   }
 
   const codeRef = React.createRef<HTMLPreElement>()

@@ -3,7 +3,7 @@
   "copyright": "版权所有 © 2022-至今 Zoy-l",
   "variantsCode": "variants 为 styled 的第三个参数",
   "themeCode": "任何",
-  "errorCode": "每次 setMove 将创建多个几乎完全相同的CSS规则，这种情况我们应该使用 style",
+  "errorCode": "每次 setMove 将创建多个几乎完全相同的CSS规则",
   "baseCode": {
     "1": "我们可以添加 namespce 在开发类库的时候这可能很有用",
     "2": ":global 内的样式将生成全局样式",
@@ -22,10 +22,11 @@
   "themeDesc": "提供一种自定义主题的简单方法，您可以更改颜色、字体、断点和您需要的一切。",
   "small": "超小的",
   "smallDesc": "提供完整的功能的同时，只有4kb的大小开销。",
-  "withBase": "基础使用",
-  "withVariants": "动态渲染",
-  "withTheme": "使用主题",
-  "withSSR": "服务端渲染",
+  "withBase": "基础使用 Base",
+  "withVariants": "动态渲染 Variants",
+  "withVars": "使用变量 Vars",
+  "withTheme": "使用主题 Theme",
+  "withSSR": "服务端渲染 SSR",
   "withKeyframes": "动画 Keyframes",
   "withGlobal": "全局 Global",
   "withMedia": "查询 Media",
@@ -36,15 +37,20 @@
   },
   "withVariantsDesc": {
     "1": "创建的样式组件都带有一个<strong>variants</strong>属性",
-    "2": "可以定义单个动态规则、多个动态规则，甚至是复合动态规则",
-    "3": "动态插值代替 props 道具传递，因为通过props传值会带来较大的性能开销，此外我们可能写出下面这段代码。"
+    "2": "动态插值代替 props 道具传递，因为通过props传值会带来较大的性能开销，此外我们可能写出下面这段代码。"
   },
   "withThemeDesc": "<strong>Styils</strong>提供完全自由的主题体验。根据需要可以将它们应用到任何你想要的地方。",
   "withSSRDesc": {
     "1": "<strong>Styils</strong>支持<strong>ssr</strong>并且很容易集成在常用框架中",
     "2": "如果使用主题<strong>createExtracts</strong>应该从<strong>createSystem</strong>导出",
-    "3": "查看示例:<a href='https://github.com/styils/styils-examples/tree/main/next'>Next</a>和<a href='https://github.com/styils/styils-examples/tree/main/remix'>Remix</a>",
+    "3": "查看示例:<a href='https://github.com/styils/styils-examples/tree/main'>示例</a>",
     "4": "不是用框架,<strong>createExtracts</strong>返回的对象里有一个<strong>extractHtml</strong>属性, 它返回字符串把它加入到<strong>html</strong>中即可"
+  },
+  "withVarsDesc": {
+    "1": "在变体中也是有效的，但在风格上不建议这样做",
+    "2": "这里需要显式添加相应的单位",
+    "3": "创建的样式组件都带有一个<strong>vars</strong>属性",
+    "4": "可以通过动态绑定值，不需要担心，它几乎没有性能开销"
   },
   "withKeyframesDesc": "<strong>Styils</strong>提供两种方式定义, 任你喜欢。",
   "withGlobalDesc": "<strong>Styils</strong>提供两种方式定义, 任你喜欢。",

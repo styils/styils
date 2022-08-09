@@ -434,6 +434,7 @@ export default function Home() {
           <div>
             <a href="#base">{t('withBase')}</a>
             <a href="#variants">{t('withVariants')}</a>
+            <a href="#vars">{t('withVars')}</a>
             <a href="#theme">{t('withTheme')}</a>
             <a href="#ssr">{t('withSSR')}</a>
             <a href="#keyframes">{t('withKeyframes')}</a>
@@ -460,11 +461,20 @@ export default function Home() {
           <p>
             <span dangerouslySetInnerHTML={{ __html: t('withVariantsDesc.1') }} />
           </p>
-          <p>{t('withVariantsDesc.2')}</p>
         </StyilCode>
 
         <StyilCode code={'errorCode'} disabledType>
-          <p>{t('withVariantsDesc.3')}</p>
+          <p>{t('withVariantsDesc.2')}</p>
+        </StyilCode>
+
+        <StyilCode code={'varsCode'}>
+          <h2 id="vars">{t('withVars')}</h2>
+          <p>
+            <span dangerouslySetInnerHTML={{ __html: t('withVarsDesc.3') }} />
+          </p>
+          <p>
+            <span dangerouslySetInnerHTML={{ __html: t('withVarsDesc.4') }} />
+          </p>
         </StyilCode>
 
         <StyilCode code={'themeCode'}>

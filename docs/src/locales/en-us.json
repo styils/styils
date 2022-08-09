@@ -3,7 +3,7 @@
   "copyright": "Copyright © 2022-present Zoy-l",
   "variantsCode": "variants is the third parameter of styled",
   "themeCode": "any",
-  "errorCode": "Each setMove will create multiple almost identical CSS rules\n  // in this case we should use style",
+  "errorCode": "Each setMove will create multiple almost identical CSS rules",
   "baseCode": {
     "1": "We can add namespce which may be useful when developing class libraries",
     "2": ":Styles inside global will generate global styles",
@@ -23,7 +23,8 @@
   "small": "Super small",
   "smallDesc": "Only 4kb overhead while providing full functionality.",
   "withBase": "Base use",
-  "withVariants": "Dynamic rendering",
+  "withVariants": "Use Variants",
+  "withVars": "Use Vars",
   "withTheme": "Use Theme",
   "withSSR": "Server-side rendering",
   "withKeyframes": "Animation Keyframes",
@@ -36,14 +37,19 @@
   },
   "withVariantsDesc": {
     "1": "Style components are created with a<strong>variants</strong>attribute",
-    "2": "You can define a single dynamic rule, multiple dynamic rules, or even compound dynamic rules",
-    "3": "Dynamic interpolation replaces props props passing, because passing values through props will bring a large performance overhead, in addition, we may write the following code."
+    "2": "Dynamic interpolation replaces props props passing, because passing values through props will bring a large performance overhead, in addition, we may write the following code."
+  },
+  "withVarsDesc": {
+    "1": "Variants are also valid, but stylistically discouraged",
+    "2": "Here you need to display the units that should be added",
+    "3": "Style components are created with a <strong>vars</strong> attribute",
+    "4": "You can bind values dynamically, don't worry, it has almost no performance overhead"
   },
   "withThemeDesc": "<strong>Styils</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
   "withSSRDesc": {
     "1": "<strong>Styils</strong>supports<strong>ssr</strong>and is easy to integrate into commonly used frameworks",
     "2": "If using theme<strong>createExtracts</strong>should be exported from<strong>createSystem</strong>",
-    "3": "View examples:<a href='https://github.com/styils/styils-examples/tree/main/next'>Next</a>and<a href='https://github.com/styils/styils-examples/tree/main/remix'>Remix</a>",
+    "3": "View examples:<a href='https://github.com/styils/styils-examples/tree/main'>Example</a>",
     "4": "Instead of using the framework,<strong>createExtracts returns</strong> an object with an <strong>extractHtml</strong> attribute, it returns a string and adds it to the <strong>html</strong>"
   },
   "withKeyframesDesc": "<strong>Styils</strong>provides two ways to define as you like.",
