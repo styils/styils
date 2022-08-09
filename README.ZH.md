@@ -17,7 +17,7 @@
  轻量级和快速的 css-in-js 解决方案，运行时接近于零。支持主题、多态、SSR、Sourcemap
 </p>
 
-[文档](https://styils.github.io/styils)
+[文档](https://styils.github.io/styils) [基准](https://styils.github.io/styils/benchmark/create-and-mount-button/stitches-react)
 
 ### Styils React
 
