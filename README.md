@@ -43,7 +43,7 @@ npm install @styils/solid
 
 ![npm](https://img.shields.io/npm/v/@styils/babel-plugin?color=%23eeda7c&logo=babel&logoColor=%23eeda7c)
 
-[Documentation](./babel/)
+[More](./babel/)
 
 ```sh
 npm install @styils/babel-plugin
