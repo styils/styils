@@ -64,19 +64,20 @@ async function build(name: string, globalsName: string, prod = false) {
 
   const globals: Record<string, any> =
     {
-      react: { react: 'React' },
-      solid: { 'solid-js': 'solidJs', 'solid-js/web': 'solidJsWeb' }
+      react: { react: 'React' }
     }[name] ?? {}
 
   if (prod) {
     typeFile.push({ name, files: bundle.watchFiles })
 
-    await bundle.write({
-      globals,
-      file: path.join(cwd, 'dist', name, `index.prod.global.js`),
-      format: 'iife',
-      name: globalsName
-    })
+    if (name !== 'solid') {
+      await bundle.write({
+        globals,
+        file: path.join(cwd, 'dist', name, `index.prod.global.js`),
+        format: 'iife',
+        name: globalsName
+      })
+    }
   }
 
   await bundle.write({
