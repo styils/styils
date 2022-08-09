@@ -36,6 +36,25 @@ describe('parseRules rules', () => {
     ])
   })
 
+  it('Pass the value rootSelector', () => {
+    const { ruleCode, segmentRuleCode } = parseRules(
+      {
+        display: 'value',
+        button: {
+          border: '$border'
+        }
+      },
+      '.base'
+    )
+
+    expect(ruleCode).toEqual(`.base{display:value;}.base button{border:var(--base-border);}`)
+
+    expect(segmentRuleCode).toEqual([
+      '.base{display:value;}',
+      '.base button{border:var(--base-border);}'
+    ])
+  })
+
   it('camel-case', () => {
     const { ruleCode, segmentRuleCode } = parseRules(
       {

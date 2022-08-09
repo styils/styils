@@ -349,6 +349,28 @@ exports[`solidjs system styled production 1`] = `
 </div>
 `;
 
+exports[`solidjs system styled with css state 1`] = `
+<div>
+  <button
+    class="css-916201087"
+    style="--css-916201087-bg: red;"
+  >
+    red
+  </button>
+</div>
+`;
+
+exports[`solidjs system styled with css state 2`] = `
+<div>
+  <button
+    class="css-916201087"
+    style="--css-916201087-bg: blue;"
+  >
+    blue
+  </button>
+</div>
+`;
+
 exports[`solidjs system styled with sourceMap 1`] = `
 <html>
   <head>

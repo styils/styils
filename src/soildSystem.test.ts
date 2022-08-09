@@ -41,6 +41,32 @@ describe('solidjs system', () => {
     expect(document.documentElement).toMatchSnapshot()
   })
 
+  it('styled with css state', () => {
+    const Button = styled('button', {
+      backgroundColor: '$bg'
+    })
+
+    const { container } = render(() => {
+      const [color, setColor] = createSignal('red')
+      return Dynamic({
+        component: Button,
+        onClick: () => {
+          setColor('blue')
+        },
+        cssState: {
+          get bg() {
+            return color()
+          }
+        },
+        children: color
+      })
+    })
+
+    expect(container).toMatchSnapshot()
+    fireEvent.click(getByText(container, 'red'))
+    expect(container).toMatchSnapshot()
+  })
+
   it('styled with sourceMap', () => {
     // @ts-expect-error
     styled.sourceMap = '1'

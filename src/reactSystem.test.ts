@@ -1,6 +1,6 @@
 import { createSystem, styled, flush, global, keyframes } from './reactSystem'
 import { render, fireEvent, getByText } from '@testing-library/react'
-import React from 'react'
+import React, { useState } from 'react'
 
 const meta = globalThis.document.createElement('meta')
 const { document } = globalThis
@@ -36,6 +36,31 @@ describe('reactjs system', () => {
     expect(container).toMatchSnapshot()
 
     expect(document.documentElement).toMatchSnapshot()
+  })
+
+  it('styled with css state', () => {
+    const Button = styled('button', {
+      backgroundColor: '$bg'
+    })
+
+    const { container } = render(
+      React.createElement(() => {
+        const [color, setColor] = useState('red')
+        return React.createElement(Button, {
+          onClick: () => {
+            setColor('blue')
+          },
+          cssState: {
+            bg: color
+          },
+          children: color
+        })
+      })
+    )
+
+    expect(container).toMatchSnapshot()
+    fireEvent.click(getByText(container, 'red'))
+    expect(container).toMatchSnapshot()
   })
 
   it('styled multiple Variants', () => {
