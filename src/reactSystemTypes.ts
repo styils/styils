@@ -1,7 +1,7 @@
 import React from 'react'
-import type { Widen } from './types'
-import type { BaseVariants, CssStateKey } from './baseSystemTypes'
+import type { AnyObject, Widen } from './types'
 import { CSSAttribute } from 'nativeCssTypes'
+import { StyleInterpolation } from './baseSystemTypes'
 
 export interface FunctionComponent {
   displayName?: string
@@ -14,42 +14,46 @@ export type StyleTag =
 
 type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R | string } ? R : P) : P
 
-type StyledProps<
-  As extends React.ElementType,
-  Styles extends CSSAttribute = {},
-  Variants extends BaseVariants = {}
-> = Omit<React.ComponentProps<As>, 'ref'> & {
+type StyledProps<As extends React.ElementType, Variants, Var extends PropertyKey> = Omit<
+  React.ComponentProps<As>,
+  'ref'
+> & {
   ref?: PropsWithRef<React.ComponentProps<As>>
 } & {
   as?: As
   variants?: {
-    [key in keyof Variants]?: Widen<keyof Variants[key]>
+    [key in keyof Variants]?: Widen<Variants[key]>
   }
   cssState?: {
-    [key in CssStateKey<Styles> | CssStateKey<Variants>]?: string | number
+    [key in Var]?: string | number
   }
 }
 
 export interface StyledComponent<
   Component extends React.ElementType,
-  Styles extends CSSAttribute,
-  Variants extends BaseVariants
+  Variants,
+  Var extends PropertyKey
 > extends FunctionComponent {
-  <As extends React.ElementType = Component>(props: StyledProps<As, Styles, Variants>): JSX.Element
+  <As extends React.ElementType = Component>(props: StyledProps<As, Variants, Var>): JSX.Element
 }
 
 export interface Styled<Theme> {
-  <Component extends StyleTag, Styles extends CSSAttribute, Variants extends BaseVariants>(
+  <
+    Component extends StyleTag,
+    VariantsKey extends PropertyKey = '',
+    VariantsValue extends PropertyKey = '',
+    Var extends string = ''
+  >(
     component: Component | { tag: Component; namespace?: string },
-    styles: Styles | ((props: Theme, mode: string) => Styles),
-    interpolation?: Variants | ((props: Theme, mode: string) => Variants)
+    styles: CSSAttribute<Var> | ((props: Theme, mode: string) => CSSAttribute<Var>),
+    interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Var>
   ): StyledComponent<
-    Component extends React.ForwardRefExoticComponent<any>
+    Component extends React.ForwardRefExoticComponent<AnyObject>
       ? Component
-      : Component extends StyledComponent<infer A, any, any>
+      : Component extends StyledComponent<infer A, AnyObject, PropertyKey>
       ? A
       : Component,
-    Styles,
-    Variants
+    { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
+    Var
   >
 }

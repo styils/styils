@@ -9,9 +9,8 @@ const { styled: styleTheme } = createSystem({
 const Anthor = styled(
   'a',
   {
-    height: 100,
+    height: '$height',
     '.foo': {
-      height: '$height',
       width: '$width',
       padding: '$123'
     }
@@ -38,12 +37,12 @@ const Anthor = styled(
 const Anthor1 = styled(
   'a',
   () => ({
-    height: 100 as any,
     '.foo': {
       height: '$height',
       width: '$width',
       padding: '$123'
     }
+    // height: 100 as any
   }),
   {
     size: {
@@ -63,6 +62,16 @@ const Anthor1 = styled(
     }
   }
 )
+
+export function render1() {
+  return (
+    <Anthor1
+      cssState={{
+        height: 1
+      }}
+    />
+  )
+}
 
 // @ts-expect-error Do not expose to the outside world
 styled.sourceMap
@@ -89,7 +98,8 @@ export function asButton() {
     <Anthor1
       key={2}
       cssState={{
-        height: 1
+        height1: 1,
+        targetSize: 'foo'
       }}
     />
   ]

@@ -8,13 +8,12 @@ const { styled: styleTheme } = createSystem({
 
 const Anthor = styled(
   'a',
-  () => ({
-    height: 100,
+  {
+    height: '$height',
     '.foo': {
-      height: '$height',
       width: '$width'
     }
-  }),
+  },
   {
     size: {
       small: {
@@ -44,7 +43,9 @@ export function asButton({ ref, hello }: { ref: HTMLButtonElement; hello: boolea
         foo: 2
       }}
       as="button"
-      variants={{ size: 'small' }}
+      variants={{
+        size: 'small'
+      }}
       ref={ref}
     />
   )
@@ -55,6 +56,12 @@ styled.sourceMap
 
 // @ts-expect-error Do not expose to the outside world
 global.sourceMap
+
+global({
+  body: {
+    display: 'block'
+  }
+})
 
 const ToLink = styleTheme(asButton, (theme) => {
   expectType<

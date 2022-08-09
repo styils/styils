@@ -1,5 +1,5 @@
 import { type CSSAttribute } from 'nativeCssTypes'
-import { AnyObject, IfEqual, type StyleSheetOptions } from './types'
+import { type StyleSheetOptions } from './types'
 
 export type BaseVariants = Record<string, Record<string, CSSAttribute>>
 
@@ -59,19 +59,24 @@ export interface BaseSystem<
   flush: (type?: 'all' | 'global') => void
 }
 
-export type OmitAnyPropertyKey<T = {}> = {
-  [key in keyof T as IfEqual<T[key], any> extends true
-    ? never
-    : // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    T[key] extends `$${infer _}`
-    ? key
-    : T[key] extends AnyObject
-    ? key
-    : never]: T[key]
-}
+export type NeverToObeject<T> = [T] extends [never] ? {} : T
 
-export type CssStateKey<T extends CSSAttribute | string | number> = T extends `$${infer R}`
-  ? R
-  : T extends Record<PropertyKey, string | number | CSSAttribute>
-  ? CssStateKey<OmitAnyPropertyKey<T>[keyof OmitAnyPropertyKey<T>]>
-  : never
+export type StyleInterpolation<
+  Theme,
+  VariantsKey extends PropertyKey,
+  VariantsValue extends PropertyKey,
+  Var
+> =
+  | {
+      [key in VariantsKey]: {
+        [key in VariantsValue]: CSSAttribute<Var>
+      }
+    }
+  | ((
+      props: Theme,
+      mode: string
+    ) => {
+      [key in VariantsKey]: {
+        [key in VariantsValue]: CSSAttribute<Var>
+      }
+    })

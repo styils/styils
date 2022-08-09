@@ -4,12 +4,12 @@
 
 export {}
 
-export interface CSSAttribute extends Properties {
-  [key: string]: CSSAttribute | string | number | undefined
+export interface CSSAttribute<Var = never> extends CSSProperties<Var> {
+  [key: string]: CSSAttribute<Var> | string | number | undefined
 }
 
-type CSSProperties = {
-  [key in keyof Properties]?: Properties[key] | OnlyString
+type CSSProperties<Var = never> = {
+  [key in keyof Properties]?: Properties[key] | OnlyString | `$${Var}`
 }
 
 export interface StandardLonghandProperties {
@@ -7716,7 +7716,7 @@ export type OnlyNumber = number & OnlyObject
 export type OnlyString = string & OnlyObject
 
 // hack
-export type OnlyStringNumeric = '' | ((number | string) & OnlyObject)
+export type OnlyStringNumeric = (number | string) & OnlyObject
 
 export namespace Property {
   export type AlignContent =
@@ -9879,7 +9879,7 @@ declare namespace DataType {
     | 'solid'
 
   // hack
-  type LineWidth = number | 'medium' | 'thick' | 'thin' | OnlyString
+  type LineWidth = number | 'medium' | 'thick' | 'thin'
 
   type MaskLayer =
     | Position

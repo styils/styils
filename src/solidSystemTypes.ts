@@ -1,7 +1,7 @@
 import type { JSX, ComponentProps, Accessor } from 'solid-js'
 import type { AnyObject, Widen } from './types'
-import type { BaseVariants, CssStateKey } from './baseSystemTypes'
 import { CSSAttribute } from 'nativeCssTypes'
+import { StyleInterpolation } from './baseSystemTypes'
 
 export type UseSystem<Theme> = () => {
   mode: Accessor<string>
@@ -17,34 +17,38 @@ export type NativeComponent = keyof JSX.IntrinsicElements | ((...props: any[]) =
 
 type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R } ? R : P) : P
 
-type StyledProps<
-  As extends NativeComponent,
-  Styles extends CSSAttribute = {},
-  Variants extends BaseVariants = {}
-> = Omit<ComponentProps<As>, 'ref'> & {
+type StyledProps<As extends NativeComponent, Variants, Var extends string> = Omit<
+  ComponentProps<As>,
+  'ref'
+> & {
   ref?: PropsWithRef<ComponentProps<As>>
 } & {
-  as?: As extends StyledComponent<infer A, AnyObject, AnyObject> ? A : As
+  as?: As extends StyledComponent<infer A, AnyObject, string> ? A : As
   variants?: {
-    [key in keyof Variants]?: Widen<keyof Variants[key]>
+    [key in keyof Variants]?: Widen<Variants[key]>
   }
-  cssState?: {
-    [key in CssStateKey<Styles> | CssStateKey<Variants>]?: string | number
-  }
+  cssState?: Var extends '' ? never : { [key in Var]: string | number }
 }
 
-type StyledComponent<
-  Component extends NativeComponent,
-  Styles extends CSSAttribute = {},
-  Variants extends BaseVariants = {}
-> = <As extends NativeComponent = Component>(
-  props: StyledProps<As, Styles, Variants>
+type StyledComponent<Component extends NativeComponent, Variants, Var extends string> = <
+  As extends NativeComponent = Component
+>(
+  props: StyledProps<As, Variants, Var>
 ) => JSX.Element
 
 export interface Styled<Theme> {
-  <Component extends NativeComponent, Styles extends CSSAttribute, Variants extends BaseVariants>(
+  <
+    Component extends NativeComponent,
+    Var extends string = '',
+    VariantsKey extends PropertyKey = '',
+    VariantsValue extends PropertyKey = ''
+  >(
     component: Component | { tag: Component; namespace?: string },
-    styles: Styles | ((props: Theme, mode: string) => Styles),
-    interpolation?: Variants | ((props: Theme, mode: string) => Variants)
-  ): StyledComponent<Component, Styles, Variants>
+    styles: CSSAttribute<Var> | ((props: Theme, mode: string) => CSSAttribute<Var>),
+    interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Var>
+  ): StyledComponent<
+    Component,
+    { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
+    Var
+  >
 }
