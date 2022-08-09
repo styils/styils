@@ -14,12 +14,10 @@
 </p>
 
 <p align="center">
-Lightweight and fast css-in-js solution with near zero runtime. Support Themes、SSR、Sourcemap
+Lightweight and fast css-in-js solution with near zero runtime. Support Themes、SSR、Sourcemap、Polymorphism
 </p>
 
 [Documentation](https://styils.github.io/styils)
-
-> Currently, it is experimental!
 
 ### Styils React
 
@@ -35,6 +33,14 @@ Solid wrapper including the `styled` API.
 
 ```sh
 npm install @styils/solid
+```
+
+### Styils Babel
+
+[Documentation](./babel/)
+
+```sh
+npm install @styils/babel
 ```
 
 ## Credits

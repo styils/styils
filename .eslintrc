@@ -11,6 +11,7 @@
     "max-classes-per-file": "off",
     "no-continue": "off",
     "no-restricted-syntax": "off",
+
     "@typescript-eslint/ban-types": [
       "error",
       {
@@ -38,6 +39,8 @@
       "files": ["*.tsx", "*.jsx"],
       "extends": ["iroot/react"],
       "rules": {
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
         "import/no-relative-packages": "off",
         "react/self-closing-comp": [
           "error",

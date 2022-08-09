@@ -1,6 +1,6 @@
 import { styled } from '../theme'
 import reactSvg from '../svg/react.svg'
-import htmlSvg from '../svg/html.svg'
+import solidSvg from '../svg/solid.svg'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Prism from 'prismjs'
@@ -75,7 +75,8 @@ const CodeHeader = styled('div', () => ({
       margin: '0 10px',
       width: 18,
       height: 18,
-      backgroundColor: 'rgba(0,0,0,0.1)'
+      backgroundColor: 'rgba(0,0,0,0.1)',
+      cursor: 'pointer'
     }
   }
 }))
@@ -361,6 +362,8 @@ const Foo = styled('div',{
     varsCode
   }
 
+  const [state, setState] = React.useState<'react' | 'solid'>('react')
+
   const codeRef = React.createRef<HTMLPreElement>()
 
   React.useEffect(() => {
@@ -368,6 +371,10 @@ const Foo = styled('div',{
       Prism.highlightElement(codeRef.current)
     }
   }, [codeRef])
+
+  const onSelect = (type: typeof state) => {
+    setState(type)
+  }
 
   return (
     <CodeRoot variants={variants}>
@@ -381,8 +388,8 @@ const Foo = styled('div',{
           </section>
           {!disabledType && (
             <section>
-              <img src={htmlSvg} alt="html" />
-              <img src={reactSvg} alt="react" />
+              <img src={solidSvg} alt="solid" onClick={() => onSelect('solid')} />
+              <img src={reactSvg} alt="react" onClick={() => onSelect('react')} />
             </section>
           )}
         </CodeHeader>

@@ -14,14 +14,12 @@
 </p>
 
 <p align="center">
- 轻量级和快速的 css-in-js 解决方案，运行时接近于零。支持主题、SSR、Sourcemap
+ 轻量级和快速的 css-in-js 解决方案，运行时接近于零。支持主题、多态、SSR、Sourcemap
 </p>
 
 [文档](https://styils.github.io/styils)
 
-> 目前，它是处于实验阶段的!
-
-## Styils React
+### Styils React
 
 React 包装器，包括 `styled` API。
 
@@ -29,12 +27,20 @@ React 包装器，包括 `styled` API。
 npm install @styils/react
 ```
 
-## Styils Solid
+### Styils Solid
 
 Solid 包装器，包括 `styled` API。
 
 ```sh
 npm install @styils/solid
+```
+
+### Styils Babel
+
+[Documentation](./babel/)
+
+```sh
+npm install @styils/babel
 ```
 
 ## 鸣谢
