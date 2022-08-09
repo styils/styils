@@ -21,6 +21,8 @@ Lightweight and fast css-in-js solution with near zero runtime. Support Themesã€
 
 ### Styils React
 
+<img src="https://img.shields.io/npm/v/@styils/react?style=flat-square" alt="npm version" />
+
 React wrapper including the `styled` API.
 
 ```sh
@@ -28,6 +30,8 @@ npm install @styils/react
 ```
 
 ### Styils Solid
+
+<img src="https://img.shields.io/npm/v/@styils/solid?style=flat-square" alt="npm version" />
 
 Solid wrapper including the `styled` API.
 
@@ -37,11 +41,17 @@ npm install @styils/solid
 
 ### Styils Babel
 
+<img src="https://img.shields.io/npm/v/@styils/babel-plugin?style=flat-square" alt="npm version" />
+
 [Documentation](./babel/)
 
 ```sh
-npm install @styils/babel
+npm install @styils/babel-plugin
 ```
+
+### SSR Example
+
+[Example](https://github.com/styils/styils-examples)
 
 ## Credits
 
