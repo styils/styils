@@ -59,7 +59,7 @@ const routesBenchmarkChildPrerender = fs
 
     const html = format(
       template.replace(`<!--app-html-->`, appHtml).replace('<!--styils-->', style),
-      { parser: 'vue' }
+      { parser: 'html' }
     )
 
     const filePath = `dist${url === '/' ? '/index' : url}.html`
