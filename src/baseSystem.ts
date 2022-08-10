@@ -209,7 +209,7 @@ export function createBaseSystem<
 
       if (vars) {
         const keys = Object.keys(vars)
-        for (let i = keys.length; i >= 0; i--) {
+        for (let i = 0; i < keys.length; i++) {
           const key = keys[i]
           style[`--${targetInfo.targetClassName}-${key}`] = vars[key]
         }

@@ -57,4 +57,23 @@ describe('base system', () => {
 
     process.env.NODE_ENV = 'test'
   })
+
+  it('parse vars', () => {
+    const { styled } = createBaseSystem(
+      {},
+      () => {},
+      (...props: any) => {
+        expect(
+          props[3]({
+            height: 1,
+            width: 2
+          })
+        ).toEqual({ '--css-11-height': 1, '--css-11-width': 2 })
+        return {}
+      },
+      () => {}
+    )
+
+    styled('', {})
+  })
 })
