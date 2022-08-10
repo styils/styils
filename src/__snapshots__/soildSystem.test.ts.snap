@@ -262,12 +262,6 @@ exports[`solidjs system styled 2`] = `
     mode="none"
     name="styils-cache"
   />
-  <style
-    id="styils-css-ssr-global"
-  />
-  <style
-    id="styils-css-ssr"
-  />
 </div>
 `;
 
@@ -293,12 +287,6 @@ exports[`solidjs system styled 3`] = `
         id="styils-css-cache"
         mode="none"
         name="styils-cache"
-      />
-      <style
-        id="styils-css-ssr-global"
-      />
-      <style
-        id="styils-css-ssr"
       />
     </div>
   </body>

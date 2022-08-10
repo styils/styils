@@ -65,7 +65,8 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
     ssrGlobalData,
     styleSSRId,
     ssrData,
-    metaMode
+    metaMode,
+    devIdent
   }: SystemExtractElement) =>
     React.createElement(
       React.Fragment,
@@ -76,14 +77,35 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
         mode: metaMode,
         content: selectorCacheString
       }),
-      React.createElement('style', {
-        id: globalStyleSSRId,
-        dangerouslySetInnerHTML: { __html: ssrGlobalData }
-      }),
-      React.createElement('style', {
-        id: styleSSRId,
-        dangerouslySetInnerHTML: { __html: ssrData }
-      })
+      ...(process.env.NODE_ENV !== 'production'
+        ? [
+            ...ssrGlobalData.map((data) =>
+              React.createElement('style', {
+                [devIdent]: globalStyleSSRId,
+                dangerouslySetInnerHTML: { __html: data }
+              })
+            ),
+            ...ssrData.map((data) =>
+              React.createElement('style', {
+                [devIdent]: styleSSRId,
+                dangerouslySetInnerHTML: { __html: data }
+              })
+            )
+          ]
+        : [
+            ...ssrGlobalData.map((data) =>
+              React.createElement('style', {
+                id: globalStyleSSRId,
+                dangerouslySetInnerHTML: { __html: data }
+              })
+            ),
+            ...ssrData.map((data) =>
+              React.createElement('style', {
+                id: styleSSRId,
+                dangerouslySetInnerHTML: { __html: data }
+              })
+            )
+          ])
     )
 
   return {

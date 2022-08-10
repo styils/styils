@@ -50,12 +50,12 @@ export class StyleSheet {
   /**
    * ssr css data
    */
-  ssrData = ''
+  ssrData = []
 
   /**
    * ssr global css data
    */
-  ssrGlobalData = ''
+  ssrGlobalData = []
 
   constructor(options: StyleSheetOptions) {
     this.speedy = options.speedy
@@ -88,7 +88,7 @@ export class StyleSheet {
       return [this.insert(ruleCode)]
     }
 
-    this[glob ? 'ssrGlobalData' : 'ssrData'] += ruleCode
+    this[glob ? 'ssrGlobalData' : 'ssrData'].push(ruleCode)
   }
 
   insert(rule: string) {
@@ -171,9 +171,9 @@ export class StyleSheet {
   flush(type: 'all' | 'global' = 'all') {
     this.tags.forEach((tag) => tag.parentNode && tag.parentNode.removeChild(tag))
     if (type !== 'global') {
-      this.ssrGlobalData = ''
+      this.ssrGlobalData = []
     }
-    this.ssrData = ''
+    this.ssrData = []
 
     this.tags = []
     this.insertIndex = 0

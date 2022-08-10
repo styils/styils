@@ -32,10 +32,11 @@ export interface SystemExtractElement {
   metaSelectorCacheId: string
   selectorCacheString: string
   globalStyleSSRId: string
-  ssrGlobalData: string
+  ssrGlobalData: string[]
   styleSSRId: string
-  ssrData: string
+  ssrData: string[]
   metaMode: string
+  devIdent?: string
 }
 
 export type BaseTag = unknown | { tag: unknown; namespace?: string }

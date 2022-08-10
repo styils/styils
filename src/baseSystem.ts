@@ -246,18 +246,55 @@ export function createBaseSystem<
   function createExtracts() {
     const globalStyleSSRId = `styils-${key}-ssr-global`
     const styleSSRId = `styils-${key}-ssr`
-    const styleHtml = isBrowser ? document.getElementById(styleSSRId) : null
-    const styleGlobalHtml = isBrowser ? document.getElementById(globalStyleSSRId) : null
+    const styleHtml: HTMLStyleElement[] = []
+    const styleGlobalHtml: HTMLStyleElement[] = []
+    const devIdent = 'data-ssr'
 
-    const ssrGlobalData = sheet.ssrGlobalData || (styleGlobalHtml?.textContent ?? '')
-    const ssrData = sheet.ssrData || (styleHtml?.textContent ?? '')
-    const metaMode = metaHtml?.getAttribute('mode') || internalState.mode
+    if (process.env.NODE_ENV !== 'production') {
+      if (isBrowser) {
+        document
+          .querySelectorAll(`style[data-styils-ssr="${styleSSRId}"]`)
+          .forEach((node: HTMLStyleElement) => {
+            styleHtml.push(node)
+          })
+
+        document
+          .querySelectorAll(`style[data-styils-ssr="${globalStyleSSRId}"]`)
+          .forEach((node: HTMLStyleElement) => {
+            styleGlobalHtml.push(node)
+          })
+      }
+    } else if (isBrowser) {
+      styleHtml.push(document.getElementById(styleSSRId) as HTMLStyleElement)
+      styleGlobalHtml.push(document.getElementById(globalStyleSSRId) as HTMLStyleElement)
+    }
+
     const selectorCacheString = metaHtml?.content ?? [...selectorCache].join(splitSymbol)
-    const extractHtml = `<meta id="${metaSelectorCacheId}" name="styils-cache" mode="${metaMode}" content="${selectorCacheString}">
-     <style id="${globalStyleSSRId}">${ssrGlobalData}</style>
-     <style id="${styleSSRId}">${ssrData}</style>`
+    const metaMode = metaHtml?.getAttribute('mode') || internalState.mode
+
+    const ssrGlobalData: string[] = sheet.ssrGlobalData.length
+      ? sheet.ssrGlobalData
+      : styleGlobalHtml.map((node) => node?.textContent ?? '')
+    const ssrData: string[] = sheet.ssrData.length
+      ? sheet.ssrData
+      : styleGlobalHtml.map((node) => node?.textContent ?? '')
+
+    let extractHtml = `<meta id="${metaSelectorCacheId}" name="styils-cache" mode="${metaMode}" content="${selectorCacheString}">`
+
+    if (process.env.NODE_ENV !== 'production') {
+      extractHtml += ssrGlobalData
+        .map((item) => `<style ${devIdent}="${globalStyleSSRId}">${item}</style>`)
+        .join('\n')
+      extractHtml += ssrData
+        .map((item) => `<style ${devIdent}="${styleSSRId}">${item}</style>`)
+        .join('\n')
+    } else {
+      extractHtml += `<style id="${globalStyleSSRId}">${ssrGlobalData.join('')}</style>
+      <style id="${styleSSRId}">${ssrData.join('')}</style>`
+    }
 
     const extractElement = inputExtractElement({
+      ...(process.env.NODE_ENV !== 'production' ? { devIdent } : {}),
       selectorCacheString,
       metaSelectorCacheId,
       globalStyleSSRId,

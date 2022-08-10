@@ -33,9 +33,10 @@ describe('solidjs system', () => {
     })
 
     const { container } = render(Dynamic({ component: Button }))
-
+    const { extractElement } = createExtracts()
     expect(container).toMatchSnapshot()
-    const { container: containerExtractElement } = render(() => createExtracts().extractElement)
+
+    const { container: containerExtractElement } = render(() => extractElement)
 
     expect(containerExtractElement).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
