@@ -6,7 +6,7 @@
   "errorCode": "Each setMove will create multiple almost identical CSS rules",
   "baseCode": {
     "1": "We can add namespce which may be useful when developing class libraries",
-    "2": ":Styles inside global will generate global styles",
+    "2": ":global will generate global styles",
     "3": "The default unit is px"
   },
   "globalCode": "Use in styled",
@@ -36,13 +36,13 @@
     "3": "Also, if using<strong>Typescript</strong>, prop definitions are updated when<strong>`as`</strong>props are added"
   },
   "withVariantsDesc": {
-    "1": "Style components are created with a<strong>variants</strong>attribute",
-    "2": "Dynamic interpolation replaces props props passing, because passing values through props will bring a large performance overhead, in addition, we may write the following code."
+    "1": "Style components have a <strong>variants</strong> property",
+    "2": "Dynamic interpolation replaces props passing, because passing values ​​through props will bring a lot of performance overhead, and we will write the following bad smelling code."
   },
   "withVarsDesc": {
     "1": "Variants are also valid, but stylistically discouraged",
     "2": "Here you need to display the units that should be added",
-    "3": "Style components are created with a <strong>vars</strong> attribute",
+    "3": "Created style components have a<strong>vars</strong>property",
     "4": "You can bind values dynamically, don't worry, it has almost no performance overhead"
   },
   "withThemeDesc": "<strong>Styils</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
