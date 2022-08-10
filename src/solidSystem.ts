@@ -104,26 +104,53 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
     ssrGlobalData,
     styleSSRId,
     ssrData,
-    metaMode
-  }: SystemExtractElement) => [
-    Dynamic({
-      component: 'meta',
-      id: metaSelectorCacheId,
-      name: 'styils-cache',
-      mode: metaMode,
-      content: selectorCacheString
-    }),
-    Dynamic({
-      component: 'style',
-      id: globalStyleSSRId,
-      children: ssrGlobalData
-    }),
-    Dynamic({
-      component: 'style',
-      id: styleSSRId,
-      children: ssrData
-    })
-  ]
+    metaMode,
+    devIdent
+  }: SystemExtractElement) => {
+    const element = [
+      Dynamic({
+        component: 'meta',
+        id: metaSelectorCacheId,
+        name: 'styils-cache',
+        mode: metaMode,
+        content: selectorCacheString
+      })
+    ]
+
+    if (process.env.NODE_ENV !== 'production') {
+      element.push(
+        ...ssrGlobalData.map((data) =>
+          Dynamic({
+            component: 'style',
+            [devIdent]: globalStyleSSRId,
+            children: data
+          })
+        ),
+        ...ssrData.map((data) =>
+          Dynamic({
+            component: 'style',
+            [devIdent]: styleSSRId,
+            children: data
+          })
+        )
+      )
+    } else {
+      element.push(
+        Dynamic({
+          component: 'style',
+          id: globalStyleSSRId,
+          children: ssrGlobalData.join('')
+        }),
+        Dynamic({
+          component: 'style',
+          id: styleSSRId,
+          children: ssrData.join('')
+        })
+      )
+    }
+
+    return element
+  }
 
   // Need to create a type and specify it, otherwise the type will be lost
   return {
