@@ -93,18 +93,14 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
             )
           ]
         : [
-            ...ssrGlobalData.map((data) =>
-              React.createElement('style', {
-                id: globalStyleSSRId,
-                dangerouslySetInnerHTML: { __html: data }
-              })
-            ),
-            ...ssrData.map((data) =>
-              React.createElement('style', {
-                id: styleSSRId,
-                dangerouslySetInnerHTML: { __html: data }
-              })
-            )
+            React.createElement('style', {
+              id: globalStyleSSRId,
+              dangerouslySetInnerHTML: { __html: ssrGlobalData.join('') }
+            }),
+            React.createElement('style', {
+              id: styleSSRId,
+              dangerouslySetInnerHTML: { __html: ssrData.join('') }
+            })
           ])
     )
 

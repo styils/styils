@@ -116,16 +116,17 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
         content: selectorCacheString
       })
     ]
+
     if (process.env.NODE_ENV !== 'production') {
-      element.concat(
-        ssrGlobalData.map((data) =>
+      element.push(
+        ...ssrGlobalData.map((data) =>
           Dynamic({
             component: 'style',
             [devIdent]: globalStyleSSRId,
             children: data
           })
         ),
-        ssrData.map((data) =>
+        ...ssrData.map((data) =>
           Dynamic({
             component: 'style',
             [devIdent]: styleSSRId,
@@ -134,21 +135,17 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
         )
       )
     } else {
-      element.concat(
-        ssrGlobalData.map((data) =>
-          Dynamic({
-            component: 'style',
-            id: globalStyleSSRId,
-            children: data
-          })
-        ),
-        ssrData.map((data) =>
-          Dynamic({
-            component: 'style',
-            id: styleSSRId,
-            children: data
-          })
-        )
+      element.push(
+        Dynamic({
+          component: 'style',
+          id: globalStyleSSRId,
+          children: ssrGlobalData.join('')
+        }),
+        Dynamic({
+          component: 'style',
+          id: styleSSRId,
+          children: ssrData.join('')
+        })
       )
     }
 

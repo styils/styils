@@ -901,4 +901,25 @@ describe('hydrate', () => {
     globalThis.document = document
     expect(createExtracts().extractHtml).toMatchSnapshot()
   })
+
+  it('production css content', () => {
+    const { styled: hydrateStyled, createExtracts } = createSystem()
+
+    hydrateStyled('div', {
+      backgroundColor: 'gainsboro',
+      borderRadius: '9999px'
+    })
+
+    hydrateStyled('div', {
+      backgroundColor: 'gainsboro',
+      borderRadius: '999px'
+    })
+    globalThis.document = document
+    process.env.NODE_ENV = 'production'
+    const { extractElement } = createExtracts()
+    const { container } = render(() => extractElement)
+
+    expect(container).toMatchSnapshot()
+    process.env.NODE_ENV = 'test'
+  })
 })

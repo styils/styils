@@ -78,6 +78,25 @@ exports[`hydrate namespace hydrate 2`] = `
 </html>
 `;
 
+exports[`hydrate production css content 1`] = `
+<div>
+  <meta
+    content="css-2242710476|css-3734128299"
+    id="styils-css-cache"
+    mode="none"
+    name="styils-cache"
+  />
+  <style
+    id="styils-css-ssr-global"
+  />
+  <style
+    id="styils-css-ssr"
+  >
+    .css-2242710476{background-color:gainsboro;border-radius:9999px;}.css-3734128299{background-color:gainsboro;border-radius:999px;}
+  </style>
+</div>
+`;
+
 exports[`hydrate render Element hydrate 1`] = `
 <div>
   <meta
