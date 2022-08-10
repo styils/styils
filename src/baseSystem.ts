@@ -253,20 +253,22 @@ export function createBaseSystem<
     if (process.env.NODE_ENV !== 'production') {
       if (isBrowser) {
         document
-          .querySelectorAll(`style[data-styils-ssr="${styleSSRId}"]`)
+          .querySelectorAll(`style[${devIdent}="${styleSSRId}"]`)
           .forEach((node: HTMLStyleElement) => {
             styleHtml.push(node)
           })
 
         document
-          .querySelectorAll(`style[data-styils-ssr="${globalStyleSSRId}"]`)
+          .querySelectorAll(`style[${devIdent}="${globalStyleSSRId}"]`)
           .forEach((node: HTMLStyleElement) => {
             styleGlobalHtml.push(node)
           })
       }
     } else if (isBrowser) {
-      styleHtml.push(document.getElementById(styleSSRId) as HTMLStyleElement)
-      styleGlobalHtml.push(document.getElementById(globalStyleSSRId) as HTMLStyleElement)
+      const styleGlobal = document.getElementById(globalStyleSSRId) as HTMLStyleElement
+      const style = document.getElementById(styleSSRId) as HTMLStyleElement
+      style && styleHtml.push(style)
+      styleGlobal && styleGlobalHtml.push(styleGlobal)
     }
 
     const selectorCacheString = metaHtml?.content ?? [...selectorCache].join(splitSymbol)
@@ -274,10 +276,10 @@ export function createBaseSystem<
 
     const ssrGlobalData: string[] = sheet.ssrGlobalData.length
       ? sheet.ssrGlobalData
-      : styleGlobalHtml.map((node) => node?.textContent ?? '')
+      : styleGlobalHtml.map((node) => node.textContent)
     const ssrData: string[] = sheet.ssrData.length
       ? sheet.ssrData
-      : styleGlobalHtml.map((node) => node?.textContent ?? '')
+      : styleHtml.map((node) => node.textContent)
 
     let extractHtml = `<meta id="${metaSelectorCacheId}" name="styils-cache" mode="${metaMode}" content="${selectorCacheString}">`
 
