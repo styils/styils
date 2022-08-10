@@ -234,8 +234,7 @@ const Button = styled('button', {
 render(<Button as="a" href="google.com"><Image/></Button>)
 `
 
-  const ssrBaseCode = `import React from 'react'
-import { createExtracts } from '@styils/[frame]'
+  const ssrBaseCode = `import { createExtracts } from '@styils/[frame]'
 // or import { createExtracts } from 'yours-path'
 
 const app = renderToString(
