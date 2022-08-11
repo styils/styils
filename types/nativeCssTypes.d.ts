@@ -3547,7 +3547,7 @@ export type Variable<Target, Var extends string = ''> = {
   [key in keyof Target]: Exclude<Target[key] | `$${Var}`, `$${Var}`> | OnlyString
 }
 
-export interface Properties<Var extends string>
+export interface Properties<Var extends string = ''>
   extends Variable<StandardProperties, Var>,
     Variable<SvgProperties, Var> {
   [key: string]: OnlyString | Properties<Var> | PseudosProperties<Var>
@@ -3556,7 +3556,7 @@ export interface Properties<Var extends string>
 export interface CSSAttribute<Var extends string = ''>
   extends Properties<Var>,
     PseudosProperties<Var> {
-  [key: string]: CSSAttribute<Var> | (number & {}) | (string & {})
+  [key: string]: CSSAttribute<Var> | OnlyNumber | OnlyString
 }
 
 export type SpecialProperties =

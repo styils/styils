@@ -162,7 +162,10 @@ export function renderButtonDark() {
 
 const ButtonCount = styled(
   'button',
-  {},
+  {
+    display: 'block' as any,
+    height: '$height'
+  },
   {
     disabled: {
       1: {
@@ -173,5 +176,12 @@ const ButtonCount = styled(
 )
 
 export function renderButtonCount() {
-  return <ButtonCount variants={{ disabled: 1 }} />
+  return (
+    <ButtonCount
+      variants={{ disabled: 1 }}
+      vars={{
+        height: 1
+      }}
+    />
+  )
 }
