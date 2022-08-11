@@ -80,7 +80,8 @@
     "peerDependencyRules": {
       "ignoreMissing": [
         "@babel/*",
-        "react-is/*"
+        "react-is/*",
+        "vite"
       ]
     }
   }

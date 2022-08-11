@@ -48,6 +48,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Setup Test
         run: pnpm run test
+      - name: Setup babel
+        run: pnpm run build:babel
       - name: build docs
         run: pnpm run build:doc
       - name: Install SSH Key
