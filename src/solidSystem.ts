@@ -56,7 +56,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       inputTag: BaseTag,
       createRule: () => void,
       computedVariants: (value: AnyObject) => string,
-      computedVars: (value: AnyObject) => void,
+      computedVars: (value: AnyObject) => AnyObject,
       targetInfo: TargetInfo
     ) =>
     (inputProps: AnyObject) => {
@@ -64,21 +64,23 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
         'as',
         'class',
         'variants',
-        'vars'
+        'vars',
+        'style'
       ])
 
       const { mode } = useSystem()
 
-      const classes = createMemo(() => {
+      const styles = createMemo(() => {
         if (mode?.() !== undefined) {
           createRule()
         }
 
-        computedVars(props.vars)
-
-        return `${props.class ? props.class + ' ' : ''}${
-          targetInfo.targetClassName
-        }${computedVariants(props.variants)}`
+        return {
+          classes: `${props.class ? props.class + ' ' : ''}${
+            targetInfo.targetClassName
+          }${computedVariants(props.variants)}`,
+          style: computedVars(props.vars)
+        }
       })
 
       return Dynamic({
@@ -86,7 +88,10 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
           return props.as
         },
         get class() {
-          return classes()
+          return styles().classes
+        },
+        get style() {
+          return { ...styles().style, ...props.style }
         },
         ...rest
       })

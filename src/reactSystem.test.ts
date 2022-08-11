@@ -15,7 +15,6 @@ describe('reactjs system', () => {
   beforeEach(() => {
     flush()
     globalThis.document = document
-    document.documentElement.removeAttribute('style')
   })
   it('styled', () => {
     const Button = styled('button', {
@@ -59,9 +58,9 @@ describe('reactjs system', () => {
       })
     )
 
-    expect(document.documentElement).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
     fireEvent.click(getByText(container, 'red'))
-    expect(document.documentElement).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('styled multiple Variants', () => {
