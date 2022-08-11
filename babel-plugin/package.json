@@ -18,7 +18,7 @@
     "babel-plugin",
     "styils",
     "styils-plugin",
-    "styils-bable-plugin",
+    "styils-babel-plugin",
     "source-map"
   ],
   "author": "zoy-l <zoy-l@outlook.com>",
@@ -39,5 +39,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/styils/styils"
+  },
+  "peerDependencies": {
+    "@babel/core": ">=7.0.0"
   }
 }
