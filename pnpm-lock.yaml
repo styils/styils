@@ -21,7 +21,7 @@ importers:
       '@types/shelljs': ^0.8.11
       '@typescript-eslint/eslint-plugin': ^5.30.6
       '@typescript-eslint/parser': ^5.30.6
-      build-easy: ^2.2.1
+      build-easy: ^2.2.3
       csstype: ^3.1.0
       esbuild: ^0.14.49
       esbuild-register: ^3.3.3
@@ -64,7 +64,7 @@ importers:
       '@types/shelljs': 0.8.11
       '@typescript-eslint/eslint-plugin': 5.32.0_iosr3hrei2tubxveewluhu5lhy
       '@typescript-eslint/parser': 5.32.0_qugx7qdu5zevzvxaiqyxfiwquq
-      build-easy: 2.2.1_typescript@4.7.4
+      build-easy: 2.2.3_typescript@4.7.4
       csstype: 3.1.0
       esbuild: 0.14.51
       esbuild-register: 3.3.3_esbuild@0.14.51
@@ -90,7 +90,7 @@ importers:
       typescript: 4.7.4
       vite: 3.0.4
 
-  babel:
+  babel-plugin:
     specifiers:
       '@babel/core': ^7.18.9
       '@babel/helper-plugin-utils': ^7.18.9
@@ -145,7 +145,7 @@ importers:
       react-router-dom: 6.3.0_sfoxds7t5ydpegc3knd667wn6m
       styled-components: 5.3.5_fane7jikarojcev26y27hpbhu4
     devDependencies:
-      '@styils/babel-plugin': link:../babel
+      '@styils/babel-plugin': link:../babel-plugin
       '@types/fs-extra': 9.0.13
       '@types/prismjs': 1.26.0
       '@types/styled-components': 5.1.25
@@ -162,6 +162,12 @@ importers:
     devDependencies:
       '@styils/babel-plugin': 1.0.6
       vite-plugin-solid: 2.3.0_solid-js@1.4.8
+
+  vite-plugin:
+    specifiers:
+      '@styils/babel-plugin': workspace:*
+    dependencies:
+      '@styils/babel-plugin': link:../babel-plugin
 
 packages:
 
@@ -2468,8 +2474,8 @@ packages:
       ieee754: 1.2.1
     dev: true
 
-  /build-easy/2.2.1_typescript@4.7.4:
-    resolution: {integrity: sha512-4WMKNuLDRpdwHrJBy82phN0GcPlSrVAHqOvk9h5NI/bOxvLta8jL8i7MXxT1fS0HJaODt6uUbfZibPs6CSLO0Q==}
+  /build-easy/2.2.3_typescript@4.7.4:
+    resolution: {integrity: sha512-c8zrbdAP5DKMlkNDNPgLsNh5mjZUKvDW3P2uOV7wTFL82pt2ZD0DdF4xqZKcUvWKuvit75JFJJjc5egPlVg58Q==}
     hasBin: true
     peerDependencies:
       typescript: '>=4.0.0'
@@ -2654,8 +2660,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2

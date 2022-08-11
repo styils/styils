@@ -7,9 +7,7 @@
   "module": "lib/esm/index.esm.js",
   "scripts": {
     "test": "jest-easy",
-    "test:coverage": "jest-easy --coverage",
-    "build": "build-easy",
-    "build:watch": "build-easy -w"
+    "test:coverage": "jest-easy --coverage"
   },
   "files": [
     "lib",

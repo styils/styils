@@ -1,3 +1,4 @@
+import type {} from '@babel/types'
 export interface Options {
   identifier?: {
     styled?: string

@@ -1,0 +1,14 @@
+{
+  "name": "@styils/vite-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "types": "types.d.ts",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.esm.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@styils/babel-plugin": "workspace:*"
+  }
+}

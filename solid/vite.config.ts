@@ -1,6 +1,5 @@
 import { transformSync } from '@babel/core'
 import { Options } from '@styils/babel-plugin'
-import path from 'path'
 import { PluginOption, defineConfig } from 'vite'
 import solidPlugin from 'vite-plugin-solid'
 
@@ -19,7 +18,8 @@ export default defineConfig({
         const filePath = parseId(id)
 
         if (!/node_modules/.test(filePath) && /(j|t)sx?$/.test(filePath)) {
-          const filename = filePath.replace(path.join(process.cwd(), 'src'), '')
+          const filename = filePath.replace(process.cwd(), '')
+
           const fileResult = transformSync(code, {
             plugins: [
               [
