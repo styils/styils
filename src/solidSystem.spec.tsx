@@ -99,7 +99,9 @@ export function renderButtonDark() {
 
 const ButtonCount = styled(
   'button',
-  {},
+  {
+    backgroundColor: 'activetext'
+  },
   {
     disabled: {
       1: {

@@ -205,6 +205,11 @@ async function run() {
       json.unpkg = 'index.prod.esm.js'
       json.jsdelivr = 'index.prod.esm.js'
       delete json.exports['./global']
+      json.peerDependencies = { 'solid-js': '>=1.4.0' }
+    }
+
+    if (/react/.test(name)) {
+      json.peerDependencies = { react: '>=16.8.0' }
     }
 
     fs.writeFileSync(
@@ -220,6 +225,9 @@ async function run() {
 
     const README = fs.readFileSync(path.join(cwd, 'README.md'))
     const READMEEN = fs.readFileSync(path.join(cwd, 'README.ZH.md'))
+    const LICENSE = fs.readFileSync(path.join(cwd, 'LICENSE'))
+
+    fs.writeFileSync(path.join(cwd, 'dist', name, 'LICENSE'), LICENSE)
 
     fs.writeFileSync(path.join(cwd, 'dist', name, 'README.md'), README)
 

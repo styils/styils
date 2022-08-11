@@ -3550,7 +3550,7 @@ export type Variable<Target, Var extends string = ''> = {
 export interface Properties<Var extends string = ''>
   extends Variable<StandardProperties, Var>,
     Variable<SvgProperties, Var> {
-  [key: string]: OnlyString | Properties<Var> | PseudosProperties<Var>
+  [key: string]: OnlyString | OnlyNumber | Properties<Var> | PseudosProperties<Var>
 }
 
 export interface CSSAttribute<Var extends string = ''>
