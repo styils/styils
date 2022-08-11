@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-Lightweight and fast css-in-js solution. Support for topics, polymorphism, SSR, Sourcemap, full type definitions
+Lightweight and fast css-in-js solution. Support for topics, Polymorphism, SSR, Sourcemap, Full type definitions
 </p>
 
 [Documentation](https://styils.github.io/styils) [Bench](https://styils.github.io/styils/benchmark/create-and-mount-button/stitches-react)

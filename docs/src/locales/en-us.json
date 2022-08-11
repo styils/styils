@@ -10,7 +10,7 @@
     "3": "The default unit is px"
   },
   "globalCode": "Use in styled",
-  "slogan": "Lightweight and fast css-in-js solution with near zero runtime. Support Themes、SSR、Sourcemap",
+  "slogan": "Lightweight and fast css-in-js solution. Support for topics, Polymorphism, SSR, Sourcemap, Full type definitions",
   "quick": "Quick Start",
   "github": "View on Github",
   "plan": "Planning",
