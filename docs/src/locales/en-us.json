@@ -43,7 +43,8 @@
     "1": "Variants are also valid, but stylistically discouraged",
     "2": "Here you need to display the units that should be added",
     "3": "Created style components have a<strong>vars</strong>property",
-    "4": "You can bind values dynamically, don't worry, it has almost no performance overhead"
+    "4": "You can bind values dynamically, don't worry, it has almost no performance overhead",
+    "5": "Note: Not supported in global styles like <strong>:global @at-rules</strong> etc."
   },
   "withThemeDesc": "<strong>Styils</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
   "withSSRDesc": {

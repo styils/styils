@@ -44,13 +44,14 @@
     "1": "<strong>Styils</strong>支持<strong>ssr</strong>并且很容易集成在常用框架中",
     "2": "如果使用主题<strong>createExtracts</strong>应该从<strong>createSystem</strong>导出",
     "3": "查看示例:<a href='https://github.com/styils/styils-examples/tree/main'>示例</a>",
-    "4": "不是用框架,<strong>createExtracts</strong>返回的对象里有一个<strong>extractHtml</strong>属性, 它返回字符串把它加入到<strong>html</strong>中即可"
+    "4": "不是用框架，<strong>createExtracts</strong>返回的对象里有一个<strong>extractHtml</strong>属性，它返回字符串把它加入到<strong>html</strong>中即可"
   },
   "withVarsDesc": {
     "1": "在变体中也是有效的，但在风格上不建议这样做",
     "2": "这里需要显式添加相应的单位",
     "3": "创建的样式组件都带有一个<strong>vars</strong>属性",
-    "4": "可以通过动态绑定值，不需要担心，它几乎没有性能开销"
+    "4": "可以通过动态绑定值，不需要担心，它几乎没有性能开销",
+    "5": "注意: 在全局样式中不受支持，例如<strong>:global @at-rules</strong>等等"
   },
   "withKeyframesDesc": "<strong>Styils</strong>提供两种方式定义, 任你喜欢。",
   "withGlobalDesc": "<strong>Styils</strong>提供两种方式定义, 任你喜欢。",
