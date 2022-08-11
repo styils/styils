@@ -8,7 +8,7 @@ function parseId(id: string) {
   return id.slice(0, index)
 }
 
-export default (options: Options) => {
+export default (options: Options): PluginOption => {
   const cwd = process.cwd()
   return {
     name: '@styils/vite-plugin',
@@ -27,10 +27,10 @@ export default (options: Options) => {
           filename
         })
 
-        return fileResult || code
+        return fileResult.code || code
       }
 
       return code
     }
-  } as PluginOption
+  }
 }

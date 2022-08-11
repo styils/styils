@@ -7,7 +7,7 @@ import packageTemp from './package.temp.json'
 const args = process.argv.slice(2)[0].slice(1)
 
 async function publish(args: string) {
-  let command = 'npm publish'
+  let command = 'pnpm publish'
   let version = ''
   let tag = ''
   let type = ''
@@ -44,8 +44,11 @@ async function publish(args: string) {
     case 'solid':
       targetPath.push(path.join(__dirname, '..', 'dist', type))
       break
-    case 'babel':
-      targetPath.push(path.join(__dirname, '..', 'babel'))
+    case 'plugin':
+      targetPath.push(
+        path.join(__dirname, '..', 'babel-plugin'),
+        path.join(__dirname, '..', 'vite-plugin')
+      )
       break
     case 'all':
       // eslint-disable-next-line @typescript-eslint/no-extra-semi
@@ -58,24 +61,24 @@ async function publish(args: string) {
       process.exit(1)
   }
 
-  if (type !== 'babel') {
+  if (type !== 'plugin') {
     packageTemp.version = `${version}${tag}`
 
     fs.writeFileSync(path.join(__dirname, 'package.temp.json'), JSON.stringify(packageTemp))
     shell.exec('pnpm run build')
   } else {
     // eslint-disable-next-line global-require
-    const packageBabelJson = require('../babel/package.json')
+    const packageBabelJson = require('../babel-plugin/package.json')
 
     packageBabelJson.version = `${version}${tag}`
 
     fs.writeFileSync(
-      path.join(__dirname, '..', 'babel', 'package.json'),
+      path.join(__dirname, '..', 'babel-plugin', 'package.json'),
       format(JSON.stringify(packageBabelJson), { parser: 'json' })
     )
 
     // eslint-disable-next-line global-require
-    const packageViteJson = require('../babel/package.json')
+    const packageViteJson = require('../vite-plugin/package.json')
 
     packageViteJson.version = `${version}${tag}`
 
@@ -87,7 +90,15 @@ async function publish(args: string) {
     shell.exec('pnpm run build:plugin')
 
     fs.writeFileSync(
-      path.join(__dirname, '..', 'babel', '.npmrc'),
+      path.join(__dirname, '..', 'babel-plugin', '.npmrc'),
+      `registry=https://registry.npmjs.org/
+//registry.npmjs.org/:always-auth=true
+//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}
+`
+    )
+
+    fs.writeFileSync(
+      path.join(__dirname, '..', 'vite-plugin', '.npmrc'),
       `registry=https://registry.npmjs.org/
 //registry.npmjs.org/:always-auth=true
 //registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}

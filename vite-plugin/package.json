@@ -1,6 +1,6 @@
 {
   "name": "@styils/vite-plugin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "vite plugin styils",
   "types": "types.d.ts",
   "main": "lib/cjs/index.js",
