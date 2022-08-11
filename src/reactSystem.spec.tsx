@@ -86,7 +86,8 @@ export function asButton() {
       key={1}
       vars={{
         height: 1,
-        width: 2,
+        width1: 2,
+        // @ts-expect-error test
         foo: 2
       }}
       as="button"

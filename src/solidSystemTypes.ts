@@ -1,7 +1,6 @@
 import type { JSX, ComponentProps, Accessor } from 'solid-js'
 import type { AnyObject, Widen } from './types'
-import { CSSAttribute } from 'nativeCssTypes'
-import { StyleInterpolation } from './baseSystemTypes'
+import { StyleInterpolation, Styles } from './baseSystemTypes'
 
 export type UseSystem<Theme> = () => {
   mode: Accessor<string>
@@ -17,33 +16,40 @@ export type NativeComponent = keyof JSX.IntrinsicElements | ((...props: any[]) =
 
 type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R } ? R : P) : P
 
-type StyledProps<As extends NativeComponent, Variants> = Omit<ComponentProps<As>, 'ref'> & {
+type StyledProps<As extends NativeComponent, Variants, Vars extends string> = Omit<
+  ComponentProps<As>,
+  'ref'
+> & {
   ref?: PropsWithRef<ComponentProps<As>>
 } & {
-  as?: As extends StyledComponent<infer A, AnyObject> ? A : As
+  as?: As extends StyledComponent<infer A, AnyObject, any> ? A : As
   variants?: {
     [key in keyof Variants]?: Widen<Variants[key]>
   }
-  vars?: AnyObject
+  vars?: {
+    [key in Vars]?: string | number
+  }
 }
 
-type StyledComponent<Component extends NativeComponent, Variants> = <
+type StyledComponent<Component extends NativeComponent, Variants, Vars extends string> = <
   As extends NativeComponent = Component
 >(
-  props: StyledProps<As, Variants>
+  props: StyledProps<As, Variants, Vars>
 ) => JSX.Element
 
 export interface Styled<Theme> {
   <
     Component extends NativeComponent,
     VariantsKey extends PropertyKey = '',
-    VariantsValue extends PropertyKey = ''
+    VariantsValue extends PropertyKey = '',
+    Vars extends string = ''
   >(
     component: Component | { tag: Component; namespace?: string },
-    styles: CSSAttribute | ((props: Theme, mode: string) => CSSAttribute),
-    interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue>
+    styles: Styles<Theme, Vars>,
+    interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Vars>
   ): StyledComponent<
     Component,
-    { [key in VariantsKey as '' extends key ? never : key]: VariantsValue }
+    { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
+    Vars
   >
 }

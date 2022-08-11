@@ -16,6 +16,7 @@ describe('solidjs system', () => {
   beforeEach(() => {
     flush()
     globalThis.document = document
+    document.documentElement.removeAttribute('style')
   })
   it('styled', () => {
     const Button = styled('button', {
