@@ -319,25 +319,51 @@ exports[`reactjs system styled production 1`] = `
 `;
 
 exports[`reactjs system styled with css state 1`] = `
-<div>
-  <button
-    class="css-916201087"
-    style="--css-916201087-bg: red;"
-  >
-    red
-  </button>
-</div>
+<html
+  style="--css-916201087-bg: red;"
+>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916201087{background-color:var(--css-916201087-bg);}
+    </style>
+  </head>
+  <body>
+    <div>
+      <button
+        class="css-916201087"
+      >
+        red
+      </button>
+    </div>
+  </body>
+</html>
 `;
 
 exports[`reactjs system styled with css state 2`] = `
-<div>
-  <button
-    class="css-916201087"
-    style="--css-916201087-bg: blue;"
-  >
-    blue
-  </button>
-</div>
+<html
+  style="--css-916201087-bg: blue;"
+>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916201087{background-color:var(--css-916201087-bg);}
+    </style>
+  </head>
+  <body>
+    <div>
+      <button
+        class="css-916201087"
+      >
+        blue
+      </button>
+    </div>
+  </body>
+</html>
 `;
 
 exports[`reactjs system styled with sourceMap 1`] = `

@@ -63,17 +63,21 @@ describe('base system', () => {
       {},
       () => {},
       (...props: any) => {
-        expect(
-          props[3]({
-            height: 1,
-            width: 2
-          })
-        ).toEqual({ '--css-11-height': 1, '--css-11-width': 2 })
+        props[3]({
+          height: 1,
+          width: 2
+        })
         return {}
       },
       () => {}
     )
 
     styled('', {})
+
+    expect(document.documentElement.style[0]).toEqual('--css-11-height')
+    expect(document.documentElement.style[1]).toEqual('--css-11-width')
+
+    expect(document.documentElement.style.getPropertyValue('--css-11-height')).toEqual('1')
+    expect(document.documentElement.style.getPropertyValue('--css-11-width')).toEqual('2')
   })
 })

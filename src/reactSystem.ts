@@ -37,22 +37,23 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
     inputTag: BaseTag,
     createRule: () => void,
     computedVariants: (value: AnyObject) => string,
-    computedVars: (value: AnyObject) => AnyObject,
+    computedVars: (value: AnyObject) => void,
     targetInfo: TargetInfo
   ) =>
     React.forwardRef<HTMLElement, AnyObject>((props, ref) => {
-      const { as = inputTag, className, variants, vars, style, ...rest } = props
+      const { as = inputTag, className, variants, vars, ...rest } = props
       const { mode } = useSystem()
 
       if (mode !== undefined) {
         createRule()
       }
 
+      computedVars(vars)
+
       return React.createElement(as, {
         className: `${className ? className + ' ' : ''}${
           targetInfo.targetClassName
         }${computedVariants(variants)}`,
-        style: { ...computedVars(vars), ...style },
         ref,
         ...rest
       })

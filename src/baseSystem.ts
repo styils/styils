@@ -205,17 +205,16 @@ export function createBaseSystem<
     }
 
     function computedVars(vars: AnyObject) {
-      const style = {}
-
       if (vars) {
         const keys = Object.keys(vars)
         for (let i = 0; i < keys.length; i++) {
           const key = keys[i]
-          style[`--${targetInfo.targetClassName}-${key}`] = vars[key]
+          const styleName = `--${targetInfo.targetClassName}-${key}`
+          if (document.documentElement.style.getPropertyValue(styleName) !== vars[key]) {
+            document.documentElement.style.setProperty(styleName, vars[key])
+          }
         }
       }
-
-      return style
     }
 
     createRule()
