@@ -60,4 +60,16 @@ describe('vite plugin', () => {
 
     expect(/sourceMap/.test(code)).toEqual(false)
   })
+
+  it('not babel code', async () => {
+    const plugin = styilsPlugin() as Test
+
+    const code = await plugin.transform(
+      `
+    `,
+      'src/index.ts?test=1'
+    )
+
+    expect(/sourceMap/.test(code)).toEqual(false)
+  })
 })
