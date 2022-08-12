@@ -5,7 +5,7 @@ import App from './App'
 import './codeTheme.css'
 import { SystemProvider } from './theme'
 
-ReactDOM.render(
+ReactDOM[process.env.NODE_ENV === 'production' ? 'hydrate' : 'render'](
   <SystemProvider>
     <BrowserRouter>
       <App />
