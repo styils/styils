@@ -2,4 +2,5 @@ packages:
   - 'docs'
   - 'babel-plugin'
   - 'solid'
+  - 'vue'
   - 'vite-plugin'
