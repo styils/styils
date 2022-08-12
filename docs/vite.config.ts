@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite'
-import { styils } from '@styils/vite-plugin'
+import styils from '@styils/vite-plugin'
 import path from 'path'
 import react from '@vitejs/plugin-react'
+
+console.log(styils)
 
 // https://vitejs.dev/config/
 export default defineConfig({

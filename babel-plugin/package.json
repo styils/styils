@@ -2,8 +2,17 @@
   "name": "@styils/babel-plugin",
   "version": "1.0.1",
   "description": "babel plugin styils",
-  "types": "lib/index.d.ts",
-  "main": "lib/index.js",
+  "types": "types.d.ts",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": {
+        "node": "./dist/index.mjs",
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
   "scripts": {
     "test": "jest-easy",
     "test:coverage": "jest-easy --coverage"

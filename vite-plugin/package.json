@@ -2,8 +2,18 @@
   "name": "@styils/vite-plugin",
   "version": "0.0.1",
   "description": "vite plugin styils",
-  "types": "lib/index.d.ts",
-  "main": "lib/index.js",
+  "types": "types.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": {
+        "node": "./dist/index.mjs",
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
   "files": [
     "lib"
   ],

@@ -1,8 +1,9 @@
 import { transformSync } from '@babel/core'
-import { Options } from '@styils/babel-plugin'
+import type { Options } from '@styils/babel-plugin'
 import { PluginOption } from 'vite'
+import { createRequire } from 'module'
 
-export * from '@styils/babel-plugin'
+const require = createRequire(import.meta.url)
 
 function parseId(id: string) {
   const index = id.indexOf('?')
@@ -10,7 +11,7 @@ function parseId(id: string) {
   return id.slice(0, index)
 }
 
-export const styils = (options?: Options): PluginOption => {
+export default (options?: Options): PluginOption => {
   const cwd = process.cwd()
   return {
     name: '@styils/vite-plugin',

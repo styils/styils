@@ -2,17 +2,7 @@ import { type NodePath, type PluginPass } from '@babel/core'
 import { declare } from '@babel/helper-plugin-utils'
 import addSourceMaps from './sourceMap'
 import { extname } from 'path'
-import type {} from '@babel/types'
-
-export interface Options {
-  identifier?: {
-    styled?: string
-    createGlobal?: string
-  }
-  importPaths?: string | RegExp
-  sourceFileName?: string
-  sourceRoot?: string
-}
+import type { Options } from '../types'
 
 export interface State extends PluginPass {
   opts: Options
