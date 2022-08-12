@@ -1,7 +1,18 @@
 import { type NodePath, type PluginPass } from '@babel/core'
 import { declare } from '@babel/helper-plugin-utils'
 import addSourceMaps from './sourceMap'
-import type { Options } from '../types'
+import { extname } from 'path'
+import type {} from '@babel/types'
+
+export interface Options {
+  identifier?: {
+    styled?: string
+    createGlobal?: string
+  }
+  importPaths?: string | RegExp
+  sourceFileName?: string
+  sourceRoot?: string
+}
 
 export interface State extends PluginPass {
   opts: Options
@@ -51,6 +62,12 @@ export default declare((api) => {
             typeof importPaths === 'string'
               ? importPaths === path.node.source.value
               : importPaths.test(path.node.source.value)
+
+          const ext = extname(path.node.source.value)
+
+          if (ext !== '.js' && ext !== '.ts' && ext && isImport) {
+            console.log(`styils-plugin wrong match: ${path.node.source.value}`)
+          }
 
           if (isImport) {
             readyImport = path.node.specifiers.some((childNode) => {

@@ -1,4 +1,4 @@
-import styilsPlugin from '.'
+import { styils as styilsPlugin } from '.'
 
 type Test = {
   transform: (code: string, id: string) => Promise<string>

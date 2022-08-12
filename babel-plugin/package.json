@@ -2,16 +2,14 @@
   "name": "@styils/babel-plugin",
   "version": "1.0.1",
   "description": "babel plugin styils",
-  "types": "types.d.ts",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.esm.js",
+  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest-easy",
     "test:coverage": "jest-easy --coverage"
   },
   "files": [
-    "lib",
-    "types.d.ts"
+    "lib"
   ],
   "keywords": [
     "babel",

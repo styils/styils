@@ -180,4 +180,24 @@ describe('transform api', () => {
 
     expect(res).toMatchSnapshot()
   })
+
+  it('wrong match', () => {
+    const code = `
+    import Svg from '../theme.svg'
+
+    if (true){
+      Svg({
+        color:'red'
+      })
+    }
+    `
+
+    console.log = jest.fn()
+
+    transformSync(code, {
+      plugins: [[plugin, { sourceFileName: 'test.js', importPaths: /theme/ }]]
+    })?.code
+
+    expect(console.log).toHaveBeenCalledWith('styils-plugin wrong match: ../theme.svg')
+  })
 })

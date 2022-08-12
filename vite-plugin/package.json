@@ -2,9 +2,8 @@
   "name": "@styils/vite-plugin",
   "version": "0.0.1",
   "description": "vite plugin styils",
-  "types": "types.d.ts",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.esm.js",
+  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
   "files": [
     "lib"
   ],
