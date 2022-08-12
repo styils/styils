@@ -15,7 +15,8 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "types.d.ts"
   ],
   "keywords": [
     "babel",

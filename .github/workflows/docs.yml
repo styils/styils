@@ -47,7 +47,7 @@ jobs:
       - name: Setup install
         run: pnpm install --frozen-lockfile
 
-      - name: Setup plugin
+      - name: Setup build plugin
         run: pnpm run build:plugin
 
       - name: Setup test
