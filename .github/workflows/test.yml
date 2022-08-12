@@ -44,6 +44,9 @@ jobs:
       - name: Setup install
         run: pnpm install --frozen-lockfile
 
+      - name: Setup build
+        run: pnpm run build:plugin
+
       - run: pnpm run test
         env:
           CI: true
