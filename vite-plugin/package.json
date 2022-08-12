@@ -1,0 +1,45 @@
+{
+  "name": "@styils/vite-plugin",
+  "version": "0.0.1",
+  "description": "vite plugin styils",
+  "types": "types.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": {
+        "node": "./dist/index.mjs",
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "babel",
+    "babel-plugin",
+    "vite-plugin",
+    "vite-plugin-styils",
+    "styils",
+    "styils-plugin",
+    "styils-babel-plugin",
+    "source-map"
+  ],
+  "author": "zoy-l <zoy-l@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@styils/babel-plugin": "workspace:*"
+  },
+  "homepage": "https://github.com/styils/styils",
+  "bugs": "https://github.com/styils/styils/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/styils/styils"
+  },
+  "peerDependencies": {
+    "@babel/core": ">=7.0.0",
+    "vite": ">=2.0.0"
+  }
+}
