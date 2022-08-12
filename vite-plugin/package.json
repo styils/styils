@@ -15,7 +15,7 @@
     }
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "keywords": [
     "babel",
