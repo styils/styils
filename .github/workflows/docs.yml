@@ -46,12 +46,16 @@ jobs:
 
       - name: Setup install
         run: pnpm install --frozen-lockfile
-      - name: Setup Test
+
+      - name: Setup plugin
+        run: pnpm run build:plugin
+
+      - name: Setup test
         run: pnpm run test
-      - name: Setup babel
-        run: pnpm run build:babel
+
       - name: build docs
         run: pnpm run build:doc
+
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
         with:

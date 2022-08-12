@@ -13,10 +13,6 @@
       }
     }
   },
-  "scripts": {
-    "test": "jest-easy",
-    "test:coverage": "jest-easy --coverage"
-  },
   "files": [
     "dist"
   ],
