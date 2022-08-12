@@ -8,7 +8,7 @@ function parseId(id: string) {
   return id.slice(0, index)
 }
 
-export default (options: Options): PluginOption => {
+export default (options?: Options): PluginOption => {
   const cwd = process.cwd()
   return {
     name: '@styils/vite-plugin',
@@ -23,7 +23,7 @@ export default (options: Options): PluginOption => {
       ) {
         const filename = filePath.replace(cwd, '')
         const fileResult = transformSync(code, {
-          plugins: [['@styils', options]],
+          plugins: [[require.resolve('@styils/babel-plugin'), options]],
           filename
         })
 
