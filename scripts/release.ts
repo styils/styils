@@ -65,7 +65,6 @@ async function publish(args: string) {
     packageTemp.version = `${version}${tag}`
 
     fs.writeFileSync(path.join(__dirname, 'package.temp.json'), JSON.stringify(packageTemp))
-    shell.exec('pnpm run build')
   } else {
     // eslint-disable-next-line global-require
     const packageBabelJson = require('../babel-plugin/package.json')
@@ -86,8 +85,6 @@ async function publish(args: string) {
       path.join(__dirname, '..', 'vite-plugin', 'package.json'),
       format(JSON.stringify(packageViteJson), { parser: 'json' })
     )
-
-    shell.exec('pnpm run build:plugin')
 
     fs.writeFileSync(
       path.join(__dirname, '..', 'babel-plugin', '.npmrc'),
