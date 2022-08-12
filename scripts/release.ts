@@ -105,7 +105,7 @@ async function publish(args: string) {
 
   try {
     targetPath.forEach((p) => {
-      shell.exec(`cd ${p}&&${command}`)
+      shell.exec(`cd ${p}&&${command} --no-git-checks`)
     })
   } catch (err) {
     console.log(err?.message)
