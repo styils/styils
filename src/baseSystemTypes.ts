@@ -36,7 +36,7 @@ export interface SystemExtractElement {
   styleSSRId: string
   ssrData: string[]
   metaMode: string
-  devIdent?: string
+  devIdent: string
 }
 
 export type BaseTag = unknown | { tag: unknown; namespace?: string }

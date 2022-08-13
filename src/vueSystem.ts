@@ -1,5 +1,3 @@
-/* @jsxImportSource @vue/runtime-dom */
-
 import { inject, defineComponent, provide, ref, toRefs, h, computed, Fragment } from 'vue'
 import { createBaseSystem } from './baseSystem'
 import { BaseTag, SystemExtractElement, SystemOptions, TargetInfo } from './baseSystemTypes'
@@ -14,7 +12,11 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       mode: string
       setMode: (mode: string) => void
       theme: Theme
-    }>(themeContent)
+    }>(
+      themeContent,
+      // @ts-expect-error no value initially
+      {}
+    )
 
   const SystemProvider = (providerOptions: { mode: string; theme: Theme }) =>
     defineComponent({
@@ -44,8 +46,9 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
     targetInfo: TargetInfo
   ) =>
     defineComponent({
-      setup(props: AnyObject) {
-        const { as = inputTag, class: className, variants, vars, style, ...rest } = toRefs(props)
+      props: ['variants', 'class', 'as', 'vars', 'style'],
+      setup(props: AnyObject, { slots }) {
+        const { as, class: className, variants, vars, style } = toRefs(props)
 
         const { mode } = useSystem()
 
@@ -55,18 +58,22 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
           }
 
           return {
-            classes: `${className ? className + ' ' : ''}${
+            classes: `${className.value ? className.value + ' ' : ''}${
               targetInfo.targetClassName
-            }${computedVariants(variants)}`,
-            style: computedVars(vars)
+            }${computedVariants(variants.value)}`,
+            style: computedVars(vars.value)
           }
         })
 
-        return h(as, {
-          class: styles.value.classes,
-          style: { ...styles.value.style, ...style },
-          ...rest
-        })
+        return () =>
+          h(
+            as.value || inputTag,
+            {
+              class: styles.value.classes,
+              style: { ...styles.value.style, ...style.value }
+            },
+            slots.default()
+          )
       }
     })
 

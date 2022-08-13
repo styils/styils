@@ -1,19 +1,47 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import { styled } from '../../src/vueSystem'
+import { ref } from 'vue'
+
+const Button = styled(
+  'button',
+  {},
+  {
+    size: {
+      max: {
+        color: 'blue'
+      },
+      small: {
+        color: 'yellow'
+      }
+    }
+  }
+)
+
+const count = ref(0)
+const type = ref('max')
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <Button :variants="{ size: type }" @click="type = type === 'max' ? 'small' : 'max'">hello</Button>
+  <div class="card">
+    <button type="button" @click="count++" ref="">count is {{ count }}</button>
+    <p>
+      Edit
+      <code>components/HelloWorld.vue</code> to test HMR
+    </p>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+
+  <p>
+    Check out
+    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank">create-vue</a>, the
+    official Vue + Vite starter
+  </p>
+  <p>
+    Install
+    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
+    in your IDE for a better DX
+  </p>
+  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
 </template>
 
 <style scoped>
