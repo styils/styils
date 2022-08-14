@@ -8,18 +8,24 @@ export type UseSystem<Theme> = () => {
   theme: Theme
 }
 
+export type JSX = {
+  [K in keyof JSX.IntrinsicElements as string extends K ? never : K]: JSX.IntrinsicElements[K]
+}
+
 export type Provider = (props: { children: VNode }) => VNode
 
 export type ExtractElement = VNode
 
-export type NativeComponent = keyof JSX.IntrinsicElements | DefineComponent
+export type NativeComponent = keyof JSX | DefineComponent
 
-type StyledProps<As extends NativeComponent, Variants, Vars extends string> = Omit<
-  ComponentProps<As>,
-  'ref'
-> & {
+export type ComponentProps<T> = T extends keyof JSX
+  ? JSX[T]
+  : T extends DefineComponent<infer Props, any, any, any, any, any, any, any, any, any, any, any>
+  ? Props
+  : {}
+
+type StyledProps<As extends NativeComponent, Variants, Vars extends string> = ComponentProps<As> & {
   ref?: VNodeRef
-} & {
   as?: As extends StyledComponent<infer A, AnyObject, any> ? A : As
   variants?: {
     [key in keyof Variants]?: Widen<Variants[key]>

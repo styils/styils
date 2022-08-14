@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { styled } from '../../src/vueSystem'
+import { styled } from '@styils/vue'
 import { ref } from 'vue'
 
 const Button = styled(
@@ -18,7 +18,7 @@ const Button = styled(
 )
 
 const count = ref(0)
-const type = ref('max')
+const type = ref<'max' | 'small'>('max')
 </script>
 
 <template>

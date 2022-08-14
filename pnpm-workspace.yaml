@@ -1,6 +1,5 @@
 packages:
   - 'docs'
   - 'babel-plugin'
-  - 'solid'
-  - 'vue'
+  - 'examples'
   - 'vite-plugin'

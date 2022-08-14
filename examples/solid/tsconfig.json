@@ -1,12 +1,12 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "types": ["solid-js"],
     "baseUrl": ".",
     "paths": {
-      "nativeCssTypes": ["../types/nativeCssTypes.d.ts"]
+      "nativeCssTypes": ["../../types/nativeCssTypes.d.ts"]
     }
   },
   "include": ["src"]

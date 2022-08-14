@@ -36,7 +36,7 @@
       }
     },
     {
-      "files": ["*.tsx", "*.jsx"],
+      "files": ["docs/**/*.tsx", "docs/**/*.jsx"],
       "extends": ["iroot/react"],
       "rules": {
         "jsx-a11y/click-events-have-key-events": "off",

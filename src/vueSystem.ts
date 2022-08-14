@@ -1,8 +1,8 @@
 import { inject, defineComponent, provide, ref, toRefs, h, computed, Fragment } from 'vue'
 import { createBaseSystem } from './baseSystem'
 import { BaseTag, SystemExtractElement, SystemOptions, TargetInfo } from './baseSystemTypes'
-// import type { Styled } from './reactSystemTypes'
 import { AnyObject } from './types'
+import { Styled } from './vueSystemTypes'
 
 export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
   const themeContent = Symbol('styils-content')
