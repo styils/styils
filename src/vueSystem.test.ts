@@ -140,10 +140,10 @@ describe('vuejs system', () => {
                 Button,
                 {
                   onClick: () => {
-                    setMode(mode === 'light' ? 'dark' : 'light')
+                    setMode(mode.value === 'light' ? 'dark' : 'light')
                   }
                 },
-                () => mode
+                () => mode.value
               )
           }
         })
@@ -224,7 +224,7 @@ describe('vuejs system', () => {
       createGlobal: globalTheme,
       useSystem,
       SystemProvider,
-      flush
+      flush: ThemeFlush
     } = createSystem({
       theme: (mode) => {
         return {
@@ -249,14 +249,21 @@ describe('vuejs system', () => {
 
     const container = mount(
       h(SystemProvider, {}, () =>
-        h(() => {
-          const { mode, setMode } = useSystem()
+        h({
+          setup() {
+            const { mode, setMode } = useSystem()
 
-          return h(
-            'div',
-            { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') },
-            () => mode
-          )
+            return () =>
+              h(
+                'div',
+                {
+                  onClick: () => {
+                    setMode(mode.value === 'light' ? 'dark' : 'light')
+                  }
+                },
+                () => mode.value
+              )
+          }
         })
       )
     )
@@ -264,7 +271,7 @@ describe('vuejs system', () => {
     container.find('div').trigger('click')
     expect(document.documentElement).toMatchSnapshot()
 
-    flush()
+    ThemeFlush()
   })
 
   it('with theme createGlobal', () => {
@@ -286,27 +293,30 @@ describe('vuejs system', () => {
       },
       defaultMode: 'light'
     })
-
     globalTheme((theme) => ({
       body: {
         backgroundColor: theme.color
       }
     }))
-
     const container = mount(
       h(SystemProvider, {}, () =>
-        h(() => {
-          const { mode, setMode } = useSystem()
-
-          return h(
-            'div',
-            { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') },
-            () => mode
-          )
+        h({
+          setup() {
+            const { mode, setMode } = useSystem()
+            return () =>
+              h(
+                'div',
+                {
+                  onClick: () => {
+                    setMode(mode.value === 'light' ? 'dark' : 'light')
+                  }
+                },
+                () => mode.value
+              )
+          }
         })
       )
     )
-
     expect(container.html()).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
     container.find('div').trigger('click')
@@ -315,7 +325,6 @@ describe('vuejs system', () => {
     container.find('div').trigger('click')
     expect(container.html()).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
-
     flush()
   })
 
@@ -353,7 +362,15 @@ describe('vuejs system', () => {
             const { mode, setMode } = useSystem()
 
             return () =>
-              h('div', { onClick: () => setMode(mode === 'light' ? 'dark' : 'light') }, () => mode)
+              h(
+                'div',
+                {
+                  onClick: () => {
+                    setMode(mode.value === 'light' ? 'dark' : 'light')
+                  }
+                },
+                () => mode.value
+              )
           }
         })
       )
@@ -400,7 +417,7 @@ describe('vuejs system', () => {
       backgroundColor: 'gainsboro'
     })
 
-    const container = mount(h(Button, { className: 'foo' }))
+    const container = mount(h(Button, { class: 'foo' }))
 
     expect(container.html()).toMatchSnapshot()
 
@@ -497,16 +514,22 @@ describe('vuejs system', () => {
       h(SystemProvider, {}, () =>
         h({
           setup() {
-            const { mode, setMode, theme } = useSystem()
+            const { mode, theme } = useSystem()
 
-            expect(['light', 'dark'].includes(mode)).toEqual(true)
-            expect(theme.color).toEqual(typemap[mode])
+            expect(['light', 'dark'].includes(mode.value)).toEqual(true)
+            expect(theme.color).toEqual(typemap[mode.value])
 
             return () =>
-              h('div', { 'data-testid': 'use-system', onClick: () => setMode('dark') }, () => [
-                h(Button),
-                mode
-              ])
+              h(
+                'div',
+                {
+                  'data-testid': 'use-system',
+                  onClick: () => {
+                    mode.value = 'dark'
+                  }
+                },
+                () => [h(Button), mode.value]
+              )
           }
         })
       )
@@ -648,25 +671,25 @@ describe('vuejs system', () => {
     }
 
     const container = mount(
-      h(
-        SystemProvider,
-        {},
+      h(SystemProvider, {}, () =>
         h({
           setup() {
-            const { mode, setMode, theme } = useSystem()
+            const { mode, theme, setMode } = useSystem()
 
-            expect(['light', 'dark'].includes(mode)).toEqual(true)
-            expect(theme.color).toEqual(typemap[mode])
+            expect(['light', 'dark'].includes(mode.value)).toEqual(true)
+            expect(theme.color).toEqual(typemap[mode.value])
 
             return () =>
               h(
                 Button,
                 {
-                  variants: { color: mode as 'light' },
+                  variants: { color: mode.value as 'light' },
                   'data-testid': 'use-system',
-                  onClick: () => setMode('dark')
+                  onClick: () => {
+                    setMode('dark')
+                  }
                 },
-                () => mode
+                () => mode.value
               )
           }
         })
@@ -710,17 +733,19 @@ describe('vuejs system', () => {
       h(SystemProvider, {}, () =>
         h({
           setup() {
-            const { mode, setMode, theme } = useSystem()
+            const { mode, theme, setMode } = useSystem()
 
-            expect(['light', 'dark'].includes(mode)).toEqual(true)
-            expect(theme.color).toEqual(typemap[mode])
+            expect(['light', 'dark'].includes(mode.value)).toEqual(true)
+            expect(theme.color).toEqual(typemap[mode.value])
 
             return () =>
               h(
                 'div',
                 {
                   'data-testid': 'use-system',
-                  onClick: () => setMode(mode === 'dark' ? 'light' : 'dark')
+                  onClick: () => {
+                    setMode(mode.value === 'dark' ? 'light' : 'dark')
+                  }
                 },
                 () => [h(Button), mode]
               )
@@ -863,7 +888,7 @@ describe('hydrate', () => {
     meta.setAttribute('mode', 'none')
     document.head.appendChild(meta)
 
-    const { styled: sstyled } = createSystem()
+    const { styled: sstyled, flush: themeFlush } = createSystem()
     // @ts-expect-error
     sstyled.sourceMap = '1'
     sstyled('button', {
@@ -873,6 +898,7 @@ describe('hydrate', () => {
 
     expect(document.documentElement).toMatchSnapshot()
     document.head.removeChild(meta)
+    themeFlush()
   })
 
   it('render Element hydrate', async () => {

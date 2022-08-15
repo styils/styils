@@ -7,6 +7,12 @@ exports[`vuejs system createGlobal 1`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
       body{background-color:#fff;}
     </style>
   </head>
@@ -17,6 +23,12 @@ exports[`vuejs system createGlobal 1`] = `
 exports[`vuejs system createGlobal with sourceMap 1`] = `
 <html>
   <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2405978758{background-color:blue;}1
+    </style>
     <style
       data-styils="css"
     >
@@ -37,6 +49,7 @@ exports[`vuejs system createSystem base 2`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
     </style>
     <style
       data-styils="css"
@@ -58,6 +71,7 @@ exports[`vuejs system createSystem base 4`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
     </style>
     <style
       data-styils="css"
@@ -86,7 +100,7 @@ exports[`vuejs system styled 2`] = `
 </html>
 `;
 
-exports[`vuejs system styled className 1`] = `"<button class=\\"foo\\"></button>"`;
+exports[`vuejs system styled className 1`] = `"<button class=\\"foo css-2129283522\\"></button>"`;
 
 exports[`vuejs system styled className 2`] = `
 <html>
@@ -95,6 +109,7 @@ exports[`vuejs system styled className 2`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
     </style>
     <style
       data-styils="css"
@@ -136,6 +151,12 @@ exports[`vuejs system styled with styled components 1`] = `"<button class=\\"css
 exports[`vuejs system styled with styled components 2`] = `
 <html>
   <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2405978758{background-color:blue;}1
+    </style>
     <style
       data-styils="css"
     >
@@ -190,6 +211,13 @@ exports[`vuejs system theme does not render repeatedly 2`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}.css-3433634237.color-light{color:blue;}.css-3433634237.color-dark{color:blue;}
     </style>
     <style
       data-styils="css"
@@ -211,6 +239,13 @@ exports[`vuejs system theme does not render repeatedly 4`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}.css-3433634237.color-light{color:blue;}.css-3433634237.color-dark{color:blue;}
     </style>
     <style
       data-styils="css"
@@ -232,6 +267,13 @@ exports[`vuejs system theme does not render repeatedly 6`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}.css-3433634237.color-light{color:blue;}.css-3433634237.color-dark{color:blue;}
     </style>
     <style
       data-styils="css"
@@ -253,6 +295,7 @@ exports[`vuejs system variants 2`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
     </style>
     <style
       data-styils="css"
@@ -274,6 +317,7 @@ exports[`vuejs system variants 4`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
     </style>
     <style
       data-styils="css"
@@ -295,6 +339,7 @@ exports[`vuejs system variants single 2`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
     </style>
     <style
       data-styils="css"
@@ -316,6 +361,7 @@ exports[`vuejs system variants single 4`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
     </style>
     <style
       data-styils="css"
@@ -337,6 +383,7 @@ exports[`vuejs system variants theme 2`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
     </style>
     <style
       data-styils="css"
@@ -358,6 +405,7 @@ exports[`vuejs system variants theme 4`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
     </style>
     <style
       data-styils="css"
@@ -379,6 +427,12 @@ exports[`vuejs system with theme createGlobal 2`] = `
       data-styils="css"
     >
       
+      .css-2405978758{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
       body{background-color:blue;}
     </style>
   </head>
@@ -391,6 +445,12 @@ exports[`vuejs system with theme createGlobal 3`] = `"<div></div>"`;
 exports[`vuejs system with theme createGlobal 4`] = `
 <html>
   <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2405978758{background-color:blue;}1
+    </style>
     <style
       data-styils="css"
     >
@@ -411,7 +471,13 @@ exports[`vuejs system with theme createGlobal 6`] = `
       data-styils="css"
     >
       
-      body{background-color:red;}
+      .css-2405978758{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}
     </style>
   </head>
   <body />
@@ -421,6 +487,12 @@ exports[`vuejs system with theme createGlobal 6`] = `
 exports[`vuejs system with theme createGlobal and sourcemap 1`] = `
 <html>
   <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2405978758{background-color:blue;}1
+    </style>
     <style
       data-styils="css"
     >

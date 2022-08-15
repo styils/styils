@@ -1,4 +1,4 @@
-import { inject, defineComponent, provide, ref, toRefs, h, computed, Fragment } from 'vue'
+import { inject, defineComponent, provide, ref, toRefs, h, computed, Fragment, Ref } from 'vue'
 import { createBaseSystem } from './baseSystem'
 import { BaseTag, SystemExtractElement, SystemOptions, TargetInfo } from './baseSystemTypes'
 import { AnyObject } from './types'
@@ -9,9 +9,9 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
 
   const useSystem = () =>
     inject<{
-      mode: string
-      setMode: (mode: string) => void
+      mode: Ref<string>
       theme: Theme
+      setMode: (value: string) => void
     }>(
       themeContent,
       // @ts-expect-error no value initially
@@ -23,15 +23,16 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       setup(_, { slots }) {
         const mode = ref(providerOptions.mode)
 
-        const updataMode = (value: string) => {
+        const setMode = (value: string) => {
           providerOptions.theme = options.theme(value)
           providerOptions.mode = value
           mode.value = value
         }
+
         provide(themeContent, {
-          mode: mode.value,
+          mode,
           theme: providerOptions.theme,
-          setMode: updataMode
+          setMode
         })
 
         return () => slots?.default?.()
@@ -53,7 +54,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
         const { mode } = useSystem()
 
         const styles = computed(() => {
-          if (mode !== undefined) {
+          if (mode?.value !== undefined) {
             createRule()
           }
 

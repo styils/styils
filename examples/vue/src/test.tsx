@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { styled } from '../../../src/vueSystem'
+import { styled } from './theme'
 
 const Button = styled(
   'button',
