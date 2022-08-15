@@ -40,6 +40,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Setup build:plugin
+      - run: pnpm run build:plugin
+
       - name: Setup install
         run: pnpm install --frozen-lockfile
       - run: pnpm run test:coverage
