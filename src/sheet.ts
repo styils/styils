@@ -174,7 +174,6 @@ export class StyleSheet {
       this.ssrGlobalData = []
     }
     this.ssrData = []
-
     this.tags = []
     this.insertIndex = 0
 

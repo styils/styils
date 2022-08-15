@@ -20,6 +20,9 @@ describe('vuejs system', () => {
   beforeEach(() => {
     flush()
     globalThis.document = document
+    document.head.childNodes.forEach((tag) => {
+      document.head.removeChild(tag)
+    })
   })
   it('styled', () => {
     const Button = styled('button', {
@@ -911,7 +914,7 @@ describe('hydrate', () => {
     const { extractElement } = createExtracts()
 
     globalThis.document = document
-    const container = mount(extractElement)
+    const container = mount(() => extractElement)
 
     expect(container.html()).toMatchSnapshot()
   })
@@ -949,7 +952,7 @@ describe('hydrate', () => {
     globalThis.document = document
     process.env.NODE_ENV = 'production'
     const { extractElement } = createExtracts()
-    const container = mount(extractElement)
+    const container = mount(() => extractElement)
 
     expect(container.html()).toMatchSnapshot()
     process.env.NODE_ENV = 'test'

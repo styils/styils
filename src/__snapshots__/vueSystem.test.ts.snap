@@ -1,14 +1,127 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`hydrate base hydrate 1`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476\\"><style data-ssr=\\"styils-css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"`;
+
+exports[`hydrate base hydrate 2`] = `
+<html>
+  <head>
+    <meta
+      content="css-2242710476"
+      id="styils-css-cache"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
+exports[`hydrate createGlobal hydrate 1`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"\\"><style data-ssr=\\"styils-css-ssr-global\\">body{background-color:gainsboro;border-radius:9999px;}</style>"`;
+
+exports[`hydrate createGlobal hydrate 2`] = `
+<html>
+  <head>
+    <meta
+      content=""
+      id="styils-css-cache"
+      mode="none"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
+exports[`hydrate createGlobal hydrate 3`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"\\">"`;
+
+exports[`hydrate createGlobal hydrate 4`] = `
+<html>
+  <head>
+    <meta
+      content=""
+      id="styils-css-cache"
+      mode="none"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
+exports[`hydrate createGlobal hydrate with sourcemap 1`] = `
+<html>
+  <head>
+    <meta
+      content="css-2242710476"
+      id="styils-css-cache"
+      mode="none"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
+exports[`hydrate mix hydrate 1`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476\\"><style data-ssr=\\"styils-css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"`;
+
+exports[`hydrate namespace hydrate 1`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\"><style data-ssr=\\"styils-css-ssr\\">.ssr-css-2242710476{background-color:gainsboro;border-radius:9999px;}.ssr-css-2242710476.ssr-size-max{font-size:12px;}.ssr-css-2242710476.ssr-size-small{font-size:14px;}</style>"`;
+
+exports[`hydrate namespace hydrate 2`] = `
+<html>
+  <head>
+    <meta
+      content="ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small"
+      id="styils-css-cache"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
+exports[`hydrate production css content 1`] = `
+"<meta name=\\"styils-cache\\" id=\\"styils-css-cache\\" mode=\\"none\\" content=\\"css-2242710476|css-3734128299\\">
+<style id=\\"styils-css-ssr-global\\"></style>
+<style id=\\"styils-css-ssr\\">
+  .css-2242710476 {
+    background-color: gainsboro;
+    border-radius: 9999px;
+  }
+
+  .css-3734128299 {
+    background-color: gainsboro;
+    border-radius: 999px;
+  }
+</style>"
+`;
+
+exports[`hydrate render Element hydrate 1`] = `
+"<meta name=\\"styils-cache\\" id=\\"styils-css-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
+<style data-ssr=\\"styils-css-ssr\\">
+  .css-2242710476 {
+    background-color: gainsboro;
+    border-radius: 9999px;
+  }
+</style>"
+`;
+
+exports[`hydrate variants hydrate 1`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\"><style data-ssr=\\"styils-css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}.css-2242710476.size-max{font-size:12px;}.css-2242710476.size-small{font-size:14px;}</style>"`;
+
+exports[`hydrate variants hydrate 2`] = `
+<html>
+  <head>
+    <meta
+      content="css-2242710476|css-2242710476.size-max|css-2242710476.size-small"
+      id="styils-css-cache"
+      name="styils-cache"
+    />
+  </head>
+  <body />
+</html>
+`;
+
 exports[`vuejs system createGlobal 1`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
     <style
       data-styils="css"
     >
@@ -23,12 +136,6 @@ exports[`vuejs system createGlobal 1`] = `
 exports[`vuejs system createGlobal with sourceMap 1`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
     <style
       data-styils="css"
     >
@@ -49,12 +156,6 @@ exports[`vuejs system createSystem base 2`] = `
       data-styils="css"
     >
       
-      .css-2405978758{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}
     </style>
   </head>
@@ -67,12 +168,6 @@ exports[`vuejs system createSystem base 3`] = `"<div data-testid=\\"use-system\\
 exports[`vuejs system createSystem base 4`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
     <style
       data-styils="css"
     >
@@ -105,12 +200,6 @@ exports[`vuejs system styled className 1`] = `"<button class=\\"foo css-21292835
 exports[`vuejs system styled className 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
     <style
       data-styils="css"
     >
@@ -151,12 +240,6 @@ exports[`vuejs system styled with styled components 1`] = `"<button class=\\"css
 exports[`vuejs system styled with styled components 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
     <style
       data-styils="css"
     >
@@ -211,18 +294,6 @@ exports[`vuejs system theme does not render repeatedly 2`] = `
       data-styils="css"
     >
       
-      .css-2405978758{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237{color:red;}.css-3433634237.color-light{color:blue;}.css-3433634237.color-dark{color:blue;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}
     </style>
   </head>
@@ -235,18 +306,6 @@ exports[`vuejs system theme does not render repeatedly 3`] = `"<div data-testid=
 exports[`vuejs system theme does not render repeatedly 4`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237{color:red;}.css-3433634237.color-light{color:blue;}.css-3433634237.color-dark{color:blue;}
-    </style>
     <style
       data-styils="css"
     >
@@ -267,18 +326,6 @@ exports[`vuejs system theme does not render repeatedly 6`] = `
       data-styils="css"
     >
       
-      .css-2405978758{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237{color:red;}.css-3433634237.color-light{color:blue;}.css-3433634237.color-dark{color:blue;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}
     </style>
   </head>
@@ -291,12 +338,6 @@ exports[`vuejs system variants 1`] = `"<div data-testid=\\"styled-variants\\"></
 exports[`vuejs system variants 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
     <style
       data-styils="css"
     >
@@ -317,12 +358,6 @@ exports[`vuejs system variants 4`] = `
       data-styils="css"
     >
       
-      .css-2405978758{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}.css-3433634237.size-max{font-size:99px;}.css-3433634237.size-small{font-size:14px;}
     </style>
   </head>
@@ -335,12 +370,6 @@ exports[`vuejs system variants single 1`] = `"<div data-testid=\\"styled-variant
 exports[`vuejs system variants single 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
     <style
       data-styils="css"
     >
@@ -361,12 +390,6 @@ exports[`vuejs system variants single 4`] = `
       data-styils="css"
     >
       
-      .css-2405978758{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}.css-3433634237.size-small{font-size:14px;}
     </style>
   </head>
@@ -379,12 +402,6 @@ exports[`vuejs system variants theme 1`] = `"<button class=\\"css-3433634237 col
 exports[`vuejs system variants theme 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
     <style
       data-styils="css"
     >
@@ -405,12 +422,6 @@ exports[`vuejs system variants theme 4`] = `
       data-styils="css"
     >
       
-      .css-2405978758{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       .css-3433634237{color:red;}.css-3433634237.color-light{color:red;}.css-3433634237.color-dark{color:red;}
     </style>
   </head>
@@ -423,12 +434,6 @@ exports[`vuejs system with theme createGlobal 1`] = `"<div></div>"`;
 exports[`vuejs system with theme createGlobal 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
     <style
       data-styils="css"
     >
@@ -449,12 +454,6 @@ exports[`vuejs system with theme createGlobal 4`] = `
       data-styils="css"
     >
       
-      .css-2405978758{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       body{background-color:red;}
     </style>
   </head>
@@ -471,12 +470,6 @@ exports[`vuejs system with theme createGlobal 6`] = `
       data-styils="css"
     >
       
-      .css-2405978758{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       body{background-color:blue;}
     </style>
   </head>
@@ -487,12 +480,6 @@ exports[`vuejs system with theme createGlobal 6`] = `
 exports[`vuejs system with theme createGlobal and sourcemap 1`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-2405978758{background-color:blue;}1
-    </style>
     <style
       data-styils="css"
     >
