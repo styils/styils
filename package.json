@@ -83,7 +83,7 @@
         "@babel/*",
         "react-is/*",
         "vite",
-        "@vitejs/plugin-vue"
+        "vue"
       ]
     }
   }

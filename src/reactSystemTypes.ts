@@ -26,7 +26,7 @@ type ComponentProps<
 
 type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R | string } ? R : P) : P
 
-type StyledProps<As extends React.ElementType, Variants, Vars extends string> = Omit<
+export type StyledProps<As extends React.ElementType, Variants, Vars extends string> = Omit<
   ComponentProps<As>,
   'ref'
 > & {

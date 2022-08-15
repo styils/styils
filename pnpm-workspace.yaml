@@ -1,5 +1,5 @@
 packages:
   - 'docs'
   - 'babel-plugin'
-  - 'examples'
+  - 'examples/*'
   - 'vite-plugin'

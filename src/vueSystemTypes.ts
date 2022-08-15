@@ -18,7 +18,7 @@ export type ExtractElement = VNode
 
 export type NativeComponent = keyof JSX | DefineComponent | ((...props: any[]) => JSX.Element)
 
-export type ComponentProps<T extends NativeComponent> = T extends keyof JSX
+export type ComponentProps<T> = T extends keyof JSX
   ? JSX[T]
   : T extends DefineComponent<infer Props, any, any, any, any, any, any, any, any>
   ? Props

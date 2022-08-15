@@ -86,12 +86,21 @@ styled.sourceMap
 // @ts-expect-error Do not expose to the outside world
 createGlobal.sourceMap
 
-type CProps<T extends NativeComponent> = StyledProps<T, {}, ''>
+type CProps<T extends NativeComponent> = StyledProps<T, { size: 'max' | 'small' }, 'a' | 'b'>
 
 function Tst<T extends NativeComponent = 'button'>(props: CProps<T>) {}
 
 Tst({
-  as: 'a'
+  as: 'a',
+  vars: {
+    a: 1,
+    b: 2,
+    // @ts-expect-error
+    c: 3
+  },
+  variants: {
+    size: 'max'
+  }
 })
 
 export function asButton() {

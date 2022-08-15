@@ -1,4 +1,4 @@
-import { createSystem, styled, createGlobal } from '../../dist/react'
+import { createSystem, styled, createGlobal, StyleTag, StyledProps } from '../../dist/react'
 import React from 'react'
 
 const { styled: styleTheme } = createSystem({
@@ -78,6 +78,23 @@ styled.sourceMap
 
 // @ts-expect-error Do not expose to the outside world
 createGlobal.sourceMap
+
+type CProps<T extends StyleTag> = StyledProps<T, { size: 'max' | 'small' }, 'a' | 'b'>
+
+function Tst<T extends StyleTag = 'button'>(_: CProps<T>) {}
+
+Tst({
+  as: 'a',
+  vars: {
+    a: 1,
+    b: 2,
+    // @ts-expect-error
+    c: 3
+  },
+  variants: {
+    size: 'max'
+  }
+})
 
 export function asButton() {
   return [

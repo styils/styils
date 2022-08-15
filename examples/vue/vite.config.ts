@@ -6,6 +6,8 @@ import path from 'path'
 export default defineConfig({
   plugins: [vue()],
   resolve: {
-    alias: [{ find: '@styils/vue', replacement: path.join(__dirname, '..', 'src', 'indexVue.ts') }]
+    alias: [
+      { find: '@styils/vue', replacement: path.join(__dirname, '..', '..', 'src', 'indexVue.ts') }
+    ]
   }
 })
