@@ -21,7 +21,6 @@ type StyledProps<As extends NativeComponent, Variants, Vars extends string> = Om
   'ref'
 > & {
   ref?: PropsWithRef<ComponentProps<As>>
-} & {
   as?: As extends StyledComponent<infer A, AnyObject, any> ? A : As
   variants?: {
     [key in keyof Variants]?: Widen<Variants[key]>

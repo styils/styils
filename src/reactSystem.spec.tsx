@@ -10,7 +10,7 @@ const { styled: styleTheme } = createSystem({
 const Anthor = styled(
   'a',
   {
-    width: '$height' as any,
+    width: '$width' as any,
     height: '$height',
     '.foo': {
       width: '$width',

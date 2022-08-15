@@ -11,14 +11,26 @@ export type StyleTag =
   | React.JSXElementConstructor<{}>
   | React.ComponentClass
 
+type ComponentProps<
+  T extends
+    | keyof JSX.IntrinsicElements
+    | React.JSXElementConstructor<any>
+    | StyledComponent<any, any, any>
+> = T extends React.JSXElementConstructor<infer P>
+  ? P
+  : T extends keyof JSX.IntrinsicElements
+  ? JSX.IntrinsicElements[T]
+  : T extends StyledComponent<infer P, AnyObject, any>
+  ? P
+  : {}
+
 type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R | string } ? R : P) : P
 
 type StyledProps<As extends React.ElementType, Variants, Vars extends string> = Omit<
-  React.ComponentProps<As>,
+  ComponentProps<As>,
   'ref'
 > & {
-  ref?: PropsWithRef<React.ComponentProps<As>>
-} & {
+  ref?: PropsWithRef<ComponentProps<As>>
   as?: As
   variants?: {
     [key in keyof Variants]?: Widen<Variants[key]>
@@ -44,11 +56,7 @@ export interface Styled<Theme> {
     styles: Styles<Theme, Vars>,
     interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Vars>
   ): StyledComponent<
-    Component extends React.ForwardRefExoticComponent<AnyObject>
-      ? Component
-      : Component extends StyledComponent<infer A, AnyObject, any>
-      ? A
-      : Component,
+    Component,
     { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
     Vars
   >
