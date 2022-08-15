@@ -41,11 +41,13 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Setup build:plugin
-      - run: pnpm run build:plugin
+        run: pnpm run build:plugin
 
       - name: Setup install
         run: pnpm install --frozen-lockfile
-      - run: pnpm run test:coverage
+
+      - name: Setup test:coverage
+        run: pnpm run test:coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3

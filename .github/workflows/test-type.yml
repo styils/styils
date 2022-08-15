@@ -48,6 +48,4 @@ jobs:
         run: pnpm run build
 
       - name: Setup test type
-      - run: pnpm run typescript
-        env:
-          CI: true
+        run: pnpm run typescript
