@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["vue"],
+    "baseUrl": ".",
+    "paths": {
+      "nativeCssTypes": ["types/nativeCssTypes.d.ts"]
+    }
+  },
+  "include": ["*", "../../types.d.ts", "../dist/vue"]
+}

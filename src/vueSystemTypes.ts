@@ -16,17 +16,19 @@ export type Provider = (props: { children: VNode }) => VNode
 
 export type ExtractElement = VNode
 
-export type NativeComponent = keyof JSX | DefineComponent
+export type NativeComponent = keyof JSX | DefineComponent | ((...props: any[]) => JSX.Element)
 
-export type ComponentProps<T> = T extends keyof JSX
+export type ComponentProps<T extends NativeComponent> = T extends keyof JSX
   ? JSX[T]
-  : T extends DefineComponent<infer Props, any, any, any, any, any, any, any, any, any, any, any>
+  : T extends DefineComponent<infer Props, any, any, any, any, any, any, any, any>
   ? Props
+  : T extends (props: infer P) => JSX.Element
+  ? P
   : {}
 
-type StyledProps<As extends NativeComponent, Variants, Vars extends string> = ComponentProps<As> & {
+export type StyledProps<As extends NativeComponent, Variants, Vars extends string> = {
   ref?: VNodeRef
-  as?: As extends StyledComponent<infer A, AnyObject, any> ? A : As
+  as?: As
   variants?: {
     [key in keyof Variants]?: Widen<Variants[key]>
   }
@@ -38,7 +40,7 @@ type StyledProps<As extends NativeComponent, Variants, Vars extends string> = Co
 type StyledComponent<Component extends NativeComponent, Variants, Vars extends string> = <
   As extends NativeComponent = Component
 >(
-  props: StyledProps<As, Variants, Vars>
+  props: StyledProps<As, Variants, Vars> & ComponentProps<Component>
 ) => VNode
 
 export interface Styled<Theme> {
@@ -52,7 +54,7 @@ export interface Styled<Theme> {
     styles: Styles<Theme, Vars>,
     interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Vars>
   ): StyledComponent<
-    Component,
+    Component extends StyledComponent<infer A, AnyObject, any> ? A : Component,
     { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
     Vars
   >

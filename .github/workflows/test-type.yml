@@ -12,8 +12,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [14.6, 16.16.0, 18]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [16.16.0]
+        os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -45,8 +45,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Setup build
-        run: pnpm run build:plugin
+        run: pnpm run build
 
-      - run: pnpm run test
+      - name: Setup test type
+      - run: pnpm run typescript
         env:
           CI: true

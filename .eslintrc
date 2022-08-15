@@ -11,6 +11,8 @@
     "max-classes-per-file": "off",
     "no-continue": "off",
     "no-restricted-syntax": "off",
+    "import/no-relative-packages": "off",
+    "import/named": "off",
 
     "@typescript-eslint/ban-types": [
       "error",

@@ -56,6 +56,7 @@ export interface Styled<Theme> {
     styles: Styles<Theme, Vars>,
     interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Vars>
   ): StyledComponent<
+    // @ts-expect-error Conflict with vue type
     Component,
     { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
     Vars
