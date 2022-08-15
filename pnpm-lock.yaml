@@ -165,8 +165,12 @@ importers:
 
   examples/vue:
     specifiers:
+      '@styils/babel-plugin': workspace:*
+      '@styils/vite-plugin': workspace:*
       '@vitejs/plugin-vue': ^3.0.2
     devDependencies:
+      '@styils/babel-plugin': link:../../babel-plugin
+      '@styils/vite-plugin': link:../../vite-plugin
       '@vitejs/plugin-vue': 3.0.3
 
   vite-plugin:
@@ -2100,6 +2104,8 @@ packages:
       vue: ^3.2.25
     peerDependenciesMeta:
       vite:
+        optional: true
+      vue:
         optional: true
     dev: true
 

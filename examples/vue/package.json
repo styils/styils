@@ -7,6 +7,8 @@
     "dev": "vite"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^3.0.2"
+    "@vitejs/plugin-vue": "^3.0.2",
+    "@styils/vite-plugin": "workspace:*",
+    "@styils/babel-plugin": "workspace:*"
   }
 }
