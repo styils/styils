@@ -1,6 +1,5 @@
-import { createSystem, styled } from './reactSystem'
+import { createSystem, styled, createGlobal } from './reactSystem'
 import React from 'react'
-import { createGlobal } from './solidSystem'
 
 const { styled: styleTheme } = createSystem({
   theme: () => ({ color: 'red', bg: 'blue' }),

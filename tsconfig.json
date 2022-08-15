@@ -18,6 +18,5 @@
       "nativeCssTypes": ["types/nativeCssTypes.d.ts"]
     }
   },
-  "include": ["src", "types.d.ts", "babel-plugin", "vite-plugin"],
-  "references": [{ "path": "./tsconfig.react.json" }]
+  "include": ["src", "types.d.ts", "babel-plugin", "vite-plugin"]
 }
