@@ -1,12 +1,5 @@
 import { defineComponent } from 'vue'
-import {
-  createSystem,
-  styled,
-  createGlobal,
-  ComponentProps,
-  StyledProps,
-  NativeComponent
-} from '../../dist/vue'
+import { createSystem, styled, createGlobal, ComponentProps } from '../../dist/vue'
 
 const { styled: styleTheme } = createSystem({
   theme: () => ({ color: 'red', bg: 'blue' }),
@@ -93,10 +86,20 @@ const AA = defineComponent({
   }
 })
 
-export default defineComponent({
+const TestA = defineComponent({
   setup() {
     // @ts-expect-error
     return () => <Button as={AA} test="1" test2="1" />
+  }
+})
+
+const BB = (props: { foo: number }) => {
+  return <div>{props.foo}</div>
+}
+
+const TestB = defineComponent({
+  setup() {
+    return () => <Button as={BB} foo={1} />
   }
 })
 
@@ -153,7 +156,7 @@ const Button = styled('button', {})
 const Button2 = styled(Button, {})
 
 function renderButton() {
-  return <Button as="a" />
+  return <Button as="a" href="a" />
 }
 
 expectType<typeof Button2, typeof Button>(Button2)

@@ -1,4 +1,4 @@
-import type { Widen } from './types'
+import type { AnyObject, Widen } from './types'
 import { StyleInterpolation, Styles } from './baseSystemTypes'
 import { Component, DefineComponent, VNode, VNodeRef } from 'vue'
 
@@ -16,11 +16,18 @@ export type Provider = (props: { children: VNode }) => VNode
 
 export type ExtractElement = VNode
 
-export type NativeComponent = keyof JSX | Component<{}>
+export type NativeComponent =
+  | keyof JSX
+  | Component<AnyObject>
+  // magic
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  | Function
 
 export type ComponentProps<T> = T extends keyof JSX
   ? JSX[T]
-  : T extends DefineComponent<infer Props, any, any, any, any, any, any, any>
+  : T extends
+      | DefineComponent<infer Props, any, any, any, any, any, any, any>
+      | ((props: infer Props) => JSX.Element)
   ? Props
   : {}
 
