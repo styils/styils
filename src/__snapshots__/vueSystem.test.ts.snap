@@ -181,7 +181,9 @@ exports[`vuejs system createSystem base 4`] = `
 
 exports[`vuejs system styled 1`] = `"<button class=\\"css-3397010960\\"></button>"`;
 
-exports[`vuejs system styled 2`] = `
+exports[`vuejs system styled 2`] = `[Function]`;
+
+exports[`vuejs system styled 3`] = `
 <html>
   <head>
     <style

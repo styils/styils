@@ -3,7 +3,7 @@
  * @jest-environment-options {"customExportConditions": ["node","node-addons"]}
  */
 
-import { createSystem, styled, flush, createGlobal, keyframes } from './vueSystem'
+import { createSystem, styled, flush, createGlobal, keyframes, createExtracts } from './vueSystem'
 import { mount } from '@vue/test-utils'
 import { h, ref } from 'vue'
 
@@ -41,7 +41,11 @@ describe('vuejs system', () => {
 
     const container = mount(Button)
 
+    const { extractElement } = createExtracts()
+
     expect(container.html()).toMatchSnapshot()
+    const ssr = mount(() => extractElement)
+    expect(ssr.html).toMatchSnapshot()
 
     expect(document.documentElement).toMatchSnapshot()
   })
