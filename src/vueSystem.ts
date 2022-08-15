@@ -99,24 +99,24 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
             ...ssrGlobalData.map((data) =>
               h('style', {
                 [devIdent]: globalStyleSSRId,
-                dangerouslySetInnerHTML: { __html: data }
+                innerHTML: data
               })
             ),
             ...ssrData.map((data) =>
               h('style', {
                 [devIdent]: styleSSRId,
-                dangerouslySetInnerHTML: { __html: data }
+                innerHTML: data
               })
             )
           ]
         : [
             h('style', {
               id: globalStyleSSRId,
-              dangerouslySetInnerHTML: { __html: ssrGlobalData.join('') }
+              innerHTML: ssrGlobalData.join('')
             }),
             h('style', {
               id: styleSSRId,
-              dangerouslySetInnerHTML: { __html: ssrData.join('') }
+              innerHTML: ssrData.join('')
             })
           ])
     ])
