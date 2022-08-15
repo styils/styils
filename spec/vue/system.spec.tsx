@@ -86,20 +86,17 @@ styled.sourceMap
 // @ts-expect-error Do not expose to the outside world
 createGlobal.sourceMap
 
-type CProps<T extends NativeComponent> = StyledProps<T, { size: 'max' | 'small' }, 'a' | 'b'>
+const AA = defineComponent({
+  props: ['test'],
+  setup() {
+    return () => <div>123</div>
+  }
+})
 
-function Tst<T extends NativeComponent = 'button'>(props: CProps<T>) {}
-
-Tst({
-  as: 'a',
-  vars: {
-    a: 1,
-    b: 2,
+export default defineComponent({
+  setup() {
     // @ts-expect-error
-    c: 3
-  },
-  variants: {
-    size: 'max'
+    return () => <Button as={AA} test="1" test2="1" />
   }
 })
 
@@ -113,11 +110,7 @@ export function asButton() {
         // @ts-expect-error test
         foo: 2
       }}
-      as="button"
-      variants={{ size: 'small' }}
-      ref={(ref: HTMLButtonElement) => {
-        expectType<HTMLButtonElement, typeof ref>(ref)
-      }}
+      as={'button'}
     />,
     <Anthor1
       key={2}
@@ -129,19 +122,11 @@ export function asButton() {
   ]
 }
 
-const Link = function Link(props: { href: string }) {
-  return <a href="#1">hi</a>
-}
-
 const Link2 = defineComponent({
   props: ['123', 'hello']
 })
 
-type LinkProps = ComponentProps<typeof Link>
-
 type LinkProps2 = ComponentProps<typeof Link2>
-
-expectType<LinkProps, { href: string }>({ href: '1' })
 
 expectType<
   LinkProps2,
@@ -151,7 +136,7 @@ expectType<
   }
 >({})
 
-const ToLink = styleTheme(Link, (theme) => {
+const ToLink = styleTheme(Link2, (theme) => {
   expectType<
     {
       color: string
@@ -164,12 +149,22 @@ const ToLink = styleTheme(Link, (theme) => {
 
 const ToLink2 = styled(ToLink, {})
 
+const Button = styled('button', {})
+const Button2 = styled(Button, {})
+
+function renderButton() {
+  return <Button as="a" />
+}
+
+expectType<typeof Button2, typeof Button>(Button2)
+
 expectType<typeof ToLink, typeof ToLink2>(ToLink2)
 
 export function renderToLink() {
   return (
     <ToLink
       href=""
+      as="a"
       key="1"
       ref={(ref: HTMLAnchorElement) => {
         ref.href

@@ -50,6 +50,7 @@ const App = () => {
     <div>
       {/* {ExtractElement} */}
       <Button
+        as="a"
         vars={{
           height: `${height()}px`
         }}

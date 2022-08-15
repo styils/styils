@@ -1,0 +1,325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`vuejs system createGlobal 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:#fff;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system createGlobal with sourceMap 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:#fff;}sourceMap
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system createSystem 1`] = `""`;
+
+exports[`vuejs system createSystem 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system styled 1`] = `"<button class=\\"css-3397010960\\"></button>"`;
+
+exports[`vuejs system styled 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3397010960{background-color:gainsboro;border-radius:9999px;font-weight:500;padding:0.75em 1em;border:0px;transition:all 200ms ease;}.css-3397010960:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0, 0, 0, .3);}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system styled className 1`] = `"<button class=\\"foo\\"></button>"`;
+
+exports[`vuejs system styled className 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2129283522{background-color:gainsboro;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system styled multiple Variants 1`] = `"<button class=\\"css-2129283522 outer-true fixed-true\\"></button>"`;
+
+exports[`vuejs system styled namespace 1`] = `"<button class=\\"button-css-3465392085\\"></button>"`;
+
+exports[`vuejs system styled production 1`] = `"<button class=\\"css-3465392085\\"></button>"`;
+
+exports[`vuejs system styled with css state 1`] = `"<button class=\\"css-916201087\\" style=\\"--css-916201087-bg: [object Object];\\"></button>"`;
+
+exports[`vuejs system styled with css state 2`] = `"<button class=\\"css-916201087\\" style=\\"--css-916201087-bg: [object Object];\\"></button>"`;
+
+exports[`vuejs system styled with sourceMap 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2129283522{background-color:gainsboro;}1
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system styled with styled components 1`] = `"<button class=\\"css-3433634237 css-2341007075\\"></button>"`;
+
+exports[`vuejs system styled with styled components 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2341007075{background-color:#fff;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system styled with theme and sourceMap 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system theme does not render repeatedly 1`] = `""`;
+
+exports[`vuejs system theme does not render repeatedly 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}.css-3433634237.color-light{color:red;}.css-3433634237.color-dark{color:red;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system variants theme 1`] = `""`;
+
+exports[`vuejs system variants theme 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}.css-3433634237.color-light{color:red;}.css-3433634237.color-dark{color:red;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system with theme createGlobal 1`] = `""`;
+
+exports[`vuejs system with theme createGlobal 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:blue;}
+    </style>
+  </head>
+  <body />
+</html>
+`;

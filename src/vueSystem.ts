@@ -34,7 +34,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
           setMode: updataMode
         })
 
-        return slots.default()
+        return slots?.default?.()
       }
     })
 
@@ -72,7 +72,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
               class: styles.value.classes,
               style: { ...styles.value.style, ...style.value }
             },
-            slots.default()
+            slots?.default?.()
           )
       }
     })

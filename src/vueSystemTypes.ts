@@ -1,6 +1,6 @@
-import type { AnyObject, Widen } from './types'
+import type { Widen } from './types'
 import { StyleInterpolation, Styles } from './baseSystemTypes'
-import { DefineComponent, VNode, VNodeRef } from 'vue'
+import { Component, DefineComponent, VNode, VNodeRef } from 'vue'
 
 export type UseSystem<Theme> = () => {
   mode: string
@@ -16,17 +16,15 @@ export type Provider = (props: { children: VNode }) => VNode
 
 export type ExtractElement = VNode
 
-export type NativeComponent = keyof JSX | DefineComponent | ((...props: any[]) => JSX.Element)
+export type NativeComponent = keyof JSX | Component<{}>
 
 export type ComponentProps<T> = T extends keyof JSX
   ? JSX[T]
-  : T extends DefineComponent<infer Props, any, any, any, any, any, any, any, any>
+  : T extends DefineComponent<infer Props, any, any, any, any, any, any, any>
   ? Props
-  : T extends (props: infer P) => JSX.Element
-  ? P
   : {}
 
-export type StyledProps<As extends NativeComponent, Variants, Vars extends string> = {
+export interface StyledProps<As extends NativeComponent, Variants, Vars extends string> {
   ref?: VNodeRef
   as?: As
   variants?: {
@@ -37,10 +35,10 @@ export type StyledProps<As extends NativeComponent, Variants, Vars extends strin
   }
 }
 
-type StyledComponent<Component extends NativeComponent, Variants, Vars extends string> = <
+export type StyledComponent<Component extends NativeComponent, Variants, Vars extends string> = <
   As extends NativeComponent = Component
 >(
-  props: StyledProps<As, Variants, Vars> & ComponentProps<Component>
+  props: StyledProps<As, Variants, Vars> & ComponentProps<As>
 ) => VNode
 
 export interface Styled<Theme> {
@@ -54,7 +52,7 @@ export interface Styled<Theme> {
     styles: Styles<Theme, Vars>,
     interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Vars>
   ): StyledComponent<
-    Component extends StyledComponent<infer A, AnyObject, any> ? A : Component,
+    Component,
     { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
     Vars
   >

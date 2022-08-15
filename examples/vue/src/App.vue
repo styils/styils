@@ -22,7 +22,9 @@ const type = ref<'max' | 'small'>('max')
 </script>
 
 <template>
-  <Button :variants="{ size: type }" @click="type = type === 'max' ? 'small' : 'max'">hello</Button>
+  <Button as="a" :variants="{ size: type }" @click="type = type === 'max' ? 'small' : 'max'"
+    >hello</Button
+  >
   <div class="card">
     <button type="button" @click="count++" ref="">count is {{ count }}</button>
     <p>

@@ -16,8 +16,15 @@ const Button = styled(
   }
 )
 
+const AA = defineComponent({
+  props: ['test'],
+  setup() {
+    return () => <div>123</div>
+  }
+})
+
 export default defineComponent({
   setup() {
-    return () => <Button as="button" />
+    return () => <Button as={AA} test="1" />
   }
 })

@@ -55,6 +55,9 @@ jobs:
       - name: Setup test
         run: pnpm run test
 
+      - name: Setup test type
+        run: pnpm run typescript
+
       - name: Run release
         run: pnpm run release ${{ steps.get_version.outputs.VERSION }}
         env:
