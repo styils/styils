@@ -1,5 +1,5 @@
 import type { JSX, ComponentProps, Accessor } from 'solid-js'
-import type { AnyObject, Widen } from './types'
+import type { Widen } from './types'
 import { StyleInterpolation, Styles } from './baseSystemTypes'
 
 export type UseSystem<Theme> = () => {
@@ -21,8 +21,7 @@ type StyledProps<As extends NativeComponent, Variants, Vars extends string> = Om
   'ref'
 > & {
   ref?: PropsWithRef<ComponentProps<As>>
-} & {
-  as?: As extends StyledComponent<infer A, AnyObject, any> ? A : As
+  as?: As
   variants?: {
     [key in keyof Variants]?: Widen<Variants[key]>
   }

@@ -5,7 +5,7 @@ import ts, { JsxEmit } from 'typescript'
 import rimraf from 'rimraf'
 import path from 'path'
 import zlib from 'zlib'
-import fs from 'fs'
+import fs from 'fs-extra'
 import ora from 'ora'
 import prettier from 'prettier'
 import { box } from './colors'
@@ -29,7 +29,8 @@ async function build(name: string, globalsName: string, prod = false) {
     react: 'indexReact.ts',
     css: 'indexCSS.ts',
     base: 'indexBase.ts',
-    solid: 'indexSolid.ts'
+    solid: 'indexSolid.ts',
+    vue: 'indexVue.ts'
   }
 
   const inputPath = path.join(cwd, 'src', indexMap[name])
@@ -59,12 +60,13 @@ async function build(name: string, globalsName: string, prod = false) {
   const bundle = await rollup({
     input: inputPath,
     plugins,
-    external: ['react', 'solid-js', 'solid-js/web']
+    external: ['react', 'solid-js', 'solid-js/web', 'vue']
   })
 
   const globals: Record<string, any> =
     {
-      react: { react: 'React' }
+      react: { react: 'React' },
+      vue: { vue: 'Vue' }
     }[name] ?? {}
 
   if (prod) {
@@ -112,9 +114,11 @@ async function run() {
   await Promise.all([
     build('react', 'styilsReact'),
     build('solid', 'styilsSolid'),
+    build('vue', 'styilsVue'),
     build('css', 'styilCss'),
     build('base', 'styilBase'),
     build('solid', 'styilsSolid', true),
+    build('vue', 'styilsVue', true),
     build('react', 'styilReact', true),
     build('css', 'styilCss', true),
     build('base', 'styilBase', true)
@@ -170,20 +174,21 @@ async function run() {
         })
     })
 
-    fs.writeFileSync(path.join(cwd, 'dist', name, 'index.js'), enterJsCode)
-    fs.writeFileSync(path.join(cwd, 'dist', name, 'index.mjs'), enterNodeEsmCode)
+    fs.outputFileSync(path.join(cwd, 'dist', name, 'index.js'), enterJsCode)
+    fs.outputFileSync(path.join(cwd, 'dist', name, 'index.mjs'), enterNodeEsmCode)
 
     const nameMap = {
       css: 'CSS',
       react: 'React',
       base: 'Base',
-      solid: 'Solid'
+      solid: 'Solid',
+      vue: 'Vue'
     }
 
     files.forEach((file: string) => {
       const dts = file.replace('.ts', '.d.ts')
 
-      fs.writeFileSync(
+      fs.outputFileSync(
         dts.replace('src', path.join('dist', name)).replace(`index${nameMap[name]}`, 'index'),
         prettier
           .format(dtsSouce[dts], { parser: 'typescript', singleQuote: true })
@@ -212,11 +217,15 @@ async function run() {
       json.peerDependencies = { react: '>=16.8.0' }
     }
 
-    fs.writeFileSync(
+    if (/vue/.test(name)) {
+      json.peerDependencies = { vue: '>=3.0.0' }
+    }
+
+    fs.outputFileSync(
       path.join(cwd, 'dist', name, 'package.json'),
       prettier.format(JSON.stringify(json), { parser: 'json' })
     )
-    fs.writeFileSync(
+    fs.outputFileSync(
       path.join(cwd, 'dist', name, '.npmrc'),
       `registry=https://registry.npmjs.org/
 //registry.npmjs.org/:always-auth=true
@@ -227,11 +236,11 @@ async function run() {
     const READMEEN = fs.readFileSync(path.join(cwd, 'README.ZH.md'))
     const LICENSE = fs.readFileSync(path.join(cwd, 'LICENSE'))
 
-    fs.writeFileSync(path.join(cwd, 'dist', name, 'LICENSE'), LICENSE)
+    fs.outputFileSync(path.join(cwd, 'dist', name, 'LICENSE'), LICENSE)
 
-    fs.writeFileSync(path.join(cwd, 'dist', name, 'README.md'), README)
+    fs.outputFileSync(path.join(cwd, 'dist', name, 'README.md'), README)
 
-    fs.writeFileSync(path.join(cwd, 'dist', name, 'README.ZH.md'), READMEEN)
+    fs.outputFileSync(path.join(cwd, 'dist', name, 'README.ZH.md'), READMEEN)
   })
 
   distFiles.forEach((item) => {

@@ -1,6 +1,5 @@
-import { createSystem, styled } from './reactSystem'
+import { createSystem, styled, createGlobal, StyleTag, StyledProps } from '../../dist/react'
 import React from 'react'
-import { createGlobal } from './solidSystem'
 
 const { styled: styleTheme } = createSystem({
   theme: () => ({ color: 'red', bg: 'blue' }),
@@ -10,7 +9,7 @@ const { styled: styleTheme } = createSystem({
 const Anthor = styled(
   'a',
   {
-    width: '$height' as any,
+    width: '$width' as any,
     height: '$height',
     '.foo': {
       width: '$width',
@@ -79,6 +78,23 @@ styled.sourceMap
 
 // @ts-expect-error Do not expose to the outside world
 createGlobal.sourceMap
+
+type CProps<T extends StyleTag> = StyledProps<T, { size: 'max' | 'small' }, 'a' | 'b'>
+
+function Tst<T extends StyleTag = 'button'>(_: CProps<T>) {}
+
+Tst({
+  as: 'a',
+  vars: {
+    a: 1,
+    b: 2,
+    // @ts-expect-error
+    c: 3
+  },
+  variants: {
+    size: 'max'
+  }
+})
 
 export function asButton() {
   return [

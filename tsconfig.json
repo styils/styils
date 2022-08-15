@@ -13,7 +13,7 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "baseUrl": ".",
-    "jsx": "react",
+    "jsx": "preserve",
     "paths": {
       "nativeCssTypes": ["types/nativeCssTypes.d.ts"]
     }

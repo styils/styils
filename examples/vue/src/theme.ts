@@ -1,4 +1,4 @@
-import { createSystem } from '../../src/indexSolid'
+import { createSystem } from '@styils/vue'
 
 export const { styled, SystemProvider, useSystem, createExtracts } = createSystem({
   theme: (mode) => {

@@ -1,0 +1,14 @@
+{
+  "name": "vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.2",
+    "@styils/vite-plugin": "workspace:*",
+    "@styils/babel-plugin": "workspace:*"
+  }
+}

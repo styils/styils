@@ -50,8 +50,3 @@ jobs:
       - run: pnpm run test
         env:
           CI: true
-
-      - name: Setup typescript
-        run: pnpm run typescript
-        env:
-          CI: true

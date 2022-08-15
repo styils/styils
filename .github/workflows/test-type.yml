@@ -1,17 +1,19 @@
-name: Release CI
+name: Test CI
 
 on:
+  pull_request:
   push:
-    tags:
-      - 'v*'
+    branches: [main]
+    paths:
+      - 'src/**'
 
 jobs:
-  release:
-    name: Release
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [16.6.0]
+        node-version: [16.16.0]
+        os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -39,26 +41,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Get version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-
       - name: Setup install
         run: pnpm install --frozen-lockfile
-
-      - name: Setup build plugin
-        run: pnpm run build:plugin
 
       - name: Setup build
         run: pnpm run build
 
-      - name: Setup test
-        run: pnpm run test
-
       - name: Setup test type
-        run: pnpm run typescript
-
-      - name: Run release
-        run: pnpm run release ${{ steps.get_version.outputs.VERSION }}
+      - run: pnpm run typescript
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPMTOKEN }}
+          CI: true
