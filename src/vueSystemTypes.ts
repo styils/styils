@@ -31,21 +31,22 @@ export type ComponentProps<T> = T extends keyof JSX
   ? Props
   : {}
 
-export interface StyledProps<As extends NativeComponent, Variants, Vars extends string> {
+export type StyledProps<As extends NativeComponent, Variants, Vars extends string> = {
   ref?: VNodeRef
-  as?: As
-  variants?: {
-    [key in keyof Variants]?: Widen<Variants[key]>
+} & ComponentProps<As> & {
+    as?: As
+    variants?: {
+      [key in keyof Variants]?: Widen<Variants[key]>
+    }
+    vars?: {
+      [key in Vars]?: string | number
+    }
   }
-  vars?: {
-    [key in Vars]?: string | number
-  }
-}
 
 export type StyledComponent<Component extends NativeComponent, Variants, Vars extends string> = <
   As extends NativeComponent = Component
 >(
-  props: StyledProps<As, Variants, Vars> & ComponentProps<As>
+  props: StyledProps<As, Variants, Vars>
 ) => VNode
 
 export interface Styled<Theme> {
@@ -59,7 +60,7 @@ export interface Styled<Theme> {
     styles: Styles<Theme, Vars>,
     interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Vars>
   ): StyledComponent<
-    Component,
+    Component extends StyledComponent<infer T, AnyObject, string> ? T : Component,
     { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
     Vars
   >

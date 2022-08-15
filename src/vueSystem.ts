@@ -34,7 +34,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
           setMode: updataMode
         })
 
-        return slots?.default?.()
+        return () => slots?.default?.()
       }
     })
 

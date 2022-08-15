@@ -7,12 +7,6 @@ exports[`vuejs system createGlobal 1`] = `
       data-styils="css"
     >
       
-      .css-916997065{background-color:red;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       body{background-color:#fff;}
     </style>
   </head>
@@ -27,12 +21,6 @@ exports[`vuejs system createGlobal with sourceMap 1`] = `
       data-styils="css"
     >
       
-      .css-916997065{background-color:red;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       body{background-color:#fff;}sourceMap
     </style>
   </head>
@@ -40,29 +28,32 @@ exports[`vuejs system createGlobal with sourceMap 1`] = `
 </html>
 `;
 
-exports[`vuejs system createSystem 1`] = `""`;
+exports[`vuejs system createSystem base 1`] = `"<div data-testid=\\"use-system\\"></div>"`;
 
-exports[`vuejs system createSystem 2`] = `
+exports[`vuejs system createSystem base 2`] = `
 <html>
   <head>
     <style
       data-styils="css"
     >
       
-      .css-916997065{background-color:red;}1
     </style>
     <style
       data-styils="css"
     >
       
-      body{background-color:blue;}1
+      .css-3433634237{color:red;}
     </style>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:blue;}
-    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system createSystem base 3`] = `"<div data-testid=\\"use-system\\"></div>"`;
+
+exports[`vuejs system createSystem base 4`] = `
+<html>
+  <head>
     <style
       data-styils="css"
     >
@@ -104,24 +95,6 @@ exports[`vuejs system styled className 2`] = `
       data-styils="css"
     >
       
-      .css-916997065{background-color:red;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:blue;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
     </style>
     <style
       data-styils="css"
@@ -140,9 +113,9 @@ exports[`vuejs system styled namespace 1`] = `"<button class=\\"button-css-34653
 
 exports[`vuejs system styled production 1`] = `"<button class=\\"css-3465392085\\"></button>"`;
 
-exports[`vuejs system styled with css state 1`] = `"<button class=\\"css-916201087\\" style=\\"--css-916201087-bg: [object Object];\\"></button>"`;
+exports[`vuejs system styled with css state 1`] = `"<button class=\\"css-916201087\\" style=\\"--css-916201087-bg: red;\\">red</button>"`;
 
-exports[`vuejs system styled with css state 2`] = `"<button class=\\"css-916201087\\" style=\\"--css-916201087-bg: [object Object];\\"></button>"`;
+exports[`vuejs system styled with css state 2`] = `"<button class=\\"css-916201087\\" style=\\"--css-916201087-bg: red;\\">red</button>"`;
 
 exports[`vuejs system styled with sourceMap 1`] = `
 <html>
@@ -163,12 +136,6 @@ exports[`vuejs system styled with styled components 1`] = `"<button class=\\"css
 exports[`vuejs system styled with styled components 2`] = `
 <html>
   <head>
-    <style
-      data-styils="css"
-    >
-      
-      .css-916997065{background-color:red;}1
-    </style>
     <style
       data-styils="css"
     >
@@ -200,7 +167,21 @@ exports[`vuejs system styled with theme and sourceMap 1`] = `
 </html>
 `;
 
-exports[`vuejs system theme does not render repeatedly 1`] = `""`;
+exports[`vuejs system styled with theme and sourceMap 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      .css-916997065{background-color:red;}1
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system theme does not render repeatedly 1`] = `"<div data-testid=\\"use-system\\"></div>"`;
 
 exports[`vuejs system theme does not render repeatedly 2`] = `
 <html>
@@ -209,36 +190,6 @@ exports[`vuejs system theme does not render repeatedly 2`] = `
       data-styils="css"
     >
       
-      .css-916997065{background-color:red;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:blue;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237{color:red;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237{color:red;}.css-3433634237.color-light{color:red;}.css-3433634237.color-dark{color:red;}
     </style>
     <style
       data-styils="css"
@@ -251,7 +202,133 @@ exports[`vuejs system theme does not render repeatedly 2`] = `
 </html>
 `;
 
-exports[`vuejs system variants theme 1`] = `""`;
+exports[`vuejs system theme does not render repeatedly 3`] = `"<div data-testid=\\"use-system\\"></div>"`;
+
+exports[`vuejs system theme does not render repeatedly 4`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system theme does not render repeatedly 5`] = `"<div data-testid=\\"use-system\\"></div>"`;
+
+exports[`vuejs system theme does not render repeatedly 6`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system variants 1`] = `"<div data-testid=\\"styled-variants\\"></div>"`;
+
+exports[`vuejs system variants 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}.css-3433634237.size-max{font-size:99px;}.css-3433634237.size-small{font-size:14px;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system variants 3`] = `"<div data-testid=\\"styled-variants\\"></div>"`;
+
+exports[`vuejs system variants 4`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}.css-3433634237.size-max{font-size:99px;}.css-3433634237.size-small{font-size:14px;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system variants single 1`] = `"<div data-testid=\\"styled-variants\\"></div>"`;
+
+exports[`vuejs system variants single 2`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}.css-3433634237.size-small{font-size:14px;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system variants single 3`] = `"<div data-testid=\\"styled-variants\\"></div>"`;
+
+exports[`vuejs system variants single 4`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}.css-3433634237.size-small{font-size:14px;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system variants theme 1`] = `"<button class=\\"css-3433634237 color-light\\" data-testid=\\"use-system\\">light</button>"`;
 
 exports[`vuejs system variants theme 2`] = `
 <html>
@@ -260,30 +337,6 @@ exports[`vuejs system variants theme 2`] = `
       data-styils="css"
     >
       
-      .css-916997065{background-color:red;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:blue;}
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      .css-3433634237{color:red;}
     </style>
     <style
       data-styils="css"
@@ -296,7 +349,28 @@ exports[`vuejs system variants theme 2`] = `
 </html>
 `;
 
-exports[`vuejs system with theme createGlobal 1`] = `""`;
+exports[`vuejs system variants theme 3`] = `"<button class=\\"css-3433634237 color-light\\" data-testid=\\"use-system\\">light</button>"`;
+
+exports[`vuejs system variants theme 4`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3433634237{color:red;}.css-3433634237.color-light{color:red;}.css-3433634237.color-dark{color:red;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system with theme createGlobal 1`] = `"<div></div>"`;
 
 exports[`vuejs system with theme createGlobal 2`] = `
 <html>
@@ -305,19 +379,53 @@ exports[`vuejs system with theme createGlobal 2`] = `
       data-styils="css"
     >
       
-      .css-916997065{background-color:red;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
-      body{background-color:blue;}1
-    </style>
-    <style
-      data-styils="css"
-    >
-      
       body{background-color:blue;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system with theme createGlobal 3`] = `"<div></div>"`;
+
+exports[`vuejs system with theme createGlobal 4`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:red;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system with theme createGlobal 5`] = `"<div></div>"`;
+
+exports[`vuejs system with theme createGlobal 6`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:red;}
+    </style>
+  </head>
+  <body />
+</html>
+`;
+
+exports[`vuejs system with theme createGlobal and sourcemap 1`] = `
+<html>
+  <head>
+    <style
+      data-styils="css"
+    >
+      
+      body{background-color:red;}1
     </style>
   </head>
   <body />
