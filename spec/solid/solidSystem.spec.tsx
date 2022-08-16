@@ -1,5 +1,4 @@
-/* @jsxImportSource solid-js */
-import { createSystem, styled, createGlobal } from './solidSystem'
+import { createSystem, styled, createGlobal } from '../../dist/solid'
 
 const { styled: styleTheme } = createSystem({
   theme: () => ({ color: 'red', bg: 'blue' }),

@@ -14,7 +14,10 @@
     "format": "prettier \"**/*.{js,ts,tsx,md}\" --write",
     "lint": "eslint \"**/*.{ts,tsx}\" --fix",
     "release": "node -r esbuild-register scripts/release.ts",
-    "typescript": "tsc -p tsconfig.json"
+    "type:react": "tsc -p spec/react/tsconfig.json",
+    "type:vue": "tsc -p spec/vue/tsconfig.json",
+    "type:solid": "tsc -p spec/solid/tsconfig.json",
+    "typescript": "tsc -p tsconfig.json && pnpm run type:solid && pnpm run type:react && pnpm run type:vue"
   },
   "keywords": [
     "css-in-js",
