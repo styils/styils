@@ -42,7 +42,7 @@ npm install @styils/solid
 
 ### Styils Vue
 
-![npm](https://img.shields.io/npm/v/@styils/vue?color=%234f88c6&logo=vue&logoColor=%234f88c6)
+![npm](https://img.shields.io/npm/v/@styils/vue?color=%2342b883&logo=vuedotjs)
 
 Solid wrapper including the `styled` API.
 
