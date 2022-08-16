@@ -42,6 +42,7 @@ async function publish(args: string) {
     case 'css':
     case 'base':
     case 'solid':
+    case 'vue':
       targetPath.push(path.join(__dirname, '..', 'dist', type))
       break
     case 'plugin':
@@ -57,7 +58,7 @@ async function publish(args: string) {
       })
       break
     default:
-      console.log(`wrong tag ${type}, support{react, css, base}`)
+      console.log(`wrong tag ${type}, support{react, css, solid, base}`)
       process.exit(1)
   }
 

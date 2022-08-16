@@ -25,14 +25,15 @@ describe('parseRules rules', () => {
           border: '$border'
         }
       },
+      '.base',
       'base'
     )
 
-    expect(ruleCode).toEqual(`base{display:value;}base button{border:var(--base-border);}`)
+    expect(ruleCode).toEqual(`.base{display:value;}.base button{border:var(--base-border);}`)
 
     expect(segmentRuleCode).toEqual([
-      'base{display:value;}',
-      'base button{border:var(--base-border);}'
+      '.base{display:value;}',
+      '.base button{border:var(--base-border);}'
     ])
   })
 
@@ -44,7 +45,8 @@ describe('parseRules rules', () => {
           border: '$border'
         }
       },
-      '.base'
+      '.base',
+      'base'
     )
 
     expect(ruleCode).toEqual(`.base{display:value;}.base button{border:var(--base-border);}`)

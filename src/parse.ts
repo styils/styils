@@ -31,7 +31,7 @@ function transformKey(property: string, selector = '') {
 /**
  * Parses the object into css
  */
-export function parseRules(node: AnyObject, rootSelector = '') {
+export function parseRules(node: AnyObject, rootSelector = '', varSelector = '') {
   const nodes = [rootSelector]
   const stack = [{ ...node }]
 
@@ -55,10 +55,9 @@ export function parseRules(node: AnyObject, rootSelector = '') {
       }
     }
 
-    if (typeof value === 'string' && value.charAt(0) === '$') {
-      value = `var(--${
-        rootSelector.charAt(0) === '.' ? rootSelector.slice(1) : rootSelector
-      }-${value.slice(1)})`
+    if (typeof value === 'string' && value.charAt(0) === '$' && varSelector) {
+      // Variant using base Selector
+      value = `var(--${varSelector}-${value.slice(1)})`
     }
 
     return `${key}:${value};`
