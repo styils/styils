@@ -11,6 +11,7 @@
   <img src="https://codecov.io/gh/styils/styils/branch/main/graph/badge.svg?token=DAETCWW98B" alt="coverage" />
   <img src="https://img.badgesize.io/https://unpkg.com/@styils/solid@latest/index.prod.esm.js?compression=gzip&style=square&label=solid&color=#4fc08d" alt="gzip" />
   <img src="https://img.badgesize.io/https://unpkg.com/@styils/react@latest/index.prod.esm.js?compression=gzip&style=square&label=react&color=#4fc08d" alt="gzip" />
+  <img src="https://img.badgesize.io/https://unpkg.com/@styils/vue@latest/index.prod.esm.js?compression=gzip&style=square&label=vue&color=#4fc08d" alt="gzip" />
 </p>
 
 <p align="center">
@@ -37,6 +38,16 @@ Solid wrapper including the `styled` API.
 
 ```sh
 npm install @styils/solid
+```
+
+### Styils Vue
+
+![npm](https://img.shields.io/npm/v/@styils/vue?color=%234f88c6&logo=vue&logoColor=%234f88c6)
+
+Solid wrapper including the `styled` API.
+
+```sh
+npm install @styils/vue
 ```
 
 ### Styils Babel
