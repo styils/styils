@@ -42,7 +42,7 @@ npm install @styils/solid
 
 ### Styils Vue
 
-![npm](https://img.shields.io/npm/v/@styils/vue?color=%234f88c6&logo=vue&logoColor=%234f88c6)
+![npm](https://img.shields.io/npm/v/@styils/vue?color=%2342b883&logo=vuedotjs)
 
 Vue 包装器，包括 `styled` API。
 
