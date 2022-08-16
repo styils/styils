@@ -52,10 +52,12 @@ async function publish(args: string) {
       )
       break
     case 'all':
-      // eslint-disable-next-line @typescript-eslint/no-extra-semi
-      ;['react', 'css', 'base', 'solid'].forEach((id) => {
-        targetPath.push(path.join(__dirname, '..', 'dist', id))
-      })
+      {
+        const all = ['react', 'css', 'base', 'solid', 'vue']
+        all.forEach((id) => {
+          targetPath.push(path.join(__dirname, '..', 'dist', id))
+        })
+      }
       break
     default:
       console.log(`wrong tag ${type}, support{react, css, solid, base}`)
@@ -66,6 +68,8 @@ async function publish(args: string) {
     packageTemp.version = `${version}${tag}`
 
     fs.writeFileSync(path.join(__dirname, 'package.temp.json'), JSON.stringify(packageTemp))
+
+    shell.exec(`pnpm run build`)
   } else {
     // eslint-disable-next-line global-require
     const packageBabelJson = require('../babel-plugin/package.json')
