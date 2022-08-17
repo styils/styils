@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { styled, useSystem } from './theme'
+import { styled, useSystem, createGlobal } from './theme'
 
 const Button = styled(
   'button',
   (mode) => {
     return {
       color: mode!.color,
-      height: '$height'
+      height: '$height',
+      backgroundColor: 'blue'
     }
   },
   {
@@ -21,6 +22,12 @@ const Button = styled(
     }
   }
 )
+
+createGlobal({
+  body: {
+    backgroundColor: 'cadetblue'
+  }
+})
 
 const { mode, setMode } = useSystem()
 

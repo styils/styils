@@ -1,6 +1,6 @@
 import { createSystem } from '@styils/vue'
 
-export const { styled, SystemProvider, useSystem, createExtracts } = createSystem({
+export const { styled, SystemProvider, useSystem, createExtracts, createGlobal } = createSystem({
   theme: (mode) => {
     return {
       light: {

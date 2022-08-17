@@ -7,3 +7,15 @@ export interface Options {
   sourceFileName?: string
   sourceRoot?: string
 }
+
+export function addSourceMaps(
+  offset: {
+    line: number
+    column: number
+  },
+  state: {
+    sourceFileName: string
+    sourceRoot?: string
+    code: string
+  }
+): string

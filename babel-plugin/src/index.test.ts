@@ -1,7 +1,10 @@
-import plugin from '.'
+import plugin, { addSourceMaps } from '.'
 import { transformSync } from '@babel/core'
 
 describe('transform api', () => {
+  it('export', () => {
+    expect(typeof addSourceMaps).toEqual('function')
+  })
   it('sourcemap', () => {
     const code = `
       import {styled} from '@styils/react'

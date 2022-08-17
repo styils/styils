@@ -4,6 +4,7 @@
   "description": "babel plugin styils",
   "types": "types.d.ts",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "exports": {
     ".": {
       "require": "./dist/index.js",
