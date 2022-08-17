@@ -50,7 +50,7 @@ Vue 包装器，包括 `styled` API。
 npm install @styils/vue
 ```
 
-### Styils Babel
+### Styils Babel Plugin
 
 ![npm](https://img.shields.io/npm/v/@styils/babel-plugin?color=%23eeda7c&logo=babel&logoColor=%23eeda7c)
 
@@ -60,6 +60,15 @@ This is required for sourcemap
 
 ```sh
 npm install @styils/babel-plugin
+```
+
+### Styls Vite Plugin
+![npm](https://img.shields.io/npm/v/@styils/vite-plugin?color=%23646cff&logo=vite)
+
+包装 `@styils/babel-plugin` 并提供 vue sourcemap 支持。
+
+```sh
+npm install @styils/vite-plugin
 ```
 
 ### SSR Example
