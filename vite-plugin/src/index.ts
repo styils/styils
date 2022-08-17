@@ -39,10 +39,19 @@ export default (options: Options = {}): PluginOption => {
             if (/from\s*("|').+/.test(line)) {
               const [fromValue] = line.match(/('|").+('|")/)
               const value = fromValue.replace(/('|")/g, '')
-              const isStyils =
-                typeof options.importPaths === 'string'
-                  ? options.importPaths === value
-                  : options.importPaths.test(value)
+              let isStyils = null
+
+              console.log(options.importPaths)
+
+              if (typeof options.importPaths === 'string' && options.importPaths === value) {
+                isStyils = true
+              } else if (
+                options.importPaths &&
+                options.importPaths.constructor === RegExp &&
+                options.importPaths.test(value)
+              ) {
+                isStyils = true
+              }
 
               if (isStyils) {
                 if (
