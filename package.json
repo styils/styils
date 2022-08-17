@@ -14,9 +14,9 @@
     "format": "prettier \"**/*.{js,ts,tsx,md}\" --write",
     "lint": "eslint \"**/*.{ts,tsx}\" --fix",
     "release": "node -r esbuild-register scripts/release.ts",
-    "type:react": "tsc -p spec/react/tsconfig.json",
-    "type:vue": "tsc -p spec/vue/tsconfig.json",
-    "type:solid": "tsc -p spec/solid/tsconfig.json",
+    "type:react": "tsc -p specs/react/tsconfig.json",
+    "type:vue": "tsc -p specs/vue/tsconfig.json",
+    "type:solid": "tsc -p specs/solid/tsconfig.json",
     "typescript": "tsc -p tsconfig.json && pnpm run type:solid && pnpm run type:react && pnpm run type:vue"
   },
   "keywords": [
