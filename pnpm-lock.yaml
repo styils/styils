@@ -16,7 +16,7 @@ importers:
       '@types/jest': 28.1.7
       '@types/node': 18.7.6
       '@types/prettier': 2.7.0
-      '@types/react': 17.0.48
+      '@types/react': 18.0.17
       '@types/react-dom': 17.0.17
       '@types/rimraf': 3.0.2
       '@types/shelljs': 0.8.11
@@ -61,7 +61,7 @@ importers:
       '@types/jest': 28.1.7
       '@types/node': 18.7.6
       '@types/prettier': 2.7.0
-      '@types/react': 17.0.48
+      '@types/react': 18.0.17
       '@types/react-dom': 17.0.17
       '@types/rimraf': 3.0.2
       '@types/shelljs': 0.8.11
@@ -1879,7 +1879,7 @@ packages:
   /@types/react-dom/18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
-      '@types/react': 18.0.15
+      '@types/react': 18.0.17
     dev: true
 
   /@types/react/17.0.48:
@@ -1892,6 +1892,14 @@ packages:
 
   /@types/react/18.0.15:
     resolution: {integrity: sha512-iz3BtLuIYH1uWdsv6wXYdhozhqj20oD4/Hk2DNXIn1kFsmp9x8d9QB6FnPhfkbhd2PgEONt9Q1x/ebkwjfFLow==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.2
+      csstype: 3.1.0
+    dev: true
+
+  /@types/react/18.0.17:
+    resolution: {integrity: sha512-38ETy4tL+rn4uQQi7mB81G7V1g0u2ryquNmsVIOKUAEIDK+3CUjZ6rSRpdvS99dNBnkLFL83qfmtLacGOTIhwQ==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
