@@ -1,6 +1,7 @@
 import { type NodePath, type PluginPass } from '@babel/core'
 import { declare } from '@babel/helper-plugin-utils'
-import addSourceMaps from './sourceMap'
+import { SourceMapGenerator } from 'source-map'
+import convert from 'convert-source-map'
 import { extname } from 'path'
 import type { Options } from '../types'
 
@@ -8,8 +9,39 @@ export interface State extends PluginPass {
   opts: Options
 }
 
+export function addSourceMaps(
+  offset: {
+    line: number
+    column: number
+  },
+  state: {
+    sourceFileName: string
+    sourceRoot: string
+    code: string
+  }
+) {
+  const { code } = state
+
+  const generator = new SourceMapGenerator({
+    file: state.sourceFileName,
+    sourceRoot: state.sourceRoot
+  })
+
+  generator.setSourceContent(state.sourceFileName, code)
+
+  generator.addMapping({
+    generated: {
+      line: 1,
+      column: 0
+    },
+    source: state.sourceFileName,
+    original: offset
+  })
+  return convert.fromObject(generator).toComment({ multiline: true })
+}
+
 const sourceMapProperty = 'sourceMap'
-export { addSourceMaps }
+
 export default declare((api) => {
   const { types: t } = api
   api.assertVersion(7)

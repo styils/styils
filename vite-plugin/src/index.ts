@@ -41,8 +41,6 @@ export default (options: Options = {}): PluginOption => {
               const value = fromValue.replace(/('|")/g, '')
               let isStyils = null
 
-              console.log(options.importPaths)
-
               if (typeof options.importPaths === 'string' && options.importPaths === value) {
                 isStyils = true
               } else if (
