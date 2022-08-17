@@ -49,6 +49,8 @@ export default (options: Options = {}): PluginOption => {
                 options.importPaths.test(value)
               ) {
                 isStyils = true
+              } else {
+                isStyils = /@styils\/vue/.test(value)
               }
 
               if (isStyils) {

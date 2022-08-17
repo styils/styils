@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`vite plugin transform .vue file 1`] = `
+"
+      <script lang=\\"ts\\" setup>
+import { ref } from 'vue'
+import { styled, useSystem, createGlobal } from './theme'
+
+styled.sourceMap = \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy90ZXN0LnZ1ZT9zdHlpbHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBS0EiLCJmaWxlIjoic3JjL3Rlc3QudnVlP3N0eWlscyIsInNvdXJjZXNDb250ZW50IjpbIlxuICAgICAgPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcbmltcG9ydCB7IHN0eWxlZCwgdXNlU3lzdGVtLCBjcmVhdGVHbG9iYWwgfSBmcm9tICcuL3RoZW1lJ1xuXG5jb25zdCBCdXR0b24gPSBzdHlsZWQoXG4gICdidXR0b24nLFxuICAobW9kZSkgPT4gKHt9KSxcbilcblxuY3JlYXRlR2xvYmFsKHtcbiAgYm9keToge1xuICAgIGJhY2tncm91bmRDb2xvcjogJ2NhZGV0Ymx1ZSdcbiAgfVxufSlcbjwvc2NyaXB0PlxuICAgICJdfQ== */\\";const Button = styled(
+  'button',
+  (mode) => ({}),
+)
+
+createGlobal.sourceMap = \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy90ZXN0LnZ1ZT9zdHlpbHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBVUEiLCJmaWxlIjoic3JjL3Rlc3QudnVlP3N0eWlscyIsInNvdXJjZXNDb250ZW50IjpbIlxuICAgICAgPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcbmltcG9ydCB7IHN0eWxlZCwgdXNlU3lzdGVtLCBjcmVhdGVHbG9iYWwgfSBmcm9tICcuL3RoZW1lJ1xuXG5jb25zdCBCdXR0b24gPSBzdHlsZWQoXG4gICdidXR0b24nLFxuICAobW9kZSkgPT4gKHt9KSxcbilcblxuY3JlYXRlR2xvYmFsKHtcbiAgYm9keToge1xuICAgIGJhY2tncm91bmRDb2xvcjogJ2NhZGV0Ymx1ZSdcbiAgfVxufSlcbjwvc2NyaXB0PlxuICAgICJdfQ== */\\";createGlobal({
+  body: {
+    backgroundColor: 'cadetblue'
+  }
+})
+</script>
+    "
+`;
+
+exports[`vite plugin transform .vue file1 1`] = `
+"
+      <script lang=\\"ts\\" setup>
+import { ref } from 'vue'
+import { styled, useSystem, createGlobal } from './theme'
+
+styled(
+  'button',
+  (mode) => ({}),
+)
+</script>
+    "
+`;
+
+exports[`vite plugin transform .vue file2 1`] = `
+"
+      <script lang=\\"ts\\" setup>
+import { ref } from 'vue'
+import { styled, useSystem, createGlobal } from './theme'
+
+styled.sourceMap = \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy90ZXN0LnZ1ZT9zdHlpbHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBS0EiLCJmaWxlIjoic3JjL3Rlc3QudnVlP3N0eWlscyIsInNvdXJjZXNDb250ZW50IjpbIlxuICAgICAgPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcbmltcG9ydCB7IHN0eWxlZCwgdXNlU3lzdGVtLCBjcmVhdGVHbG9iYWwgfSBmcm9tICcuL3RoZW1lJ1xuXG5sZXQgYnV0dG9uID0gc3R5bGVkKFxuICAnYnV0dG9uJyxcbiAgKG1vZGUpID0+ICh7fSksXG4pXG48L3NjcmlwdD5cbiAgICAiXX0= */\\";let button = styled(
+  'button',
+  (mode) => ({}),
+)
+</script>
+    "
+`;
+
+exports[`vite plugin transform .vue file3 1`] = `
+"
+      <script lang=\\"ts\\" setup>
+import { ref } from 'vue'
+import { sx, useSystem, createGlobal } from '@styils/vue'
+
+sx.sourceMap = \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy90ZXN0LnZ1ZT9zdHlpbHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBS0EiLCJmaWxlIjoic3JjL3Rlc3QudnVlP3N0eWlscyIsInNvdXJjZXNDb250ZW50IjpbIlxuICAgICAgPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcbmltcG9ydCB7IHN4LCB1c2VTeXN0ZW0sIGNyZWF0ZUdsb2JhbCB9IGZyb20gJ0BzdHlpbHMvdnVlJ1xuXG5sZXQgYnV0dG9uID0gc3goXG4gICdidXR0b24nLFxuICAobW9kZSkgPT4gKHt9KSxcbilcbjwvc2NyaXB0PlxuICAgICJdfQ== */\\";let button = sx(
+  'button',
+  (mode) => ({}),
+)
+</script>
+    "
+`;
+
+exports[`vite plugin transform .vue file4 1`] = `
+"
+      <script lang=\\"ts\\" setup>
+import { ref } from 'vue'
+import { sx, useSystem, createGlobal as gl } from '@styils/vue'
+
+gl.sourceMap = \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy90ZXN0LnZ1ZT9zdHlpbHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBS0EiLCJmaWxlIjoic3JjL3Rlc3QudnVlP3N0eWlscyIsInNvdXJjZXNDb250ZW50IjpbIlxuICAgICAgPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcbmltcG9ydCB7IHN4LCB1c2VTeXN0ZW0sIGNyZWF0ZUdsb2JhbCBhcyBnbCB9IGZyb20gJ0BzdHlpbHMvdnVlJ1xuXG5nbCh7fSlcbjwvc2NyaXB0PlxuICAgICJdfQ== */\\";gl({})
+</script>
+    "
+`;
