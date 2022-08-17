@@ -50,23 +50,27 @@ Solid wrapper including the `styled` API.
 npm install @styils/vue
 ```
 
-### Styils Babel-plugin
+### Styils Babel Plugin
 
 ![npm](https://img.shields.io/npm/v/@styils/babel-plugin?color=%23eeda7c&logo=babel&logoColor=%23eeda7c)
 
 This is required for sourcemap. 
 Note that `babel-plugin` does not support vue suorcemap
 
-### Styils Vite-plugin
-
-![npm](https://img.shields.io/npm/v/@styils/vite-plugin?color=%23646cff&logo=vite)
-
-Wraps `babel-plugin` and provides vue sourcemap support.
-
 [More](./babel/)
 
 ```sh
 npm install @styils/babel-plugin
+```
+
+### Styils Vite Plugin
+
+![npm](https://img.shields.io/npm/v/@styils/vite-plugin?color=%23646cff&logo=vite)
+
+Wraps `@styils/babel-plugin` and provides vue sourcemap support.
+
+```sh
+npm install @styils/vite-plugin
 ```
 
 ### SSR Example
