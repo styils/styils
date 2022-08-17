@@ -33,10 +33,10 @@
     "@babel/helper-plugin-utils": "^7.18.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.9",
-    "@types/babel__core": "^7.1.19",
-    "@types/babel__helper-plugin-utils": "^7.10.0",
-    "@types/convert-source-map": "^1.5.2"
+    "@babel/core": "7.18.10",
+    "@types/babel__core": "7.1.19",
+    "@types/babel__helper-plugin-utils": "7.10.0",
+    "@types/convert-source-map": "1.5.2"
   },
   "homepage": "https://github.com/styils/styils",
   "bugs": "https://github.com/styils/styils/issues",
