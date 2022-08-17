@@ -1,4 +1,4 @@
-import { createSystem, styled, flush, createGlobal, keyframes } from './reactSystem'
+import { createSystem, styled, flush, createGlobal, keyframes, systemContext } from './reactSystem'
 import { render, fireEvent, getByText } from '@testing-library/react'
 import React, { useState } from 'react'
 
@@ -15,6 +15,9 @@ describe('reactjs system', () => {
   beforeEach(() => {
     flush()
     globalThis.document = document
+  })
+  it('systemContext', () => {
+    expect(!!systemContext).toEqual(true)
   })
   it('styled', () => {
     const Button = styled('button', {

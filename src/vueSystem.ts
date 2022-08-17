@@ -5,7 +5,7 @@ import { AnyObject } from './types'
 import { Styled } from './vueSystemTypes'
 
 export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
-  const themeContent = Symbol('styils-content')
+  const systemContext = Symbol('styils-content')
 
   const useSystem = () =>
     inject<{
@@ -13,7 +13,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       theme: Theme
       setMode: (value: string) => void
     }>(
-      themeContent,
+      systemContext,
       // @ts-expect-error no value initially
       {}
     )
@@ -29,7 +29,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
           mode.value = value
         }
 
-        provide(themeContent, {
+        provide(systemContext, {
           mode,
           theme: providerOptions.theme,
           setMode
@@ -129,8 +129,10 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       styledComponent,
       extractElement
     ),
-    useSystem
+    useSystem,
+    systemContext
   }
 }
 
-export const { styled, createExtracts, flush, createGlobal, keyframes } = createSystem()
+export const { styled, createExtracts, flush, createGlobal, keyframes, systemContext } =
+  createSystem()

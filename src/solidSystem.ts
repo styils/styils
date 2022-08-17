@@ -17,12 +17,12 @@ import type { BaseTag, SystemExtractElement, SystemOptions, TargetInfo } from '.
 import type { AnyObject } from './types'
 
 export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
-  const themeContent = createContext<ReturnType<UseSystem<Theme>>>(
+  const systemContext = createContext<ReturnType<UseSystem<Theme>>>(
     // @ts-expect-error no value initially
     {}
   )
 
-  const useSystem: UseSystem<Theme> = () => useContext(themeContent)
+  const useSystem: UseSystem<Theme> = () => useContext(systemContext)
 
   const SystemProvider =
     (providerOptions: { mode: string; theme: AnyObject }) => (props: { children: JSX.Element }) => {
@@ -39,7 +39,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
         })
       }
 
-      return createComponent(themeContent.Provider, {
+      return createComponent(systemContext.Provider, {
         value: {
           theme,
           setMode: updataMode,
@@ -160,8 +160,10 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       (props: SystemExtractElement) => ExtractElement,
       (providerOptions: { mode: string; theme: AnyObject }) => Provider
     >(options, SystemProvider, styledComponent, extractElement),
-    useSystem
+    useSystem,
+    systemContext
   }
 }
 
-export const { styled, createExtracts, flush, createGlobal, keyframes } = createSystem()
+export const { styled, createExtracts, flush, createGlobal, keyframes, systemContext } =
+  createSystem()

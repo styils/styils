@@ -5,7 +5,7 @@ import type { Styled } from './reactSystemTypes'
 import { AnyObject } from './types'
 
 export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
-  const themeContent = React.createContext<{
+  const systemContext = React.createContext<{
     mode: string
     setMode: React.Dispatch<React.SetStateAction<string>>
     theme: Theme
@@ -14,7 +14,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
     {}
   )
 
-  const useSystem = () => React.useContext(themeContent)
+  const useSystem = () => React.useContext(systemContext)
 
   const SystemProvider =
     (providerOptions: { mode: string; theme: Theme }) => (props: { children: React.ReactNode }) => {
@@ -27,7 +27,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       }
 
       return React.createElement(
-        themeContent.Provider,
+        systemContext.Provider,
         { value: { mode, setMode: updataMode, theme: providerOptions.theme } },
         props.children
       )
@@ -111,8 +111,10 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       styledComponent,
       extractElement
     ),
-    useSystem
+    useSystem,
+    systemContext
   }
 }
 
-export const { styled, createExtracts, flush, createGlobal, keyframes } = createSystem()
+export const { styled, createExtracts, flush, createGlobal, keyframes, systemContext } =
+  createSystem()

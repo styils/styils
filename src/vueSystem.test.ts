@@ -3,7 +3,15 @@
  * @jest-environment-options {"customExportConditions": ["node","node-addons"]}
  */
 
-import { createSystem, styled, flush, createGlobal, keyframes, createExtracts } from './vueSystem'
+import {
+  createSystem,
+  styled,
+  flush,
+  createGlobal,
+  keyframes,
+  createExtracts,
+  systemContext
+} from './vueSystem'
 import { mount } from '@vue/test-utils'
 import { h, ref } from 'vue'
 
@@ -23,6 +31,10 @@ describe('vuejs system', () => {
     document.head.childNodes.forEach((tag) => {
       document.head.removeChild(tag)
     })
+  })
+
+  it('systemContext', () => {
+    expect(!!systemContext).toEqual(true)
   })
   it('styled', () => {
     const Button = styled('button', {

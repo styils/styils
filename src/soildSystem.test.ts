@@ -1,4 +1,12 @@
-import { createSystem, styled, flush, createGlobal, keyframes, createExtracts } from './solidSystem'
+import {
+  createSystem,
+  styled,
+  flush,
+  createGlobal,
+  keyframes,
+  createExtracts,
+  systemContext
+} from './solidSystem'
 import { render, fireEvent, getByText } from 'solid-testing-library'
 import { Dynamic } from 'solid-js/web'
 import { createSignal } from 'solid-js'
@@ -17,6 +25,9 @@ describe('solidjs system', () => {
     flush()
     globalThis.document = document
     document.documentElement.removeAttribute('style')
+  })
+  it('systemContext', () => {
+    expect(!!systemContext).toEqual(true)
   })
   it('styled', () => {
     const Button = styled('button', {
