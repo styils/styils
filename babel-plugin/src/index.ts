@@ -9,7 +9,7 @@ export interface State extends PluginPass {
 }
 
 const sourceMapProperty = 'sourceMap'
-
+export { addSourceMaps }
 export default declare((api) => {
   const { types: t } = api
   api.assertVersion(7)

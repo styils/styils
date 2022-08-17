@@ -19,21 +19,6 @@ describe('vite plugin', () => {
     expect(code).toMatch(/sourceMap/)
   })
 
-  it('base enforce post', async () => {
-    const plugin = styilsPlugin({ enforce: 'post' }) as Test
-
-    const code = await plugin.transform(
-      `
-    import { styled } from '@styils/react'
-
-    const Button = styled('button', {})
-    `,
-      'src/index.vue'
-    )
-
-    expect(code).toMatch(/sourceMap/)
-  })
-
   it('base enforce post not .vue', async () => {
     const plugin = styilsPlugin() as Test
 
