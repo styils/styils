@@ -216,10 +216,3 @@ export function renderButtonCount() {
     />
   )
 }
-
-const a = {
-  1: {},
-  2: {}
-}
-
-type A = keyof typeof a
