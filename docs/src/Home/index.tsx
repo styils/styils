@@ -9,7 +9,7 @@ import okSvg from '../svg/ok.svg'
 import tyoeSvg from '../svg/tyoe.svg'
 import reactSvg from '../svg/react.svg'
 import solidSvg from '../svg/solid.svg'
-import htmlSvg from '../svg/html.svg'
+import vueSvg from '../svg/vue.svg'
 import Switch, { SwitchWapper } from './Switch'
 import Card, { CardBox } from './Card'
 import { useTranslation } from 'react-i18next'
@@ -86,6 +86,8 @@ const LogoWapper = styled('section', (theme) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  fontSize: 18,
+
   span: {
     fontWeight: 'bold',
     color: theme.mainColor
@@ -144,12 +146,11 @@ const LogoWapper = styled('section', (theme) => ({
     }
   },
 
-  [`& ${SupportLabel}[datatype="html"]`]: {
+  [`& ${SupportLabel}[datatype="vue"]`]: {
     animation: `13s ease 0.5s infinite none running ${complex}`,
     boxShadow: theme.boxShadow,
     bottom: 30,
     right: 20,
-    fontSize: 24,
     '@media screen and (max-width: 580px)': {
       right: 0
     },
@@ -399,9 +400,9 @@ export default function Home() {
               localStorage.setItem('styils-theme-mode', mode)
             }}
           />
-          <SupportLabel datatype="html">
-            <img src={htmlSvg} alt="html" />
-            <span>Html</span>
+          <SupportLabel datatype="vue">
+            <img src={vueSvg} alt="vue" />
+            <span>Vue</span>
           </SupportLabel>
           <SupportLabel datatype="react">
             <img src={reactSvg} alt="react" />
