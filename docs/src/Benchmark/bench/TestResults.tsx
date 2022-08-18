@@ -21,6 +21,17 @@ const Header = styled('section', () => ({
   }
 }))
 
+const TestResultsRoot = styled('div', {
+  width: '100%',
+  'th, td': {
+    padding: 10,
+    textAlign: 'center'
+  },
+  'li ul': {
+    listStyle: 'none'
+  }
+})
+
 type Result = Omit<RunResult, 'N'>
 type ResultKey = keyof Result
 
@@ -57,18 +68,7 @@ export const TestResults = ({
   const { t } = useTranslation()
 
   return (
-    <div style={{ width: '100%' }}>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            th, td {
-              padding: 10px;
-              text-align: center;
-            }
-        `
-        }}
-      />
-
+    <TestResultsRoot>
       <Header>
         <div>
           <span>
@@ -119,7 +119,7 @@ export const TestResults = ({
         <li>- {t('testResults.desc2')}</li>
         <li>- {t('benchmarkDesc')}</li>
       </ul>
-    </div>
+    </TestResultsRoot>
   )
 }
 
