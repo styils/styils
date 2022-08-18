@@ -81,8 +81,8 @@ export type Widen<T> = T extends number
   ? `${T}` | T
   : T extends 'true' | 'false'
   ? boolean | T
-  : T extends `${infer N}`
-  ? N | T
+  : T extends `${number}`
+  ? number | T
   : T
 
 export type Styles<Theme, Vars extends string> =

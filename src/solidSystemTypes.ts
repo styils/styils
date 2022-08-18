@@ -16,19 +16,14 @@ export type NativeComponent = keyof JSX.IntrinsicElements | ((...props: any[]) =
 
 type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R } ? R : P) : P
 
-type StyledProps<As extends NativeComponent, Variants, Vars extends string> = Omit<
-  ComponentProps<As>,
-  'ref'
-> & {
+type StyledProps<As extends NativeComponent, Variants, Vars> = Omit<ComponentProps<As>, 'ref'> & {
   ref?: PropsWithRef<ComponentProps<As>>
   as?: As
   variants?: Variants
-  vars?: {
-    [key in Vars]?: string | number
-  }
+  vars?: Vars
 }
 
-type StyledComponent<Component extends NativeComponent, Variants, Vars extends string> = <
+type StyledComponent<Component extends NativeComponent, Variants, Vars> = <
   As extends NativeComponent = Component
 >(
   props: StyledProps<As, Variants, Vars>
@@ -42,6 +37,8 @@ export interface Styled<Theme> {
   ): StyledComponent<
     Component extends StyledComponent<infer C, AnyObject, string> ? C : Component,
     { [key in keyof Variants]: Widen<keyof Variants[key]> },
-    Vars
+    {
+      [key in Vars]?: string | number
+    }
   >
 }

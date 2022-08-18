@@ -91,7 +91,10 @@ type CProps<T extends StyleTag> = StyledProps<
   {
     size: 'max' | 'small'
   },
-  'a' | 'b'
+  {
+    a: string | number
+    b: string | number
+  }
 >
 
 function Tst<T extends StyleTag = 'button'>(_: CProps<T>) {}
@@ -213,3 +216,10 @@ export function renderButtonCount() {
     />
   )
 }
+
+const a = {
+  1: {},
+  2: {}
+}
+
+type A = keyof typeof a

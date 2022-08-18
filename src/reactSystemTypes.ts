@@ -26,19 +26,17 @@ type ComponentProps<
 
 type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R | string } ? R : P) : P
 
-export type StyledProps<As extends React.ElementType, Variants, Vars extends string> = Omit<
+export type StyledProps<As extends React.ElementType, Variants, Vars> = Omit<
   ComponentProps<As>,
   'ref'
 > & {
   ref?: PropsWithRef<ComponentProps<As>>
   as?: As
   variants?: Variants
-  vars?: {
-    [key in Vars]?: string | number
-  }
+  vars?: Vars
 }
 
-export interface StyledComponent<Component extends React.ElementType, Variants, Vars extends string>
+export interface StyledComponent<Component extends React.ElementType, Variants, Vars>
   extends FunctionComponent {
   <As extends React.ElementType = Component>(props: StyledProps<As, Variants, Vars>): JSX.Element
 }
@@ -52,6 +50,8 @@ export interface Styled<Theme> {
     // @ts-expect-error Conflict with vue type
     Component extends StyledComponent<infer C, AnyObject, string> ? C : Component,
     { [key in keyof Variants]: Widen<keyof Variants[key]> },
-    Vars
+    {
+      [key in Vars]?: string | number
+    }
   >
 }
