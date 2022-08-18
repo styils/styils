@@ -1,6 +1,6 @@
 import type { JSX, ComponentProps, Accessor } from 'solid-js'
-import type { Widen } from './types'
-import { StyleInterpolation, Styles } from './baseSystemTypes'
+import type { AnyObject } from './types'
+import { StyleInterpolation, Styles, Widen } from './baseSystemTypes'
 
 export type UseSystem<Theme> = () => {
   mode: Accessor<string>
@@ -16,39 +16,29 @@ export type NativeComponent = keyof JSX.IntrinsicElements | ((...props: any[]) =
 
 type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R } ? R : P) : P
 
-type StyledProps<As extends NativeComponent, Variants, Vars extends string> = Omit<
-  ComponentProps<As>,
-  'ref'
-> & {
+type StyledProps<As extends NativeComponent, Variants, Vars> = Omit<ComponentProps<As>, 'ref'> & {
   ref?: PropsWithRef<ComponentProps<As>>
   as?: As
-  variants?: {
-    [key in keyof Variants]?: Widen<Variants[key]>
-  }
-  vars?: {
-    [key in Vars]?: string | number
-  }
+  variants?: Variants
+  vars?: Vars
 }
 
-type StyledComponent<Component extends NativeComponent, Variants, Vars extends string> = <
+type StyledComponent<Component extends NativeComponent, Variants, Vars> = <
   As extends NativeComponent = Component
 >(
   props: StyledProps<As, Variants, Vars>
 ) => JSX.Element
 
 export interface Styled<Theme> {
-  <
-    Component extends NativeComponent,
-    VariantsKey extends PropertyKey = '',
-    VariantsValue extends PropertyKey = '',
-    Vars extends string = ''
-  >(
+  <Component extends NativeComponent, Variants extends AnyObject = {}, Vars extends string = ''>(
     component: Component | { tag: Component; namespace?: string },
     styles: Styles<Theme, Vars>,
-    interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Vars>
+    interpolation?: StyleInterpolation<Theme, Variants>
   ): StyledComponent<
-    Component,
-    { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
-    Vars
+    Component extends StyledComponent<infer C, AnyObject, string> ? C : Component,
+    { [key in keyof Variants]: Widen<keyof Variants[key]> },
+    {
+      [key in Vars]?: string | number
+    }
   >
 }

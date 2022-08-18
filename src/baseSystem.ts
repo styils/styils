@@ -150,11 +150,7 @@ export function createBaseSystem<
 
             if (!selectorCache.has(variantsClassName)) {
               selectorCache.add(variantsClassName)
-              const { segmentRuleCode, ruleCode } = parseRules(
-                value,
-                `.${variantsClassName}`,
-                targetClassName
-              )
+              const { segmentRuleCode, ruleCode } = parseRules(value, `.${variantsClassName}`)
               rules.ruleCode += ruleCode
               rules.segmentRuleCode.push(...segmentRuleCode)
             }
