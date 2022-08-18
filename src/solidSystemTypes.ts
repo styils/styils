@@ -36,7 +36,7 @@ export interface Styled<Theme> {
     interpolation?: StyleInterpolation<Theme, Variants>
   ): StyledComponent<
     Component extends StyledComponent<infer C, AnyObject, string> ? C : Component,
-    { [key in keyof Variants]: Widen<keyof Variants[key]> },
+    { [key in keyof Variants]?: Widen<keyof Variants[key]> },
     {
       [key in Vars]?: string | number
     }

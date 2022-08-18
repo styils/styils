@@ -21,6 +21,22 @@ const Anthor = styled(
       small: {
         width: '100'
       }
+    },
+    test: {
+      1: {
+        borderRadius: '2',
+        height: '25px',
+        px: '10px',
+        fontSize: '13px',
+        lineHeight: '1'
+      },
+      2: {
+        borderRadius: '3',
+        height: '35px',
+        px: '15px',
+        fontSize: '15px',
+        lineHeight: '1'
+      }
     }
   }
 )
@@ -89,6 +105,7 @@ export function asButton() {
   return [
     <Anthor
       key={1}
+      variants={{ size: 'small' }}
       vars={{
         height: 1,
         // @ts-expect-error test

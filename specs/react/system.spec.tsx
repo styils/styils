@@ -54,17 +54,10 @@ const Anthor1 = styled(
   {
     size: {
       small: {
-        width: '100',
-        '.foo': {
-          height: '$height1',
-          width: '$width1'
-        },
-        display: 'flex',
-        borderRightWidth: '$targetSize',
-        borderBottomWidth: '$targetSize',
-        borderLeftWidth: '$targetSize',
-        marginLeft: '$targetSizeX',
-        marginTop: '$targetSizeY'
+        width: '100'
+      },
+      max: {
+        width: '100'
       }
     }
   }
@@ -129,6 +122,9 @@ export function asButton() {
     />,
     <Anthor1
       key={2}
+      variants={{
+        size: 'max'
+      }}
       vars={{
         height: 1,
         width: 'foo'

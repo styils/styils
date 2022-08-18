@@ -49,7 +49,7 @@ export interface Styled<Theme> {
   ): StyledComponent<
     // @ts-expect-error Conflict with vue type
     Component extends StyledComponent<infer C, AnyObject, string> ? C : Component,
-    { [key in keyof Variants]: Widen<keyof Variants[key]> },
+    { [key in keyof Variants]?: Widen<keyof Variants[key]> },
     {
       [key in Vars]?: string | number
     }
