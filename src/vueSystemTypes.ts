@@ -2,12 +2,6 @@ import type { AnyObject, Widen } from './types'
 import { StyleInterpolation, Styles } from './baseSystemTypes'
 import { Component, DefineComponent, VNode, VNodeRef } from 'vue'
 
-export type UseSystem<Theme> = () => {
-  mode: string
-  setMode: (mode: string) => void
-  theme: Theme
-}
-
 export type JSX = {
   [K in keyof JSX.IntrinsicElements as string extends K ? never : K]: JSX.IntrinsicElements[K]
 }
