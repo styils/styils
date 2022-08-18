@@ -40,7 +40,7 @@ Solid 包装器，包括 `styled` API。
 npm install @styils/solid
 ```
 
-### Styils Vue (只支持vue3)
+### Styils Vue (只支持 vue3)
 
 ![npm](https://img.shields.io/npm/v/@styils/vue?color=%2342b883&logo=vuedotjs)
 

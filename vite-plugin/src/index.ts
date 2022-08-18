@@ -77,23 +77,27 @@ export default (options: Options = {}): PluginOption => {
             }
 
             if (styledName && RegExp(`(const|var|let)\\s*.+\\s*=\\s*${styledName}\\(`).test(line)) {
-              lines[index] = `${styledName}.sourceMap = "${addSourceMaps(
+              lines[
+                index
+              ] = `process.env.NODE_ENV !== 'production' && (${styledName}.sourceMap = "${addSourceMaps(
                 { line: index + 1, column: 0 },
                 {
                   sourceFileName: `${filename}?styils`,
                   code
                 }
-              )}";${line}`
+              )}");\n${line}`
             }
 
             if (globalName && RegExp(`${globalName}\\(`).test(line)) {
-              lines[index] = `${globalName}.sourceMap = "${addSourceMaps(
+              lines[
+                index
+              ] = `process.env.NODE_ENV !== 'production' && (${globalName}.sourceMap = "${addSourceMaps(
                 { line: index + 1, column: 0 },
                 {
                   sourceFileName: `${filename}?styils`,
                   code
                 }
-              )}";${line}`
+              )}");\n${line}`
             }
           })
 
