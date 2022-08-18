@@ -1,5 +1,5 @@
 import type { AnyObject } from './types'
-import { StyleInterpolation, Styles, Widen } from './baseSystemTypes'
+import { NeverObeject, StyleInterpolation, Styles, Widen } from './baseSystemTypes'
 import { Component, DefineComponent, VNode, VNodeRef } from 'vue'
 
 export type JSX = {
@@ -46,9 +46,7 @@ export interface Styled<Theme> {
     interpolation?: StyleInterpolation<Theme, Variants>
   ): StyledComponent<
     Component extends StyledComponent<infer C, AnyObject, string> ? C : Component,
-    { [key in keyof Variants]?: Widen<keyof Variants[key]> },
-    {
-      [key in Vars]?: string | number
-    }
+    NeverObeject<{ [key in keyof Variants]?: Widen<keyof Variants[key]> }>,
+    NeverObeject<{ [key in Vars as '' extends key ? never : key]?: string | number }>
   >
 }

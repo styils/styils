@@ -155,7 +155,8 @@ const Button = styled('button', {})
 const Button2 = styled(Button, {})
 
 function renderButton() {
-  return <Button as="a" href="a" />
+  // @ts-expect-error
+  return <Button as="a" href="a" vars={{}} />
 }
 
 expectType<typeof Button2, typeof Button>(Button2)

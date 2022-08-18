@@ -1,5 +1,5 @@
 import { type CSSAttribute } from 'nativeCssTypes'
-import { type StyleSheetOptions } from './types'
+import { AnyObject, IfEqual, type StyleSheetOptions } from './types'
 
 export type BaseVariants = Record<string, Record<string, CSSAttribute>>
 
@@ -88,3 +88,5 @@ export type Widen<T> = T extends number
 export type Styles<Theme, Vars extends string> =
   | CSSAttribute<Vars>
   | ((props: Theme, mode: string) => CSSAttribute<Vars>)
+
+export type NeverObeject<T extends AnyObject> = IfEqual<T, {}> extends true ? never : T

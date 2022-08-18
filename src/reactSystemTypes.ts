@@ -1,6 +1,6 @@
 import React from 'react'
 import type { AnyObject } from './types'
-import type { StyleInterpolation, Styles, Widen } from './baseSystemTypes'
+import type { NeverObeject, StyleInterpolation, Styles, Widen } from './baseSystemTypes'
 
 export interface FunctionComponent {
   displayName?: string
@@ -49,9 +49,7 @@ export interface Styled<Theme> {
   ): StyledComponent<
     // @ts-expect-error Conflict with vue type
     Component extends StyledComponent<infer C, AnyObject, string> ? C : Component,
-    { [key in keyof Variants]?: Widen<keyof Variants[key]> },
-    {
-      [key in Vars]?: string | number
-    }
+    NeverObeject<{ [key in keyof Variants]?: Widen<keyof Variants[key]> }>,
+    NeverObeject<{ [key in Vars as '' extends key ? never : key]?: string | number }>
   >
 }

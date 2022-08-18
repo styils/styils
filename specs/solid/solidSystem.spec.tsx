@@ -126,5 +126,6 @@ const ButtonCount = styled(
 )
 
 export function renderButtonCount() {
-  return <ButtonCount variants={{ disabled: 1 }} />
+  // @ts-expect-error
+  return <ButtonCount variants={{ disabled: 1 }} vars={{}} />
 }
