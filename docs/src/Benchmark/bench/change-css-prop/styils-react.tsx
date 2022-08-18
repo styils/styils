@@ -28,18 +28,12 @@ const TestBase = ({ testIndex }: TestComponentProps) => {
 
 const StyilTest = () => {
   return (
-    <>
-      <TestRunner
-        testIdentifier="change-css-prop-styils-react"
-        numberOfRuns={3}
-        iterationN={1000}
-        TestComponent={TestBase}
-      />
-
-      <div style={{ opacity: 0, pointerEvents: 'none' }}>
-        <Button>将按钮安装在测试之外，以确保没有计时任何安装时间</Button>
-      </div>
-    </>
+    <TestRunner
+      testIdentifier="change-css-prop-styils-react"
+      numberOfRuns={3}
+      iterationN={1000}
+      TestComponent={TestBase}
+    />
   )
 }
 
