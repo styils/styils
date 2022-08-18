@@ -62,25 +62,28 @@ export interface BaseSystem<
 
 export type NeverToObeject<T> = [T] extends [never] ? {} : T
 
-export type StyleInterpolation<
-  Theme,
-  VariantsKey extends PropertyKey,
-  VariantsValue extends PropertyKey,
-  Vars extends string
-> =
+export type StyleInterpolation<Theme, Variants> =
   | {
-      [key in VariantsKey]: {
-        [key in VariantsValue]: CSSAttribute<Vars>
+      [key in keyof Variants]: {
+        [value in keyof Variants[key]]: CSSAttribute
       }
     }
   | ((
       props: Theme,
       mode: string
     ) => {
-      [key in VariantsKey]: {
-        [key in VariantsValue]: CSSAttribute<Vars>
+      [key in keyof Variants]: {
+        [value in keyof Variants[key]]: CSSAttribute
       }
     })
+
+export type Widen<T> = T extends number
+  ? `${T}` | T
+  : T extends 'true' | 'false'
+  ? boolean | T
+  : T extends `${infer N}`
+  ? N | T
+  : T
 
 export type Styles<Theme, Vars extends string> =
   | CSSAttribute<Vars>

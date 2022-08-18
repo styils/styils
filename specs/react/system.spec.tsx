@@ -19,16 +19,23 @@ const Anthor = styled(
   {
     size: {
       small: {
-        width: '100',
-        '.foo': {
-          height: '$height1',
-          width: '$width1'
-        },
-        borderRightWidth: '$targetSize',
-        borderBottomWidth: '$targetSize',
-        borderLeftWidth: '$targetSize',
-        marginLeft: '$targetSizeX',
-        marginTop: '$targetSizeY'
+        width: '100'
+      }
+    },
+    test: {
+      1: {
+        borderRadius: '2',
+        height: '25px',
+        px: '10px',
+        fontSize: '13px',
+        lineHeight: '1'
+      },
+      2: {
+        borderRadius: '3',
+        height: '35px',
+        px: '15px',
+        fontSize: '15px',
+        lineHeight: '1'
       }
     }
   }
@@ -79,7 +86,13 @@ styled.sourceMap
 // @ts-expect-error Do not expose to the outside world
 createGlobal.sourceMap
 
-type CProps<T extends StyleTag> = StyledProps<T, { size: 'max' | 'small' }, 'a' | 'b'>
+type CProps<T extends StyleTag> = StyledProps<
+  T,
+  {
+    size: 'max' | 'small'
+  },
+  'a' | 'b'
+>
 
 function Tst<T extends StyleTag = 'button'>(_: CProps<T>) {}
 
@@ -102,12 +115,11 @@ export function asButton() {
       key={1}
       vars={{
         height: 1,
-        width1: 2,
         // @ts-expect-error test
         foo: 2
       }}
       as="button"
-      variants={{ size: 'small' }}
+      variants={{ size: 'small', test: 1 }}
       ref={(ref: HTMLButtonElement) => {
         expectType<HTMLButtonElement, typeof ref>(ref)
       }}
@@ -115,8 +127,8 @@ export function asButton() {
     <Anthor1
       key={2}
       vars={{
-        height1: 1,
-        targetSize: 'foo'
+        height: 1,
+        width: 'foo'
       }}
     />
   ]
