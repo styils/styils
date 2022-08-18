@@ -35,9 +35,13 @@ type StyledComponent<Component extends NativeComponent, Variants, Vars extends s
 ) => JSX.Element
 
 export interface Styled<Theme> {
-  <Component extends NativeComponent, Variants extends AnyObject, Vars extends string = ''>(
+  <Component extends NativeComponent, Variants extends AnyObject = {}, Vars extends string = ''>(
     component: Component | { tag: Component; namespace?: string },
     styles: Styles<Theme, Vars>,
     interpolation?: StyleInterpolation<Theme, Variants>
-  ): StyledComponent<Component, { [key in keyof Variants]: Widen<keyof Variants[key]> }, Vars>
+  ): StyledComponent<
+    Component extends StyledComponent<infer C, AnyObject, string> ? C : Component,
+    { [key in keyof Variants]: Widen<keyof Variants[key]> },
+    Vars
+  >
 }

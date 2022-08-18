@@ -44,17 +44,13 @@ export interface StyledComponent<Component extends React.ElementType, Variants, 
 }
 
 export interface Styled<Theme> {
-  <
-    Component extends StyleTag,
-    Variants extends Record<PropertyKey, Record<PropertyKey, unknown>>,
-    Vars extends string = ''
-  >(
+  <Component extends StyleTag, Variants extends AnyObject = {}, Vars extends string = ''>(
     component: Component | { tag: Component; namespace?: string },
     styles: Styles<Theme, Vars>,
     interpolation?: StyleInterpolation<Theme, Variants>
   ): StyledComponent<
     // @ts-expect-error Conflict with vue type
-    Component,
+    Component extends StyledComponent<infer C, AnyObject, string> ? C : Component,
     { [key in keyof Variants]: Widen<keyof Variants[key]> },
     Vars
   >
