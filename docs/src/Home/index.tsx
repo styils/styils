@@ -476,9 +476,6 @@ export default function Home() {
           <p>
             <span dangerouslySetInnerHTML={{ __html: t('withVarsDesc.4') }} />
           </p>
-          <p>
-            <span dangerouslySetInnerHTML={{ __html: t('withVarsDesc.5') }} />
-          </p>
         </StyilCode>
 
         <StyilCode code={'themeCode'}>

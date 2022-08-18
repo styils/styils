@@ -150,21 +150,11 @@ const Button = styled(
   {
     fontSize: '$size'
   },
-  // ${t('withVarsDesc.1')}
-  {
-    size: {
-      small: {
-      //
-        fontSize: '$size'
-      },
-      large: {
-        fontSize: 16
-      }
-    }
-  }
+
 )
 
 // ${t('withVarsDesc.2')}
+// ${t('withVarsDesc.1')}
 <Button vars={{ size:\`\${state}px\` }} onClick={() => {
   setState(state + 10)
 }}>Button</Button>

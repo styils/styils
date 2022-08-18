@@ -40,11 +40,10 @@
     "2": "Dynamic interpolation replaces props passing, because passing values ​​through props will bring a lot of performance overhead, and we will write the following bad smelling code."
   },
   "withVarsDesc": {
-    "1": "Variants are also valid, but stylistically discouraged",
-    "2": "Here you need to display the units that should be added",
-    "3": "Created style components have a<strong>vars</strong>property",
-    "4": "You can bind values dynamically, don't worry, it has almost no performance overhead",
-    "5": "Note: Not supported in global styles like <strong>:global @at-rules</strong> etc."
+    "1": "Here you need to display the units that should be added",
+    "2": "Created style components have a<strong>vars</strong>property",
+    "3": "You can bind values dynamically, don't worry, it has almost no performance overhead",
+    "4": "Note: Not supported in<strong>Variants</strong>and<strong>global styles</strong>like <strong>:global @at-rules</strong> etc."
   },
   "withThemeDesc": "<strong>Styils</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
   "withSSRDesc": {

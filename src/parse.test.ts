@@ -18,6 +18,7 @@ describe('parseRules rules', () => {
   })
 
   it('Pass the value', () => {
+    const keyValue = {}
     const { ruleCode, segmentRuleCode } = parseRules(
       {
         display: 'value',
@@ -26,35 +27,21 @@ describe('parseRules rules', () => {
         }
       },
       '.base',
-      'base'
-    )
+      ({ key, value }) => {
+        keyValue[key] = value
 
-    expect(ruleCode).toEqual(`.base{display:value;}.base button{border:var(--base-border);}`)
-
-    expect(segmentRuleCode).toEqual([
-      '.base{display:value;}',
-      '.base button{border:var(--base-border);}'
-    ])
-  })
-
-  it('Pass the value rootSelector', () => {
-    const { ruleCode, segmentRuleCode } = parseRules(
-      {
-        display: 'value',
-        button: {
-          border: '$border'
+        if (value === '$border') {
+          value = 1
         }
-      },
-      '.base',
-      'base'
+        return { key, value }
+      }
     )
 
-    expect(ruleCode).toEqual(`.base{display:value;}.base button{border:var(--base-border);}`)
+    expect(ruleCode).toEqual(`.base{display:value;}.base button{border:1;}`)
 
-    expect(segmentRuleCode).toEqual([
-      '.base{display:value;}',
-      '.base button{border:var(--base-border);}'
-    ])
+    expect(segmentRuleCode).toEqual(['.base{display:value;}', '.base button{border:1;}'])
+
+    expect(keyValue).toEqual({ border: '$border', display: 'value' })
   })
 
   it('camel-case', () => {

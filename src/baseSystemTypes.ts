@@ -1,9 +1,7 @@
 import { type CSSAttribute } from 'nativeCssTypes'
-import { AnyObject, IfEqual, type StyleSheetOptions } from './types'
+import { AnyFunc, AnyObject, IfEqual, type StyleSheetOptions } from './types'
 
 export type BaseVariants = Record<string, Record<string, CSSAttribute>>
-
-export type AnyFunc = (...props: any[]) => any
 
 export interface CreateGlobal<Theme> {
   (

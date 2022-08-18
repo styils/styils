@@ -1,5 +1,7 @@
 export type AnyObject = Record<PropertyKey, any>
 
+export type AnyFunc = (...props: any[]) => any
+
 export type StyleSheetOptions = {
   nonce?: string
   key: string

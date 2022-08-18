@@ -1,12 +1,11 @@
 import { createSelector } from './createSelector'
 import { StyleSheet, type OldRule } from './sheet'
-import { type AnyObject } from './types'
+import { type AnyObject, type AnyFunc } from './types'
 import { parseRules } from './parse'
 import {
   type Keyframes,
   type BaseSystem,
   type SystemOptions,
-  type AnyFunc,
   type BaseStyled,
   type CreateGlobal
 } from './baseSystemTypes'
@@ -126,7 +125,13 @@ export function createBaseSystem<
         const { segmentRuleCode, ruleCode } = parseRules(
           style,
           `.${targetClassName}`,
-          targetClassName
+          ({ key, value }) => {
+            if (typeof value === 'string' && value.charAt(0) === '$') {
+              // Variant using base Selector
+              value = `var(--${targetClassName}-${value.slice(1)})`
+            }
+            return { key, value }
+          }
         )
         rules.ruleCode = ruleCode
         rules.segmentRuleCode = segmentRuleCode

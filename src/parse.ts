@@ -31,7 +31,14 @@ function transformKey(property: string, selector = '') {
 /**
  * Parses the object into css
  */
-export function parseRules(node: AnyObject, rootSelector = '', varSelector = '') {
+export function parseRules(
+  node: AnyObject,
+  rootSelector = '',
+  callback: (props: { key: string; value: string | number }) => {
+    key: string
+    value: string | number
+  } = null
+) {
   const nodes = [rootSelector]
   const stack = [{ ...node }]
 
@@ -39,7 +46,7 @@ export function parseRules(node: AnyObject, rootSelector = '', varSelector = '')
   const frontRules: string[] = []
   const rearRules: string[] = []
 
-  function ruleToNative(key: string, value: string) {
+  function ruleToNative(key: string, value: string | number) {
     if (unitProps.has(key) && typeof value === 'number') {
       value = `${value}px`
     }
@@ -47,7 +54,7 @@ export function parseRules(node: AnyObject, rootSelector = '', varSelector = '')
     // Exclude css variables, to css native writing
     key = /^--/.test(key) ? key : key.replace(/[A-Z]/g, '-$&').toLowerCase()
 
-    if (key === 'content' && !contentValuePattern.test(value) && !contentValues[value]) {
+    if (key === 'content' && !contentValuePattern.test(`${value}`) && !contentValues[value]) {
       try {
         value = JSON.stringify(value).replace(/\\\\/g, '\\')
       } catch {
@@ -55,10 +62,7 @@ export function parseRules(node: AnyObject, rootSelector = '', varSelector = '')
       }
     }
 
-    if (typeof value === 'string' && value.charAt(0) === '$' && varSelector) {
-      // Variant using base Selector
-      value = `var(--${varSelector}-${value.slice(1)})`
-    }
+    if (callback) ({ value, key } = callback({ key, value }))
 
     return `${key}:${value};`
   }
