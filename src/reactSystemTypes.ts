@@ -1,6 +1,6 @@
 import React from 'react'
-import type { AnyObject, Widen } from './types'
-import type { StyleInterpolation, Styles } from './baseSystemTypes'
+import type { AnyObject } from './types'
+import type { StyleInterpolation, Styles, Widen } from './baseSystemTypes'
 
 export interface FunctionComponent {
   displayName?: string
@@ -32,9 +32,7 @@ export type StyledProps<As extends React.ElementType, Variants, Vars extends str
 > & {
   ref?: PropsWithRef<ComponentProps<As>>
   as?: As
-  variants?: {
-    [key in keyof Variants]?: Widen<Variants[key]>
-  }
+  variants?: Variants
   vars?: {
     [key in Vars]?: string | number
   }
@@ -48,17 +46,16 @@ export interface StyledComponent<Component extends React.ElementType, Variants, 
 export interface Styled<Theme> {
   <
     Component extends StyleTag,
-    VariantsKey extends PropertyKey = '',
-    VariantsValue extends PropertyKey = '',
+    Variants extends Record<PropertyKey, Record<PropertyKey, unknown>>,
     Vars extends string = ''
   >(
     component: Component | { tag: Component; namespace?: string },
     styles: Styles<Theme, Vars>,
-    interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Vars>
+    interpolation?: StyleInterpolation<Theme, Variants>
   ): StyledComponent<
     // @ts-expect-error Conflict with vue type
     Component,
-    { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
+    { [key in keyof Variants]: Widen<keyof Variants[key]> },
     Vars
   >
 }

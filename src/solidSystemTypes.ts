@@ -1,6 +1,6 @@
 import type { JSX, ComponentProps, Accessor } from 'solid-js'
-import type { Widen } from './types'
-import { StyleInterpolation, Styles } from './baseSystemTypes'
+import type { AnyObject } from './types'
+import { StyleInterpolation, Styles, Widen } from './baseSystemTypes'
 
 export type UseSystem<Theme> = () => {
   mode: Accessor<string>
@@ -22,9 +22,7 @@ type StyledProps<As extends NativeComponent, Variants, Vars extends string> = Om
 > & {
   ref?: PropsWithRef<ComponentProps<As>>
   as?: As
-  variants?: {
-    [key in keyof Variants]?: Widen<Variants[key]>
-  }
+  variants?: Variants
   vars?: {
     [key in Vars]?: string | number
   }
@@ -37,18 +35,9 @@ type StyledComponent<Component extends NativeComponent, Variants, Vars extends s
 ) => JSX.Element
 
 export interface Styled<Theme> {
-  <
-    Component extends NativeComponent,
-    VariantsKey extends PropertyKey = '',
-    VariantsValue extends PropertyKey = '',
-    Vars extends string = ''
-  >(
+  <Component extends NativeComponent, Variants extends AnyObject, Vars extends string = ''>(
     component: Component | { tag: Component; namespace?: string },
     styles: Styles<Theme, Vars>,
-    interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Vars>
-  ): StyledComponent<
-    Component,
-    { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
-    Vars
-  >
+    interpolation?: StyleInterpolation<Theme, Variants>
+  ): StyledComponent<Component, { [key in keyof Variants]: Widen<keyof Variants[key]> }, Vars>
 }

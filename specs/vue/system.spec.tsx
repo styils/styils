@@ -19,16 +19,7 @@ const Anthor = styled(
   {
     size: {
       small: {
-        width: '100',
-        '.foo': {
-          height: '$height1',
-          width: '$width1'
-        },
-        borderRightWidth: '$targetSize',
-        borderBottomWidth: '$targetSize',
-        borderLeftWidth: '$targetSize',
-        marginLeft: '$targetSizeX',
-        marginTop: '$targetSizeY'
+        width: '100'
       }
     }
   }
@@ -48,16 +39,7 @@ const Anthor1 = styled(
     size: {
       small: {
         width: '100',
-        '.foo': {
-          height: '$height1',
-          width: '$width1'
-        },
-        display: 'flex',
-        borderRightWidth: '$targetSize',
-        borderBottomWidth: '$targetSize',
-        borderLeftWidth: '$targetSize',
-        marginLeft: '$targetSizeX',
-        marginTop: '$targetSizeY'
+        display: 'flex'
       }
     }
   }
@@ -109,7 +91,6 @@ export function asButton() {
       key={1}
       vars={{
         height: 1,
-        width1: 2,
         // @ts-expect-error test
         foo: 2
       }}
@@ -118,8 +99,9 @@ export function asButton() {
     <Anthor1
       key={2}
       vars={{
-        height1: 1,
-        targetSize: 'foo'
+        height: 1,
+        width: 'foo',
+        123: 1
       }}
     />
   ]

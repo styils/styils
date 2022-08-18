@@ -1,5 +1,5 @@
-import type { AnyObject, Widen } from './types'
-import { StyleInterpolation, Styles } from './baseSystemTypes'
+import type { AnyObject } from './types'
+import { StyleInterpolation, Styles, Widen } from './baseSystemTypes'
 import { Component, DefineComponent, VNode, VNodeRef } from 'vue'
 
 export type JSX = {
@@ -29,9 +29,7 @@ export type StyledProps<As extends NativeComponent, Variants, Vars extends strin
   ref?: VNodeRef
 } & ComponentProps<As> & {
     as?: As
-    variants?: {
-      [key in keyof Variants]?: Widen<Variants[key]>
-    }
+    variants?: Variants
     vars?: {
       [key in Vars]?: string | number
     }
@@ -44,18 +42,13 @@ export type StyledComponent<Component extends NativeComponent, Variants, Vars ex
 ) => VNode
 
 export interface Styled<Theme> {
-  <
-    Component extends NativeComponent,
-    VariantsKey extends PropertyKey = '',
-    VariantsValue extends PropertyKey = '',
-    Vars extends string = ''
-  >(
+  <Component extends NativeComponent, Variants extends AnyObject, Vars extends string = ''>(
     component: Component | { tag: Component; namespace?: string },
     styles: Styles<Theme, Vars>,
-    interpolation?: StyleInterpolation<Theme, VariantsKey, VariantsValue, Vars>
+    interpolation?: StyleInterpolation<Theme, Variants>
   ): StyledComponent<
     Component extends StyledComponent<infer T, AnyObject, string> ? T : Component,
-    { [key in VariantsKey as '' extends key ? never : key]: VariantsValue },
+    { [key in keyof Variants]: Widen<keyof Variants[key]> },
     Vars
   >
 }
