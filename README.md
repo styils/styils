@@ -54,8 +54,7 @@ npm install @styils/vue
 
 ![npm](https://img.shields.io/npm/v/@styils/babel-plugin?color=%23eeda7c&logo=babel&logoColor=%23eeda7c)
 
-This is required for sourcemap. 
-Note that `babel-plugin` does not support vue suorcemap
+This is required for sourcemap. Note that `babel-plugin` does not support vue suorcemap
 
 [More](./babel/)
 
