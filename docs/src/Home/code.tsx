@@ -1,6 +1,7 @@
 import { styled } from '../theme'
 import reactSvg from '../svg/react.svg'
 import solidSvg from '../svg/solid.svg'
+import vueSvg from '../svg/vue.svg'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Prism from 'prismjs'
@@ -337,7 +338,7 @@ createGlobal((theme) => ({
     varsCode
   }
 
-  const [state, setState] = React.useState<'react' | 'solid'>('react')
+  const [state, setState] = React.useState<'react' | 'solid' | 'vue'>('react')
 
   const codeRef = React.createRef<HTMLPreElement>()
 
@@ -365,6 +366,7 @@ createGlobal((theme) => ({
             <section>
               <img src={solidSvg} alt="solid" onClick={() => onSelect('solid')} />
               <img src={reactSvg} alt="react" onClick={() => onSelect('react')} />
+              <img src={vueSvg} alt="vue" onClick={() => onSelect('vue')} />
             </section>
           )}
         </CodeHeader>
