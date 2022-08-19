@@ -54,7 +54,7 @@ npm install @styils/vue
 
 ![npm](https://img.shields.io/npm/v/@styils/babel-plugin?color=%23eeda7c&logo=babel&logoColor=%23eeda7c)
 
-[更多](./babel/)
+[更多](./babel-plugin/)
 
 This is required for sourcemap
 
@@ -71,6 +71,8 @@ npm install @styils/babel-plugin
 ```sh
 npm install @styils/vite-plugin
 ```
+
+[More babel options](./babel-plugin/)
 
 ### SSR Example
 
