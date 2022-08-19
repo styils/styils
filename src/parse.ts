@@ -12,9 +12,6 @@ const contentValues: Record<string, 'normal' | 'none' | 'initial' | 'inherit' | 
 }
 
 function transformKey(property: string, selector = '') {
-  if (property === ':global') {
-    return ''
-  }
   // Go over the selector and replace the matching multiple selectors if any
   // Return the current selector with the key matching multiple selectors if any
   // If the current key has a nested selector replace it
@@ -51,6 +48,8 @@ export function parseRules(
       value = `${value}px`
     }
 
+    if (callback) ({ value, key } = callback({ key, value }))
+
     // Exclude css variables, to css native writing
     key = /^--/.test(key) ? key : key.replace(/[A-Z]/g, '-$&').toLowerCase()
 
@@ -61,8 +60,6 @@ export function parseRules(
         // empty
       }
     }
-
-    if (callback) ({ value, key } = callback({ key, value }))
 
     return `${key}:${value};`
   }

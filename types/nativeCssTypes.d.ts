@@ -3539,8 +3539,8 @@ export interface SvgProperties {
   writingMode?: Property.WritingMode
 }
 
-export type PseudosProperties<T extends string = ''> = {
-  [key in SpecialProperties | TagProperties]?: OnlyString | Properties<T> | PseudosProperties<T>
+export type PseudosProperties<Var extends string = ''> = {
+  [key in SpecialProperties | TagProperties]?: OnlyString | Properties<Var> | PseudosProperties<Var>
 }
 
 export type Variable<Target, Var extends string = ''> = {
@@ -3735,8 +3735,6 @@ export type TagProperties =
   | 'view'
 
 export type SpecialProperties =
-  // styils customize
-  | ':global'
   // --------
   | '@charset'
   | '@counter-style'
