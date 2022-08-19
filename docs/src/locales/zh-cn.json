@@ -49,7 +49,7 @@
     "1": "这里需要显式添加相应的单位",
     "2": "创建的样式组件都带有一个<strong>vars</strong>属性",
     "3": "可以通过动态绑定值，不需要担心，它几乎没有性能开销",
-    "4": "注意: 在<strong>Variants</strong>和<strong>全局样式</strong>中不受支持，例如<strong>@at-rules</strong>等等"
+    "4": "注意: 在<strong>Variants</strong>中不支持"
   },
   "withKeyframesDesc": "<strong>Styils</strong>提供两种方式定义, 任你喜欢。",
   "withGlobalDesc": "<strong>Styils</strong>提供两种方式定义, 任你喜欢。",
