@@ -56,7 +56,7 @@ npm install @styils/vue
 
 This is required for sourcemap. Note that `babel-plugin` does not support vue suorcemap
 
-[More](./babel/)
+[More](./babel-plugin/)
 
 ```sh
 npm install @styils/babel-plugin
@@ -67,6 +67,8 @@ npm install @styils/babel-plugin
 ![npm](https://img.shields.io/npm/v/@styils/vite-plugin?color=%23646cff&logo=vite)
 
 Wraps `@styils/babel-plugin` and provides vue sourcemap support.
+
+[More](./babel-plugin/)
 
 ```sh
 npm install @styils/vite-plugin
