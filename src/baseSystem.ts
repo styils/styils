@@ -375,15 +375,19 @@ export function createBaseSystem<
       const cache = globalCache[internalState.mode]
 
       if (cache) {
-        rules = cache
+        // Avoid implicated modifications
+        rules = { ...cache }
       } else {
         const style =
           typeof styles === 'function' ? styles(internalState.theme, internalState.mode) : styles
         rules = parseRules(style)
-        globalCache[internalState.mode] = rules
+        // Avoid implicated modifications
+        globalCache[internalState.mode] = { ...rules }
       }
 
-      if (process.env.NODE_ENV !== 'production' && !cache) {
+      if (process.env.NODE_ENV !== 'production') {
+        // Avoid deleting when updating
+        // global is different from styled, dom operation will be performed every update
         if (!cacheSourceMap && createGlobal.sourceMap) {
           cacheSourceMap = createGlobal.sourceMap
           delete createGlobal.sourceMap
