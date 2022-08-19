@@ -76,4 +76,38 @@ describe('base system', () => {
 
     styled('', {})
   })
+
+  it('parse vars variants error', () => {
+    console.error = jest.fn()
+    const { styled } = createBaseSystem(
+      {},
+      () => {},
+      (...props: any) => {
+        expect(
+          props[3]({
+            height: 1,
+            width: 2
+          })
+        ).toEqual({ '--css-11-height': 1, '--css-11-width': 2 })
+        return {}
+      },
+      () => {}
+    )
+
+    styled(
+      '',
+      {},
+      {
+        size: {
+          max: {
+            color: '$height'
+          }
+        }
+      }
+    )
+
+    expect(console.error).toHaveBeenCalledWith(
+      `vars are not supported in variants: { key:'color', value:'$height' }`
+    )
+  })
 })

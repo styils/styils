@@ -517,62 +517,6 @@ describe('parseRules rules', () => {
     expect(segmentRuleCode).toEqual(['@counter-style smile{system:cyclic;symbols:🧞;suffix: ;}'])
   })
 
-  it(':global', () => {
-    const { ruleCode, segmentRuleCode } = parseRules(
-      {
-        ':global': {
-          '.bar': {
-            color: 'red'
-          }
-        },
-        '.test': {
-          ':global': {
-            '.foo': {
-              fontSize: 14,
-              button: {
-                color: 'red'
-              }
-            }
-          }
-        }
-      },
-      'base'
-    )
-
-    expect(ruleCode).toEqual(
-      ['.bar{color:red;}.foo{font-size:14px;}', '.foo button{color:red;}'].join('')
-    )
-
-    expect(segmentRuleCode).toEqual([
-      '.bar{color:red;}',
-      '.foo{font-size:14px;}',
-      '.foo button{color:red;}'
-    ])
-  })
-
-  it('repeat css', () => {
-    const { ruleCode, segmentRuleCode } = parseRules(
-      {
-        ':global': {
-          '.foo': {
-            fontSize: 14
-          }
-        },
-        '.test': {
-          ':global': {
-            '.foo': {
-              fontSize: 14
-            }
-          }
-        }
-      },
-      'base'
-    )
-
-    expect(ruleCode).toEqual(['.foo{font-size:14px;}'].join(''))
-
-    expect(segmentRuleCode).toEqual(['.foo{font-size:14px;}'])
-  })
   it('multiple selector', () => {
     const { ruleCode, segmentRuleCode } = parseRules(
       {

@@ -310,13 +310,6 @@ createGlobal((theme) => ({
     backgroundColor: theme.color
   }
 }))
-// or
-const Foo = styled('div',{
-  // ${t('globalCode')}
-  ':global':{
-    body: { backgroundColor: 'red' }
-  }
-}
 `
 
   const mediaCode = `const Root = styled('div', {

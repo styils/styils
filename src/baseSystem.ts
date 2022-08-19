@@ -26,7 +26,7 @@ export function createBaseSystem<
 
   // selector cache is mainly used for ssr
   const selectorCache = new Set<string>([])
-  const globalCache: Record<
+  let globalCache: Record<
     string,
     {
       segmentRuleCode: string[]
@@ -155,7 +155,20 @@ export function createBaseSystem<
 
             if (!selectorCache.has(variantsClassName)) {
               selectorCache.add(variantsClassName)
-              const { segmentRuleCode, ruleCode } = parseRules(value, `.${variantsClassName}`)
+              const { segmentRuleCode, ruleCode } = parseRules(
+                value,
+                `.${variantsClassName}`,
+                process.env.NODE_ENV !== 'production'
+                  ? ({ key, value }) => {
+                      if (typeof value === 'string' && value.charAt(0) === '$') {
+                        console.error(
+                          `vars are not supported in variants: { key:'${key}', value:'${value}' }`
+                        )
+                      }
+                      return { key, value }
+                    }
+                  : null
+              )
               rules.ruleCode += ruleCode
               rules.segmentRuleCode.push(...segmentRuleCode)
             }
@@ -353,6 +366,7 @@ export function createBaseSystem<
         oldRule = undefined
       }
 
+      // ssr may have been rendered, no need to re-render
       if (isBrowser && metaHtml && internalState.mode === metaHtml.getAttribute('mode')) {
         return
       }
@@ -360,7 +374,7 @@ export function createBaseSystem<
       let rules: { segmentRuleCode: string[]; ruleCode: string }
       const cache = globalCache[internalState.mode]
 
-      if (globalCache[internalState.mode]) {
+      if (cache) {
         rules = cache
       } else {
         const style =
@@ -369,7 +383,7 @@ export function createBaseSystem<
         globalCache[internalState.mode] = rules
       }
 
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV !== 'production' && !cache) {
         if (!cacheSourceMap && createGlobal.sourceMap) {
           cacheSourceMap = createGlobal.sourceMap
           delete createGlobal.sourceMap
@@ -400,6 +414,7 @@ export function createBaseSystem<
   function flush(type: 'all' | 'global' = 'all') {
     sheet.flush(type)
     selectorCache.clear()
+    globalCache = {}
     modeIdentifier = []
   }
 

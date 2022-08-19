@@ -9,7 +9,6 @@
     "2": ":global will generate global styles",
     "3": "The default unit is px"
   },
-  "globalCode": "Use in styled",
   "slogan": "Lightweight and fast css-in-js solution. Support for topics, Polymorphism, SSR, Sourcemap, Full type definitions",
   "quick": "Quick Start",
   "github": "View on Github",
@@ -43,7 +42,7 @@
     "1": "Here you need to display the units that should be added",
     "2": "Created style components have a<strong>vars</strong>property",
     "3": "You can bind values dynamically, don't worry, it has almost no performance overhead",
-    "4": "Note: Not supported in<strong>Variants</strong>and<strong>global styles</strong>like <strong>:global @at-rules</strong> etc."
+    "4": "Note: Not supported in<strong>Variants</strong>and<strong>global styles</strong>like <strong>@at-rules</strong> etc."
   },
   "withThemeDesc": "<strong>Styils</strong>provides a completely free theme experience. Apply them wherever you want as needed.",
   "withSSRDesc": {
