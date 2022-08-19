@@ -68,7 +68,7 @@ npm install @styils/babel-plugin
 
 Wraps `@styils/babel-plugin` and provides vue sourcemap support.
 
-[More](./babel-plugin/)
+[More babel options](./babel-plugin/)
 
 ```sh
 npm install @styils/vite-plugin
