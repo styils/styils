@@ -42,6 +42,7 @@ export function createBaseSystem<
 
   const { key = 'css', container, speedy, nonce } = sheetOptions
   const metaSelectorCacheId = `styils-${key}-cache`
+  // get selector cache in ssr mode
   const metaHtml = isBrowser
     ? (document.getElementById(metaSelectorCacheId) as HTMLMetaElement)
     : null
@@ -51,6 +52,7 @@ export function createBaseSystem<
     theme: inputTheme(defaultMode)
   }
 
+  // Initialize the fetch cache
   if (isBrowser && !selectorCache.size && metaHtml) {
     metaHtml.content.split(splitSymbol).forEach((name) => {
       selectorCache.add(name)
@@ -80,6 +82,7 @@ export function createBaseSystem<
       inputTag = tag.tag
     }
 
+    // distinguish each styled
     const currentWithIndex = withIndex
 
     const targetInfo = {
