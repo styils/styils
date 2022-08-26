@@ -1,8 +1,9 @@
-import { type CSSAttribute } from 'nativeCssTypes'
-import { AnyFunc, AnyObject, IfEqual, type StyleSheetOptions } from './types'
+import type { CSSAttribute } from 'nativeCssTypes'
+import type { AnyFunc, AnyObject, IfEqual, StyleSheetOptions } from './types'
 
-export type BaseVariants = Record<string, Record<string, CSSAttribute>>
-
+/**
+ * createGlobal input constraints
+ */
 export interface CreateGlobal<Theme> {
   (
     styles:
@@ -11,21 +12,33 @@ export interface CreateGlobal<Theme> {
   ): void
 }
 
+/**
+ * keyframes input constraints
+ */
 export interface Keyframes {
   (styles: Record<string, CSSAttribute>): string
 }
 
+/**
+ * create system options
+ */
 export interface SystemOptions<Theme> {
   theme?: (mode: string) => Theme
   defaultMode?: string
   sheetOptions?: Partial<StyleSheetOptions>
 }
 
+/**
+ * use of internal constraints
+ */
 export interface BaseStyled {
   (...props: any[]): any
   sourceMap?: string
 }
 
+/**
+ * extract factory function parameter
+ */
 export interface SystemExtractElement {
   metaSelectorCacheId: string
   selectorCacheString: string
@@ -37,29 +50,55 @@ export interface SystemExtractElement {
   devIdent: string
 }
 
+/**
+ * Internal constraints
+ */
 export type BaseTag = unknown | { tag: unknown; namespace?: string }
 
+/**
+ * Internal constraints
+ */
 export type TargetInfo = { namespaceJoiner: string; targetClassName: string }
 
+/**
+ * base system factory function
+ */
 export interface BaseSystem<
   Styled,
   Theme,
   Provider extends AnyFunc,
   ExtractElement extends AnyFunc
 > {
+  /**
+   * create style component api
+   */
   styled: Styled
+  /**
+   * system provider is required when using themes
+   */
   SystemProvider: ReturnType<Provider>
+  /**
+   * create global rule
+   */
   createGlobal: CreateGlobal<Theme>
+  /**
+   * create keyframes rule
+   */
   keyframes: Keyframes
+  /**
+   * create ssr extracted css
+   */
   createExtracts: () => { extractHtml: string; extractElement: ReturnType<ExtractElement> }
   /**
    * @default 'all'
+   * you can choose to keep global styles without clearing
    */
   flush: (type?: 'all' | 'global') => void
 }
 
-export type NeverToObeject<T> = [T] extends [never] ? {} : T
-
+/**
+ * variant Constraints
+ */
 export type StyleInterpolation<Theme, Variants> =
   | {
       [key in keyof Variants]: {
@@ -75,6 +114,9 @@ export type StyleInterpolation<Theme, Variants> =
       }
     })
 
+/**
+ * looser input
+ */
 export type Widen<T> = T extends number
   ? `${T}` | T
   : T extends 'true' | 'false'
@@ -83,8 +125,14 @@ export type Widen<T> = T extends number
   ? number | T
   : T
 
+/**
+ * css input constraints
+ */
 export type Styles<Theme, Vars extends string> =
   | CSSAttribute<Vars>
   | ((props: Theme, mode: string) => CSSAttribute<Vars>)
 
+/**
+ * returns never if it is an empty object
+ */
 export type NeverObeject<T extends AnyObject> = IfEqual<T, {}> extends true ? never : T

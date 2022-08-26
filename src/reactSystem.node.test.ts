@@ -9,7 +9,7 @@ import {
 } from './reactSystem'
 
 describe('css node', () => {
-  it('createStyil node', () => {
+  it('createStyils node', () => {
     const { createExtracts, styled, flush } = createSystem()
 
     styled('div', {

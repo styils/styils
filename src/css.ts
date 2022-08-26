@@ -4,7 +4,7 @@ import { StyleSheet } from './sheet'
 import { parseRules } from './parse'
 import { CSSAttribute } from 'nativeCssTypes'
 
-export function createStyil(options: Partial<StyleSheetOptions> = {}) {
+export function createStyils(options: Partial<StyleSheetOptions> = {}) {
   const { key = 'css', container, speedy, nonce } = options
 
   const globalCache = new Set<string>([])
@@ -58,4 +58,4 @@ export function createStyil(options: Partial<StyleSheetOptions> = {}) {
   return { css, glob, keyframes, getCssValue, flush }
 }
 
-export const { css, glob, keyframes, getCssValue, flush } = createStyil()
+export const { css, glob, keyframes, getCssValue, flush } = createStyils()

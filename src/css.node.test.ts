@@ -2,11 +2,11 @@
  * @jest-environment node
  */
 
-import { createStyil, getCssValue as defaultGetCssValue, css as defaultCss } from './css'
+import { createStyils, getCssValue as defaultGetCssValue, css as defaultCss } from './css'
 
 describe('css node', () => {
-  it('createStyil node', () => {
-    const { getCssValue, css } = createStyil()
+  it('createStyils node', () => {
+    const { getCssValue, css } = createStyils()
 
     css({
       width: 100
