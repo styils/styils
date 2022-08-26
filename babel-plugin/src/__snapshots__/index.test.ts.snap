@@ -2,7 +2,7 @@
 
 exports[`transform api createGlobal 1`] = `
 "import { createGlobal } from '@styils/react';
-process.env.NODE_ENV !== \\"production\\" && (createGlobal.sourceMap = \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0kiLCJmaWxlIjoidGVzdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICBpbXBvcnQge2NyZWF0ZUdsb2JhbH0gZnJvbSAnQHN0eWlscy9yZWFjdCdcblxuICAgIGNyZWF0ZUdsb2JhbCh7XG4gICAgICBjb2xvcjoncmVkJ1xuICAgIH0pXG4gICAgIl19 */\\")
+process.env.NODE_ENV !== "production" && (createGlobal.sourceMap = "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0kiLCJmaWxlIjoidGVzdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICBpbXBvcnQge2NyZWF0ZUdsb2JhbH0gZnJvbSAnQHN0eWlscy9yZWFjdCdcblxuICAgIGNyZWF0ZUdsb2JhbCh7XG4gICAgICBjb2xvcjoncmVkJ1xuICAgIH0pXG4gICAgIl19 */")
 createGlobal({
   color: 'red'
 });"
@@ -12,7 +12,7 @@ exports[`transform api createGlobal be wrapped 1`] = `
 "import { createGlobal } from '@styils/react';
 
 if (true) {
-  process.env.NODE_ENV !== \\"production\\" && (createGlobal.sourceMap = \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBSU0iLCJmaWxlIjoidGVzdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICBpbXBvcnQge2NyZWF0ZUdsb2JhbH0gZnJvbSAnQHN0eWlscy9yZWFjdCdcblxuICAgIGlmICh0cnVlKXtcbiAgICAgIGNyZWF0ZUdsb2JhbCh7XG4gICAgICAgIGNvbG9yOidyZWQnXG4gICAgICB9KVxuICAgIH1cbiAgICAiXX0= */\\")
+  process.env.NODE_ENV !== "production" && (createGlobal.sourceMap = "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBSU0iLCJmaWxlIjoidGVzdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICBpbXBvcnQge2NyZWF0ZUdsb2JhbH0gZnJvbSAnQHN0eWlscy9yZWFjdCdcblxuICAgIGlmICh0cnVlKXtcbiAgICAgIGNyZWF0ZUdsb2JhbCh7XG4gICAgICAgIGNvbG9yOidyZWQnXG4gICAgICB9KVxuICAgIH1cbiAgICAiXX0= */")
   createGlobal({
     color: 'red'
   });
@@ -23,7 +23,7 @@ exports[`transform api dynamic rendering 1`] = `
 "import { styled } from '@styils/react';
 
 function test() {
-  process.env.NODE_ENV !== \\"production\\" && (styled.sourceMap = \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR3VCIiwiZmlsZSI6InRlc3QuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgICBpbXBvcnQge3N0eWxlZH0gZnJvbSAnQHN0eWlscy9yZWFjdCdcbiAgICAgIGZ1bmN0aW9uIHRlc3QoKXtcbiAgICAgICAgY29uc3QgQnV0dG9uID0gc3R5bGVkKCdkaXYnLCB7XG4gICAgICAgICAgY29sb3I6J3JlZCdcbiAgICAgICAgfSlcbiAgICAgIH1cbiAgICAgICJdfQ== */\\")
+  process.env.NODE_ENV !== "production" && (styled.sourceMap = "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR3VCIiwiZmlsZSI6InRlc3QuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgICBpbXBvcnQge3N0eWxlZH0gZnJvbSAnQHN0eWlscy9yZWFjdCdcbiAgICAgIGZ1bmN0aW9uIHRlc3QoKXtcbiAgICAgICAgY29uc3QgQnV0dG9uID0gc3R5bGVkKCdkaXYnLCB7XG4gICAgICAgICAgY29sb3I6J3JlZCdcbiAgICAgICAgfSlcbiAgICAgIH1cbiAgICAgICJdfQ== */")
   const Button = styled('div', {
     color: 'red'
   });

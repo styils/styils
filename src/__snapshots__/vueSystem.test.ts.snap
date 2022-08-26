@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`hydrate base hydrate 1`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476\\"><style data-ssr=\\"styils-css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"`;
+exports[`hydrate base hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-2242710476"><style data-ssr="styils-css-ssr">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"`;
 
 exports[`hydrate base hydrate 2`] = `
 <html>
@@ -15,7 +15,7 @@ exports[`hydrate base hydrate 2`] = `
 </html>
 `;
 
-exports[`hydrate createGlobal hydrate 1`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"\\"><style data-ssr=\\"styils-css-ssr-global\\">body{background-color:gainsboro;border-radius:9999px;}</style>"`;
+exports[`hydrate createGlobal hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content=""><style data-ssr="styils-css-ssr-global">body{background-color:gainsboro;border-radius:9999px;}</style>"`;
 
 exports[`hydrate createGlobal hydrate 2`] = `
 <html>
@@ -31,7 +31,7 @@ exports[`hydrate createGlobal hydrate 2`] = `
 </html>
 `;
 
-exports[`hydrate createGlobal hydrate 3`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"\\">"`;
+exports[`hydrate createGlobal hydrate 3`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="">"`;
 
 exports[`hydrate createGlobal hydrate 4`] = `
 <html>
@@ -61,9 +61,9 @@ exports[`hydrate createGlobal hydrate with sourcemap 1`] = `
 </html>
 `;
 
-exports[`hydrate mix hydrate 1`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476\\"><style data-ssr=\\"styils-css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"`;
+exports[`hydrate mix hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-2242710476"><style data-ssr="styils-css-ssr">.css-2242710476{background-color:gainsboro;border-radius:9999px;}</style>"`;
 
-exports[`hydrate namespace hydrate 1`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small\\"><style data-ssr=\\"styils-css-ssr\\">.ssr-css-2242710476{background-color:gainsboro;border-radius:9999px;}.ssr-css-2242710476.ssr-size-max{font-size:12px;}.ssr-css-2242710476.ssr-size-small{font-size:14px;}</style>"`;
+exports[`hydrate namespace hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="ssr-css-2242710476|ssr-css-2242710476.ssr-size-max|ssr-css-2242710476.ssr-size-small"><style data-ssr="styils-css-ssr">.ssr-css-2242710476{background-color:gainsboro;border-radius:9999px;}.ssr-css-2242710476.ssr-size-max{font-size:12px;}.ssr-css-2242710476.ssr-size-small{font-size:14px;}</style>"`;
 
 exports[`hydrate namespace hydrate 2`] = `
 <html>
@@ -79,9 +79,9 @@ exports[`hydrate namespace hydrate 2`] = `
 `;
 
 exports[`hydrate production css content 1`] = `
-"<meta name=\\"styils-cache\\" id=\\"styils-css-cache\\" mode=\\"none\\" content=\\"css-2242710476|css-3734128299\\">
-<style id=\\"styils-css-ssr-global\\"></style>
-<style id=\\"styils-css-ssr\\">
+"<meta name="styils-cache" id="styils-css-cache" mode="none" content="css-2242710476|css-3734128299">
+<style id="styils-css-ssr-global"></style>
+<style id="styils-css-ssr">
   .css-2242710476 {
     background-color: gainsboro;
     border-radius: 9999px;
@@ -95,8 +95,8 @@ exports[`hydrate production css content 1`] = `
 `;
 
 exports[`hydrate render Element hydrate 1`] = `
-"<meta name=\\"styils-cache\\" id=\\"styils-css-cache\\" mode=\\"none\\" content=\\"css-2242710476\\">
-<style data-ssr=\\"styils-css-ssr\\">
+"<meta name="styils-cache" id="styils-css-cache" mode="none" content="css-2242710476">
+<style data-ssr="styils-css-ssr">
   .css-2242710476 {
     background-color: gainsboro;
     border-radius: 9999px;
@@ -104,7 +104,7 @@ exports[`hydrate render Element hydrate 1`] = `
 </style>"
 `;
 
-exports[`hydrate variants hydrate 1`] = `"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-2242710476|css-2242710476.size-max|css-2242710476.size-small\\"><style data-ssr=\\"styils-css-ssr\\">.css-2242710476{background-color:gainsboro;border-radius:9999px;}.css-2242710476.size-max{font-size:12px;}.css-2242710476.size-small{font-size:14px;}</style>"`;
+exports[`hydrate variants hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-2242710476|css-2242710476.size-max|css-2242710476.size-small"><style data-ssr="styils-css-ssr">.css-2242710476{background-color:gainsboro;border-radius:9999px;}.css-2242710476.size-max{font-size:12px;}.css-2242710476.size-small{font-size:14px;}</style>"`;
 
 exports[`hydrate variants hydrate 2`] = `
 <html>
@@ -147,7 +147,7 @@ exports[`vuejs system createGlobal with sourceMap 1`] = `
 </html>
 `;
 
-exports[`vuejs system createSystem base 1`] = `"<div data-testid=\\"use-system\\"></div>"`;
+exports[`vuejs system createSystem base 1`] = `"<div data-testid="use-system"></div>"`;
 
 exports[`vuejs system createSystem base 2`] = `
 <html>
@@ -163,7 +163,7 @@ exports[`vuejs system createSystem base 2`] = `
 </html>
 `;
 
-exports[`vuejs system createSystem base 3`] = `"<div data-testid=\\"use-system\\"></div>"`;
+exports[`vuejs system createSystem base 3`] = `"<div data-testid="use-system"></div>"`;
 
 exports[`vuejs system createSystem base 4`] = `
 <html>
@@ -179,7 +179,7 @@ exports[`vuejs system createSystem base 4`] = `
 </html>
 `;
 
-exports[`vuejs system styled 1`] = `"<button class=\\"css-3397010960\\"></button>"`;
+exports[`vuejs system styled 1`] = `"<button class="css-3397010960"></button>"`;
 
 exports[`vuejs system styled 2`] = `[Function]`;
 
@@ -197,7 +197,7 @@ exports[`vuejs system styled 3`] = `
 </html>
 `;
 
-exports[`vuejs system styled className 1`] = `"<button class=\\"foo css-2129283522\\"></button>"`;
+exports[`vuejs system styled className 1`] = `"<button class="foo css-2129283522"></button>"`;
 
 exports[`vuejs system styled className 2`] = `
 <html>
@@ -213,15 +213,15 @@ exports[`vuejs system styled className 2`] = `
 </html>
 `;
 
-exports[`vuejs system styled multiple Variants 1`] = `"<button class=\\"css-2129283522 outer-true fixed-true\\"></button>"`;
+exports[`vuejs system styled multiple Variants 1`] = `"<button class="css-2129283522 outer-true fixed-true"></button>"`;
 
-exports[`vuejs system styled namespace 1`] = `"<button class=\\"button-css-3465392085\\"></button>"`;
+exports[`vuejs system styled namespace 1`] = `"<button class="button-css-3465392085"></button>"`;
 
-exports[`vuejs system styled production 1`] = `"<button class=\\"css-3465392085\\"></button>"`;
+exports[`vuejs system styled production 1`] = `"<button class="css-3465392085"></button>"`;
 
-exports[`vuejs system styled with css state 1`] = `"<button class=\\"css-916201087\\" style=\\"--css-916201087-bg: red;\\">red</button>"`;
+exports[`vuejs system styled with css state 1`] = `"<button class="css-916201087" style="--css-916201087-bg: red;">red</button>"`;
 
-exports[`vuejs system styled with css state 2`] = `"<button class=\\"css-916201087\\" style=\\"--css-916201087-bg: red;\\">red</button>"`;
+exports[`vuejs system styled with css state 2`] = `"<button class="css-916201087" style="--css-916201087-bg: red;">red</button>"`;
 
 exports[`vuejs system styled with sourceMap 1`] = `
 <html>
@@ -237,7 +237,7 @@ exports[`vuejs system styled with sourceMap 1`] = `
 </html>
 `;
 
-exports[`vuejs system styled with styled components 1`] = `"<button class=\\"css-3433634237 css-2341007075\\"></button>"`;
+exports[`vuejs system styled with styled components 1`] = `"<button class="css-3433634237 css-2341007075"></button>"`;
 
 exports[`vuejs system styled with styled components 2`] = `
 <html>
@@ -287,7 +287,7 @@ exports[`vuejs system styled with theme and sourceMap 2`] = `
 </html>
 `;
 
-exports[`vuejs system theme does not render repeatedly 1`] = `"<div data-testid=\\"use-system\\"></div>"`;
+exports[`vuejs system theme does not render repeatedly 1`] = `"<div data-testid="use-system"></div>"`;
 
 exports[`vuejs system theme does not render repeatedly 2`] = `
 <html>
@@ -303,7 +303,7 @@ exports[`vuejs system theme does not render repeatedly 2`] = `
 </html>
 `;
 
-exports[`vuejs system theme does not render repeatedly 3`] = `"<div data-testid=\\"use-system\\"></div>"`;
+exports[`vuejs system theme does not render repeatedly 3`] = `"<div data-testid="use-system"></div>"`;
 
 exports[`vuejs system theme does not render repeatedly 4`] = `
 <html>
@@ -319,7 +319,7 @@ exports[`vuejs system theme does not render repeatedly 4`] = `
 </html>
 `;
 
-exports[`vuejs system theme does not render repeatedly 5`] = `"<div data-testid=\\"use-system\\"></div>"`;
+exports[`vuejs system theme does not render repeatedly 5`] = `"<div data-testid="use-system"></div>"`;
 
 exports[`vuejs system theme does not render repeatedly 6`] = `
 <html>
@@ -335,7 +335,7 @@ exports[`vuejs system theme does not render repeatedly 6`] = `
 </html>
 `;
 
-exports[`vuejs system variants 1`] = `"<div data-testid=\\"styled-variants\\"></div>"`;
+exports[`vuejs system variants 1`] = `"<div data-testid="styled-variants"></div>"`;
 
 exports[`vuejs system variants 2`] = `
 <html>
@@ -351,7 +351,7 @@ exports[`vuejs system variants 2`] = `
 </html>
 `;
 
-exports[`vuejs system variants 3`] = `"<div data-testid=\\"styled-variants\\"></div>"`;
+exports[`vuejs system variants 3`] = `"<div data-testid="styled-variants"></div>"`;
 
 exports[`vuejs system variants 4`] = `
 <html>
@@ -367,7 +367,7 @@ exports[`vuejs system variants 4`] = `
 </html>
 `;
 
-exports[`vuejs system variants single 1`] = `"<div data-testid=\\"styled-variants\\"></div>"`;
+exports[`vuejs system variants single 1`] = `"<div data-testid="styled-variants"></div>"`;
 
 exports[`vuejs system variants single 2`] = `
 <html>
@@ -383,7 +383,7 @@ exports[`vuejs system variants single 2`] = `
 </html>
 `;
 
-exports[`vuejs system variants single 3`] = `"<div data-testid=\\"styled-variants\\"></div>"`;
+exports[`vuejs system variants single 3`] = `"<div data-testid="styled-variants"></div>"`;
 
 exports[`vuejs system variants single 4`] = `
 <html>
@@ -399,7 +399,7 @@ exports[`vuejs system variants single 4`] = `
 </html>
 `;
 
-exports[`vuejs system variants theme 1`] = `"<button class=\\"css-3433634237 color-light\\" data-testid=\\"use-system\\">light</button>"`;
+exports[`vuejs system variants theme 1`] = `"<button class="css-3433634237 color-light" data-testid="use-system">light</button>"`;
 
 exports[`vuejs system variants theme 2`] = `
 <html>
@@ -415,7 +415,7 @@ exports[`vuejs system variants theme 2`] = `
 </html>
 `;
 
-exports[`vuejs system variants theme 3`] = `"<button class=\\"css-3433634237 color-light\\" data-testid=\\"use-system\\">light</button>"`;
+exports[`vuejs system variants theme 3`] = `"<button class="css-3433634237 color-light" data-testid="use-system">light</button>"`;
 
 exports[`vuejs system variants theme 4`] = `
 <html>

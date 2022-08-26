@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`css node createStyil node 1`] = `
-"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-1473887168|css-2950234073\\"><style data-ssr=\\"styils-css-ssr\\">.css-1473887168{width:100px;}</style>
-<style data-ssr=\\"styils-css-ssr\\">.css-2950234073{height:100px;}</style>"
+"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-1473887168|css-2950234073"><style data-ssr="styils-css-ssr">.css-1473887168{width:100px;}</style>
+<style data-ssr="styils-css-ssr">.css-2950234073{height:100px;}</style>"
 `;
 
 exports[`css node node default createExtracts  1`] = `
-"<meta id=\\"styils-css-cache\\" name=\\"styils-cache\\" mode=\\"none\\" content=\\"css-1473887168|css-2950234073\\"><style data-ssr=\\"styils-css-ssr\\">.css-1473887168{width:100px;}</style>
-<style data-ssr=\\"styils-css-ssr\\">.css-2950234073{height:100px;}</style>"
+"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-1473887168|css-2950234073"><style data-ssr="styils-css-ssr">.css-1473887168{width:100px;}</style>
+<style data-ssr="styils-css-ssr">.css-2950234073{height:100px;}</style>"
 `;
