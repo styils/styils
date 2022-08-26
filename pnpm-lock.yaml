@@ -41,7 +41,7 @@ importers:
       rimraf: 3.0.2
       rollup: 2.78.1
       rollup-plugin-copy: 3.4.0
-      rollup-plugin-esbuild: 4.9.3
+      rollup-plugin-esbuild: 4.10.1
       shelljs: 0.8.5
       solid-js: 1.5.0
       solid-testing-library: 0.3.0
@@ -86,7 +86,7 @@ importers:
       rimraf: 3.0.2
       rollup: 2.78.1
       rollup-plugin-copy: 3.4.0
-      rollup-plugin-esbuild: 4.9.3_75tz4fz3hdw34ihj4xz6ux6bmq
+      rollup-plugin-esbuild: 4.10.1_75tz4fz3hdw34ihj4xz6ux6bmq
       shelljs: 0.8.5
       solid-js: 1.5.0
       solid-testing-library: 0.3.0_solid-js@1.5.0
@@ -6275,8 +6275,8 @@ packages:
       is-plain-object: 3.0.1
     dev: true
 
-  /rollup-plugin-esbuild/4.9.3_75tz4fz3hdw34ihj4xz6ux6bmq:
-    resolution: {integrity: sha512-bxfUNYTa9Tw/4kdFfT9gtidDtqXyRdCW11ctZM7D8houCCVqp5qHzQF7hhIr31rqMA0APbG47fgVbbCGXgM49Q==}
+  /rollup-plugin-esbuild/4.10.1_75tz4fz3hdw34ihj4xz6ux6bmq:
+    resolution: {integrity: sha512-/ymcRB283zjFp1JTBXO8ekxv0c9vRc2L6OTljghsLthQ4vqeDSDWa9BVz1tHiVrx6SbUnUpDPLC0K/MXK7j5TA==}
     engines: {node: '>=12'}
     peerDependencies:
       esbuild: '>=0.10.1'
