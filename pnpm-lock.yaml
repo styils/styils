@@ -27,7 +27,7 @@ importers:
       esbuild-register: 3.3.3
       eslint: 8.23.0
       eslint-config-iroot: 1.4.4
-      eslint-plugin-react: 7.31.0
+      eslint-plugin-react: 7.31.1
       eslint-plugin-react-hooks: 4.6.0
       fs-extra: 10.1.0
       husky: 8.0.1
@@ -3757,7 +3757,6 @@ packages:
       object.entries: 1.1.5
       semver: 6.3.0
     dev: true
-
   /eslint-config-iroot/1.4.4_55dbrlpu43pw7ygmszehw5cr2q:
     resolution: {integrity: sha512-wbZag3ioPkRVwsbjLSR+ixNOWgx/VItKfPDKq2/AxPNMFptiPtFdJtoHrJW7eTZDsOzx/mrsCvDO4SXCUP9ptQ==}
     peerDependencies:
@@ -3924,7 +3923,6 @@ packages:
     dependencies:
       eslint: 8.23.0
     dev: true
-
   /eslint-plugin-react/7.31.0_eslint@8.23.0:
     resolution: {integrity: sha512-BWriBttYYCnfb4RO9SB91Og8uA9CPcBMl5UlCOCtuYW1UjhN3QypzEcEHky4ZIRZDKjbO2Blh9BjP8E7W/b1SA==}
     engines: {node: '>=4'}
