@@ -8,11 +8,12 @@ import {
   splitProps,
   mergeProps,
   createMemo,
-  batch
+  batch,
+  Accessor
 } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import { createBaseSystem } from './baseSystem'
-import type { ExtractElement, Provider, Styled, UseSystem } from './solidSystemTypes'
+import type { Styled, UseSystem } from './solidSystemTypes'
 import type { BaseTag, SystemExtractElement, SystemOptions, TargetInfo } from './baseSystemTypes'
 import type { AnyObject } from './types'
 
@@ -157,8 +158,11 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
     ...createBaseSystem<
       Styled<Theme>,
       Theme,
-      (props: SystemExtractElement) => ExtractElement,
-      (providerOptions: { mode: string; theme: AnyObject }) => Provider
+      (props: SystemExtractElement) => Accessor<JSX.Element>[],
+      (providerOptions: {
+        mode: string
+        theme: AnyObject
+      }) => (props: { children: JSX.Element }) => JSX.Element
     >(options, SystemProvider, styledComponent, extractElement),
     useSystem,
     systemContext

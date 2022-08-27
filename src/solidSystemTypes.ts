@@ -1,16 +1,12 @@
 import type { JSX, ComponentProps, Accessor } from 'solid-js'
+import type { NeverObeject, StyleInterpolation, Styles, Widen } from './baseSystemTypes'
 import type { AnyObject } from './types'
-import { NeverObeject, StyleInterpolation, Styles, Widen } from './baseSystemTypes'
 
 export type UseSystem<Theme> = () => {
   mode: Accessor<string>
   setMode: (mode: string) => void
   theme: Accessor<Theme>
 }
-
-export type Provider = (props: { children: JSX.Element }) => JSX.Element
-
-export type ExtractElement = Accessor<JSX.Element>[]
 
 export type NativeComponent = keyof JSX.IntrinsicElements | ((...props: any[]) => JSX.Element)
 
