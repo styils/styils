@@ -69,7 +69,7 @@
     "rimraf": "3.0.2",
     "rollup": "2.78.1",
     "rollup-plugin-copy": "3.4.0",
-    "rollup-plugin-esbuild": "4.9.3",
+    "rollup-plugin-esbuild": "4.10.1",
     "shelljs": "0.8.5",
     "solid-js": "1.5.1",
     "solid-testing-library": "0.3.0",
