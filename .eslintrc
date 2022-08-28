@@ -19,6 +19,7 @@
       {
         "types": {
           // un-ban a type that's banned by default
+          "Function": false,
           "{}": false
         },
         "extendDefaults": true

@@ -1,21 +1,12 @@
 import type { AnyObject } from './types'
-import { NeverObeject, StyleInterpolation, Styles, Widen } from './baseSystemTypes'
-import { Component, DefineComponent, VNode, VNodeRef } from 'vue'
+import type { NeverObeject, StyleInterpolation, Styles, Widen } from './baseSystemTypes'
+import type { Component, DefineComponent, VNode, VNodeRef } from 'vue'
 
 export type JSX = {
   [K in keyof JSX.IntrinsicElements as string extends K ? never : K]: JSX.IntrinsicElements[K]
 }
 
-export type Provider = (props: { children: VNode }) => VNode
-
-export type ExtractElement = VNode
-
-export type NativeComponent =
-  | keyof JSX
-  | Component<AnyObject>
-  // magic
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  | Function
+export type NativeComponent = keyof JSX | Component<AnyObject> | Function
 
 export type ComponentProps<T> = T extends keyof JSX
   ? JSX[T]
