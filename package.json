@@ -75,7 +75,7 @@
     "solid-testing-library": "0.3.0",
     "typescript": "4.8.2",
     "vite": "3.0.9",
-    "vue": "3.2.37"
+    "vue": "3.2.38"
   },
   "engines": {
     "node": ">=12",
