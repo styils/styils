@@ -15,10 +15,24 @@
 </p>
 
 <p align="center">
-Lightweight and fast css-in-js solution. Support for topics, Polymorphism, SSR, Sourcemap, Full type definitions
+Lightweight and fast css-in-js solution.
 </p>
 
-[Documentation](https://styils.github.io/styils) [Bench](https://styils.github.io/styils/benchmark/create-and-mount-button/stitches-react)
+## 🌟 Features 
+
+- 🎭  Polymorphism
+- 🔵  Full ts type 
+- 🗺  Support SourceMap 
+- 🛎  Support SSR 
+- 🎨  Support Themes 
+- ☘️  Small size compression + gzip 4kb
+- ⚡️  Near native rendering speed 
+
+[Documentation](https://styils.github.io/styils) 
+
+> It's very fast. Almost as fast as using native css, and even faster than native rendering under certain conditions
+
+[Bench](https://styils.github.io/styils/benchmark/create-and-mount-button/stitches-react)
 
 ### Styils React
 
