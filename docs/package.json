@@ -10,8 +10,8 @@
     "build": "vite build && vite build --ssr entryServer --outDir dist/server && node prerender.js"
   },
   "dependencies": {
-    "@emotion/react": "11.10.0",
-    "@emotion/styled": "11.10.0",
+    "@emotion/react": "11.10.4",
+    "@emotion/styled": "11.10.4",
     "@stitches/react": "1.2.8",
     "@stitches/stringify": "1.2.8",
     "d3-scale-chromatic": "3.0.0",
