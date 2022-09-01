@@ -40,7 +40,7 @@
   },
   "withVarsDesc": {
     "1": "Here you need to display the units that should be added",
-    "2": "Created style components have a<strong>vars</strong>property",
+    "2": "Created style components have a `vars` property",
     "3": "You can bind values dynamically, don't worry, it has almost no performance overhead",
     "4": "Note: Not supported in <strong>Variants</strong>"
   },

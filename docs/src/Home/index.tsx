@@ -386,6 +386,11 @@ export default function Home() {
               <pre ref={installRef}>npm install @styils/solid</pre>
               <img src={copyCssIcon} alt="copy" onClick={() => copyCss()} aria-hidden="true" />
             </InstallBox>
+            <InstallBox>
+              <strong>$</strong>
+              <pre ref={installRef}>npm install @styils/vue</pre>
+              <img src={copyCssIcon} alt="copy" onClick={() => copyCss()} aria-hidden="true" />
+            </InstallBox>
           </ButtonGroup>
         </SloganWapper>
 
