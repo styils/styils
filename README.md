@@ -18,17 +18,17 @@
 Lightweight and fast css-in-js solution.
 </p>
 
-## 🌟 Features 
+## 🌟 Features
 
-- 🎭  Polymorphism
-- 🔵  Full ts type 
-- 🗺  Support SourceMap 
-- 🛎  Support SSR 
-- 🎨  Support Themes 
-- ☘️  Small size compression + gzip 4kb
-- ⚡️  Near native rendering speed 
+- 🎭 Polymorphism
+- 🔵 Full ts type
+- 🗺 Support SourceMap
+- 🛎 Support SSR
+- 🎨 Support Themes
+- ☘️ Small size compression + gzip 4kb
+- ⚡️ Near native rendering speed
 
-[Documentation](https://styils.github.io/styils) 
+[Documentation](https://styils.github.io/styils)
 
 > It's very fast. Almost as fast as using native css, and even faster than native rendering under certain conditions
 
