@@ -18,17 +18,17 @@
  轻量级和快速的 css-in-js 工具
 </p>
 
-## 🌟 特性 
+## 🌟 特性
 
-- 🎭  多态
-- 🔵  完整的类型
-- 🗺  支持 SourceMap 
-- 🛎  支持 SSR 
-- 🎨  支持 Themes 
-- ☘️  小尺寸 压缩 + gzip 4kb
-- ⚡️  接近原生渲染速度
+- 🎭 多态
+- 🔵 完整的类型
+- 🗺 支持 SourceMap
+- 🛎 支持 SSR
+- 🎨 支持 Themes
+- ☘️ 小尺寸 压缩 + gzip 4kb
+- ⚡️ 接近原生渲染速度
 
-[文档](https://styils.github.io/styils) 
+[文档](https://styils.github.io/styils)
 
 > 它非常快。几乎和使用原生 css 一样快，在某些条件下甚至比原生渲染还要快
 
