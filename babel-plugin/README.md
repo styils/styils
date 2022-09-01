@@ -38,7 +38,7 @@ Used to mark the function name, compile time will lookup based on the function n
 
 #### importPaths
 
-default: `"@styils/react"`
+default: `/@styils\/(react|solid|vue)/`
 
 Used for `styled` or `createGlobal` import paths, and will only be loaded if matched
 
