@@ -113,7 +113,7 @@ describe('parseRules rules', () => {
       {
         '@import': "url('path/to')",
         '@font-face': {
-          'font-weight': 100
+          fontWeight: 100
         },
         'text-align': 'center',
         '.logo': {
@@ -181,11 +181,11 @@ describe('parseRules rules', () => {
     })
 
     expect(ruleCode).toEqual(
-      ['--foo:1;opacity:1;', 'html{background:red;}', '@supports{--bar:none;}'].join('')
+      ['--foo:1px;opacity:1;', 'html{background:red;}', '@supports{--bar:none;}'].join('')
     )
 
     expect(segmentRuleCode).toEqual([
-      '--foo:1;opacity:1;',
+      '--foo:1px;opacity:1;',
       'html{background:red;}',
       '@supports{--bar:none;}'
     ])
@@ -438,15 +438,15 @@ describe('parseRules rules', () => {
     const { ruleCode, segmentRuleCode } = parseRules(
       {
         '@font-face': {
-          'font-weight': 100
+          'font-weight': '100px'
         }
       },
       'base'
     )
 
-    expect(ruleCode).toEqual(['@font-face{font-weight:100;}'].join(''))
+    expect(ruleCode).toEqual(['@font-face{font-weight:100px;}'].join(''))
 
-    expect(segmentRuleCode).toEqual(['@font-face{font-weight:100;}'])
+    expect(segmentRuleCode).toEqual(['@font-face{font-weight:100px;}'])
   })
 
   it('@page', () => {

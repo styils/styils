@@ -45,7 +45,7 @@ export function parseRules(
   const rearRules: string[] = []
 
   function ruleToNative(key: string, value: string | number) {
-    if (unitProps.has(key) && typeof value === 'number') {
+    if (!unitProps.has(key) && typeof value === 'number') {
       value = `${value}px`
     }
 
