@@ -6,6 +6,8 @@ on:
     branches: [main]
     paths:
       - 'src/**'
+      - 'vite-plugin/**'
+      - 'babel-plugin/**'
 
 jobs:
   test:
