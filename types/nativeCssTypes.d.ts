@@ -5069,7 +5069,31 @@ export namespace Property {
     | 'pinch-zoom'
     | OnlyString
 
-  export type Transform = 'none' | OnlyString
+  export type Transform =
+    | 'none'
+    | 'inherit'
+    | 'initial'
+    | 'unset'
+    | 'matrix('
+    | 'matrix3d('
+    | 'perspective('
+    | 'revert('
+    | 'rotate('
+    | 'rotate3d('
+    | 'rotateX('
+    | 'rotateY('
+    | 'rotateZ('
+    | 'scale('
+    | 'scale3d('
+    | 'scaleX('
+    | 'scaleY('
+    | 'skew('
+    | 'skewX('
+    | 'skewY('
+    | 'translate('
+    | 'translate3d('
+    | 'translateY('
+    | 'translateZ('
 
   export type TransformBox = 'border-box' | 'content-box' | 'fill-box' | 'stroke-box' | 'view-box'
 

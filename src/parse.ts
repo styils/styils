@@ -3,19 +3,20 @@ import { unitProps } from './unitProps'
 
 const contentValuePattern =
   /(var|attr|counters?|url|(((repeating-)?(linear|radial))|conic)-gradient)\(|(no-)?(open|close)-quote/
-const contentValues: Record<string, 'normal' | 'none' | 'initial' | 'inherit' | 'unset'> = {
-  normal: 'normal',
-  none: 'none',
-  initial: 'initial',
-  inherit: 'inherit',
-  unset: 'unset'
-}
+const contentValues: Set<string | number> = new Set([
+  'normal',
+  'none',
+  'initial',
+  'inherit',
+  'unset'
+])
 
 function transformKey(property: string, selector = '') {
   // Go over the selector and replace the matching multiple selectors if any
   // Return the current selector with the key matching multiple selectors if any
   // If the current key has a nested selector replace it
   // If there's a current selector concat it
+  // https://github.com/cristianbote/goober/blob/b2781bd9d76f5b386e50b5916216430f4532662c/src/core/parse.js#L34
   return selector
     ? selector.replace(/([^,])+/g, (sel) => {
         return property.replace(/(^:.*)|([^,])+/g, (key) => {
@@ -53,7 +54,7 @@ export function parseRules(
     // Exclude css variables, to css native writing
     key = /^--/.test(key) ? key : key.replace(/[A-Z]/g, '-$&').toLowerCase()
 
-    if (key === 'content' && !contentValuePattern.test(`${value}`) && !contentValues[value]) {
+    if (key === 'content' && !contentValuePattern.test(`${value}`) && !contentValues.has(value)) {
       try {
         value = JSON.stringify(value).replace(/\\\\/g, '\\')
       } catch {
