@@ -9,7 +9,7 @@ describe('css', () => {
     const out = css({ foo: 1 })
 
     document.head.childNodes.forEach((item) => {
-      expect(item.textContent).toEqual('.css-1250898684{foo:1;}')
+      expect(item.textContent).toEqual('.css-1250898684{foo:1px;}')
     })
 
     expect(out).toEqual('css-1250898684')
