@@ -41,6 +41,7 @@ export function addSourceMaps(
 }
 
 const sourceMapProperty = 'sourceMap'
+const uniqueIdentifierProperty = 'uniqueIdentifier'
 
 export default declare((api) => {
   const { types: t } = api
@@ -123,8 +124,7 @@ export default declare((api) => {
           }
 
           if (parent) {
-            const sourceMapNode = t.logicalExpression(
-              '&&',
+            const sourceMapNode = t.ifStatement(
               t.binaryExpression(
                 '!==',
                 t.memberExpression(
@@ -133,20 +133,34 @@ export default declare((api) => {
                 ),
                 t.stringLiteral('production')
               ),
-              t.assignmentExpression(
-                '=',
-                t.memberExpression(
-                  t.identifier(path.node.callee.name),
-                  t.identifier(sourceMapProperty)
+              t.blockStatement([
+                t.expressionStatement(
+                  t.assignmentExpression(
+                    '=',
+                    t.memberExpression(
+                      t.identifier(path.node.callee.name),
+                      t.identifier(sourceMapProperty)
+                    ),
+                    t.stringLiteral(
+                      addSourceMaps(path.node.loc.start, {
+                        sourceFileName,
+                        sourceRoot,
+                        code: state.file.code
+                      })
+                    )
+                  )
                 ),
-                t.stringLiteral(
-                  addSourceMaps(path.node.loc.start, {
-                    sourceFileName,
-                    sourceRoot,
-                    code: state.file.code
-                  })
+                t.expressionStatement(
+                  t.assignmentExpression(
+                    '=',
+                    t.memberExpression(
+                      t.identifier(path.node.callee.name),
+                      t.identifier(uniqueIdentifierProperty)
+                    ),
+                    t.stringLiteral(`${sourceFileName}${path.node.start}`)
+                  )
                 )
-              )
+              ])
             )
 
             parent.insertBefore(sourceMapNode)

@@ -34,7 +34,7 @@ const CardHeader = styled('section', (theme) => ({
   },
 
   '& span': {
-    marginLeft: 16,
+    marginLeft: 12,
     fontWeight: 500,
     color: theme.mainColor
   }
