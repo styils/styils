@@ -40,7 +40,7 @@ export function createBaseSystem<
     sheetOptions = {}
   } = systemOptions
 
-  const { key = 'css', container, nonce } = sheetOptions
+  const { key = 'css', container, speedy, nonce } = sheetOptions
   const metaSelectorCacheId = `styils-${key}-cache`
   // get selector cache in ssr mode
   const metaHtml = isBrowser
@@ -61,6 +61,7 @@ export function createBaseSystem<
 
   const sheet = new StyleSheet({
     key,
+    speedy: speedy === undefined ? process.env.NODE_ENV === 'production' : speedy,
     container: isBrowser ? container ?? document.head : null,
     nonce
   })
@@ -119,8 +120,7 @@ export function createBaseSystem<
 
       const rules = {
         segmentRuleCode: [],
-        ruleCode: '',
-        uniqueIdentifier: styled.uniqueIdentifier
+        ruleCode: ''
       }
 
       if (!selectorCache.has(targetClassName)) {
@@ -183,10 +183,6 @@ export function createBaseSystem<
         if (!cacheSourceMap && styled.sourceMap) {
           cacheSourceMap = styled.sourceMap
           delete styled.sourceMap
-        }
-
-        if (styled.uniqueIdentifier) {
-          delete styled.uniqueIdentifier
         }
 
         if (rules.ruleCode) {

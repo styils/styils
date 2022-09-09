@@ -34,7 +34,6 @@ export interface SystemOptions<Theme> {
 export interface BaseStyled {
   (...props: any[]): any
   sourceMap?: string
-  uniqueIdentifier?: string
 }
 
 /**

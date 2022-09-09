@@ -24,7 +24,7 @@ export class StyleSheet {
   /**
    * use insertRule, the production default `true`, and the development environment default to `appendChild`
    */
-  speedy = process.env.NODE_ENV === 'production'
+  speedy: boolean
 
   /**
    * insert a list of style tags
@@ -58,6 +58,7 @@ export class StyleSheet {
   ssrGlobalData = []
 
   constructor(options: StyleSheetOptions) {
+    this.speedy = options.speedy
     this.nonce = options.nonce
     this.key = options.key
     this.container = options.container
@@ -73,7 +74,7 @@ export class StyleSheet {
     this.tags.push(tag)
   }
 
-  insertStyle({ ruleCode, segmentRuleCode, uniqueIdentifier }: Rules, glob = false) {
+  insertStyle({ ruleCode, segmentRuleCode }: Rules, glob = false) {
     if (this.container) {
       if (this.speedy) {
         const ruleIndexs: OldRule[] = []
@@ -84,13 +85,13 @@ export class StyleSheet {
         return ruleIndexs
       }
 
-      return [this.insert(ruleCode, uniqueIdentifier)]
+      return [this.insert(ruleCode)]
     }
 
     this[glob ? 'ssrGlobalData' : 'ssrData'].push(ruleCode)
   }
 
-  insert(rule: string, uniqueIdentifier?: string) {
+  insert(rule: string) {
     // the max length is how many rules we have per style tag, it's 65000 in speedy mode
     // it's 1 in dev because we insert source maps that map a single rule to a location
     // and you can only have one source map per style tag
@@ -101,11 +102,6 @@ export class StyleSheet {
       if (this.nonce !== undefined) {
         tag.setAttribute('nonce', this.nonce)
       }
-
-      if (uniqueIdentifier) {
-        tag.setAttribute('id', uniqueIdentifier)
-      }
-
       tag.appendChild(document.createTextNode(''))
 
       this.insertTag(tag)
