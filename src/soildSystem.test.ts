@@ -309,6 +309,7 @@ describe('solidjs system', () => {
   })
 
   it('delete old rules', () => {
+    process.env.NODE_ENV = 'production'
     const {
       createGlobal: globalTheme,
       useSystem,
@@ -325,8 +326,7 @@ describe('solidjs system', () => {
           }
         }[mode]
       },
-      defaultMode: 'light',
-      sheetOptions: { speedy: true }
+      defaultMode: 'light'
     })
 
     globalTheme((theme) => ({
@@ -371,10 +371,13 @@ describe('solidjs system', () => {
     expect(styleHtml.sheet.cssRules[0].cssText).toEqual('body {background-color: blue;}')
 
     flush()
+
+    process.env.NODE_ENV = 'test'
   })
 
   it('styled speedy', () => {
-    const { flush, styled: thmeStyle } = createSystem({ sheetOptions: { speedy: true } })
+    process.env.NODE_ENV = 'production'
+    const { flush, styled: thmeStyle } = createSystem()
 
     const Button = thmeStyle('button', {
       backgroundColor: 'gainsboro'
@@ -387,6 +390,7 @@ describe('solidjs system', () => {
     })
 
     flush()
+    process.env.NODE_ENV = 'test'
   })
 
   it('styled className', () => {

@@ -40,7 +40,7 @@ export function createBaseSystem<
     sheetOptions = {}
   } = systemOptions
 
-  const { key = 'css', container, speedy, nonce } = sheetOptions
+  const { key = 'css', container, nonce } = sheetOptions
   const metaSelectorCacheId = `styils-${key}-cache`
   // get selector cache in ssr mode
   const metaHtml = isBrowser
@@ -61,7 +61,6 @@ export function createBaseSystem<
 
   const sheet = new StyleSheet({
     key,
-    speedy: speedy === undefined ? process.env.NODE_ENV === 'production' : speedy,
     container: isBrowser ? container ?? document.head : null,
     nonce
   })
@@ -273,6 +272,7 @@ export function createBaseSystem<
     const styleSSRId = `styils-${key}-ssr`
     const styleHtml: HTMLStyleElement[] = []
     const styleGlobalHtml: HTMLStyleElement[] = []
+    // production mode uses `id`
     const devIdent = 'data-ssr'
 
     if (process.env.NODE_ENV !== 'production') {
@@ -308,6 +308,7 @@ export function createBaseSystem<
 
     let extractHtml = `<meta id="${metaSelectorCacheId}" name="styils-cache" mode="${metaMode}" content="${selectorCacheString}">`
 
+    // Development mode uses a single, to support sourcemap
     if (process.env.NODE_ENV !== 'production') {
       extractHtml += ssrGlobalData
         .map((item) => `<style ${devIdent}="${globalStyleSSRId}">${item}</style>`)
@@ -360,7 +361,10 @@ export function createBaseSystem<
           if (!tagIndex[rule.tagIndex]) tagIndex[rule.tagIndex] = 0
           sheet.flushSingle({
             tag: rule.tag,
-            index: sheet.speedy ? rule.index - tagIndex[rule.tagIndex] : rule.index
+            index:
+              process.env.NODE_ENV !== 'production'
+                ? rule.index
+                : rule.index - tagIndex[rule.tagIndex]
           })
 
           tagIndex[rule.tagIndex]++

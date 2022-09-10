@@ -20,17 +20,6 @@ beforeEach(() => {
 })
 
 describe('StyleSheet', () => {
-  it('should be speedy by default in production', () => {
-    const sheet = new StyleSheet({ ...defaultOptions, speedy: true })
-    expect(sheet.speedy).toBe(true)
-    process.env.NODE_ENV = 'test'
-  })
-
-  it('should not be speedy in a non-production environment by default', () => {
-    const sheet = new StyleSheet(defaultOptions)
-    expect(sheet.speedy).toBe(undefined)
-  })
-
   it('should remove its style elements from the document when flushed', () => {
     const sheet = new StyleSheet(defaultOptions)
     sheet.insert(rule)
@@ -56,21 +45,26 @@ describe('StyleSheet', () => {
   })
 
   it('should insert a rule with insertRule when in speedy', () => {
-    const sheet = new StyleSheet({ ...defaultOptions, speedy: true })
+    process.env.NODE_ENV = 'production'
+    const sheet = new StyleSheet({ ...defaultOptions })
     sheet.insert(rule)
     expect(document.documentElement).toMatchSnapshot()
     expect(sheet.tags).toHaveLength(1)
 
     expect(sheet.tags[0].sheet?.cssRules).toMatchSnapshot()
     sheet.flush()
+
+    process.env.NODE_ENV = 'test'
   })
 
   it('should throw when inserting a bad rule in speedy mode', () => {
-    const sheet = new StyleSheet({ ...defaultOptions, speedy: true })
+    process.env.NODE_ENV = 'production'
+    const sheet = new StyleSheet({ ...defaultOptions })
     sheet.insert('.asdfasdf4###112121211{')
     expect(console.error).toHaveBeenCalledTimes(1)
 
     sheet.flush()
+    process.env.NODE_ENV = 'test'
   })
 
   it('should set the nonce option as an attribute to style elements', () => {
@@ -252,11 +246,14 @@ describe('StyleSheet', () => {
   })
 
   it('should be speedy by production delete', () => {
-    const sheet = new StyleSheet({ ...defaultOptions, speedy: true })
+    process.env.NODE_ENV = 'production'
+    const sheet = new StyleSheet({ ...defaultOptions })
     const oldRule = sheet.insert(rule)
     const { tag } = oldRule
     expect(tag.sheet.cssRules.length).toEqual(1)
     sheet.flushSingle(oldRule)
     expect(tag.sheet.cssRules.length).toEqual(0)
+
+    process.env.NODE_ENV = 'test'
   })
 })

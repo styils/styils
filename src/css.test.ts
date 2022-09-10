@@ -60,9 +60,8 @@ describe('css', () => {
   })
 
   it('createStyils speedy', () => {
-    const { css } = createStyils({
-      speedy: true
-    })
+    process.env.NODE_ENV = 'production'
+    const { css } = createStyils()
     const out = css({
       width: 'auto',
       '.foo': {
@@ -73,5 +72,6 @@ describe('css', () => {
     expect(document.documentElement).toMatchSnapshot()
 
     expect(out).toEqual('css-3741333736')
+    process.env.NODE_ENV = 'test'
   })
 })
