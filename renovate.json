@@ -1,5 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base", ":disableDependencyDashboard"],
-  "ignoreDeps": ["@commitlint/cli", "@commitlint/config-conventional"]
+  "ignoreDeps": ["@commitlint/cli", "@commitlint/config-conventional"],
+  "schedule": ["* 12-13 * * *"]
 }
