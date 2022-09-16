@@ -43,7 +43,7 @@ importers:
       rollup-plugin-copy: 3.4.0
       rollup-plugin-esbuild: 4.10.1
       shelljs: 0.8.5
-      solid-js: 1.5.4
+      solid-js: 1.5.5
       solid-testing-library: 0.3.0
       typescript: 4.8.3
       vite: 3.1.0
@@ -88,8 +88,8 @@ importers:
       rollup-plugin-copy: 3.4.0
       rollup-plugin-esbuild: 4.10.1_uu2p2v3owefbwsafzxfcsbbrxa
       shelljs: 0.8.5
-      solid-js: 1.5.4
-      solid-testing-library: 0.3.0_solid-js@1.5.4
+      solid-js: 1.5.5
+      solid-testing-library: 0.3.0_solid-js@1.5.5
       typescript: 4.8.3
       vite: 3.1.0
       vue: 3.2.39
@@ -6168,8 +6168,8 @@ packages:
   /solid-js/1.4.8:
     resolution: {integrity: sha512-XErZdnnYYXF7OwGSUAPcua2y5/ELB/c53zFCpWiEGqxTNoH1iQghzI8EsHJXk06sNn+Z/TGhb8bPDNNGSgimag==}
 
-  /solid-js/1.5.4:
-    resolution: {integrity: sha512-+65anSHhH27htkhP5LuC912fviMIckgc7/yN+WWrKhS9Kp3dvtDNl5/m4GWX1lpCvcubjShqJjGt16HET5z5Ig==}
+  /solid-js/1.5.5:
+    resolution: {integrity: sha512-5gXszD7ekhe59IyMa3+AvREJnBWVjwaeC7afL8C3UNPj5gQQCrsMs/cXwI3JRpj6D+3TESTyuQ2sY++m4cYiTg==}
     dependencies:
       csstype: 3.1.0
     dev: true
@@ -6185,14 +6185,14 @@ packages:
       solid-js: 1.4.8
     dev: true
 
-  /solid-testing-library/0.3.0_solid-js@1.5.4:
+  /solid-testing-library/0.3.0_solid-js@1.5.5:
     resolution: {integrity: sha512-6NWVbySNVzyReBm2N6p3eF8bzxRZXHZTAmPix4vFWYol16QWVjNQsEUxvr+ZOutb0yuMZmNuGx3b6WIJYmjwMQ==}
     engines: {node: '>= 14'}
     peerDependencies:
       solid-js: '>=1.0.0'
     dependencies:
       '@testing-library/dom': 7.31.2
-      solid-js: 1.5.4
+      solid-js: 1.5.5
     dev: true
 
   /source-map-js/1.0.2:
