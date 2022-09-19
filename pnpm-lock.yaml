@@ -46,7 +46,7 @@ importers:
       solid-js: 1.5.5
       solid-testing-library: 0.3.0
       typescript: 4.8.3
-      vite: 3.1.2
+      vite: 3.1.3
       vue: 3.2.39
     devDependencies:
       '@babel/core': 7.18.13
@@ -91,7 +91,7 @@ importers:
       solid-js: 1.5.5
       solid-testing-library: 0.3.0_solid-js@1.5.5
       typescript: 4.8.3
-      vite: 3.1.2
+      vite: 3.1.3
       vue: 3.2.39
 
   babel-plugin:
@@ -6691,8 +6691,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite/3.1.2:
-    resolution: {integrity: sha512-wTDKPkiVbeT+drTPdkuvjVIC/2vKKUc1w3qNOuwgpyvPCZF6fvdxB5v5WEcCsqaYea0zrwA4+XialJKCHM3oVQ==}
+  /vite/3.1.3:
+    resolution: {integrity: sha512-/3XWiktaopByM5bd8dqvHxRt5EEgRikevnnrpND0gRfNkrMrPaGGexhtLCzv15RcCMtV2CLw+BPas8YFeSG0KA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
