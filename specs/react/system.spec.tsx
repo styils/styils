@@ -1,10 +1,26 @@
-import { createSystem, styled, createGlobal, StyleTag, StyledProps } from '../../dist/react'
+import {
+  createSystem,
+  styled,
+  Styled,
+  createGlobal,
+  StyledTag,
+  StyledProps,
+  StyledComponent
+} from '../../dist/react'
 import React from 'react'
 
 const { styled: styleTheme } = createSystem({
   theme: () => ({ color: 'red', bg: 'blue' }),
   defaultMode: 'light'
 })
+
+expectType<
+  typeof styleTheme,
+  Styled<{
+    color: string
+    bg: string
+  }>
+>(styleTheme)
 
 const Anthor = styled(
   'a',
@@ -41,6 +57,20 @@ const Anthor = styled(
   }
 )
 
+expectType<
+  typeof Anthor,
+  StyledComponent<
+    'a',
+    {
+      size?: 'small'
+      test?: number | '1' | '2'
+    },
+    {
+      height?: string | number
+    }
+  >
+>(Anthor)
+
 const Anthor1 = styled(
   'a',
   () => ({
@@ -63,6 +93,21 @@ const Anthor1 = styled(
   }
 )
 
+expectType<
+  typeof Anthor1,
+  StyledComponent<
+    'a',
+    {
+      size?: 'small' | 'max'
+    },
+    {
+      height?: string | number
+      width?: string | number
+      123?: string | number
+    }
+  >
+>(Anthor1)
+
 export function render1() {
   return (
     <Anthor1
@@ -79,7 +124,7 @@ styled.sourceMap
 // @ts-expect-error Do not expose to the outside world
 createGlobal.sourceMap
 
-type CProps<T extends StyleTag> = StyledProps<
+type CProps<T extends StyledTag> = StyledProps<
   T,
   {
     size: 'max' | 'small'
@@ -90,7 +135,7 @@ type CProps<T extends StyleTag> = StyledProps<
   }
 >
 
-function Tst<T extends StyleTag = 'button'>(_: CProps<T>) {}
+function Tst<T extends StyledTag = 'button'>(_: CProps<T>) {}
 
 Tst({
   as: 'a',
@@ -155,6 +200,19 @@ const ToLink = styleTheme(Link, (theme) => {
   return {}
 })
 
+expectType<
+  typeof ToLink,
+  StyledComponent<
+    React.ForwardRefExoticComponent<
+      {
+        href?: string
+      } & React.RefAttributes<HTMLAnchorElement>
+    >,
+    never,
+    never
+  >
+>(ToLink)
+
 const ToLink2 = styled(ToLink, {})
 
 expectType<typeof ToLink, typeof ToLink2>(ToLink2)
@@ -183,6 +241,17 @@ const ButtonDark = styled(
   }
 )
 
+expectType<
+  typeof ButtonDark,
+  StyledComponent<
+    'button',
+    {
+      disabled?: boolean | 'true'
+    },
+    never
+  >
+>(ButtonDark)
+
 export function renderButtonDark() {
   return <ButtonDark variants={{ disabled: true }} />
 }
@@ -191,6 +260,17 @@ const ButtonCount = styled('button', {
   display: 'block' as any,
   height: '$height'
 })
+
+expectType<
+  typeof ButtonCount,
+  StyledComponent<
+    'button',
+    never,
+    {
+      height?: string | number
+    }
+  >
+>(ButtonCount)
 
 export function renderButtonCount() {
   return (

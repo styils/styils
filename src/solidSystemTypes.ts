@@ -8,25 +8,25 @@ export type UseSystem<Theme> = () => {
   theme: Accessor<Theme>
 }
 
-export type NativeComponent = keyof JSX.IntrinsicElements | ((...props: any[]) => JSX.Element)
+export type StyledTag = keyof JSX.IntrinsicElements | ((...props: any[]) => JSX.Element)
 
-type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R } ? R : P) : P
+export type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R } ? R : P) : P
 
-type StyledProps<As extends NativeComponent, Variants, Vars> = Omit<ComponentProps<As>, 'ref'> & {
+export type StyledProps<As extends StyledTag, Variants, Vars> = Omit<ComponentProps<As>, 'ref'> & {
   ref?: PropsWithRef<ComponentProps<As>>
   as?: As
   variants?: Variants
   vars?: Vars
 }
 
-type StyledComponent<Component extends NativeComponent, Variants, Vars> = <
-  As extends NativeComponent = Component
+export type StyledComponent<Component extends StyledTag, Variants, Vars> = <
+  As extends StyledTag = Component
 >(
   props: StyledProps<As, Variants, Vars>
 ) => JSX.Element
 
 export interface Styled<Theme> {
-  <Component extends NativeComponent, Variants extends AnyObject = {}, Vars extends string = ''>(
+  <Component extends StyledTag, Variants extends AnyObject = {}, Vars extends string = ''>(
     component: Component | { tag: Component; namespace?: string },
     styles: Styles<Theme, Vars>,
     interpolation?: StyleInterpolation<Theme, Variants>
