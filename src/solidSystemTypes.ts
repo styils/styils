@@ -10,16 +10,16 @@ export type UseSystem<Theme> = () => {
 
 export type StyledTag = keyof JSX.IntrinsicElements | ((...props: any[]) => JSX.Element)
 
-type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R } ? R : P) : P
+export type PropsWithRef<P> = 'ref' extends keyof P ? (P extends { ref?: infer R } ? R : P) : P
 
-type StyledProps<As extends StyledTag, Variants, Vars> = Omit<ComponentProps<As>, 'ref'> & {
+export type StyledProps<As extends StyledTag, Variants, Vars> = Omit<ComponentProps<As>, 'ref'> & {
   ref?: PropsWithRef<ComponentProps<As>>
   as?: As
   variants?: Variants
   vars?: Vars
 }
 
-type StyledComponent<Component extends StyledTag, Variants, Vars> = <
+export type StyledComponent<Component extends StyledTag, Variants, Vars> = <
   As extends StyledTag = Component
 >(
   props: StyledProps<As, Variants, Vars>
