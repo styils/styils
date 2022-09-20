@@ -9,10 +9,10 @@ describe('css', () => {
     const out = css({ foo: 1 })
 
     document.head.childNodes.forEach((item) => {
-      expect(item.textContent).toEqual('.css-1250898684{foo:1px;}')
+      expect(item.textContent).toEqual('.css-2165983570{foo:1px;}')
     })
 
-    expect(out).toEqual('css-1250898684')
+    expect(out).toEqual('css-2165983570')
   })
 
   it('global css', () => {
@@ -36,11 +36,11 @@ describe('css', () => {
 
     document.head.childNodes.forEach((item) => {
       expect(item.textContent).toEqual(
-        '@keyframes css-854127283{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}'
+        '@keyframes css-524936959{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}'
       )
     })
 
-    expect(out).toEqual('css-854127283')
+    expect(out).toEqual('css-524936959')
   })
 
   it('createStyils', () => {
@@ -55,7 +55,7 @@ describe('css', () => {
 
     expect(document.documentElement).toMatchSnapshot()
 
-    expect(out).toEqual('abc-2883881200')
+    expect(out).toEqual('abc-3169980522')
     flush()
   })
 
@@ -72,6 +72,6 @@ describe('css', () => {
 
     expect(document.documentElement).toMatchSnapshot()
 
-    expect(out).toEqual('css-3741333736')
+    expect(out).toEqual('css-3676222078')
   })
 })
