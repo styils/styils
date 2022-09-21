@@ -1,16 +1,6 @@
 import type { AnyObject } from './types'
 import { unitProps } from './unitProps'
 
-const contentValuePattern =
-  /(var|attr|counters?|url|(((repeating-)?(linear|radial))|conic)-gradient)\(|(no-)?(open|close)-quote/
-const contentValues: Set<string | number> = new Set([
-  'normal',
-  'none',
-  'initial',
-  'inherit',
-  'unset'
-])
-
 function transformKey(property: string, selector = '') {
   // Go over the selector and replace the matching multiple selectors if any
   // Return the current selector with the key matching multiple selectors if any
@@ -54,11 +44,30 @@ export function parseRules(
     // Exclude css variables, to css native writing
     key = /^--/.test(key) ? key : key.replace(/[A-Z]/g, '-$&').toLowerCase()
 
-    if (key === 'content' && !contentValuePattern.test(`${value}`) && !contentValues.has(value)) {
-      try {
-        value = JSON.stringify(value).replace(/\\\\/g, '\\')
-      } catch {
-        // empty
+    if (process.env.NODE_ENV !== 'production') {
+      // https://github.com/emotion-js/emotion/blob/c02b12145a94df011e0fd6ffd54197a4d9369783/packages/serialize/src/index.js#L75
+      const contentValuePattern =
+        /(var|attr|counters?|url|(((repeating-)?(linear|radial))|conic)-gradient)\(|(no-)?(open|close)-quote/
+      const contentValues: Set<string | number> = new Set([
+        'normal',
+        'none',
+        'initial',
+        'inherit',
+        'unset'
+      ])
+
+      if (key === 'content') {
+        if (
+          typeof value !== 'string' ||
+          (!contentValuePattern.test(`${value}`) &&
+            !contentValues.has(value) &&
+            (value.charAt(0) !== value.charAt(value.length - 1) ||
+              (value.charAt(0) !== '"' && value.charAt(0) !== "'")))
+        ) {
+          throw new Error(
+            `You seem to be using a value for 'content' without quotes, try replacing it with \`content: '"${value}"'\``
+          )
+        }
       }
     }
 
