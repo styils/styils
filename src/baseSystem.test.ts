@@ -68,7 +68,7 @@ describe('base system', () => {
             height: 1,
             width: 2
           })
-        ).toEqual({ '--css-11-height': 1, '--css-11-width': 2 })
+        ).toEqual({ '--css-124759-height': 1, '--css-124759-width': 2 })
         return {}
       },
       () => {}
@@ -88,7 +88,7 @@ describe('base system', () => {
             height: 1,
             width: 2
           })
-        ).toEqual({ '--css-11-height': 1, '--css-11-width': 2 })
+        ).toEqual({ '--css-124759-height': 1, '--css-124759-width': 2 })
         return {}
       },
       () => {}

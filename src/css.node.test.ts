@@ -20,9 +20,7 @@ describe('css node', () => {
       height: 100
     })
 
-    expect(getCssValue().join('')).toEqual(
-      '.css-1473887168{width:100px;}.css-2950234073{height:100px;}'
-    )
+    expect(getCssValue().join('')).toMatchSnapshot()
   })
 
   it('node default getCssValue ', () => {
@@ -38,8 +36,6 @@ describe('css node', () => {
       height: 100
     })
 
-    expect(defaultGetCssValue().join('')).toEqual(
-      '.css-1473887168{width:100px;}.css-2950234073{height:100px;}'
-    )
+    expect(defaultGetCssValue().join('')).toMatchSnapshot()
   })
 })

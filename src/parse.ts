@@ -128,7 +128,7 @@ export function parseRules(
 
         insertsNumber++
       } else if (value !== undefined && value !== null) {
-        rule += ruleToNative(key, value as string)
+        rule += ruleToNative(key, value)
       }
     }
 
