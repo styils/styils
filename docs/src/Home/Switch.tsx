@@ -58,14 +58,14 @@ const SwitchChecked = styled(
           backgroundColor: theme.bgSecondColor,
           '&::after': {
             transform: 'translateX(30px)',
-            content: '🌛',
+            content: '"🌛"',
             backgroundColor: theme.bgSecondColor
           }
         },
         false: {
           '&::after': {
             backgroundColor: '#fff',
-            content: '☀️'
+            content: '"☀️"'
           }
         }
       }

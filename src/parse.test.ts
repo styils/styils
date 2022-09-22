@@ -459,7 +459,7 @@ describe('parseRules rules', () => {
             content: "'Hamlet asdf'"
           },
           '@top-right': {
-            content: `"Page " counter(page)`
+            content: '"Page " counter(page)'
           }
         }
       },
@@ -467,11 +467,11 @@ describe('parseRules rules', () => {
     )
 
     expect(ruleCode).toEqual(
-      `@page{size:8.5in 11in;margin:10%;@top-left{content:"'Hamlet asdf'";}@top-right{content:"Page " counter(page);}}`
+      `@page{size:8.5in 11in;margin:10%;@top-left{content:'Hamlet asdf';}@top-right{content:"Page " counter(page);}}`
     )
 
     expect(segmentRuleCode).toEqual([
-      `@page{size:8.5in 11in;margin:10%;@top-left{content:"'Hamlet asdf'";}@top-right{content:"Page " counter(page);}}`
+      `@page{size:8.5in 11in;margin:10%;@top-left{content:'Hamlet asdf';}@top-right{content:"Page " counter(page);}}`
     ])
   })
 
@@ -537,10 +537,10 @@ describe('parseRules rules', () => {
       {
         '.foo': {
           '&::after': {
-            content: `\\0025B6`
+            content: `"\\0025B6"`
           },
           '&::before': {
-            content: `\\0025B6\\0025B6 'hello'`
+            content: `"\\0025B6\\0025B6 'hello'"`
           }
         }
       },
@@ -557,5 +557,22 @@ describe('parseRules rules', () => {
       '.foo::after{content:"\\0025B6";}',
       '.foo::before{content:"\\0025B6\\0025B6 \'hello\'";}'
     ])
+  })
+
+  it('wrong content', () => {
+    expect(() =>
+      parseRules(
+        {
+          '.foo': {
+            '&::after': {
+              content: 'hello'
+            }
+          }
+        },
+        ''
+      )
+    ).toThrow(
+      "You seem to be using a value for 'content' without quotes, try replacing it with `content: '\"hello\"'`"
+    )
   })
 })

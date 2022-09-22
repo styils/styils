@@ -100,7 +100,7 @@ const LogoWapper = styled('section', (theme) => ({
     width: '80%',
     left: '50%',
     transform: 'translateX(-50%)',
-    content: '',
+    content: '""',
     backgroundImage: 'linear-gradient(-45deg, #fb304f 50%,#00e155 50% )',
     filter: 'blur(62px)',
     opacity: 0.6
