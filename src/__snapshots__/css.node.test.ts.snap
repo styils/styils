@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`css node createStyils node 1`] = `".css-2175997142{width:100px;}.css-2374624703{height:100px;}"`;
+
+exports[`css node node default getCssValue  1`] = `".css-2175997142{width:100px;}.css-2374624703{height:100px;}"`;

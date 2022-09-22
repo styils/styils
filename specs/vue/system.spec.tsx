@@ -1,10 +1,25 @@
 import { defineComponent } from 'vue'
-import { createSystem, styled, createGlobal, ComponentProps } from '../../dist/vue'
+import {
+  createSystem,
+  styled,
+  createGlobal,
+  StyledComponent,
+  Styled,
+  ComponentProps
+} from '../../dist/vue'
 
 const { styled: styleTheme } = createSystem({
   theme: () => ({ color: 'red', bg: 'blue' }),
   defaultMode: 'light'
 })
+
+expectType<
+  typeof styleTheme,
+  Styled<{
+    color: string
+    bg: string
+  }>
+>(styleTheme)
 
 const Anthor = styled(
   'a',
@@ -41,6 +56,20 @@ const Anthor = styled(
   }
 )
 
+expectType<
+  typeof Anthor,
+  StyledComponent<
+    'a',
+    {
+      size?: 'small'
+      test?: number | '1' | '2'
+    },
+    {
+      height?: string | number
+    }
+  >
+>(Anthor)
+
 const Anthor1 = styled(
   'a',
   () => ({
@@ -60,6 +89,21 @@ const Anthor1 = styled(
     }
   }
 )
+
+expectType<
+  typeof Anthor1,
+  StyledComponent<
+    'a',
+    {
+      size?: 'small' | 'max'
+    },
+    {
+      height?: string | number
+      width?: string | number
+      123?: string | number
+    }
+  >
+>(Anthor1)
 
 export function render1() {
   return (
@@ -188,6 +232,17 @@ const ButtonDark = styled(
   }
 )
 
+expectType<
+  typeof ButtonDark,
+  StyledComponent<
+    'button',
+    {
+      disabled?: boolean | 'true'
+    },
+    never
+  >
+>(ButtonDark)
+
 export function renderButtonDark() {
   return <ButtonDark variants={{ disabled: true }} />
 }
@@ -206,6 +261,17 @@ const ButtonCount = styled(
     }
   }
 )
+
+expectType<
+  typeof ButtonCount,
+  StyledComponent<
+    'button',
+    never,
+    {
+      height?: string | number
+    }
+  >
+>(ButtonCount)
 
 export function renderButtonCount() {
   return (

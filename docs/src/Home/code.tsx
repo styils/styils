@@ -102,7 +102,7 @@ const CodeWeapper = styled('div', () => ({
   '& p': {
     lineHeight: 1.75,
     '&::before': {
-      content: '-',
+      content: '"-"',
       padding: '0 8px'
     }
   }

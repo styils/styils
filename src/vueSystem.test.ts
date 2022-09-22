@@ -207,11 +207,11 @@ describe('vuejs system', () => {
 
     document.head.childNodes.forEach((item) => {
       expect(item.textContent).toEqual(
-        '@keyframes css-854127283{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}'
+        '@keyframes css-524936959{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}'
       )
     })
 
-    expect(out).toEqual('css-854127283')
+    expect(out).toEqual('css-524936959')
   })
 
   it('createGlobal', () => {
@@ -462,7 +462,7 @@ describe('vuejs system', () => {
       }
     })
 
-    expect(`${Button}`).toEqual('.css-3397010960')
+    expect(`${Button}`).toEqual('.css-473669310')
   })
 
   it('styled production', () => {
@@ -483,7 +483,7 @@ describe('vuejs system', () => {
 
     const container = mount(h(Button))
 
-    expect(`${Button}`).toEqual('.css-3465392085')
+    expect(`${Button}`).toEqual('.css-580686147')
     expect(container.html()).toMatchSnapshot()
 
     process.env.NODE_ENV = 'test'
@@ -501,7 +501,7 @@ describe('vuejs system', () => {
 
     const container = mount(h(Button))
 
-    expect(`${Button}`).toEqual('.button-css-3465392085')
+    expect(`${Button}`).toEqual('.button-css-580686147')
     expect(container.html()).toMatchSnapshot()
 
     process.env.NODE_ENV = 'test'

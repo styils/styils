@@ -1,9 +1,17 @@
-import { createSystem, styled, createGlobal } from '../../dist/solid'
+import { createSystem, styled, Styled, StyledComponent, createGlobal } from '../../dist/solid'
 
 const { styled: styleTheme } = createSystem({
   theme: () => ({ color: 'red', bg: 'blue' }),
   defaultMode: 'light'
 })
+
+expectType<
+  typeof styleTheme,
+  Styled<{
+    color: string
+    bg: string
+  }>
+>(styleTheme)
 
 const Anthor = styled(
   'a',
@@ -38,6 +46,21 @@ const Anthor = styled(
     }
   }
 )
+
+expectType<
+  typeof Anthor,
+  StyledComponent<
+    'a',
+    {
+      size?: 'small'
+      test?: number | '1' | '2'
+    },
+    {
+      height?: string | number
+      width?: string | number
+    }
+  >
+>(Anthor)
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function asButton({ ref, hello }: { ref: HTMLButtonElement; hello: boolean }) {
@@ -81,6 +104,11 @@ const ToLink = styleTheme(asButton, (theme) => {
 
 const ToLink2 = styled(ToLink, {})
 
+expectType<
+  typeof ToLink,
+  StyledComponent<({ ref, hello }: { ref: HTMLButtonElement; hello: boolean }) => any, never, never>
+>(ToLink)
+
 expectType<typeof ToLink, typeof ToLink2>(ToLink2)
 
 export function renderToLink({ ref }: { ref: HTMLButtonElement }) {
@@ -98,6 +126,17 @@ const ButtonDark = styled(
     }
   }
 )
+
+expectType<
+  typeof ButtonDark,
+  StyledComponent<
+    'button',
+    {
+      disabled?: boolean | 'true'
+    },
+    never
+  >
+>(ButtonDark)
 
 export function renderButtonDark() {
   return (
@@ -124,6 +163,17 @@ const ButtonCount = styled(
     }
   }
 )
+
+expectType<
+  typeof ButtonCount,
+  StyledComponent<
+    'button',
+    {
+      disabled?: number | '1'
+    },
+    never
+  >
+>(ButtonCount)
 
 export function renderButtonCount() {
   // @ts-expect-error

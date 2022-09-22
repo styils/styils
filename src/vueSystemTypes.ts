@@ -6,7 +6,7 @@ export type JSX = {
   [K in keyof JSX.IntrinsicElements as string extends K ? never : K]: JSX.IntrinsicElements[K]
 }
 
-export type NativeComponent = keyof JSX | Component<AnyObject> | Function
+export type StyledTag = keyof JSX | Component<AnyObject> | Function
 
 export type ComponentProps<T> = T extends keyof JSX
   ? JSX[T]
@@ -16,7 +16,7 @@ export type ComponentProps<T> = T extends keyof JSX
   ? Props
   : {}
 
-export type StyledProps<As extends NativeComponent, Variants, Vars> = {
+export type StyledProps<As extends StyledTag, Variants, Vars> = {
   ref?: VNodeRef
 } & ComponentProps<As> & {
     as?: As
@@ -24,14 +24,14 @@ export type StyledProps<As extends NativeComponent, Variants, Vars> = {
     vars?: Vars
   }
 
-export type StyledComponent<Component extends NativeComponent, Variants, Vars> = <
-  As extends NativeComponent = Component
+export type StyledComponent<Component extends StyledTag, Variants, Vars> = <
+  As extends StyledTag = Component
 >(
   props: StyledProps<As, Variants, Vars>
 ) => VNode
 
 export interface Styled<Theme> {
-  <Component extends NativeComponent, Variants extends AnyObject = {}, Vars extends string = ''>(
+  <Component extends StyledTag, Variants extends AnyObject = {}, Vars extends string = ''>(
     component: Component | { tag: Component; namespace?: string },
     styles: Styles<Theme, Vars>,
     interpolation?: StyleInterpolation<Theme, Variants>
