@@ -151,6 +151,6 @@ export function parseRules(
 
   return {
     segmentRuleCode,
-    ruleCode: segmentRuleCode.join('')
+    ruleCode: process.env.NODE_ENV !== 'production' ? segmentRuleCode.join('') : ''
   }
 }

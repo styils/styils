@@ -22,10 +22,6 @@ export class StyleSheet {
   private insertIndex = 0
 
   /**
-   * use insertRule, the production default `true`, and the development environment default to `appendChild`
-   */
-
-  /**
    * insert a list of style tags
    */
   tags: HTMLStyleElement[] = []
