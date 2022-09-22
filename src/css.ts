@@ -5,13 +5,12 @@ import { parseRules } from './parse'
 import { CSSAttribute } from 'nativeCssTypes'
 
 export function createStyils(options: Partial<StyleSheetOptions> = {}) {
-  const { key = 'css', container, speedy, nonce } = options
+  const { key = 'css', container, nonce } = options
 
   const globalCache = new Set<string>([])
 
   const sheet = new StyleSheet({
     key,
-    speedy: speedy === undefined ? process.env.NODE_ENV === 'production' : speedy,
     container: globalThis.document ? container ?? globalThis.document.head : null,
     nonce
   })

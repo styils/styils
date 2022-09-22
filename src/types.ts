@@ -6,7 +6,6 @@ export type StyleSheetOptions = {
   nonce?: string
   key: string
   container: Node
-  speedy?: boolean
   prepend?: boolean
 }
 

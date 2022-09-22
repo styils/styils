@@ -24,7 +24,6 @@ export class StyleSheet {
   /**
    * use insertRule, the production default `true`, and the development environment default to `appendChild`
    */
-  speedy: boolean
 
   /**
    * insert a list of style tags
@@ -58,7 +57,6 @@ export class StyleSheet {
   ssrGlobalData = []
 
   constructor(options: StyleSheetOptions) {
-    this.speedy = options.speedy
     this.nonce = options.nonce
     this.key = options.key
     this.container = options.container
@@ -76,26 +74,27 @@ export class StyleSheet {
 
   insertStyle({ ruleCode, segmentRuleCode }: Rules, glob = false) {
     if (this.container) {
-      if (this.speedy) {
-        const ruleIndexs: OldRule[] = []
-        for (let index = 0; index < segmentRuleCode.length; index++) {
-          ruleIndexs.push(this.insert(segmentRuleCode[index]) as OldRule)
-        }
-
-        return ruleIndexs
+      if (process.env.NODE_ENV !== 'production') {
+        return [this.insert(ruleCode)]
       }
 
-      return [this.insert(ruleCode)]
+      const ruleIndexs: OldRule[] = []
+      for (let index = 0; index < segmentRuleCode.length; index++) {
+        ruleIndexs.push(this.insert(segmentRuleCode[index]) as OldRule)
+      }
+
+      return ruleIndexs
     }
 
     this[glob ? 'ssrGlobalData' : 'ssrData'].push(ruleCode)
   }
 
   insert(rule: string) {
+    const scope = process.env.NODE_ENV !== 'production' ? 1 : 65000
     // the max length is how many rules we have per style tag, it's 65000 in speedy mode
     // it's 1 in dev because we insert source maps that map a single rule to a location
     // and you can only have one source map per style tag
-    if (this.insertIndex % (this.speedy ? 65000 : 1) === 0) {
+    if (this.insertIndex % scope === 0) {
       const tag = document.createElement('style')
 
       tag.setAttribute('data-styils', this.key)
@@ -131,28 +130,19 @@ export class StyleSheet {
     }
 
     let oldRule: OldRule
-    if (this.speedy) {
+
+    if (process.env.NODE_ENV !== 'production') {
+      tag.appendChild(document.createTextNode(rule))
+      oldRule = { tag, index: tagIndex }
+    } else {
       try {
         // this is the ultrafast version, works across browsers
         // the big drawback is that the css won't be editable in devtools
         // here tag.sheet is required unless manually modified
         oldRule = { tag, index: tag.sheet!.insertRule(rule, tag.sheet!.cssRules.length), tagIndex }
       } catch (error) {
-        if (
-          process.env.NODE_ENV !== 'production' &&
-          !/:(-moz-placeholder|-moz-focus-inner|-moz-focusring|-ms-input-placeholder|-moz-read-write|-moz-read-only|-ms-clear){/.test(
-            rule
-          )
-        ) {
-          console.error(
-            `There was a problem inserting the following rule: "${rule}"`,
-            error?.message
-          )
-        }
+        console.error(`There was a problem inserting the following rule: "${rule}"`, error?.message)
       }
-    } else {
-      tag.appendChild(document.createTextNode(rule))
-      oldRule = { tag, index: tagIndex }
     }
 
     this.insertIndex++
@@ -160,11 +150,11 @@ export class StyleSheet {
   }
 
   flushSingle({ tag, index }: { tag: HTMLStyleElement; index: number }) {
-    if (this.speedy) {
-      tag.sheet.deleteRule(index)
-    } else {
+    if (process.env.NODE_ENV !== 'production') {
       this.container.removeChild(tag)
       this.tags.splice(index, 1)
+    } else {
+      tag.sheet.deleteRule(index)
     }
   }
 
