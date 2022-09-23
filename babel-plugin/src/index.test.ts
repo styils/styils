@@ -54,9 +54,7 @@ describe('transform api', () => {
         plugins: [plugin]
       })?.code
     } catch (err: any) {
-      expect(err.message).toEqual(
-        'unknown: To compile using api, you need to pass in `sourceFileName`'
-      )
+      expect(err.message).toMatch('you need to pass in `sourceFileName`')
     }
   })
 
