@@ -10,7 +10,6 @@ const BenchmarkRoot = styled('div', (theme) => ({
   paddingTop: 20,
 
   '.start-test': {
-    display: 'inline-block',
     color: '#fff',
     backgroundColor: '#fb304f',
     borderRadius: 12,
