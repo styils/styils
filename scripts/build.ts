@@ -9,6 +9,7 @@ import fs from 'fs-extra'
 import ora from 'ora'
 import prettier from 'prettier'
 import { box } from './colors'
+import { terser } from 'rollup-plugin-terser'
 import copy from 'rollup-plugin-copy'
 
 const packageBaseName = '@styils'
@@ -40,13 +41,13 @@ async function build(name: string, globalsName: string, prod = false) {
   const plugins = [
     esbuild({
       include: /\.[jt]sx?$/,
-      target: 'es2015',
-      minify: prod
-    })
+      target: 'es2015'
+    }),
+    terser()
   ]
 
   if (prod) {
-    plugins.push(
+    plugins.unshift(
       replace({
         preventAssignment: true,
         'process.env.NODE_ENV': JSON.stringify('production')
