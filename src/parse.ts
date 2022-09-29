@@ -129,7 +129,7 @@ export function parseRules(
             rearRules.push(transformSpecial({ [key]: value }))
             continue
         }
-      } else if (value !== null && typeof value === 'object' && value.constructor === Object) {
+      } else if (value !== null && typeof value === 'object') {
         const currentKey = transformKey(key, selector)
 
         stack.splice(insertsNumber, 0, value)

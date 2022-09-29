@@ -242,6 +242,7 @@ export function createBaseSystem<
       return style
     }
 
+    // The initial call
     createRule()
 
     const styledComponent = inputStyledComponent(
