@@ -82,7 +82,7 @@ export class StyleSheet {
       return ruleIndexs
     }
 
-    this[glob ? 'ssrGlobalData' : 'ssrData'].push(ruleCode)
+    this[glob ? 'ssrGlobalData' : 'ssrData'].push(segmentRuleCode.join(''))
   }
 
   insert(rule: string) {
