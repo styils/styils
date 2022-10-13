@@ -133,7 +133,7 @@ importers:
       react-i18next: 11.18.6
       react-is: 17.0.2
       react-router-dom: 6.4.2
-      styled-components: 5.3.5
+      styled-components: 5.3.6
     dependencies:
       '@emotion/react': 11.10.4_react@17.0.2
       '@emotion/styled': 11.10.4_znai37cnmmzk7bl467jyukgy4e
@@ -147,7 +147,7 @@ importers:
       react-i18next: 11.18.6_jlvubkh2ypz6tastophpvdjiqq
       react-is: 17.0.2
       react-router-dom: 6.4.2_sfoxds7t5ydpegc3knd667wn6m
-      styled-components: 5.3.5_fane7jikarojcev26y27hpbhu4
+      styled-components: 5.3.6_fane7jikarojcev26y27hpbhu4
     devDependencies:
       '@styils/vite-plugin': link:../vite-plugin
       '@types/prismjs': 1.26.0
@@ -773,24 +773,6 @@ packages:
       '@babel/parser': 7.19.1
       '@babel/types': 7.19.0
 
-  /@babel/traverse/7.18.10_supports-color@5.5.0:
-    resolution: {integrity: sha512-J7ycxg0/K9XCtLyHf0cz2DqDihonJeIo+z+HEdRe9YuT8TY4A66i+Ab2/xZCEW7Ro60bPCBBfqqboHSamoV3+g==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.19.0
-      '@babel/helper-environment-visitor': 7.18.9
-      '@babel/helper-function-name': 7.19.0
-      '@babel/helper-hoist-variables': 7.18.6
-      '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.19.1
-      '@babel/types': 7.19.0
-      debug: 4.3.4_supports-color@5.5.0
-      globals: 11.12.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@babel/traverse/7.19.1:
     resolution: {integrity: sha512-0j/ZfZMxKukDaag2PtOPDbwuELqIar6lLskVPPJDjXMXjfLb1Obo/1yjxIGqqAJrmfaTIY3z2wFLAQ7qSkLsuA==}
     engines: {node: '>=6.9.0'}
@@ -808,6 +790,24 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@babel/traverse/7.19.1_supports-color@5.5.0:
+    resolution: {integrity: sha512-0j/ZfZMxKukDaag2PtOPDbwuELqIar6lLskVPPJDjXMXjfLb1Obo/1yjxIGqqAJrmfaTIY3z2wFLAQ7qSkLsuA==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/code-frame': 7.18.6
+      '@babel/generator': 7.19.0
+      '@babel/helper-environment-visitor': 7.18.9
+      '@babel/helper-function-name': 7.19.0
+      '@babel/helper-hoist-variables': 7.18.6
+      '@babel/helper-split-export-declaration': 7.18.6
+      '@babel/parser': 7.19.1
+      '@babel/types': 7.19.0
+      debug: 4.3.4_supports-color@5.5.0
+      globals: 11.12.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /@babel/types/7.18.10:
     resolution: {integrity: sha512-MJvnbEiiNkpjo+LknnmRrqbY1GPUUggjv+wQVjetM/AONoupqRALB7I6jGqNUAZsKcRIEu2J6FRFvsczljjsaQ==}
@@ -2597,7 +2597,7 @@ packages:
       resolve: 1.22.1
     dev: false
 
-  /babel-plugin-styled-components/2.0.7_styled-components@5.3.5:
+  /babel-plugin-styled-components/2.0.7_styled-components@5.3.6:
     resolution: {integrity: sha512-i7YhvPgVqRKfoQ66toiZ06jPNA3p6ierpfUuEWxNF+fV27Uv5gxBkf8KZLHUCc1nFA9j6+80pYoIpqCeyW3/bA==}
     peerDependencies:
       styled-components: '>= 2'
@@ -2607,7 +2607,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.1
-      styled-components: 5.3.5_fane7jikarojcev26y27hpbhu4
+      styled-components: 5.3.6_fane7jikarojcev26y27hpbhu4
     dev: false
 
   /babel-plugin-syntax-jsx/6.18.0:
@@ -6405,8 +6405,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /styled-components/5.3.5_fane7jikarojcev26y27hpbhu4:
-    resolution: {integrity: sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg==}
+  /styled-components/5.3.6_fane7jikarojcev26y27hpbhu4:
+    resolution: {integrity: sha512-hGTZquGAaTqhGWldX7hhfzjnIYBZ0IXQXkCYdvF1Sq3DsUaLx6+NTHC5Jj1ooM2F68sBiVz3lvhfwQs/S3l6qg==}
     engines: {node: '>=10'}
     requiresBuild: true
     peerDependencies:
@@ -6415,11 +6415,11 @@ packages:
       react-is: '>= 16.8.0'
     dependencies:
       '@babel/helper-module-imports': 7.18.6
-      '@babel/traverse': 7.18.10_supports-color@5.5.0
+      '@babel/traverse': 7.19.1_supports-color@5.5.0
       '@emotion/is-prop-valid': 1.2.0
       '@emotion/stylis': 0.8.5
       '@emotion/unitless': 0.7.5
-      babel-plugin-styled-components: 2.0.7_styled-components@5.3.5
+      babel-plugin-styled-components: 2.0.7_styled-components@5.3.6
       css-to-react-native: 3.0.0
       hoist-non-react-statics: 3.3.2
       react: 17.0.2
