@@ -30,7 +30,7 @@
   "license": "MIT",
   "dependencies": {
     "source-map": "^0.7.4",
-    "convert-source-map": "^1.8.0",
+    "convert-source-map": "^2.0.0",
     "@babel/helper-plugin-utils": "^7.18.9"
   },
   "devDependencies": {
