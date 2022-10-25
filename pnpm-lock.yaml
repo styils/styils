@@ -130,7 +130,7 @@ importers:
       prismjs: 1.29.0
       react: 17.0.2
       react-dom: 17.0.2
-      react-i18next: 11.18.6
+      react-i18next: 12.0.0
       react-is: 17.0.2
       react-router-dom: 6.4.2
       styled-components: 5.3.6
@@ -144,7 +144,7 @@ importers:
       prismjs: 1.29.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-      react-i18next: 11.18.6_r7dxjbtjoymzq2ynfdl4ekoine
+      react-i18next: 12.0.0_r7dxjbtjoymzq2ynfdl4ekoine
       react-is: 17.0.2
       react-router-dom: 6.4.2_sfoxds7t5ydpegc3knd667wn6m
       styled-components: 5.3.6_fane7jikarojcev26y27hpbhu4
@@ -5869,8 +5869,8 @@ packages:
       scheduler: 0.23.0
     dev: true
 
-  /react-i18next/11.18.6_r7dxjbtjoymzq2ynfdl4ekoine:
-    resolution: {integrity: sha512-yHb2F9BiT0lqoQDt8loZ5gWP331GwctHz9tYQ8A2EIEUu+CcEdjBLQWli1USG3RdWQt3W+jqQLg/d4rrQR96LA==}
+  /react-i18next/12.0.0_r7dxjbtjoymzq2ynfdl4ekoine:
+    resolution: {integrity: sha512-/O7N6aIEAl1FaWZBNvhdIo9itvF/MO/nRKr9pYqRc9LhuC1u21SlfwpiYQqvaeNSEW3g3qUXLREOWMt+gxrWbg==}
     peerDependencies:
       i18next: '>= 19.0.0'
       react: '>= 16.8.0'
