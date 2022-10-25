@@ -103,11 +103,11 @@ importers:
       '@types/babel__core': 7.1.19
       '@types/babel__helper-plugin-utils': 7.10.0
       '@types/convert-source-map': 1.5.2
-      convert-source-map: ^1.8.0
+      convert-source-map: ^2.0.0
       source-map: ^0.7.4
     dependencies:
       '@babel/helper-plugin-utils': 7.18.9
-      convert-source-map: 1.8.0
+      convert-source-map: 2.0.0
       source-map: 0.7.4
     devDependencies:
       '@babel/core': 7.19.1
@@ -2922,6 +2922,10 @@ packages:
     resolution: {integrity: sha512-+OQdjP49zViI/6i7nIJpA8rAl4sV/JdPfU9nZs3VqOwGIgizICvuN2ru6fMd+4llL0tar18UYJXfZ/TWtmhUjA==}
     dependencies:
       safe-buffer: 5.1.2
+
+  /convert-source-map/2.0.0:
+    resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
+    dev: false
 
   /core-js-pure/3.24.1:
     resolution: {integrity: sha512-r1nJk41QLLPyozHUUPmILCEMtMw24NG4oWK6RbsDdjzQgg9ZvrUsPBj1MnG0wXXp1DCDU6j+wUvEmBSrtRbLXg==}
