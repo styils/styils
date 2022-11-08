@@ -41,7 +41,7 @@ importers:
       rimraf: 3.0.2
       rollup: 3.2.3
       rollup-plugin-copy: 3.4.0
-      rollup-plugin-esbuild: 4.10.1
+      rollup-plugin-esbuild: 4.10.2
       rollup-plugin-terser: 7.0.2
       shelljs: 0.8.5
       solid-js: 1.5.6
@@ -87,7 +87,7 @@ importers:
       rimraf: 3.0.2
       rollup: 3.2.3
       rollup-plugin-copy: 3.4.0
-      rollup-plugin-esbuild: 4.10.1_droztabqhwwmdz3zmwuhn47qtq
+      rollup-plugin-esbuild: 4.10.2_droztabqhwwmdz3zmwuhn47qtq
       rollup-plugin-terser: 7.0.2_rollup@3.2.3
       shelljs: 0.8.5
       solid-js: 1.5.6
@@ -1987,8 +1987,8 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react-dom/17.0.18:
-    resolution: {integrity: sha512-rLVtIfbwyur2iFKykP2w0pl/1unw26b5td16d5xMgp7/yjTHomkyxPYChFoCr/FtEX1lN9wY6lFj1qvKdS5kDw==}
+  /@types/react-dom/17.0.17:
+    resolution: {integrity: sha512-VjnqEmqGnasQKV0CWLevqMTXBYG9GbwuE6x3VetERLh0cq2LTptFE73MrQi2S7GkKXCf2GgwItB/melLnxfnsg==}
     dependencies:
       '@types/react': 17.0.52
     dev: true
@@ -3255,8 +3255,8 @@ packages:
       unbox-primitive: 1.0.2
     dev: true
 
-  /es-module-lexer/0.9.3:
-    resolution: {integrity: sha512-1HQ2M2sPtxwnvOvT1ZClHyQDiggdNjURWpY2we6aMKCQiUVxTmVs2UYPLIrD84sS+kMdUwfBSylbJPwNnBrnHQ==}
+  /es-module-lexer/1.1.0:
+    resolution: {integrity: sha512-fJg+1tiyEeS8figV+fPcPpm8WqJEflG3yPU0NOm5xMvrNkuiy7HzX/Ljng4Y0hAoiw4/3hQTCFYw+ub8+a2pRA==}
     dev: true
 
   /es-shim-unscopables/1.0.0:
@@ -5175,10 +5175,6 @@ packages:
     hasBin: true
     dev: true
 
-  /jsonc-parser/3.1.0:
-    resolution: {integrity: sha512-DRf0QjnNeCUds3xTjKlQQ3DpJD51GvDjJfnxUVWg6PZTo2otSm+slzNAxU/35hF8/oJIKoG9slq30JYOsF2azg==}
-    dev: true
-
   /jsonc-parser/3.2.0:
     resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==}
     dev: true
@@ -6088,19 +6084,19 @@ packages:
       is-plain-object: 3.0.1
     dev: true
 
-  /rollup-plugin-esbuild/4.10.1_droztabqhwwmdz3zmwuhn47qtq:
-    resolution: {integrity: sha512-/ymcRB283zjFp1JTBXO8ekxv0c9vRc2L6OTljghsLthQ4vqeDSDWa9BVz1tHiVrx6SbUnUpDPLC0K/MXK7j5TA==}
-    engines: {node: '>=12'}
+  /rollup-plugin-esbuild/4.10.2_droztabqhwwmdz3zmwuhn47qtq:
+    resolution: {integrity: sha512-OPrBgdN1ZC2zQvq/rm5Zvzpb0Rez7zbbVJ+1b5Az//kLlfhwR1mqOP3wAhkg9sn5nF7p+97p55TORE0RNXzNcw==}
+    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     peerDependencies:
       esbuild: '>=0.10.1'
-      rollup: ^1.20.0 || ^2.0.0
+      rollup: ^1.20.0 || ^2.0.0 || ^3.0.0
     dependencies:
-      '@rollup/pluginutils': 4.2.1
+      '@rollup/pluginutils': 5.0.2_rollup@3.2.3
       debug: 4.3.4
-      es-module-lexer: 0.9.3
+      es-module-lexer: 1.1.0
       esbuild: 0.15.12
       joycon: 3.1.1
-      jsonc-parser: 3.1.0
+      jsonc-parser: 3.2.0
       rollup: 3.2.3
     transitivePeerDependencies:
       - supports-color
