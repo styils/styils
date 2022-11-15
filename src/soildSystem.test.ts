@@ -500,6 +500,7 @@ describe('solidjs system', () => {
 
       return Dynamic({
         component: 'div',
+        // @ts-expect-error test
         'data-testid': 'use-system',
         onClick: () => {
           setMode('dark')
@@ -552,6 +553,7 @@ describe('solidjs system', () => {
 
       return Dynamic({
         component: 'div',
+        // @ts-expect-error test
         'data-testid': 'use-system',
         onClick: () => setState('max'),
         children: [
@@ -594,6 +596,7 @@ describe('solidjs system', () => {
 
       return Dynamic({
         component: 'div',
+        // @ts-expect-error test
         'data-testid': 'use-system',
         onClick: () => setState(undefined),
         children: [
@@ -661,6 +664,7 @@ describe('solidjs system', () => {
 
       return Dynamic({
         component: 'div',
+        // @ts-expect-error test
         'data-testid': 'use-system',
         onClick: () => setMode('dark'),
         children: [
@@ -723,9 +727,10 @@ describe('solidjs system', () => {
 
       return Dynamic({
         component: 'div',
+        // @ts-expect-error test
         'data-testid': 'use-system',
         onClick: () => setMode(mode() === 'dark' ? 'light' : 'dark'),
-        children: [Button, mode]
+        children: [Button as any, mode]
       })
     }
 

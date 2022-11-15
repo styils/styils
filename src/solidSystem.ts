@@ -113,6 +113,7 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
         component: 'meta',
         id: metaSelectorCacheId,
         name: 'styils-cache',
+        // @ts-expect-error Custom properties
         mode: metaMode,
         content: selectorCacheString
       })
