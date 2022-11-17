@@ -22,7 +22,7 @@ importers:
       '@types/shelljs': 0.8.11
       '@typescript-eslint/eslint-plugin': 5.41.0
       '@typescript-eslint/parser': 5.41.0
-      '@vue/test-utils': 2.2.1
+      '@vue/test-utils': 2.2.3
       esbuild: 0.15.14
       esbuild-register: 3.3.3
       eslint: 8.26.0
@@ -68,7 +68,7 @@ importers:
       '@types/shelljs': 0.8.11
       '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
       '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
-      '@vue/test-utils': 2.2.1_vue@3.2.41
+      '@vue/test-utils': 2.2.3_vue@3.2.41
       esbuild: 0.15.14
       esbuild-register: 3.3.3_esbuild@0.15.14
       eslint: 8.26.0
@@ -2240,8 +2240,8 @@ packages:
     resolution: {integrity: sha512-W9mfWLHmJhkfAmV+7gDjcHeAWALQtgGT3JErxULl0oz6R6+3ug91I7IErs93eCFhPCZPHBs4QJS7YWEV7A3sxw==}
     dev: true
 
-  /@vue/test-utils/2.2.1_vue@3.2.41:
-    resolution: {integrity: sha512-AkLt24wnnxedJ3NX090JYiueog184QqlR5TVNZM+lggCrK8XjeuPr274okaLqDmiRgp4XVCaGa07KqKLGQbsMQ==}
+  /@vue/test-utils/2.2.3_vue@3.2.41:
+    resolution: {integrity: sha512-MbqIS11cPEuZmqvyKNCnTdGxfNS4FhvQx7HO1JFQHlZRIM3ql2iwjPv9L1AFiLl4taW/5RTQz0r54d47xJuurA==}
     peerDependencies:
       vue: ^3.0.1
     peerDependenciesMeta:
