@@ -126,7 +126,7 @@ importers:
       '@types/styled-components': 5.1.26
       '@vitejs/plugin-react': 1.3.2
       d3-scale-chromatic: 3.0.0
-      i18next: 22.0.4
+      i18next: 22.0.6
       prismjs: 1.29.0
       react: 17.0.2
       react-dom: 17.0.2
@@ -140,11 +140,11 @@ importers:
       '@stitches/react': 1.2.8_react@17.0.2
       '@stitches/stringify': 1.2.8
       d3-scale-chromatic: 3.0.0
-      i18next: 22.0.4
+      i18next: 22.0.6
       prismjs: 1.29.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-      react-i18next: 12.0.0_lbe2taj3rsyaxmdd4qnhuc5z6q
+      react-i18next: 12.0.0_ko2ldqjxck36wr4kowzb5nw4ca
       react-is: 17.0.2
       react-router-dom: 6.4.3_sfoxds7t5ydpegc3knd667wn6m
       styled-components: 5.3.6_fane7jikarojcev26y27hpbhu4
@@ -4274,8 +4274,8 @@ packages:
     hasBin: true
     dev: true
 
-  /i18next/22.0.4:
-    resolution: {integrity: sha512-TOp7BTMKDbUkOHMzDlVsCYWpyaFkKakrrO3HNXfSz4EeJaWwnBScRmgQSTaWHScXVHBUFXTvShrCW8uryBYFcg==}
+  /i18next/22.0.6:
+    resolution: {integrity: sha512-RlreNGoPIdDP4QG+qSA9PxZKGwlzmcozbI9ObI6+OyUa/Rp0EjZZA9ubyBjw887zVNZsC+7FI3sXX8oiTzAfig==}
     dependencies:
       '@babel/runtime': 7.18.9
     dev: false
@@ -5864,7 +5864,7 @@ packages:
       scheduler: 0.23.0
     dev: true
 
-  /react-i18next/12.0.0_lbe2taj3rsyaxmdd4qnhuc5z6q:
+  /react-i18next/12.0.0_ko2ldqjxck36wr4kowzb5nw4ca:
     resolution: {integrity: sha512-/O7N6aIEAl1FaWZBNvhdIo9itvF/MO/nRKr9pYqRc9LhuC1u21SlfwpiYQqvaeNSEW3g3qUXLREOWMt+gxrWbg==}
     peerDependencies:
       i18next: '>= 19.0.0'
@@ -5879,7 +5879,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.18.9
       html-parse-stringify: 3.0.1
-      i18next: 22.0.4
+      i18next: 22.0.6
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: false
