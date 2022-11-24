@@ -24,7 +24,7 @@ importers:
       '@typescript-eslint/parser': 5.41.0
       '@vue/test-utils': 2.2.3
       esbuild: 0.15.14
-      esbuild-register: 3.3.3
+      esbuild-register: 3.4.1
       eslint: 8.28.0
       eslint-config-iroot: 1.4.4
       eslint-plugin-react: 7.31.11
@@ -70,7 +70,7 @@ importers:
       '@typescript-eslint/parser': 5.41.0_zksrc6ykdxhogxjbhb5axiabwi
       '@vue/test-utils': 2.2.3_vue@3.2.45
       esbuild: 0.15.14
-      esbuild-register: 3.3.3_esbuild@0.15.14
+      esbuild-register: 3.4.1_esbuild@0.15.14
       eslint: 8.28.0
       eslint-config-iroot: 1.4.4_3bar3qoeki6luyevshzx62ifc4
       eslint-plugin-react: 7.31.11_eslint@8.28.0
@@ -3397,12 +3397,15 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-register/3.3.3_esbuild@0.15.14:
-    resolution: {integrity: sha512-eFHOkutgIMJY5gc8LUp/7c+LLlDqzNi9T6AwCZ2WKKl3HmT+5ef3ZRyPPxDOynInML0fgaC50yszPKfPnjC0NQ==}
+  /esbuild-register/3.4.1_esbuild@0.15.14:
+    resolution: {integrity: sha512-iCgs88/1wA5dIRx4i65eSjbkgrQQQJGpY6Z1eD2XPlzrSjbgNtfkw2/rfSMzJ4dTtlOD8EZTxrIA3fyYp0FsMA==}
     peerDependencies:
       esbuild: '>=0.12 <1'
     dependencies:
+      debug: 4.3.4
       esbuild: 0.15.14
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /esbuild-sunos-64/0.15.14:
