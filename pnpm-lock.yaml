@@ -15,7 +15,7 @@ importers:
       '@types/fs-extra': 9.0.13
       '@types/jest': 29.2.5
       '@types/node': 18.11.18
-      '@types/prettier': 2.7.1
+      '@types/prettier': 2.7.2
       '@types/react': 17.0.52
       '@types/react-dom': 17.0.17
       '@types/rimraf': 3.0.2
@@ -35,7 +35,7 @@ importers:
       jest-easy: 1.0.3
       jest-environment-jsdom: 29.3.1
       ora: 6.1.2
-      prettier: 2.8.0
+      prettier: 2.8.3
       react: 18.2.0
       react-dom: 18.2.0
       rimraf: 3.0.2
@@ -61,7 +61,7 @@ importers:
       '@types/fs-extra': 9.0.13
       '@types/jest': 29.2.5
       '@types/node': 18.11.18
-      '@types/prettier': 2.7.1
+      '@types/prettier': 2.7.2
       '@types/react': 17.0.52
       '@types/react-dom': 17.0.17
       '@types/rimraf': 3.0.2
@@ -72,7 +72,7 @@ importers:
       esbuild: 0.15.17
       esbuild-register: 3.4.1_esbuild@0.15.17
       eslint: 8.28.0
-      eslint-config-iroot: 1.4.5_sutfwqcmisuvmxxjzicirgiuru
+      eslint-config-iroot: 1.4.5_pbf5zvl64v22gdrn7ehlvssafi
       eslint-plugin-react: 7.31.11_eslint@8.28.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.28.0
       fs-extra: 10.1.0
@@ -81,7 +81,7 @@ importers:
       jest-easy: 1.0.3_jest@29.3.1
       jest-environment-jsdom: 29.3.1
       ora: 6.1.2
-      prettier: 2.8.0
+      prettier: 2.8.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       rimraf: 3.0.2
@@ -1915,8 +1915,8 @@ packages:
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
 
-  /@types/prettier/2.7.1:
-    resolution: {integrity: sha512-ri0UmynRRvZiiUJdiz38MmIblKK+oH30MztdBVR95dv/Ubw6neWSb8u1XpRb72L4qsZOhz+L+z9JD40SJmfWow==}
+  /@types/prettier/2.7.2:
+    resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
     dev: true
 
   /@types/prismjs/1.26.0:
@@ -3492,7 +3492,7 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-config-iroot/1.4.5_sutfwqcmisuvmxxjzicirgiuru:
+  /eslint-config-iroot/1.4.5_pbf5zvl64v22gdrn7ehlvssafi:
     resolution: {integrity: sha512-Ecs8jOLBfn4uEGywe/KvQnX3oMZmu9Euwt9r7ie1ehUZc7iScDYItTbpFPvmII6hp8cqLlB+MyCxwFHCby//hQ==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.0.0
@@ -3524,11 +3524,11 @@ packages:
       eslint-config-prettier: 8.5.0_eslint@8.28.0
       eslint-plugin-import: 2.26.0_iuaxstpb65v6qspaevobhosknu
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.28.0
-      eslint-plugin-prettier: 4.2.1_cwlo2dingkvfydnaculr42urve
+      eslint-plugin-prettier: 4.2.1_nrsoca4pvgxhpzs6enniz7suou
       eslint-plugin-react: 7.31.11_eslint@8.28.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.28.0
       minimatch: 5.1.0
-      prettier: 2.8.0
+      prettier: 2.8.3
       typescript: 4.8.4
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
@@ -3633,7 +3633,7 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-plugin-prettier/4.2.1_cwlo2dingkvfydnaculr42urve:
+  /eslint-plugin-prettier/4.2.1_nrsoca4pvgxhpzs6enniz7suou:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -3646,7 +3646,7 @@ packages:
     dependencies:
       eslint: 8.28.0
       eslint-config-prettier: 8.5.0_eslint@8.28.0
-      prettier: 2.8.0
+      prettier: 2.8.3
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -4878,7 +4878,7 @@ packages:
       '@jest/transform': 29.3.1
       '@jest/types': 29.3.1
       '@types/babel__traverse': 7.17.1
-      '@types/prettier': 2.7.1
+      '@types/prettier': 2.7.2
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.20.12
       chalk: 4.1.2
       expect: 29.3.1
@@ -5664,8 +5664,8 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier/2.8.0:
-    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
+  /prettier/2.8.3:
+    resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
