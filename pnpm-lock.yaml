@@ -24,7 +24,7 @@ importers:
       '@typescript-eslint/parser': 5.41.0
       '@vue/test-utils': 2.2.3
       esbuild: 0.15.17
-      esbuild-register: 3.4.1
+      esbuild-register: 3.4.2
       eslint: 8.28.0
       eslint-config-iroot: 1.4.5
       eslint-plugin-react: 7.31.11
@@ -70,7 +70,7 @@ importers:
       '@typescript-eslint/parser': 5.41.0_zksrc6ykdxhogxjbhb5axiabwi
       '@vue/test-utils': 2.2.3_vue@3.2.45
       esbuild: 0.15.17
-      esbuild-register: 3.4.1_esbuild@0.15.17
+      esbuild-register: 3.4.2_esbuild@0.15.17
       eslint: 8.28.0
       eslint-config-iroot: 1.4.5_sutfwqcmisuvmxxjzicirgiuru
       eslint-plugin-react: 7.31.11_eslint@8.28.0
@@ -3369,8 +3369,8 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-register/3.4.1_esbuild@0.15.17:
-    resolution: {integrity: sha512-iCgs88/1wA5dIRx4i65eSjbkgrQQQJGpY6Z1eD2XPlzrSjbgNtfkw2/rfSMzJ4dTtlOD8EZTxrIA3fyYp0FsMA==}
+  /esbuild-register/3.4.2_esbuild@0.15.17:
+    resolution: {integrity: sha512-kG/XyTDyz6+YDuyfB9ZoSIOOmgyFCH+xPRtsCa8W85HLRV5Csp+o3jWVbOSHgSLfyLc5DmP+KFDNwty4mEjC+Q==}
     peerDependencies:
       esbuild: '>=0.12 <1'
     dependencies:
