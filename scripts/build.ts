@@ -9,7 +9,7 @@ import fs from 'fs-extra'
 import ora from 'ora'
 import prettier from 'prettier'
 import { box } from './colors'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 import copy from 'rollup-plugin-copy'
 
 const packageBaseName = '@styils'

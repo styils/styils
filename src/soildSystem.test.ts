@@ -7,7 +7,7 @@ import {
   createExtracts,
   systemContext
 } from './solidSystem'
-import { render, fireEvent, getByText } from 'solid-testing-library'
+import { render, fireEvent, getByText } from '@solidjs/testing-library'
 import { Dynamic } from 'solid-js/web'
 import { createSignal } from 'solid-js'
 
