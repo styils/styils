@@ -58,7 +58,7 @@
     "eslint-config-iroot": "1.4.5",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "fs-extra": "11.1.0",
+    "fs-extra": "11.1.1",
     "husky": "8.0.3",
     "jest": "29.4.3",
     "jest-easy": "1.0.3",
