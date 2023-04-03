@@ -52,7 +52,7 @@
     "@typescript-eslint/eslint-plugin": "5.52.0",
     "@typescript-eslint/parser": "5.52.0",
     "@vue/test-utils": "2.2.10",
-    "esbuild": "0.17.10",
+    "esbuild": "0.17.15",
     "esbuild-register": "3.4.2",
     "eslint": "8.34.0",
     "eslint-config-iroot": "1.4.5",
