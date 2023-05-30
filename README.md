@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-Lightweight and fast css-in-js solution.
+Lightweight and fast css-in-js tool
 </p>
 
 ## 🌟 Features
