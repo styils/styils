@@ -22,7 +22,7 @@
     "react-i18next": "12.0.0",
     "react-is": "17.0.2",
     "react-router-dom": "6.4.4",
-    "styled-components": "5.3.10"
+    "styled-components": "5.3.11"
   },
   "devDependencies": {
     "@types/prismjs": "1.26.0",
