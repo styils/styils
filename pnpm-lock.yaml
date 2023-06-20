@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 importers:
 
@@ -20,8 +24,8 @@ importers:
         specifier: ^0.4.0
         version: 0.4.0(rollup@3.15.0)
       '@solidjs/testing-library':
-        specifier: ^0.6.1
-        version: 0.6.1(solid-js@1.6.11)
+        specifier: ^0.7.0
+        version: 0.7.0(solid-js@1.6.11)
       '@swc/core':
         specifier: 1.3.59
         version: 1.3.59
@@ -2043,13 +2047,13 @@ packages:
       '@sinonjs/commons': 2.0.0
     dev: true
 
-  /@solidjs/testing-library@0.6.1(solid-js@1.6.11):
-    resolution: {integrity: sha512-cS91EDopZhpVa+F55vLxbT+xrQEtc6jIYhXEleu7aCtPRKuBAhKGYQoiOAWrxRd2cXu678dhR8kuwp7ZS2gkNQ==}
+  /@solidjs/testing-library@0.7.0(solid-js@1.6.11):
+    resolution: {integrity: sha512-mTSINHdcLc6rn9xWWJfzPkY0zyKtLb7QAM2CouVw2QvNZ0mgfk3z2tpaprismlE/YLn+I3ij4BqiV3ocvI+hIQ==}
     engines: {node: '>= 14'}
     peerDependencies:
       solid-js: '>=1.0.0'
     dependencies:
-      '@testing-library/dom': 8.20.0
+      '@testing-library/dom': 9.3.0
       solid-js: 1.6.11
     dev: true
 
@@ -2202,20 +2206,6 @@ packages:
       jsonc-parser: 3.2.0
     dev: true
 
-  /@testing-library/dom@8.20.0:
-    resolution: {integrity: sha512-d9ULIT+a4EXLX3UU8FBjauG9NnsZHkHztXoIcTsOKoOw030fyjheN9svkTULjJxtYag9DZz5Jz5qkWZDPxTFwA==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@babel/code-frame': 7.21.4
-      '@babel/runtime': 7.20.13
-      '@types/aria-query': 5.0.1
-      aria-query: 5.1.3
-      chalk: 4.1.2
-      dom-accessibility-api: 0.5.16
-      lz-string: 1.4.4
-      pretty-format: 27.5.1
-    dev: true
-
   /@testing-library/dom@9.0.0:
     resolution: {integrity: sha512-+/TLgKNFsYUshOY/zXsQOk+PlFQK+eyJ9T13IDVNJEi+M+Un7xlJK+FZKkbGSnf0+7E1G6PlDhkSYQ/GFiruBQ==}
     engines: {node: '>=14'}
@@ -2227,6 +2217,20 @@ packages:
       chalk: 4.1.2
       dom-accessibility-api: 0.5.16
       lz-string: 1.4.4
+      pretty-format: 27.5.1
+    dev: true
+
+  /@testing-library/dom@9.3.0:
+    resolution: {integrity: sha512-Dffe68pGwI6WlLRYR2I0piIkyole9cSBH5jGQKCGMRpHW5RHCqAUaqc2Kv0tUyd4dU4DLPKhJIjyKOnjv4tuUw==}
+    engines: {node: '>=14'}
+    dependencies:
+      '@babel/code-frame': 7.21.4
+      '@babel/runtime': 7.20.13
+      '@types/aria-query': 5.0.1
+      aria-query: 5.1.3
+      chalk: 4.1.2
+      dom-accessibility-api: 0.5.16
+      lz-string: 1.5.0
       pretty-format: 27.5.1
     dev: true
 
@@ -5708,6 +5712,11 @@ packages:
 
   /lz-string@1.4.4:
     resolution: {integrity: sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ==}
+    hasBin: true
+    dev: true
+
+  /lz-string@1.5.0:
+    resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
     dev: true
 
