@@ -205,8 +205,8 @@ importers:
         specifier: 6.4.4
         version: 6.4.4(react-dom@17.0.2)(react@17.0.2)
       styled-components:
-        specifier: 5.3.10
-        version: 5.3.10(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
+        specifier: 5.3.11
+        version: 5.3.11(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
     devDependencies:
       '@styils/vite-plugin':
         specifier: workspace:*
@@ -3050,7 +3050,7 @@ packages:
       resolve: 1.22.1
     dev: false
 
-  /babel-plugin-styled-components@2.0.7(styled-components@5.3.10):
+  /babel-plugin-styled-components@2.0.7(styled-components@5.3.11):
     resolution: {integrity: sha512-i7YhvPgVqRKfoQ66toiZ06jPNA3p6ierpfUuEWxNF+fV27Uv5gxBkf8KZLHUCc1nFA9j6+80pYoIpqCeyW3/bA==}
     peerDependencies:
       styled-components: '>= 2'
@@ -3060,7 +3060,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.1
-      styled-components: 5.3.10(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
+      styled-components: 5.3.11(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
     dev: false
 
   /babel-plugin-syntax-jsx@6.18.0:
@@ -6858,8 +6858,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /styled-components@5.3.10(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-3kSzSBN0TiCnGJM04UwO1HklIQQSXW7rCARUk+VyMR7clz8XVlA3jijtf5ypqoDIdNMKx3la4VvaPFR855SFcg==}
+  /styled-components@5.3.11(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-uuzIIfnVkagcVHv9nE0VPlHPSCmXIUGKfJ42LNjxCCTDTL5sgnJ8Z7GZBq0EnLYGln77tPpEpExt2+qa+cZqSw==}
     engines: {node: '>=10'}
     peerDependencies:
       react: '>= 16.8.0'
@@ -6871,7 +6871,7 @@ packages:
       '@emotion/is-prop-valid': 1.2.0
       '@emotion/stylis': 0.8.5
       '@emotion/unitless': 0.7.5
-      babel-plugin-styled-components: 2.0.7(styled-components@5.3.10)
+      babel-plugin-styled-components: 2.0.7(styled-components@5.3.11)
       css-to-react-native: 3.0.0
       hoist-non-react-statics: 3.3.2
       react: 17.0.2
