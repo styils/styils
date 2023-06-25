@@ -111,7 +111,7 @@ const Translate = styled('div', {
   }
 })
 
-export default function App() {
+export function App() {
   const { t } = useTranslation()
 
   const { pathname } = useLocation()
