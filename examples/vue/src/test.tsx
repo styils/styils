@@ -25,6 +25,6 @@ const AA = defineComponent({
 
 export default defineComponent({
   setup() {
-    return () => <Button as={AA} test="1" />
+    return () => <Button as={AA} />
   }
 })

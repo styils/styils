@@ -3,8 +3,8 @@ import { CSSAttribute } from 'nativeCssTypes'
 /**
  * Generates the needed className
  */
-export function createSelector(styles: CSSAttribute) {
-  const stringify = JSON.stringify(styles)
+export function createSelector(styles: CSSAttribute, identifier = '') {
+  const stringify = JSON.stringify(styles) + identifier
 
   // Convert input to class name.
   // is the initial value of 11.

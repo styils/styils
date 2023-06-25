@@ -2,13 +2,28 @@
 import { SystemProvider } from './theme'
 import { ref } from 'vue'
 import Test from './Test.vue'
+import { styled } from './theme'
 
 const count = ref(0)
+
+const Menu = styled('div', (theme) => ({
+  display: 'flex',
+  gap: '20px',
+  position: 'sticky',
+  top: '0',
+  transition: 'linear .3s',
+  color: theme?.color
+}))
+
+const NMenu = styled(Menu, (theme) => ({
+  top: '100px'
+}))
 </script>
 
 <template>
   <SystemProvider>
     <Test />
+    <NMenu>hello</NMenu>
     <div class="card">
       <button type="button" @click="count++" ref="">count is {{ count }}</button>
       <p>

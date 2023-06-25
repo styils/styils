@@ -64,11 +64,11 @@ describe('base system', () => {
       () => {},
       (...props: any) => {
         expect(
-          props[3]({
+          props[2]({
             height: 1,
             width: 2
           })
-        ).toEqual({ '--css-124759-height': 1, '--css-124759-width': 2 })
+        ).toEqual({ '--css-3194876479-height': 1, '--css-3194876479-width': 2 })
         return {}
       },
       () => {}
@@ -84,11 +84,11 @@ describe('base system', () => {
       () => {},
       (...props: any) => {
         expect(
-          props[3]({
+          props[2]({
             height: 1,
             width: 2
           })
-        ).toEqual({ '--css-124759-height': 1, '--css-124759-width': 2 })
+        ).toEqual({ '--css-3194876479-height': 1, '--css-3194876479-width': 2 })
         return {}
       },
       () => {}

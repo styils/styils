@@ -51,6 +51,10 @@ export function createBaseSystem<
     mode: defaultMode,
     theme: inputTheme(defaultMode)
   }
+  /**
+   * The purpose of doing this is to ensure order.
+   */
+  let createRules = []
 
   // Initialize the fetch cache
   if (isBrowser && !selectorCache.size && metaHtml) {
@@ -65,7 +69,16 @@ export function createBaseSystem<
     nonce
   })
 
-  const SystemProvider = inputSystemProvider(internalState)
+  function updateInternalState({ mode, theme }: typeof internalState) {
+    if (mode !== internalState.mode) {
+      internalState.mode = mode
+      internalState.theme = theme
+
+      createRules.forEach((create) => create())
+    }
+  }
+
+  const SystemProvider = inputSystemProvider(internalState, updateInternalState)
 
   // Mode-based cache
   // The difference with `selectorCache` is that this only works at runtime
@@ -107,7 +120,7 @@ export function createBaseSystem<
           ? interpolation(internalState.theme, internalState.mode)
           : interpolation
 
-      const selector = `${key}-${createSelector(style)}`
+      const selector = `${key}-${createSelector(style, internalState.mode)}`
 
       let targetClassName = selector
       let namespaceJoiner = ''
@@ -244,10 +257,10 @@ export function createBaseSystem<
 
     // The initial call
     createRule()
+    createRules.push(createRule)
 
     const styledComponent = inputStyledComponent(
       inputTag,
-      createRule,
       computedVariants,
       computedVars,
       targetInfo
@@ -408,16 +421,7 @@ export function createBaseSystem<
     }
 
     createGlobRules()
-
-    Object.defineProperty(internalState, 'mode', {
-      set(value) {
-        this.value = value
-        createGlobRules()
-      },
-      get() {
-        return this.value ?? defaultMode
-      }
-    })
+    createRules.push(createGlobRules)
   }
 
   // global style retention
@@ -428,6 +432,7 @@ export function createBaseSystem<
     selectorCache.clear()
     globalCache = {}
     modeIdentifier = []
+    createRules = []
   }
 
   return {

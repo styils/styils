@@ -17,42 +17,42 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
   const useSystem = () => React.useContext(systemContext)
 
   const SystemProvider =
-    (providerOptions: { mode: string; theme: Theme }) => (props: { children: React.ReactNode }) => {
-      const [mode, setMode] = React.useState<string>(providerOptions.mode)
+    (
+      state: { mode: string; theme: Theme },
+      onUpdate: (updateState: { mode: string; theme: Theme }) => void
+    ) =>
+    (props: { children: React.ReactNode }) => {
+      const [mode, setMode] = React.useState<string>(state.mode)
 
       const updataMode = (value: string) => {
-        providerOptions.theme = options.theme(value)
-        providerOptions.mode = value
+        onUpdate({ mode: value, theme: options.theme(value) })
         setMode(value)
       }
 
       return React.createElement(
         systemContext.Provider,
-        { value: { mode, setMode: updataMode, theme: providerOptions.theme } },
+        { value: { mode, setMode: updataMode, theme: state.theme } },
         props.children
       )
     }
 
   const styledComponent = (
     inputTag: BaseTag,
-    createRule: () => void,
     computedVariants: (value: AnyObject) => string,
     computedVars: (value: AnyObject) => AnyObject,
     targetInfo: TargetInfo
   ) =>
     React.forwardRef<HTMLElement, AnyObject>((props, ref) => {
       const { as = inputTag, className, variants, vars, style, ...rest } = props
-      const { mode } = useSystem()
 
-      if (mode !== undefined) {
-        createRule()
-      }
+      const variantsClasses = React.useMemo(() => computedVariants(variants), [variants])
+      const varsStyle = React.useMemo(() => computedVars(vars), [vars])
 
       return React.createElement(as, {
         className: `${className ? className + ' ' : ''}${
           targetInfo.targetClassName
-        }${computedVariants(variants)}`,
-        style: { ...computedVars(vars), ...style },
+        }${variantsClasses}`,
+        style: { ...varsStyle, ...style },
         ref,
         ...rest
       })

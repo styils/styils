@@ -32,7 +32,7 @@ const Button = styled(
   {
     size: {
       small: {
-        fontSize: '$height'
+        // fontSize: '$height'
       },
       max: {
         fontSize: 12

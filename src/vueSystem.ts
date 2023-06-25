@@ -18,20 +18,22 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       {}
     )
 
-  const SystemProvider = (providerOptions: { mode: string; theme: Theme }) =>
+  const SystemProvider = (
+    state: { mode: string; theme: Theme },
+    onUpdate: (updateState: { mode: string; theme: Theme }) => void
+  ) =>
     defineComponent({
       setup(_, { slots }) {
-        const mode = ref(providerOptions.mode)
+        const mode = ref(state.mode)
 
         const setMode = (value: string) => {
-          providerOptions.theme = options.theme(value)
-          providerOptions.mode = value
+          onUpdate({ mode: value, theme: options.theme(value) })
           mode.value = value
         }
 
         provide(systemContext, {
           mode,
-          theme: providerOptions.theme,
+          theme: state.theme,
           setMode
         })
 
@@ -41,7 +43,6 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
 
   const styledComponent = (
     inputTag: BaseTag,
-    createRule: () => void,
     computedVariants: (value: AnyObject) => string,
     computedVars: (value: AnyObject) => AnyObject,
     targetInfo: TargetInfo
@@ -50,31 +51,30 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
       props: ['variants', 'class', 'as', 'vars', 'style'],
       setup(props: AnyObject, { slots }) {
         const { as, class: className, variants, vars, style } = toRefs(props)
-
         const { mode } = useSystem()
 
-        const styles = computed(() => {
-          if (mode?.value !== undefined) {
-            createRule()
-          }
+        const targetStyles = computed(() => ({
+          mode: mode?.value,
+          classes: targetInfo.targetClassName
+        }))
 
-          return {
-            classes: `${className.value ? className.value + ' ' : ''}${
-              targetInfo.targetClassName
-            }${computedVariants(variants.value)}`,
-            style: computedVars(vars.value)
-          }
-        })
+        const userStyles = computed(() => ({
+          classes: computedVariants(variants.value),
+          style: computedVars(vars.value)
+        }))
 
-        return () =>
-          h(
+        return () => {
+          return h(
             as.value || inputTag,
             {
-              class: styles.value.classes,
-              style: { ...styles.value.style, ...style.value }
+              class: `${className.value ? className.value + ' ' : ''}${targetStyles.value.classes}${
+                userStyles.value.classes
+              }`,
+              style: { ...userStyles.value.style, ...style.value }
             },
-            slots?.default?.()
+            slots
           )
+        }
       }
     })
 

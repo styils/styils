@@ -44,7 +44,7 @@ describe('solidjs system', () => {
       }
     })
 
-    const { container } = render(Dynamic({ component: Button }))
+    const { container } = render(() => Dynamic({ component: Button }))
     const { extractElement } = createExtracts()
     expect(container).toMatchSnapshot()
 
@@ -121,10 +121,10 @@ describe('solidjs system', () => {
       })
     }
 
-    const { container } = render(
+    const { container } = render(() =>
       Dynamic({
         component: ThemeSystemProvider,
-        children: Test
+        children: Test as any
       })
     )
 
@@ -150,7 +150,7 @@ describe('solidjs system', () => {
       color: 'red'
     })
 
-    const { container } = render(Dynamic({ component: Button2 }))
+    const { container } = render(() => Dynamic({ component: Button2 }))
     expect(container).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
   })
@@ -234,14 +234,14 @@ describe('solidjs system', () => {
         onClick: () => {
           setMode(mode() === 'light' ? 'dark' : 'light')
         },
-        children: mode
+        children: mode as any
       })
     }
 
-    const { container } = render(
+    const { container } = render(() =>
       Dynamic({
         component: SystemProvider,
-        children: Test
+        children: Test as any
       })
     )
 
@@ -285,14 +285,14 @@ describe('solidjs system', () => {
         onClick: () => {
           setMode(mode() === 'light' ? 'dark' : 'light')
         },
-        children: mode
+        children: mode as any
       })
     }
 
-    const { container } = render(
+    const { container } = render(() =>
       Dynamic({
         component: SystemProvider,
-        children: Test
+        children: Test as any
       })
     )
 
@@ -343,14 +343,14 @@ describe('solidjs system', () => {
         onClick: () => {
           setMode(mode() === 'light' ? 'dark' : 'light')
         },
-        children: mode
+        children: mode as any
       })
     }
 
-    const { container } = render(
+    const { container } = render(() =>
       Dynamic({
         component: SystemProvider,
-        children: Test
+        children: Test as any
       })
     )
 
@@ -383,7 +383,7 @@ describe('solidjs system', () => {
       backgroundColor: 'gainsboro'
     })
 
-    render(Dynamic({ component: Button }))
+    render(() => Dynamic({ component: Button }))
 
     document.head.childNodes.forEach((item: HTMLStyleElement) => {
       expect(item.sheet.cssRules.length).toEqual(1)
@@ -398,7 +398,7 @@ describe('solidjs system', () => {
       backgroundColor: 'gainsboro'
     })
 
-    const { container } = render(Dynamic({ component: Button, class: 'foo' }))
+    const { container } = render(() => Dynamic({ component: Button, class: 'foo' }))
 
     expect(container).toMatchSnapshot()
 
@@ -420,7 +420,7 @@ describe('solidjs system', () => {
       }
     })
 
-    expect(`${Button}`).toEqual('.css-473669310')
+    expect(`${Button}`).toEqual('.css-1239502134')
   })
 
   it('styled production', () => {
@@ -439,9 +439,9 @@ describe('solidjs system', () => {
       }
     )
 
-    const { container } = render(Dynamic({ component: Button }))
+    const { container } = render(() => Dynamic({ component: Button }))
 
-    expect(`${Button}`).toEqual('.css-580686147')
+    expect(`${Button}`).toEqual('.css-1668105579')
     expect(container).toMatchSnapshot()
 
     process.env.NODE_ENV = 'test'
@@ -457,9 +457,9 @@ describe('solidjs system', () => {
       }
     )
 
-    const { container } = render(Dynamic({ component: Button }))
+    const { container } = render(() => Dynamic({ component: Button }))
 
-    expect(`${Button}`).toEqual('.button-css-580686147')
+    expect(`${Button}`).toEqual('.button-css-1668105579')
     expect(container).toMatchSnapshot()
 
     process.env.NODE_ENV = 'test'
@@ -509,15 +509,15 @@ describe('solidjs system', () => {
           Dynamic({
             component: Button
           }),
-          mode
+          mode()
         ]
       })
     }
 
-    const { container } = render(
+    const { container } = render(() =>
       Dynamic({
         component: SystemProvider,
-        children: Wapper
+        children: Wapper as any
       })
     )
 
@@ -565,7 +565,7 @@ describe('solidjs system', () => {
       })
     }
 
-    const { container } = render(() => Wapper)
+    const { container } = render(() => Wapper())
 
     expect(container).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
@@ -608,7 +608,7 @@ describe('solidjs system', () => {
       })
     }
 
-    const { container } = render(() => Wapper)
+    const { container } = render(() => Wapper())
 
     expect(container).toMatchSnapshot()
     expect(document.documentElement).toMatchSnapshot()
@@ -674,15 +674,15 @@ describe('solidjs system', () => {
               color: mode() as 'light'
             }
           }),
-          mode
+          mode()
         ]
       })
     }
 
-    const { container } = render(
+    const { container } = render(() =>
       Dynamic({
         component: SystemProvider,
-        children: Wapper
+        children: Wapper as any
       })
     )
 
@@ -734,10 +734,10 @@ describe('solidjs system', () => {
       })
     }
 
-    const { container } = render(
+    const { container } = render(() =>
       Dynamic({
         component: SystemProvider,
-        children: Wapper
+        children: Wapper as any
       })
     )
 
