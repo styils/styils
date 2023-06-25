@@ -6,7 +6,7 @@ import './codeTheme.css'
 import { SystemProvider } from './theme'
 
 // SSG
-ReactDOM[process.env.NODE_ENV === 'production' ? 'hydrate' : 'render'](
+ReactDOM.render(
   <SystemProvider>
     <BrowserRouter>
       <App />

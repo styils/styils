@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "prerender": "node prerender.js",
-    "build": "vite build && vite build --ssr entryServer --outDir dist/server && node prerender.js",
+    "build": "vite build",
     "update:deps": "pnpm update --latest --interactive"
   },
   "dependencies": {
