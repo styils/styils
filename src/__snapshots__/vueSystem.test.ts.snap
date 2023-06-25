@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`hydrate base hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-2694385428"><style data-ssr="styils-css-ssr">.css-2694385428{background-color:gainsboro;border-radius:9999px;}</style>"`;
+exports[`hydrate base hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-158440492"><style data-ssr="styils-css-ssr">.css-158440492{background-color:gainsboro;border-radius:9999px;}</style>"`;
 
 exports[`hydrate base hydrate 2`] = `
 <html>
@@ -61,9 +61,9 @@ exports[`hydrate createGlobal hydrate with sourcemap 1`] = `
 </html>
 `;
 
-exports[`hydrate mix hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-2694385428"><style data-ssr="styils-css-ssr">.css-2694385428{background-color:gainsboro;border-radius:9999px;}</style>"`;
+exports[`hydrate mix hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-158440492"><style data-ssr="styils-css-ssr">.css-158440492{background-color:gainsboro;border-radius:9999px;}</style>"`;
 
-exports[`hydrate namespace hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="ssr-css-2694385428|ssr-css-2694385428.ssr-size-max|ssr-css-2694385428.ssr-size-small"><style data-ssr="styils-css-ssr">.ssr-css-2694385428{background-color:gainsboro;border-radius:9999px;}.ssr-css-2694385428.ssr-size-max{font-size:12px;}.ssr-css-2694385428.ssr-size-small{font-size:14px;}</style>"`;
+exports[`hydrate namespace hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="ssr-css-158440492|ssr-css-158440492.ssr-size-max|ssr-css-158440492.ssr-size-small"><style data-ssr="styils-css-ssr">.ssr-css-158440492{background-color:gainsboro;border-radius:9999px;}.ssr-css-158440492.ssr-size-max{font-size:12px;}.ssr-css-158440492.ssr-size-small{font-size:14px;}</style>"`;
 
 exports[`hydrate namespace hydrate 2`] = `
 <html>
@@ -79,15 +79,15 @@ exports[`hydrate namespace hydrate 2`] = `
 `;
 
 exports[`hydrate production css content 1`] = `
-"<meta name="styils-cache" id="styils-css-cache" mode="none" content="css-2694385428|css-891380795">
+"<meta name="styils-cache" id="styils-css-cache" mode="none" content="css-158440492|css-761805027">
 <style id="styils-css-ssr-global"></style>
 <style id="styils-css-ssr">
-  .css-2694385428 {
+  .css-158440492 {
     background-color: gainsboro;
     border-radius: 9999px;
   }
 
-  .css-891380795 {
+  .css-761805027 {
     background-color: gainsboro;
     border-radius: 999px;
   }
@@ -95,16 +95,16 @@ exports[`hydrate production css content 1`] = `
 `;
 
 exports[`hydrate render Element hydrate 1`] = `
-"<meta name="styils-cache" id="styils-css-cache" mode="none" content="css-2694385428">
+"<meta name="styils-cache" id="styils-css-cache" mode="none" content="css-158440492">
 <style data-ssr="styils-css-ssr">
-  .css-2694385428 {
+  .css-158440492 {
     background-color: gainsboro;
     border-radius: 9999px;
   }
 </style>"
 `;
 
-exports[`hydrate variants hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-2694385428|css-2694385428.size-max|css-2694385428.size-small"><style data-ssr="styils-css-ssr">.css-2694385428{background-color:gainsboro;border-radius:9999px;}.css-2694385428.size-max{font-size:12px;}.css-2694385428.size-small{font-size:14px;}</style>"`;
+exports[`hydrate variants hydrate 1`] = `"<meta id="styils-css-cache" name="styils-cache" mode="none" content="css-158440492|css-158440492.size-max|css-158440492.size-small"><style data-ssr="styils-css-ssr">.css-158440492{background-color:gainsboro;border-radius:9999px;}.css-158440492.size-max{font-size:12px;}.css-158440492.size-small{font-size:14px;}</style>"`;
 
 exports[`hydrate variants hydrate 2`] = `
 <html>
@@ -156,7 +156,7 @@ exports[`vuejs system createSystem base 2`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}
+      .css-3120413567{color:red;}
     </style>
   </head>
   <body />
@@ -172,14 +172,14 @@ exports[`vuejs system createSystem base 4`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}
+      .css-3120413567{color:red;}
     </style>
   </head>
   <body />
 </html>
 `;
 
-exports[`vuejs system styled 1`] = `"<button class="css-473669310"></button>"`;
+exports[`vuejs system styled 1`] = `"<button class="css-1239502134"></button>"`;
 
 exports[`vuejs system styled 2`] = `[Function]`;
 
@@ -190,14 +190,14 @@ exports[`vuejs system styled 3`] = `
       data-styils="css"
     >
       
-      .css-473669310{background-color:gainsboro;border-radius:9999px;font-weight:500;padding:0.75em 1em;border:0px;transition:all 200ms ease;}.css-473669310:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0, 0, 0, .3);}
+      .css-1239502134{background-color:gainsboro;border-radius:9999px;font-weight:500;padding:0.75em 1em;border:0px;transition:all 200ms ease;}.css-1239502134:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0, 0, 0, .3);}
     </style>
   </head>
   <body />
 </html>
 `;
 
-exports[`vuejs system styled className 1`] = `"<button class="foo css-1985958484"></button>"`;
+exports[`vuejs system styled className 1`] = `"<button class="foo css-617294700"></button>"`;
 
 exports[`vuejs system styled className 2`] = `
 <html>
@@ -206,22 +206,22 @@ exports[`vuejs system styled className 2`] = `
       data-styils="css"
     >
       
-      .css-1985958484{background-color:gainsboro;}
+      .css-617294700{background-color:gainsboro;}
     </style>
   </head>
   <body />
 </html>
 `;
 
-exports[`vuejs system styled multiple Variants 1`] = `"<button class="css-1985958484 outer-true fixed-true"></button>"`;
+exports[`vuejs system styled multiple Variants 1`] = `"<button class="css-617294700 outer-true fixed-true"></button>"`;
 
-exports[`vuejs system styled namespace 1`] = `"<button class="button-css-580686147"></button>"`;
+exports[`vuejs system styled namespace 1`] = `"<button class="button-css-1668105579"></button>"`;
 
-exports[`vuejs system styled production 1`] = `"<button class="css-580686147"></button>"`;
+exports[`vuejs system styled production 1`] = `"<button class="css-1668105579"></button>"`;
 
-exports[`vuejs system styled with css state 1`] = `"<button class="css-343506865" style="--css-343506865-bg: red;">red</button>"`;
+exports[`vuejs system styled with css state 1`] = `"<button class="css-4206182649" style="--css-4206182649-bg: red;">red</button>"`;
 
-exports[`vuejs system styled with css state 2`] = `"<button class="css-343506865" style="--css-343506865-bg: red;">red</button>"`;
+exports[`vuejs system styled with css state 2`] = `"<button class="css-4206182649" style="--css-4206182649-bg: red;">red</button>"`;
 
 exports[`vuejs system styled with sourceMap 1`] = `
 <html>
@@ -230,14 +230,14 @@ exports[`vuejs system styled with sourceMap 1`] = `
       data-styils="css"
     >
       
-      .css-1985958484{background-color:gainsboro;}1
+      .css-617294700{background-color:gainsboro;}1
     </style>
   </head>
   <body />
 </html>
 `;
 
-exports[`vuejs system styled with styled components 1`] = `"<button class="css-2747469527 css-3125152289"></button>"`;
+exports[`vuejs system styled with styled components 1`] = `"<button class="css-2074190271 css-1942144105"></button>"`;
 
 exports[`vuejs system styled with styled components 2`] = `
 <html>
@@ -246,13 +246,13 @@ exports[`vuejs system styled with styled components 2`] = `
       data-styils="css"
     >
       
-      .css-3125152289{background-color:#fff;}
+      .css-1942144105{background-color:#fff;}
     </style>
     <style
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}
+      .css-2074190271{color:red;}
     </style>
   </head>
   <body />
@@ -266,7 +266,7 @@ exports[`vuejs system styled with theme and sourceMap 1`] = `
       data-styils="css"
     >
       
-      .css-4168311147{background-color:red;}1
+      .css-1316790691{background-color:red;}1
     </style>
   </head>
   <body />
@@ -280,7 +280,13 @@ exports[`vuejs system styled with theme and sourceMap 2`] = `
       data-styils="css"
     >
       
-      .css-4168311147{background-color:red;}1
+      .css-1316790691{background-color:red;}1
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-1202256766{background-color:blue;}1
     </style>
   </head>
   <body />
@@ -296,7 +302,7 @@ exports[`vuejs system theme does not render repeatedly 2`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}
+      .css-3120413567{color:red;}
     </style>
   </head>
   <body />
@@ -312,7 +318,13 @@ exports[`vuejs system theme does not render repeatedly 4`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}
+      .css-3120413567{color:red;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3005879642{color:blue;}
     </style>
   </head>
   <body />
@@ -328,7 +340,13 @@ exports[`vuejs system theme does not render repeatedly 6`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}
+      .css-3120413567{color:red;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-3005879642{color:blue;}
     </style>
   </head>
   <body />
@@ -344,7 +362,7 @@ exports[`vuejs system variants 2`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}.css-2747469527.size-max{font-size:99px;}.css-2747469527.size-small{font-size:14px;}
+      .css-2074190271{color:red;}.css-2074190271.size-max{font-size:99px;}.css-2074190271.size-small{font-size:14px;}
     </style>
   </head>
   <body />
@@ -360,7 +378,7 @@ exports[`vuejs system variants 4`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}.css-2747469527.size-max{font-size:99px;}.css-2747469527.size-small{font-size:14px;}
+      .css-2074190271{color:red;}.css-2074190271.size-max{font-size:99px;}.css-2074190271.size-small{font-size:14px;}
     </style>
   </head>
   <body />
@@ -376,7 +394,7 @@ exports[`vuejs system variants single 2`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}.css-2747469527.size-small{font-size:14px;}
+      .css-2074190271{color:red;}.css-2074190271.size-small{font-size:14px;}
     </style>
   </head>
   <body />
@@ -392,14 +410,14 @@ exports[`vuejs system variants single 4`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}.css-2747469527.size-small{font-size:14px;}
+      .css-2074190271{color:red;}.css-2074190271.size-small{font-size:14px;}
     </style>
   </head>
   <body />
 </html>
 `;
 
-exports[`vuejs system variants theme 1`] = `"<button class="css-2747469527 color-light" data-testid="use-system">light</button>"`;
+exports[`vuejs system variants theme 1`] = `"<button class="css-3120413567 color-light" data-testid="use-system">light</button>"`;
 
 exports[`vuejs system variants theme 2`] = `
 <html>
@@ -408,14 +426,14 @@ exports[`vuejs system variants theme 2`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}.css-2747469527.color-light{color:red;}.css-2747469527.color-dark{color:red;}
+      .css-3120413567{color:red;}.css-3120413567.color-light{color:red;}.css-3120413567.color-dark{color:red;}
     </style>
   </head>
   <body />
 </html>
 `;
 
-exports[`vuejs system variants theme 3`] = `"<button class="css-2747469527 color-light" data-testid="use-system">light</button>"`;
+exports[`vuejs system variants theme 3`] = `"<button class="css-3120413567 color-light" data-testid="use-system">light</button>"`;
 
 exports[`vuejs system variants theme 4`] = `
 <html>
@@ -424,7 +442,13 @@ exports[`vuejs system variants theme 4`] = `
       data-styils="css"
     >
       
-      .css-2747469527{color:red;}.css-2747469527.color-light{color:red;}.css-2747469527.color-dark{color:red;}
+      .css-3120413567{color:red;}.css-3120413567.color-light{color:red;}.css-3120413567.color-dark{color:red;}
+    </style>
+    <style
+      data-styils="css"
+    >
+      
+      .css-2063744857{color:red;}.css-2063744857.color-light{color:blue;}.css-2063744857.color-dark{color:blue;}
     </style>
   </head>
   <body />

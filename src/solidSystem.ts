@@ -8,8 +8,7 @@ import {
   splitProps,
   mergeProps,
   createMemo,
-  batch,
-  Accessor
+  batch
 } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import { createBaseSystem } from './baseSystem'
@@ -26,17 +25,20 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
   const useSystem: UseSystem<Theme> = () => useContext(systemContext)
 
   const SystemProvider =
-    (providerOptions: { mode: string; theme: AnyObject }) => (props: { children: JSX.Element }) => {
-      const [mode, setMode] = createSignal(providerOptions.mode)
-      const [theme, setTheme] = createSignal(providerOptions.theme)
+    (
+      state: { mode: string; theme: AnyObject },
+      onUpdate: (updateState: { mode: string; theme: AnyObject }) => void
+    ) =>
+    (props: { children: JSX.Element }) => {
+      const [mode, setMode] = createSignal(state.mode)
+      const [theme, setTheme] = createSignal(state.theme)
 
       const updataMode = (value: string) => {
-        providerOptions.theme = options.theme(value)
-        providerOptions.mode = value
+        onUpdate({ mode: value, theme: options.theme(value) })
 
         batch(() => {
-          setMode(providerOptions.mode)
-          setTheme(providerOptions.theme)
+          setMode(state.mode)
+          setTheme(state.theme)
         })
       }
 
@@ -55,7 +57,6 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
   const styledComponent =
     (
       inputTag: BaseTag,
-      createRule: () => void,
       computedVariants: (value: AnyObject) => string,
       computedVars: (value: AnyObject) => AnyObject,
       targetInfo: TargetInfo
@@ -71,28 +72,27 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
 
       const { mode } = useSystem()
 
-      const styles = createMemo(() => {
-        if (mode?.() !== undefined) {
-          createRule()
-        }
+      const userStyles = createMemo(() => ({
+        classes: computedVariants(props.variants),
+        style: computedVars(props.vars)
+      }))
 
-        return {
-          classes: `${props.class ? props.class + ' ' : ''}${
-            targetInfo.targetClassName
-          }${computedVariants(props.variants)}`,
-          style: computedVars(props.vars)
-        }
-      })
+      const targetStyles = createMemo(() => ({
+        mode: mode?.(),
+        classes: targetInfo.targetClassName
+      }))
 
       return Dynamic({
         get component() {
           return props.as
         },
         get class() {
-          return styles().classes
+          return `${props.class ? props.class + ' ' : ''}${targetStyles().classes}${
+            userStyles().classes
+          }`
         },
         get style() {
-          return { ...styles().style, ...props.style }
+          return { ...userStyles().style, ...props.style }
         },
         ...rest
       })
@@ -156,15 +156,12 @@ export function createSystem<Theme = {}>(options: SystemOptions<Theme> = {}) {
 
   // Need to create a type and specify it, otherwise the type will be lost
   return {
-    ...createBaseSystem<
-      Styled<Theme>,
-      Theme,
-      (props: SystemExtractElement) => Accessor<JSX.Element>[],
-      (providerOptions: {
-        mode: string
-        theme: AnyObject
-      }) => (props: { children: JSX.Element }) => JSX.Element
-    >(options, SystemProvider, styledComponent, extractElement),
+    ...createBaseSystem<Styled<Theme>, Theme, typeof extractElement, typeof SystemProvider>(
+      options,
+      SystemProvider,
+      styledComponent,
+      extractElement
+    ),
     useSystem,
     systemContext
   }

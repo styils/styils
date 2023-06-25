@@ -462,7 +462,7 @@ describe('vuejs system', () => {
       }
     })
 
-    expect(`${Button}`).toEqual('.css-473669310')
+    expect(`${Button}`).toEqual('.css-1239502134')
   })
 
   it('styled production', () => {
@@ -483,7 +483,7 @@ describe('vuejs system', () => {
 
     const container = mount(h(Button))
 
-    expect(`${Button}`).toEqual('.css-580686147')
+    expect(`${Button}`).toEqual('.css-1668105579')
     expect(container.html()).toMatchSnapshot()
 
     process.env.NODE_ENV = 'test'
@@ -501,7 +501,7 @@ describe('vuejs system', () => {
 
     const container = mount(h(Button))
 
-    expect(`${Button}`).toEqual('.button-css-580686147')
+    expect(`${Button}`).toEqual('.button-css-1668105579')
     expect(container.html()).toMatchSnapshot()
 
     process.env.NODE_ENV = 'test'
