@@ -7,11 +7,12 @@
     "dev": "vite",
     "preview": "vite preview",
     "prerender": "node prerender.js",
-    "build": "vite build && vite build --ssr entryServer --outDir dist/server && node prerender.js"
+    "build": "vite build && vite build --ssr entryServer --outDir dist/server && node prerender.js",
+    "update:deps": "pnpm update --latest --interactive"
   },
   "dependencies": {
-    "@emotion/react": "11.10.6",
-    "@emotion/styled": "11.10.6",
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
     "@stitches/react": "1.2.8",
     "@stitches/stringify": "1.2.8",
     "d3-scale-chromatic": "3.0.0",
@@ -22,12 +23,12 @@
     "react-i18next": "12.0.0",
     "react-is": "17.0.2",
     "react-router-dom": "6.4.4",
-    "styled-components": "5.3.11"
+    "styled-components": "6.0.0-rc.6"
   },
   "devDependencies": {
+    "@styils/vite-plugin": "workspace:*",
     "@types/prismjs": "1.26.0",
     "@types/styled-components": "5.1.26",
-    "@vitejs/plugin-react": "1.3.2",
-    "@styils/vite-plugin": "workspace:*"
+    "@vitejs/plugin-react": "1.3.2"
   }
 }
