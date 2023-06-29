@@ -32,7 +32,7 @@ Lightweight and fast css-in-js tool
 
 > It's very fast. Almost as fast as using native css, and even faster than native rendering under certain conditions
 
-[Bench](https://styils.github.io/benchmark/create-and-mount-button/stitches-react)
+[Bench](https://styils.github.io/styils/#/benchmark/create-and-mount-button/stitches-react)
 
 ### Styils React
 
