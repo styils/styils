@@ -9,7 +9,7 @@ export default function Home() {
   const router = useNavigate()
 
   useEffect(() => {
-    if (pathname === '/styils/benchmark/change-css-prop') {
+    if (pathname === '/benchmark/change-css-prop') {
       router('stitches-react')
     }
   }, [pathname, router])

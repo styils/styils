@@ -11,7 +11,7 @@ export default function Home() {
   const router = useNavigate()
 
   useEffect(() => {
-    if (pathname === '/styils/benchmark/sierpinski-triangle') {
+    if (pathname === '/benchmark/sierpinski-triangle') {
       router('stitches-react')
     }
   }, [pathname, router])

@@ -32,7 +32,7 @@
 
 > 它非常快。几乎和使用原生 css 一样快，在某些条件下甚至比原生渲染还要快
 
-[基准](https://styils.github.io/styils/benchmark/create-and-mount-button/stitches-react)
+[基准](https://styils.github.io/benchmark/create-and-mount-button/stitches-react)
 
 ### Styils React
 

@@ -134,15 +134,11 @@ export function App() {
             </svg>
             {i18n.language}
           </Translate>
-          {isBench ? (
-            <Link to="/styils">{t('back')}</Link>
-          ) : (
-            <Link to="/styils/benchmark">{t('bench')}</Link>
-          )}
+          {isBench ? <Link to="/">{t('back')}</Link> : <Link to="/benchmark">{t('bench')}</Link>}
         </Header>
         <Routes>
-          <Route path="/styils" element={<Home />} />
-          <Route path="/styils/benchmark" element={<Benchmark />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/benchmark" element={<Benchmark />}>
             <Route path="change-variant" element={<ChangeVariant />}>
               {getPathElement(changeVariant, 'change-variant').map(({ path, Element }) => {
                 return <Route key={path} path={path} element={<Element />} />

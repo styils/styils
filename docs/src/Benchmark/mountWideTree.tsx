@@ -9,7 +9,7 @@ export default function Home() {
   const router = useNavigate()
 
   useEffect(() => {
-    if (pathname === '/styils/benchmark/mount-wide-tree') {
+    if (pathname === '/benchmark/mount-wide-tree') {
       router('stitches-react')
     }
   }, [pathname, router])

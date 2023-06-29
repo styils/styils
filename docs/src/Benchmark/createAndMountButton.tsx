@@ -11,7 +11,7 @@ export default function Home() {
   const router = useNavigate()
 
   useEffect(() => {
-    if (pathname === '/styils/benchmark/create-and-mount-button') {
+    if (pathname === '/benchmark/create-and-mount-button') {
       router('stitches-react')
     }
   }, [pathname, router])

@@ -9,7 +9,7 @@ export default function Home() {
   const router = useNavigate()
 
   useEffect(() => {
-    if (pathname === '/styils/benchmark/mount-deep-tree') {
+    if (pathname === '/benchmark/mount-deep-tree') {
       router('stitches-react')
     }
   }, [pathname, router])
