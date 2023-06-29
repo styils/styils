@@ -10,7 +10,8 @@
       "require": "./dist/index.js",
       "import": {
         "node": "./dist/index.mjs",
-        "default": "./dist/index.mjs"
+        "default": "./dist/index.mjs",
+        "types": "./types.d.ts"
       }
     }
   },
