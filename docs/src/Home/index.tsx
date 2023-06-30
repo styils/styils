@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import LogoSvg from '../../../logo.svg'
 import StyilSvg from '../../../styils.svg'
 import { styled, useSystem, keyframes } from '../theme'
@@ -298,7 +299,8 @@ const Author = styled('section', (theme) => ({
     display: 'none'
   },
 
-  '& a': {
+  '& >div>div': {
+    cursor: 'pointer',
     fontSize: '14px',
     borderRadius: '12px',
     marginBottom: 14,
@@ -318,7 +320,7 @@ const Author = styled('section', (theme) => ({
     }
   },
 
-  '& div': {
+  '& >div': {
     top: 86,
     position: 'sticky'
   }
@@ -359,6 +361,10 @@ export default function Home() {
   const { t } = useTranslation()
   const { setMode, mode } = useSystem()
   const [check, setCheck] = React.useState(mode !== 'light')
+
+  function onScrollToAnchor(anchor: string) {
+    document.getElementById(anchor).scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <>
@@ -438,14 +444,14 @@ export default function Home() {
       <CodeContent>
         <Author>
           <div>
-            <a href="#base">{t('withBase')}</a>
-            <a href="#variants">{t('withVariants')}</a>
-            <a href="#vars">{t('withVars')}</a>
-            <a href="#theme">{t('withTheme')}</a>
-            <a href="#ssr">{t('withSSR')}</a>
-            <a href="#keyframes">{t('withKeyframes')}</a>
-            <a href="#global">{t('withGlobal')}</a>
-            <a href="#media">{t('withMedia')}</a>
+            <div onClick={() => onScrollToAnchor('base')}>{t('withBase')}</div>
+            <div onClick={() => onScrollToAnchor('variants')}>{t('withVariants')}</div>
+            <div onClick={() => onScrollToAnchor('vars')}>{t('withVars')}</div>
+            <div onClick={() => onScrollToAnchor('theme')}>{t('withTheme')}</div>
+            <div onClick={() => onScrollToAnchor('ssr')}>{t('withSSR')}</div>
+            <div onClick={() => onScrollToAnchor('keyframes')}>{t('withKeyframes')}</div>
+            <div onClick={() => onScrollToAnchor('global')}>{t('withGlobal')}</div>
+            <div onClick={() => onScrollToAnchor('media')}>{t('withMedia')}</div>
           </div>
         </Author>
 
