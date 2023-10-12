@@ -332,23 +332,37 @@ const Title = styled('h1', () => ({
 }))
 
 export default function Home() {
-  const installRef = React.useRef<HTMLPreElement>(null)
-  const [copyCssIcon, setCopyCssIcon] = React.useState(copySvg)
+  const installVueRef = React.useRef<HTMLPreElement>(null)
+  const installReactRef = React.useRef<HTMLPreElement>(null)
+  const installSolidRef = React.useRef<HTMLPreElement>(null)
+  const [copySolidIcon, setCopySolidIcon] = React.useState(copySvg)
   const [copyReactIcon, setCopyReactIcon] = React.useState(copySvg)
+  const [copyVueIcon, setCopyVueIcon] = React.useState(copySvg)
 
-  const copyCss = React.useCallback(() => {
-    navigator.clipboard.writeText(installRef.current.innerText).then(() => {
-      setCopyCssIcon(okSvg)
+  const copyVue = React.useCallback(() => {
+    navigator.clipboard.writeText(installVueRef.current.innerText).then(() => {
+      setCopyVueIcon(okSvg)
 
       const timer = setTimeout(() => {
-        setCopyCssIcon(copySvg)
+        setCopyVueIcon(copySvg)
+        clearTimeout(timer)
+      }, 1000)
+    })
+  }, [])
+
+  const copySolid = React.useCallback(() => {
+    navigator.clipboard.writeText(installSolidRef.current.innerText).then(() => {
+      setCopySolidIcon(okSvg)
+
+      const timer = setTimeout(() => {
+        setCopySolidIcon(copySvg)
         clearTimeout(timer)
       }, 1000)
     })
   }, [])
 
   const copyReact = React.useCallback(() => {
-    navigator.clipboard.writeText(installRef.current.innerText).then(() => {
+    navigator.clipboard.writeText(installReactRef.current.innerText).then(() => {
       setCopyReactIcon(okSvg)
 
       const timer = setTimeout(() => {
@@ -376,26 +390,24 @@ export default function Home() {
           </Slogan>
 
           <ButtonGroup>
-            <Button as="a" href="#quick">
-              {t('quick')}
-            </Button>
+            <Button onClick={() => onScrollToAnchor('base')}>{t('quick')}</Button>
             <Button as="a" href="https://github.com/styils/styils" target="_blank">
               {t('github')}
             </Button>
             <InstallBox>
               <strong>$</strong>
-              <pre ref={installRef}>npm install @styils/react</pre>
+              <pre ref={installReactRef}>npm install @styils/react</pre>
               <img src={copyReactIcon} alt="copy" onClick={() => copyReact()} aria-hidden="true" />
             </InstallBox>
             <InstallBox>
               <strong>$</strong>
-              <pre ref={installRef}>npm install @styils/solid</pre>
-              <img src={copyCssIcon} alt="copy" onClick={() => copyCss()} aria-hidden="true" />
+              <pre ref={installSolidRef}>npm install @styils/solid</pre>
+              <img src={copySolidIcon} alt="copy" onClick={() => copySolid()} aria-hidden="true" />
             </InstallBox>
             <InstallBox>
               <strong>$</strong>
-              <pre ref={installRef}>npm install @styils/vue</pre>
-              <img src={copyCssIcon} alt="copy" onClick={() => copyCss()} aria-hidden="true" />
+              <pre ref={installVueRef}>npm install @styils/vue</pre>
+              <img src={copyVueIcon} alt="copy" onClick={() => copyVue()} aria-hidden="true" />
             </InstallBox>
           </ButtonGroup>
         </SloganWapper>
