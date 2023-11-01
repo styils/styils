@@ -160,8 +160,8 @@ importers:
         specifier: 7.20.2
         version: 7.20.2
       '@types/babel__helper-plugin-utils':
-        specifier: 7.10.1
-        version: 7.10.1
+        specifier: 7.10.2
+        version: 7.10.2
       '@types/convert-source-map':
         specifier: 1.5.2
         version: 1.5.2
@@ -3741,8 +3741,8 @@ packages:
       '@babel/types': 7.22.5
     dev: true
 
-  /@types/babel__helper-plugin-utils@7.10.1:
-    resolution: {integrity: sha512-6RaT7i6r2rT6ouIDZ2Cd6dPkq4wn1F8pLyDO+7wPVsL1dodvORiZORImaD6j9FBcHjPGuERE0hhtwkuPNXsO0A==}
+  /@types/babel__helper-plugin-utils@7.10.2:
+    resolution: {integrity: sha512-Sa17cG0SKMedlH5bEozh0eXo/54iWpSxbxCoqknRJY0oGGTwO9/SCfIx1taDnG0dvkJnYW+/7tv+PTSFaQsRNA==}
     dependencies:
       '@types/babel__core': 7.20.2
     dev: true
