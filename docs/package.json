@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@styils/vite-plugin": "workspace:*",
-    "@types/prismjs": "1.26.2",
+    "@types/prismjs": "1.26.3",
     "@types/styled-components": "5.1.29",
     "@vitejs/plugin-react": "4.0.1"
   }
