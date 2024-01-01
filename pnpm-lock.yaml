@@ -24,8 +24,8 @@ importers:
         specifier: ^0.4.0
         version: 0.4.0(rollup@3.25.1)
       '@solidjs/testing-library':
-        specifier: ^0.7.0
-        version: 0.7.0(solid-js@1.7.6)
+        specifier: ^0.8.0
+        version: 0.8.5(@solidjs/router@0.10.5)(solid-js@1.7.6)
       '@swc/core':
         specifier: 1.3.100
         version: 1.3.100
@@ -2168,7 +2168,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
-    dev: false
 
   /@babel/template@7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
@@ -3623,13 +3622,23 @@ packages:
       '@sinonjs/commons': 3.0.0
     dev: true
 
-  /@solidjs/testing-library@0.7.0(solid-js@1.7.6):
-    resolution: {integrity: sha512-mTSINHdcLc6rn9xWWJfzPkY0zyKtLb7QAM2CouVw2QvNZ0mgfk3z2tpaprismlE/YLn+I3ij4BqiV3ocvI+hIQ==}
+  /@solidjs/router@0.10.5(solid-js@1.7.6):
+    resolution: {integrity: sha512-gxDeiyc97j8/UqzuuasZsQYA7jpmlwjkfpcay11Q2xfzoKR50eBM1AaxAPtf0MlBAdPsdPV3h/k8t5/XQCuebA==}
+    peerDependencies:
+      solid-js: ^1.8.6
+    dependencies:
+      solid-js: 1.7.6
+    dev: true
+
+  /@solidjs/testing-library@0.8.5(@solidjs/router@0.10.5)(solid-js@1.7.6):
+    resolution: {integrity: sha512-L9TowCoqdRQGB8ikODh9uHXrYTjCUZseVUG0tIVa836//qeSqXP4m0BKG66v9Zp1y1wRxok5qUW97GwrtEBMcw==}
     engines: {node: '>= 14'}
     peerDependencies:
+      '@solidjs/router': '>=0.6.0'
       solid-js: '>=1.0.0'
     dependencies:
-      '@testing-library/dom': 9.3.0
+      '@solidjs/router': 0.10.5(solid-js@1.7.6)
+      '@testing-library/dom': 9.3.3
       solid-js: 1.7.6
     dev: true
 
@@ -3797,12 +3806,12 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/dom@9.3.0:
-    resolution: {integrity: sha512-Dffe68pGwI6WlLRYR2I0piIkyole9cSBH5jGQKCGMRpHW5RHCqAUaqc2Kv0tUyd4dU4DLPKhJIjyKOnjv4tuUw==}
+  /@testing-library/dom@9.3.3:
+    resolution: {integrity: sha512-fB0R+fa3AUqbLHWyxXa2kGVtf1Fe1ZZFr0Zp6AIbIAzXb2mKbEXl+PCQNUOaq5lbTab5tfctfXRNsWXxa2f7Aw==}
     engines: {node: '>=14'}
     dependencies:
-      '@babel/code-frame': 7.22.13
-      '@babel/runtime': 7.20.13
+      '@babel/code-frame': 7.23.5
+      '@babel/runtime': 7.22.5
       '@types/aria-query': 5.0.1
       aria-query: 5.1.3
       chalk: 4.1.2
@@ -7755,7 +7764,7 @@ packages:
     resolution: {integrity: sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==}
     engines: {node: '>=8'}
     dependencies:
-      '@babel/code-frame': 7.22.13
+      '@babel/code-frame': 7.23.5
       error-ex: 1.3.2
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
