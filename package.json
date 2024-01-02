@@ -51,7 +51,7 @@
     "@types/shelljs": "0.8.15",
     "@typescript-eslint/eslint-plugin": "5.60.0",
     "@typescript-eslint/parser": "5.60.0",
-    "@vue/test-utils": "2.4.1",
+    "@vue/test-utils": "2.4.3",
     "esbuild": "0.18.7",
     "esbuild-register": "3.4.2",
     "eslint": "8.43.0",
