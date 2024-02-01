@@ -72,8 +72,8 @@ importers:
         specifier: 0.18.7
         version: 0.18.7
       esbuild-register:
-        specifier: 3.4.2
-        version: 3.4.2(esbuild@0.18.7)
+        specifier: 3.5.0
+        version: 3.5.0(esbuild@0.18.7)
       eslint:
         specifier: 8.43.0
         version: 8.43.0
@@ -5464,8 +5464,8 @@ packages:
       is-symbol: 1.0.4
     dev: true
 
-  /esbuild-register@3.4.2(esbuild@0.18.7):
-    resolution: {integrity: sha512-kG/XyTDyz6+YDuyfB9ZoSIOOmgyFCH+xPRtsCa8W85HLRV5Csp+o3jWVbOSHgSLfyLc5DmP+KFDNwty4mEjC+Q==}
+  /esbuild-register@3.5.0(esbuild@0.18.7):
+    resolution: {integrity: sha512-+4G/XmakeBAsvJuDugJvtyF1x+XJT4FMocynNpxrvEBViirpfUn2PgNpCHedfWhF4WokNsO/OvMKrmJOIJsI5A==}
     peerDependencies:
       esbuild: '>=0.12 <1'
     dependencies:
