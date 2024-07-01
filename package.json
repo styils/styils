@@ -75,7 +75,7 @@
     "solid-js": "1.7.6",
     "typescript": "5.5.2",
     "vite": "4.5.3",
-    "vue": "3.3.7"
+    "vue": "3.4.31"
   },
   "engines": {
     "node": ">=12",
