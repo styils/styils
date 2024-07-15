@@ -1,15 +1,19 @@
 import type { AnyObject } from './types'
 import type { NeverObeject, StyleInterpolation, Styles, Widen } from './baseSystemTypes'
-import type { Component, DefineComponent, VNode, VNodeRef } from 'vue'
+import type { Component, DefineComponent, VNode, VNodeProps, VNodeRef } from 'vue'
 
 export type JSX = {
-  [K in keyof JSX.IntrinsicElements as string extends K ? never : K]: JSX.IntrinsicElements[K]
+  [K in keyof HTMLElementTagNameMap as string extends K ? never : K]: HTMLElementTagNameMap[K]
+}
+
+type HTMLElementEventHandler = {
+  [K in keyof HTMLElementEventMap as `on${Capitalize<K>}`]?: (ev: HTMLElementEventMap[K]) => any
 }
 
 export type StyledTag = keyof JSX | Component<AnyObject> | Function
 
 export type ComponentProps<T> = T extends keyof JSX
-  ? JSX[T]
+  ? (Partial<JSX[T]> & HTMLElementEventHandler & VNodeProps & Record<string, any>) | null
   : T extends
       | DefineComponent<infer Props, any, any, any, any, any, any, any>
       | ((props: infer Props) => JSX.Element)

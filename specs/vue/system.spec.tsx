@@ -95,7 +95,7 @@ expectType<
   StyledComponent<
     'a',
     {
-      size?: 'small' | 'max'
+      size?: 'small'
     },
     {
       height?: string | number
@@ -266,7 +266,9 @@ expectType<
   typeof ButtonCount,
   StyledComponent<
     'button',
-    never,
+    {
+      disabled?: number | '1'
+    },
     {
       height?: string | number
     }

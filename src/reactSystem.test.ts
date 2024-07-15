@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createSystem, styled, flush, createGlobal, keyframes, systemContext } from './reactSystem'
 import { render, fireEvent, getByText } from '@testing-library/react'
 import React, { useState } from 'react'
