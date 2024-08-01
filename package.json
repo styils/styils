@@ -73,7 +73,7 @@
     "rollup-plugin-esbuild": "5.0.0",
     "shelljs": "0.8.5",
     "solid-js": "1.7.6",
-    "typescript": "5.5.2",
+    "typescript": "5.5.4",
     "vite": "4.5.3",
     "vue": "3.4.29"
   },
