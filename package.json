@@ -56,7 +56,7 @@
     "esbuild-register": "3.5.0",
     "eslint": "8.57.0",
     "eslint-config-iroot": "1.5.1",
-    "eslint-plugin-react": "7.34.3",
+    "eslint-plugin-react": "7.35.0",
     "eslint-plugin-react-hooks": "4.6.2",
     "fs-extra": "11.2.0",
     "husky": "8.0.3",
