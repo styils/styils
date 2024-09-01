@@ -51,8 +51,8 @@ importers:
         specifier: 2.7.3
         version: 2.7.3
       '@types/react':
-        specifier: 18.3.3
-        version: 18.3.3
+        specifier: 18.3.5
+        version: 18.3.5
       '@types/react-dom':
         specifier: 18.3.0
         version: 18.3.0
@@ -170,10 +170,10 @@ importers:
     dependencies:
       '@emotion/react':
         specifier: 11.10.6
-        version: 11.10.6(@types/react@18.3.3)(react@17.0.2)
+        version: 11.10.6(@types/react@18.3.5)(react@17.0.2)
       '@emotion/styled':
         specifier: 11.10.6
-        version: 11.10.6(@emotion/react@11.10.6(@types/react@18.3.3)(react@17.0.2))(@types/react@18.3.3)(react@17.0.2)
+        version: 11.10.6(@emotion/react@11.10.6(@types/react@18.3.5)(react@17.0.2))(@types/react@18.3.5)(react@17.0.2)
       '@stitches/react':
         specifier: 1.2.8
         version: 1.2.8(react@17.0.2)
@@ -2171,8 +2171,8 @@ packages:
   '@types/react@17.0.74':
     resolution: {integrity: sha512-nBtFGaeTMzpiL/p73xbmCi00SiCQZDTJUk9ZuHOLtil3nI+y7l269LHkHIAYpav99ZwGnPJzuJsJpfLXjiQ52g==}
 
-  '@types/react@18.3.3':
-    resolution: {integrity: sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==}
+  '@types/react@18.3.5':
+    resolution: {integrity: sha512-WeqMfGJLGuLCqHGYRGHxnKrXcTitc6L/nBUWfWPcTarG3t9PsquqUMuVeXZeca+mglY4Vo5GZjCi0A3Or2lnxA==}
 
   '@types/scheduler@0.16.2':
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
@@ -6647,7 +6647,7 @@ snapshots:
 
   '@emotion/memoize@0.8.1': {}
 
-  '@emotion/react@11.10.6(@types/react@18.3.3)(react@17.0.2)':
+  '@emotion/react@11.10.6(@types/react@18.3.5)(react@17.0.2)':
     dependencies:
       '@babel/runtime': 7.22.5
       '@emotion/babel-plugin': 11.11.0
@@ -6659,7 +6659,7 @@ snapshots:
       hoist-non-react-statics: 3.3.2
       react: 17.0.2
     optionalDependencies:
-      '@types/react': 18.3.3
+      '@types/react': 18.3.5
 
   '@emotion/serialize@1.1.2':
     dependencies:
@@ -6671,18 +6671,18 @@ snapshots:
 
   '@emotion/sheet@1.2.2': {}
 
-  '@emotion/styled@11.10.6(@emotion/react@11.10.6(@types/react@18.3.3)(react@17.0.2))(@types/react@18.3.3)(react@17.0.2)':
+  '@emotion/styled@11.10.6(@emotion/react@11.10.6(@types/react@18.3.5)(react@17.0.2))(@types/react@18.3.5)(react@17.0.2)':
     dependencies:
       '@babel/runtime': 7.22.5
       '@emotion/babel-plugin': 11.11.0
       '@emotion/is-prop-valid': 1.2.1
-      '@emotion/react': 11.10.6(@types/react@18.3.3)(react@17.0.2)
+      '@emotion/react': 11.10.6(@types/react@18.3.5)(react@17.0.2)
       '@emotion/serialize': 1.1.2
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@17.0.2)
       '@emotion/utils': 1.2.1
       react: 17.0.2
     optionalDependencies:
-      '@types/react': 18.3.3
+      '@types/react': 18.3.5
 
   '@emotion/unitless@0.8.1': {}
 
@@ -7391,7 +7391,7 @@ snapshots:
 
   '@types/hoist-non-react-statics@3.3.1':
     dependencies:
-      '@types/react': 18.3.3
+      '@types/react': 18.3.5
       hoist-non-react-statics: 3.3.2
 
   '@types/istanbul-lib-coverage@2.0.4': {}
@@ -7443,7 +7443,7 @@ snapshots:
 
   '@types/react-dom@18.3.0':
     dependencies:
-      '@types/react': 18.3.3
+      '@types/react': 18.3.5
 
   '@types/react@17.0.74':
     dependencies:
@@ -7451,7 +7451,7 @@ snapshots:
       '@types/scheduler': 0.16.2
       csstype: 3.1.2
 
-  '@types/react@18.3.3':
+  '@types/react@18.3.5':
     dependencies:
       '@types/prop-types': 15.7.5
       csstype: 3.1.3
