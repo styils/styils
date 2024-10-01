@@ -19,10 +19,10 @@ importers:
         version: 17.6.6
       '@rollup/plugin-replace':
         specifier: 5.0.7
-        version: 5.0.7(rollup@3.29.4)
+        version: 5.0.7(rollup@3.29.5)
       '@rollup/plugin-terser':
         specifier: ^0.4.0
-        version: 0.4.4(rollup@3.29.4)
+        version: 0.4.4(rollup@3.29.5)
       '@solidjs/testing-library':
         specifier: ^0.8.0
         version: 0.8.8(solid-js@1.7.6)
@@ -117,14 +117,14 @@ importers:
         specifier: 4.4.1
         version: 4.4.1
       rollup:
-        specifier: 3.29.4
-        version: 3.29.4
+        specifier: 3.29.5
+        version: 3.29.5
       rollup-plugin-copy:
         specifier: 3.5.0
         version: 3.5.0
       rollup-plugin-esbuild:
         specifier: 5.0.0
-        version: 5.0.0(esbuild@0.22.0)(rollup@3.29.4)
+        version: 5.0.0(esbuild@0.22.0)(rollup@3.29.5)
       shelljs:
         specifier: 0.8.5
         version: 0.8.5
@@ -4601,8 +4601,8 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
 
-  rollup@3.29.4:
-    resolution: {integrity: sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==}
+  rollup@3.29.5:
+    resolution: {integrity: sha512-GVsDdsbJzzy4S/v3dqWPJ7EfvZJfCHiDqe80IyrF59LYuP+e6U1LJoUqeuqRbwAWoMNoXivMNeNAOf5E22VA1w==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
 
@@ -7191,28 +7191,28 @@ snapshots:
 
   '@remix-run/router@1.0.4': {}
 
-  '@rollup/plugin-replace@5.0.7(rollup@3.29.4)':
+  '@rollup/plugin-replace@5.0.7(rollup@3.29.5)':
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.29.4)
+      '@rollup/pluginutils': 5.0.2(rollup@3.29.5)
       magic-string: 0.30.5
     optionalDependencies:
-      rollup: 3.29.4
+      rollup: 3.29.5
 
-  '@rollup/plugin-terser@0.4.4(rollup@3.29.4)':
+  '@rollup/plugin-terser@0.4.4(rollup@3.29.5)':
     dependencies:
       serialize-javascript: 6.0.2
       smob: 1.4.1
       terser: 5.28.1
     optionalDependencies:
-      rollup: 3.29.4
+      rollup: 3.29.5
 
-  '@rollup/pluginutils@5.0.2(rollup@3.29.4)':
+  '@rollup/pluginutils@5.0.2(rollup@3.29.5)':
     dependencies:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
     optionalDependencies:
-      rollup: 3.29.4
+      rollup: 3.29.5
 
   '@sinclair/typebox@0.25.24': {}
 
@@ -10493,15 +10493,15 @@ snapshots:
       globby: 10.0.1
       is-plain-object: 3.0.1
 
-  rollup-plugin-esbuild@5.0.0(esbuild@0.22.0)(rollup@3.29.4):
+  rollup-plugin-esbuild@5.0.0(esbuild@0.22.0)(rollup@3.29.5):
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.29.4)
+      '@rollup/pluginutils': 5.0.2(rollup@3.29.5)
       debug: 4.3.4
       es-module-lexer: 1.1.1
       esbuild: 0.22.0
       joycon: 3.1.1
       jsonc-parser: 3.2.0
-      rollup: 3.29.4
+      rollup: 3.29.5
     transitivePeerDependencies:
       - supports-color
 
@@ -10509,7 +10509,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  rollup@3.29.4:
+  rollup@3.29.5:
     optionalDependencies:
       fsevents: 2.3.3
 
@@ -11088,7 +11088,7 @@ snapshots:
     dependencies:
       esbuild: 0.18.20
       postcss: 8.4.31
-      rollup: 3.29.4
+      rollup: 3.29.5
     optionalDependencies:
       '@types/node': 18.19.39
       fsevents: 2.3.3
